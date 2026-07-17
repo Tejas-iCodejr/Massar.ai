@@ -1,0 +1,93 @@
+{
+  "universities": [
+    {
+      "id": "1",
+      "name": "United Arab Emirates University",
+      "domain": "uaeu.ac.ae",
+      "location": "Al Ain, Abu Dhabi",
+      "type": "Public",
+      "description": "The first and oldest comprehensive national university in the UAE.",
+      "tuitionFee": "Free for Nationals",
+      "acceptanceRate": "Selective",
+      "intakes": ["Fall", "Spring"]
+    },
+    {
+      "id": "2",
+      "name": "New York University Abu Dhabi",
+      "domain": "nyuad.nyu.edu",
+      "location": "Saadiyat Island, Abu Dhabi",
+      "type": "Private",
+      "description": "A highly selective liberal arts and science college in the Middle East.",
+      "tuitionFee": "65,000 USD/year",
+      "acceptanceRate": "3%",
+      "intakes": ["Fall"]
+    },
+    {
+      "id": "3",
+      "name": "American University of Sharjah",
+      "domain": "aus.edu",
+      "location": "University City, Sharjah",
+      "type": "Private",
+      "description": "An independent, non-profit, coeducational institution of higher education.",
+      "tuitionFee": "90,000 AED/year",
+      "acceptanceRate": "50%",
+      "intakes": ["Fall", "Spring", "Summer"]
+    }
+  ],
+  "schools": [
+    {
+      "id": "1",
+      "name": "Dubai College",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "rating": "Outstanding",
+      "tuitionRange": "80K - 95K AED"
+    },
+    {
+      "id": "2",
+      "name": "The Millennium School",
+      "curriculum": "CBSE",
+      "emirate": "Dubai",
+      "rating": "Very Good",
+      "tuitionRange": "15K - 25K AED"
+    }
+  ],
+  "programs": [
+    {
+      "id": "1",
+      "title": "Middle East Youth Expo",
+      "organizer": "MEYE",
+      "type": "Fellowship",
+      "eligibility": "High School, Undergrad",
+      "deadline": "2026-10-15",
+      "link": "#"
+    },
+    {
+      "id": "2",
+      "title": "UAE Hackathon",
+      "organizer": "TDRA",
+      "type": "Hackathon",
+      "eligibility": "Open to all",
+      "deadline": "2026-09-01",
+      "link": "#"
+    }
+  ],
+  "perks": [
+    {
+      "id": "1",
+      "title": "Spotify Premium for Students",
+      "provider": "Spotify",
+      "description": "Get 50% off a Premium subscription for up to 4 years.",
+      "category": "Entertainment",
+      "link": "#"
+    },
+    {
+      "id": "2",
+      "title": "GitHub Student Developer Pack",
+      "provider": "GitHub",
+      "description": "Learn to ship software like a pro with tools and training.",
+      "category": "Software",
+      "link": "#"
+    }
+  ]
+}
