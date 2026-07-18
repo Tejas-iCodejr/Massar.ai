@@ -3,10 +3,10 @@ export interface University {
   name: string;
   domain: string;
   location: string;
-  type: "Public" | "Private";
+  type: string;
   description: string;
-  tuitionFee: string;
-  acceptanceRate?: string;
+  tuitionFee: number | string;
+  acceptanceRate?: number | string;
   intakes: string[];
   lastUpdated?: string;
 }
@@ -24,7 +24,7 @@ export interface Program {
   id: string;
   title: string;
   organizer: string;
-  type: "Hackathon" | "Course" | "Fellowship";
+  type: "Hackathon" | "Course" | "Fellowship" | "Summer School";
   eligibility: string;
   deadline: string;
   link: string;

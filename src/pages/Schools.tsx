@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
-import { Search, MapPin, BookOpen, Star, School as SchoolIcon, Filter, Eye, Award } from 'lucide-react';
+import { Search, MapPin, BookOpen, Star, School as SchoolIcon, Filter, Eye, Award, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark } from 'lucide-react';
 import { School } from '../types';
 import { cn } from '../lib/utils';
+import { Link } from 'react-router-dom';
 
 export function Schools() {
   const [schools, setSchools] = useState<School[]>([]);
@@ -12,6 +13,12 @@ export function Schools() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedEmirate, setSelectedEmirate] = useState<'All' | 'Dubai' | 'Abu Dhabi' | 'Sharjah'>('All');
   const [selectedCurriculum, setSelectedCurriculum] = useState<string>('All');
+  const [savedSchools, setSavedSchools] = useState<string[]>([]);
+
+  // Sorting and Pagination
+  const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'rating-desc'>('name-asc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   useEffect(() => {
     fetch('/api/schools')
@@ -20,7 +27,31 @@ export function Schools() {
         setSchools(data);
         setLoading(false);
       });
+
+    try {
+      const saved = JSON.parse(localStorage.getItem('saved_schools') || '[]');
+      setSavedSchools(saved);
+    } catch (e) {
+      setSavedSchools([]);
+    }
   }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedEmirate, selectedCurriculum]);
+
+  const toggleSaveSchool = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    let updated = [...savedSchools];
+    if (updated.includes(id)) {
+      updated = updated.filter(item => item !== id);
+    } else {
+      updated.push(id);
+    }
+    setSavedSchools(updated);
+    localStorage.setItem('saved_schools', JSON.stringify(updated));
+  };
 
   const curriculums = ['All', ...Array.from(new Set(schools.map(s => s.curriculum)))];
 
@@ -34,6 +65,32 @@ export function Schools() {
 
     return matchesSearch && matchesEmirate && matchesCurriculum;
   });
+
+  const ratingWeights: { [key: string]: number } = {
+    'Outstanding': 5,
+    'Very Good': 4,
+    'Good': 3,
+    'Acceptable': 2,
+    'Weak': 1
+  };
+
+  // Sort logic
+  const sortedAndFiltered = [...filtered].sort((a, b) => {
+    if (sortBy === 'name-asc') return a.name.localeCompare(b.name);
+    if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
+    if (sortBy === 'rating-desc') {
+      const weightA = ratingWeights[a.rating] || 0;
+      const weightB = ratingWeights[b.rating] || 0;
+      return weightB - weightA;
+    }
+    return 0;
+  });
+
+  // Pagination slice
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = sortedAndFiltered.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid-bg min-h-screen bg-[#f5f1e4]">
@@ -93,7 +150,7 @@ export function Schools() {
         </div>
 
         {/* Curriculum selector */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 border-r border-hairline-mist pr-4">
           <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider">Curriculum:</span>
           <select
             value={selectedCurriculum}
@@ -105,6 +162,30 @@ export function Schools() {
             ))}
           </select>
         </div>
+
+        {/* Sort selector */}
+        <div className="flex items-center gap-2">
+          <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider flex items-center gap-1">
+            <ArrowUpDown className="w-3 h-3 text-[#ff705d]" /> Sort:
+          </span>
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as any)}
+            className="px-4 py-1.5 bg-white border border-hairline-mist font-sans font-semibold text-xs uppercase tracking-wider focus:outline-none cursor-pointer rounded-[50px] text-ink"
+          >
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="rating-desc">Rating: Outstanding First</option>
+          </select>
+        </div>
+
+        {/* Saved schools pill */}
+        {savedSchools.length > 0 && (
+          <div className="ml-auto inline-flex items-center gap-2 bg-[#f5e211]/20 border border-[#f5e211]/40 rounded-[50px] px-4 py-1.5 font-sans text-xs font-semibold uppercase text-ink">
+            <Bookmark className="w-3.5 h-3.5 fill-ink text-ink" />
+            <span>Saved {savedSchools.length} schools</span>
+          </div>
+        )}
       </div>
 
       {/* Schools render */}
@@ -124,60 +205,128 @@ export function Schools() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filtered.map(school => (
-                <Card key={school.id} className="group flex flex-col h-full bg-white p-8">
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentItems.map(school => {
+                  const isSaved = savedSchools.includes(school.id);
+                  return (
+                    <Card key={school.id} className="group flex flex-col h-full bg-white p-8">
+                      
+                      {/* Card Header */}
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="w-14 h-14 bg-[#2c2e2a]/5 border border-hairline-mist rounded-[15px] flex items-center justify-center font-sans font-black text-xl text-ink select-none transition-transform group-hover:rotate-6">
+                          {school.name.substring(0, 2).toUpperCase()}
+                        </div>
+                        
+                        <div className="flex items-center gap-2">
+                          {/* Save School Toggle */}
+                          <button
+                            onClick={(e) => toggleSaveSchool(school.id, e)}
+                            className={cn(
+                              "w-8 h-8 flex items-center justify-center border border-hairline-mist rounded-full bg-white transition-all hover:bg-gray-50 select-none",
+                              isSaved ? "bg-[#f5e211]/30 border-[#f5e211]" : ""
+                            )}
+                          >
+                            <Bookmark className={cn("w-3.5 h-3.5", isSaved ? "fill-ink text-ink" : "text-stone-gray")} />
+                          </button>
+                          
+                          <Badge variant={school.rating === 'Outstanding' ? 'success' : 'default'}>
+                            {school.rating === 'Outstanding' && <Award className="w-3.5 h-3.5 mr-1" />}
+                            {school.rating}
+                          </Badge>
+                        </div>
+                      </div>
+                      
+                      {/* School Typography */}
+                      <h2 className="font-sans font-black text-2xl uppercase tracking-tight mb-2 leading-tight group-hover:text-[#ff705d] transition-colors pr-2 text-ink">
+                        {school.name}
+                      </h2>
+                      
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-gray uppercase mb-6">
+                        <MapPin className="w-3.5 h-3.5 text-[#8ed462]" />
+                        <span>{school.emirate}, UAE</span>
+                      </div>
+
+                      {/* Specification List */}
+                      <div className="mt-auto space-y-3 pt-4 border-t border-hairline-mist border-dashed">
+                        
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="flex items-center gap-1.5 text-stone-gray font-semibold uppercase">
+                            <BookOpen className="w-3.5 h-3.5 text-[#ff705d]" /> Curriculum
+                          </span>
+                          <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
+                            {school.curriculum}
+                          </span>
+                        </div>
+
+                        <div className="flex justify-between items-center text-xs">
+                          <span className="flex items-center gap-1.5 text-stone-gray font-semibold uppercase">
+                            <Star className="w-3.5 h-3.5 text-[#f5e211]" /> Tuition Range
+                          </span>
+                          <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
+                            {school.tuitionRange}
+                          </span>
+                        </div>
+
+                      </div>
+                      
+                      <Button variant="outline" size="sm" className="w-full mt-6 flex items-center justify-center gap-1.5 font-sans font-semibold text-xs rounded-[50px]" asChild>
+                        <Link to={`/details/school/${school.id}`}>
+                          <Eye className="w-3.5 h-3.5" /> Full Inspection Details
+                        </Link>
+                      </Button>
+                    </Card>
+                  );
+                })}
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-12 pt-6 border-t border-hairline-mist">
+                  <span className="font-sans text-xs text-stone-gray font-medium">
+                    Showing <strong className="text-ink">{indexOfFirstItem + 1}</strong> to <strong className="text-ink">{Math.min(indexOfLastItem, sortedAndFiltered.length)}</strong> of <strong className="text-ink">{sortedAndFiltered.length}</strong> schools
+                  </span>
                   
-                  {/* Card Header */}
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="w-14 h-14 bg-[#2c2e2a]/5 border border-hairline-mist rounded-[15px] flex items-center justify-center font-sans font-black text-xl text-ink select-none transition-transform group-hover:rotate-6">
-                      {school.name.substring(0, 2).toUpperCase()}
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} 
+                      disabled={currentPage === 1}
+                      className={cn("px-4 py-2 flex items-center gap-1.5", currentPage === 1 ? "opacity-40 cursor-not-allowed" : "")}
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" /> Prev
+                    </Button>
                     
-                    <Badge variant={school.rating === 'Outstanding' ? 'success' : 'default'}>
-                      {school.rating === 'Outstanding' && <Award className="w-3.5 h-3.5 mr-1" />}
-                      {school.rating}
-                    </Badge>
-                  </div>
-                  
-                  {/* School Typography */}
-                  <h2 className="font-sans font-black text-2xl uppercase tracking-tight mb-2 leading-tight group-hover:text-[#ff705d] transition-colors pr-2 text-ink">
-                    {school.name}
-                  </h2>
-                  
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-gray uppercase mb-6">
-                    <MapPin className="w-3.5 h-3.5 text-[#8ed462]" />
-                    <span>{school.emirate}, UAE</span>
-                  </div>
-
-                  {/* Specification List */}
-                  <div className="mt-auto space-y-3 pt-4 border-t border-hairline-mist border-dashed">
-                    
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="flex items-center gap-1.5 text-stone-gray font-semibold uppercase">
-                        <BookOpen className="w-3.5 h-3.5 text-[#ff705d]" /> Curriculum
-                      </span>
-                      <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
-                        {school.curriculum}
-                      </span>
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page)}
+                          className={cn(
+                            "w-8 h-8 rounded-full font-sans font-bold text-xs border flex items-center justify-center transition-all cursor-pointer",
+                            currentPage === page 
+                              ? "bg-ink text-white border-transparent shadow-sm" 
+                              : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
+                          )}
+                        >
+                          {page}
+                        </button>
+                      ))}
                     </div>
 
-                    <div className="flex justify-between items-center text-xs">
-                      <span className="flex items-center gap-1.5 text-stone-gray font-semibold uppercase">
-                        <Star className="w-3.5 h-3.5 text-[#f5e211]" /> Tuition Range
-                      </span>
-                      <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
-                        {school.tuitionRange}
-                      </span>
-                    </div>
-
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} 
+                      disabled={currentPage === totalPages}
+                      className={cn("px-4 py-2 flex items-center gap-1.5", currentPage === totalPages ? "opacity-40 cursor-not-allowed" : "")}
+                    >
+                      Next <ChevronRight className="w-3.5 h-3.5" />
+                    </Button>
                   </div>
-                  
-                  <Button variant="outline" size="sm" className="w-full mt-6 flex items-center justify-center gap-1.5 font-sans font-semibold text-xs rounded-[50px]">
-                    <Eye className="w-3.5 h-3.5" /> Full Inspection Details
-                  </Button>
-                </Card>
-              ))}
+                </div>
+              )}
             </div>
           )}
         </>

@@ -7,9 +7,13 @@
       "location": "Al Ain, Abu Dhabi",
       "type": "Public",
       "description": "The first and oldest comprehensive national university in the UAE.",
-      "tuitionFee": "Free for Nationals",
-      "acceptanceRate": "Selective",
-      "intakes": ["Fall", "Spring"]
+      "tuitionFee": 17700,
+      "acceptanceRate": 70,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T07:46:07.535Z"
     },
     {
       "id": "2",
@@ -18,9 +22,12 @@
       "location": "Saadiyat Island, Abu Dhabi",
       "type": "Private",
       "description": "A highly selective liberal arts and science college in the Middle East.",
-      "tuitionFee": "65,000 USD/year",
-      "acceptanceRate": "3%",
-      "intakes": ["Fall"]
+      "tuitionFee": 65170,
+      "acceptanceRate": 3,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-17T07:46:07.535Z"
     },
     {
       "id": "3",
@@ -29,9 +36,253 @@
       "location": "University City, Sharjah",
       "type": "Private",
       "description": "An independent, non-profit, coeducational institution of higher education.",
-      "tuitionFee": "90,000 AED/year",
-      "acceptanceRate": "50%",
-      "intakes": ["Fall", "Spring", "Summer"]
+      "tuitionFee": 30900,
+      "acceptanceRate": 75,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-17T07:46:07.535Z"
+    },
+    {
+      "id": "4",
+      "name": "Khalifa University",
+      "domain": "ku.ac.ae",
+      "location": "Abu Dhabi",
+      "type": "Public",
+      "description": "A world-class research university focusing on science, technology, and engineering.",
+      "tuitionFee": 28000,
+      "acceptanceRate": 25,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T07:46:07.535Z"
+    },
+    {
+      "id": "5",
+      "name": "Manipal Academy of Higher Education, Dubai",
+      "domain": "manipaldubai.com",
+      "location": "Academic City, Dubai",
+      "type": "Branch Campus",
+      "description": "A top-ranked Indian private university branch offering world-class programs in engineering, biotechnology, and business studies in Dubai.",
+      "tuitionFee": 45000,
+      "acceptanceRate": 85,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:15:00.000Z"
+    },
+    {
+      "id": "6",
+      "name": "BITS Pilani, Dubai Campus",
+      "domain": "bits-dubai.ac.ae",
+      "location": "Academic City, Dubai",
+      "type": "Branch Campus",
+      "description": "The international branch campus of the premier Birla Institute of Technology and Science, specializing in high-caliber engineering, technology, and computer science degrees.",
+      "tuitionFee": 48500,
+      "acceptanceRate": 60,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-17T12:15:00.000Z"
+    },
+    {
+      "id": "7",
+      "name": "IIT Delhi - Abu Dhabi",
+      "domain": "abudhabi.iitd.ac.in",
+      "location": "Zayed City, Abu Dhabi",
+      "type": "Public",
+      "description": "The highly prestigious first international branch of the Indian Institute of Technology Delhi, offering rigorous computational engineering, AI, and energy engineering degrees.",
+      "tuitionFee": 35000,
+      "acceptanceRate": 8,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-17T12:15:00.000Z"
+    },
+    {
+      "id": "8",
+      "name": "Heriot-Watt University Dubai",
+      "domain": "hw.ac.uk",
+      "location": "Knowledge Park, Dubai",
+      "type": "Branch Campus",
+      "description": "The first British university branch in Dubai, providing gold-standard UK degrees in mechanical engineering, petroleum science, and business management.",
+      "tuitionFee": 62000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:15:00.000Z"
+    },
+    {
+      "id": "9",
+      "name": "University of Birmingham Dubai",
+      "domain": "birmingham.ac.uk",
+      "location": "Knowledge Park, Dubai",
+      "type": "Branch Campus",
+      "description": "A prestigious Russell Group member with a smart-designed campus in Dubai, offering elite UK degree pathways in computer science, business management, and education.",
+      "tuitionFee": 88500,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:15:00.000Z"
+    },
+    {
+      "id": "10",
+      "name": "Zayed University",
+      "domain": "zu.ac.ae",
+      "location": "Academic City, Dubai",
+      "type": "Public",
+      "description": "A prominent federal university in the UAE with campus facilities across Dubai and Abu Dhabi, preparing global-ready students in humanities, communication, and business.",
+      "tuitionFee": 24000,
+      "acceptanceRate": 80,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:15:00.000Z"
+    },
+    {
+      "id": "11",
+      "name": "King Abdullah University of Science and Technology (KAUST)",
+      "domain": "kaust.edu.sa",
+      "location": "Thuwal, Saudi Arabia",
+      "type": "Private",
+      "description": "An elite, graduate-level research university that consistently ranks as the absolute top institution in the region. All admitted students receive full funding fellowships.",
+      "tuitionFee": "Fully Funded",
+      "acceptanceRate": 9,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:21:00.000Z"
+    },
+    {
+      "id": "12",
+      "name": "King Fahd University of Petroleum and Minerals (KFUPM)",
+      "domain": "kfupm.edu.sa",
+      "location": "Dhahran, Saudi Arabia",
+      "type": "Public",
+      "description": "A top-ranked public university highly prestigious and renowned for its cutting-edge programs in science, petroleum engineering, and advanced computing fields.",
+      "tuitionFee": 28000,
+      "acceptanceRate": 12,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:21:00.000Z"
+    },
+    {
+      "id": "13",
+      "name": "Qatar University",
+      "domain": "qu.edu.qa",
+      "location": "Doha, Qatar",
+      "type": "Public",
+      "description": "The premier national institution of higher education in Qatar, delivering high-quality undergraduate and graduate programs across diverse fields of study.",
+      "tuitionFee": 32000,
+      "acceptanceRate": 40,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
+    },
+    {
+      "id": "14",
+      "name": "King Saud University",
+      "domain": "ksu.edu.sa",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "Public",
+      "description": "A highly prestigious public university in Riyadh, celebrated for its rigorous medical, engineering, and humanities departments, ranking among the top institutions in the Arab world.",
+      "tuitionFee": 22000,
+      "acceptanceRate": 15,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
+    },
+    {
+      "id": "15",
+      "name": "Abu Dhabi University",
+      "domain": "adu.ac.ae",
+      "location": "Abu Dhabi, United Arab Emirates",
+      "type": "Private",
+      "description": "An internationally accredited multi-campus private university in the UAE, famous for its leading business, law, and engineering programs.",
+      "tuitionFee": 52000,
+      "acceptanceRate": 75,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
+    },
+    {
+      "id": "16",
+      "name": "King Khalid University",
+      "domain": "kku.edu.sa",
+      "location": "Abha, Saudi Arabia",
+      "type": "Public",
+      "description": "A major public university in southwestern Saudi Arabia, offering comprehensive educational tracks in healthcare, technology, and Islamic studies.",
+      "tuitionFee": 18000,
+      "acceptanceRate": 35,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
+    },
+    {
+      "id": "17",
+      "name": "Lebanese American University",
+      "domain": "lau.edu.lb",
+      "location": "Beirut, Lebanon",
+      "type": "Private",
+      "description": "A leading, independent American institution of higher education in Lebanon, renowned for its academic excellence, student-centeredness, and civic engagement.",
+      "tuitionFee": 24000,
+      "acceptanceRate": 68,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
+    },
+    {
+      "id": "18",
+      "name": "The British University in Dubai",
+      "domain": "buid.ac.ae",
+      "location": "Knowledge Park, Dubai",
+      "type": "Private",
+      "description": "A premier research-led university in Dubai offering high-standard British-style higher education in collaboration with top UK Russell Group institutions.",
+      "tuitionFee": 56000,
+      "acceptanceRate": 80,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
+    },
+    {
+      "id": "19",
+      "name": "Prince Mohammad Bin Fahd University",
+      "domain": "pmu.edu.sa",
+      "location": "Al Khobar, Saudi Arabia",
+      "type": "Private",
+      "description": "A rapidly growing, highly modern private university in Saudi Arabia's Eastern Province, designed to foster creative leadership and digital tech competencies.",
+      "tuitionFee": 44000,
+      "acceptanceRate": 70,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-17T12:38:00.000Z"
     }
   ],
   "schools": [
@@ -50,44 +301,198 @@
       "emirate": "Dubai",
       "rating": "Very Good",
       "tuitionRange": "15K - 25K AED"
+    },
+    {
+      "id": "3",
+      "name": "Raha International School",
+      "curriculum": "IB",
+      "emirate": "Abu Dhabi",
+      "rating": "Outstanding",
+      "tuitionRange": "40K - 62K AED"
     }
   ],
   "programs": [
     {
       "id": "1",
-      "title": "Middle East Youth Expo",
-      "organizer": "MEYE",
-      "type": "Fellowship",
-      "eligibility": "High School, Undergrad",
-      "deadline": "2026-10-15",
-      "link": "#"
+      "title": "NASA Space Apps Challenge",
+      "organizer": "NASA & Global Partners",
+      "type": "Hackathon",
+      "eligibility": "All Students (K12 & University)",
+      "deadline": "2026-10-01",
+      "link": "https://www.spaceappschallenge.org/"
     },
     {
       "id": "2",
-      "title": "UAE Hackathon",
-      "organizer": "TDRA",
+      "title": "Stanford Pre-Collegiate Summer Institute",
+      "organizer": "Stanford University",
+      "type": "Summer School",
+      "eligibility": "High School Students (Grades 8-11)",
+      "deadline": "2026-08-15",
+      "link": "https://spcs.stanford.edu/programs/stanford-pre-collegiate-summer-institutes"
+    },
+    {
+      "id": "3",
+      "title": "Google Solution Challenge",
+      "organizer": "Google Developers",
       "type": "Hackathon",
-      "eligibility": "Open to all",
-      "deadline": "2026-09-01",
-      "link": "#"
+      "eligibility": "University Students",
+      "deadline": "2026-12-15",
+      "link": "https://developers.google.com/community/gdsc/solution-challenge"
+    },
+    {
+      "id": "4",
+      "title": "Oxford Summer Academy",
+      "organizer": "Oxford Study Courses",
+      "type": "Summer School",
+      "eligibility": "Students aged 15-19",
+      "deadline": "2026-08-20",
+      "link": "https://www.oxfordsummeracademy.com/"
+    },
+    {
+      "id": "5",
+      "title": "Harvard CS50x Computer Science Core",
+      "organizer": "Harvard University (edX)",
+      "type": "Course",
+      "eligibility": "All Students & Life-long Learners",
+      "deadline": "2026-12-31",
+      "link": "https://pll.harvard.edu/course/cs50-introduction-computer-science"
+    },
+    {
+      "id": "6",
+      "title": "TechGirls Leadership & Exchange Program",
+      "organizer": "U.S. Department of State",
+      "type": "Fellowship",
+      "eligibility": "Female High School Students (Ages 15-17)",
+      "deadline": "2026-11-01",
+      "link": "https://techgirlsglobal.org/"
+    },
+    {
+      "id": "7",
+      "title": "NYUAD Hackathon for Social Good",
+      "organizer": "NYU Abu Dhabi",
+      "type": "Hackathon",
+      "eligibility": "University & Elite High School",
+      "deadline": "2026-11-20",
+      "link": "https://nyuad.nyu.edu/en/events/annual-nyuad-hackathon.html"
+    },
+    {
+      "id": "8",
+      "title": "Mawhiba International Summer Program",
+      "organizer": "Mawhiba Saudi Arabia",
+      "type": "Fellowship",
+      "eligibility": "K12 High Achievers (Grades 9-12)",
+      "deadline": "2026-10-05",
+      "link": "https://www.mawhiba.org/"
+    },
+    {
+      "id": "9",
+      "title": "MIT Beaver Works Summer Institute",
+      "organizer": "Massachusetts Institute of Technology",
+      "type": "Summer School",
+      "eligibility": "Rising High School Seniors",
+      "deadline": "2026-09-10",
+      "link": "https://beaverworks.ll.mit.edu/"
+    },
+    {
+      "id": "10",
+      "title": "Coders HQ Junior Python Virtual Academy",
+      "organizer": "Coders HQ UAE",
+      "type": "Course",
+      "eligibility": "K12 level (Ages 8-15)",
+      "deadline": "2026-12-01",
+      "link": "https://codershq.ae/"
+    },
+    {
+      "id": "11",
+      "title": "Major League Hacking (MLH) Global Hackathons",
+      "organizer": "MLH Organization",
+      "type": "Hackathon",
+      "eligibility": "K12 & University Developers",
+      "deadline": "2026-11-30",
+      "link": "https://mlh.io/"
+    },
+    {
+      "id": "12",
+      "title": "Middle East Youth Fellowship",
+      "organizer": "MEYE Initiative",
+      "type": "Fellowship",
+      "eligibility": "High School & Undergrad",
+      "deadline": "2026-10-15",
+      "link": "https://meyexpo.com/"
     }
   ],
   "perks": [
     {
       "id": "1",
-      "title": "Spotify Premium for Students",
-      "provider": "Spotify",
-      "description": "Get 50% off a Premium subscription for up to 4 years.",
-      "category": "Entertainment",
-      "link": "#"
+      "title": "GitHub Student Developer Pack",
+      "provider": "GitHub & Partners",
+      "description": "Free access to GitHub Pro, Canva Pro, JetBrains IDE licenses, Azure $100 credits, and 80+ elite developer tools for verified school students.",
+      "category": "Software",
+      "link": "https://education.github.com/pack"
     },
     {
       "id": "2",
-      "title": "GitHub Student Developer Pack",
-      "provider": "GitHub",
-      "description": "Learn to ship software like a pro with tools and training.",
+      "title": "Notion Student Personal Pro",
+      "provider": "Notion Labs",
+      "description": "Unlock the complete Personal Pro plan (unlimited file uploads, version history, unlimited guests) 100% free with a school email or student card.",
       "category": "Software",
-      "link": "#"
+      "link": "https://www.notion.so/students"
+    },
+    {
+      "id": "3",
+      "title": "Figma for Education",
+      "provider": "Figma Inc.",
+      "description": "Get the Professional Team Plan for free. Design, prototype, and collaborate in real time. Verifiable with student ID or school enrollment letter.",
+      "category": "Software",
+      "link": "https://www.figma.com/education/"
+    },
+    {
+      "id": "4",
+      "title": "Microsoft Office 365 Education",
+      "provider": "Microsoft",
+      "description": "Free Access to Word, Excel, PowerPoint, Teams, and 1TB OneDrive cloud storage. Requires a valid institutional student email ID.",
+      "category": "Software",
+      "link": "https://www.microsoft.com/en-us/education/products/office"
+    },
+    {
+      "id": "5",
+      "title": "JetBrains Academic Subscription",
+      "provider": "JetBrains",
+      "description": "Free individual licenses for IntelliJ IDEA Ultimate, WebStorm, PyCharm Professional, ReSharper, and other IDEs. Renew free yearly with school email.",
+      "category": "Software",
+      "link": "https://www.jetbrains.com/community/education/"
+    },
+    {
+      "id": "6",
+      "title": "Autodesk Student Software Suite",
+      "provider": "Autodesk",
+      "description": "Get free 1-year educational access to Autodesk products including AutoCAD, Revit, Maya, and Fusion 360. Verifiable via student ID or enrollment.",
+      "category": "Software",
+      "link": "https://www.autodesk.com/education/free-software/overview"
+    },
+    {
+      "id": "7",
+      "title": "Apple Education Savings",
+      "provider": "Apple Middle East",
+      "description": "Save on a new Mac or iPad with Apple education pricing. Available to newly admitted and current UAE/Middle East university students and parents.",
+      "category": "Hardware",
+      "link": "https://www.apple.com/ae-edu/shop"
+    },
+    {
+      "id": "8",
+      "title": "Spotify Premium for Students",
+      "provider": "Spotify Middle East",
+      "description": "Get premium music subscription with 50% discount. Play offline, on-demand, without any ads. Verifiable via SheerID (school portal authentication).",
+      "category": "Entertainment",
+      "link": "https://www.spotify.com/ae-en/student/"
+    },
+    {
+      "id": "9",
+      "title": "Canva for Education",
+      "provider": "Canva",
+      "description": "100% free premium templates, millions of photos, fonts, graphics, and video editing for students and educators with school credentials.",
+      "category": "Software",
+      "link": "https://www.canva.com/education/"
     }
   ]
 }

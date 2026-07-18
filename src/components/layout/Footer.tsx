@@ -89,7 +89,7 @@ export function Footer() {
                   <li><a href="/universities" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Universities</a></li>
                   <li><a href="/schools" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Schools Directory</a></li>
                   <li><a href="/compare" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Compare Sandbox</a></li>
-                  <li><a href="/programs" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Fellowships</a></li>
+                  <li><a href="/programs" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Opportunities</a></li>
                   <li><a href="/perks" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Student Perks</a></li>
                 </ul>
               </div>

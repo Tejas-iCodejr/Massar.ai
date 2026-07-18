@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu } from 'lucide-react';
+import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Scale, Bookmark } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 
 export function Navbar() {
   const location = useLocation();
   const [lang, setLang] = useState<'EN' | 'AR'>('EN');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: 'Discover', path: '/', icon: Compass },
     { name: 'Universities', path: '/universities', icon: GraduationCap },
-    { name: 'Compare', path: '/compare', icon: Search },
     { name: 'Schools', path: '/schools', icon: School },
-    { name: 'Programs', path: '/programs', icon: BookOpen },
+    { name: 'Opportunities', path: '/programs', icon: BookOpen },
     { name: 'Perks', path: '/perks', icon: Star },
+    { name: 'Planner', path: '/planner', icon: Calendar },
+    { name: 'Saved Desk', path: '/saved', icon: Bookmark },
   ];
 
   return (
@@ -69,17 +71,55 @@ export function Navbar() {
           </button>
 
           {/* Primary CTA Button is a white/light pill button with 50px radius */}
-          <Button variant="primary" size="sm" className="hidden sm:flex border border-ink hover:bg-gray-50 font-sans font-medium px-5 py-2 text-xs">
-            <User className="w-3.5 h-3.5 mr-1.5" /> Login
+          <Button variant="primary" size="sm" className="hidden sm:flex border border-ink hover:bg-gray-50 font-sans font-medium px-5 py-2 text-xs" asChild>
+            <Link to="/login">
+              <User className="w-3.5 h-3.5 mr-1.5" /> Login
+            </Link>
           </Button>
           
           {/* Menu button for small viewports - Green button fill with a dark menu icon */}
-          <button className="lg:hidden w-10 h-10 rounded-full bg-primary flex items-center justify-center text-ink hover:opacity-90 transition-opacity">
-            <Menu className="w-5 h-5 text-ink" />
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden w-10 h-10 rounded-full bg-primary flex items-center justify-center text-ink hover:opacity-90 transition-opacity"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5 text-ink" /> : <Menu className="w-5 h-5 text-ink" />}
           </button>
         </div>
         
       </div>
+
+      {/* Mobile Slide-down navigation */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden mt-2 bg-white border border-hairline-mist rounded-[30px] p-4 shadow-md flex flex-col gap-1.5 animate-in slide-in-from-top duration-200">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            const isActive = location.pathname === link.path;
+            return (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "px-4 py-3 flex items-center gap-3 font-sans font-medium text-[14px] rounded-[50px] transition-all",
+                  isActive 
+                    ? "bg-primary/25 text-ink font-bold" 
+                    : "text-ink/85 hover:bg-gray-50"
+                )}
+              >
+                <Icon className="w-4 h-4 text-ink/75" />
+                <span>{link.name}</span>
+              </Link>
+            );
+          })}
+          <div className="border-t border-hairline-mist mt-2 pt-2 flex flex-col gap-2">
+            <Button variant="primary" size="sm" className="w-full flex items-center justify-center border border-ink font-sans font-medium py-3 text-xs rounded-[50px]" asChild>
+              <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                <User className="w-4 h-4 mr-1.5" /> Login
+              </Link>
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

@@ -3,7 +3,7 @@ import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { UniversityLogo } from '../components/ui/UniversityLogo';
 import { Button } from '../components/ui/Button';
-import { Search, MapPin, DollarSign, Clock, Star, Landmark, Bookmark, CheckCircle, GraduationCap, X, ChevronRight } from 'lucide-react';
+import { Search, MapPin, DollarSign, Clock, Star, Landmark, Bookmark, CheckCircle, GraduationCap, X, ChevronRight, ChevronLeft, Scale, ArrowUpDown } from 'lucide-react';
 import { University } from '../types';
 import { cn } from '../lib/utils';
 import { Link } from 'react-router-dom';
@@ -12,10 +12,15 @@ export function Universities() {
   const [universities, setUniversities] = useState<University[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedType, setSelectedType] = useState<'All' | 'Public' | 'Private'>('All');
+  const [selectedType, setSelectedType] = useState<'All' | 'Public' | 'Private' | 'Branch Campus'>('All');
   const [selectedLocation, setSelectedLocation] = useState<string>('All');
   const [savedUnis, setSavedUnis] = useState<string[]>([]);
   const [activeDetailUni, setActiveDetailUni] = useState<University | null>(null);
+
+  // Pagination & Sorting States
+  const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'fee-asc' | 'fee-desc' | 'rate-asc' | 'rate-desc'>('name-asc');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   useEffect(() => {
     fetch('/api/universities')
@@ -33,6 +38,11 @@ export function Universities() {
       setSavedUnis([]);
     }
   }, []);
+
+  // Reset page to 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedType, selectedLocation]);
 
   const toggleSave = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -58,6 +68,23 @@ export function Universities() {
 
     return matchesSearch && matchesType && matchesLocation;
   });
+
+  // Sort logic
+  const sortedAndFiltered = [...filtered].sort((a, b) => {
+    if (sortBy === 'name-asc') return a.name.localeCompare(b.name);
+    if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
+    if (sortBy === 'fee-asc') return (a.tuitionFee || 0) - (b.tuitionFee || 0);
+    if (sortBy === 'fee-desc') return (b.tuitionFee || 0) - (a.tuitionFee || 0);
+    if (sortBy === 'rate-asc') return (a.acceptanceRate || 0) - (b.acceptanceRate || 0);
+    if (sortBy === 'rate-desc') return (b.acceptanceRate || 0) - (a.acceptanceRate || 0);
+    return 0;
+  });
+
+  // Pagination slice
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = sortedAndFiltered.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(sortedAndFiltered.length / itemsPerPage);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid-bg min-h-screen bg-[#f5f1e4]">
@@ -99,13 +126,13 @@ export function Universities() {
         <div className="flex items-center gap-2 border-r border-hairline-mist pr-4">
           <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider">Type:</span>
           <div className="flex gap-1.5">
-            {(['All', 'Public', 'Private'] as const).map(type => (
+            {(['All', 'Public', 'Private', 'Branch Campus'] as const).map(type => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}
                 className={cn(
                   "px-4 py-1.5 font-sans font-semibold text-xs rounded-[50px] border tracking-wider transition-all select-none cursor-pointer",
-                  selectedType === type ? "bg-[#8ed462] text-ink border-transparent shadow-sm" : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
+                  selectedType === type ? "bg-[#8ed462] text-[#2c2e2a] border-transparent shadow-sm" : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
                 )}
               >
                 {type}
@@ -115,7 +142,7 @@ export function Universities() {
         </div>
 
         {/* Region selector */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 border-r border-hairline-mist pr-4">
           <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider">Region:</span>
           <select
             value={selectedLocation}
@@ -128,20 +155,92 @@ export function Universities() {
           </select>
         </div>
 
-        {/* Saved shortcut pill */}
-        {savedUnis.length > 0 && (
-          <div className="ml-auto inline-flex items-center gap-2 bg-[#f5e211]/20 border border-[#f5e211]/40 rounded-[50px] px-4 py-1.5 font-sans text-xs font-semibold uppercase text-ink">
-            <Bookmark className="w-3.5 h-3.5 fill-ink text-ink" />
-            <span>Saved {savedUnis.length} items</span>
-          </div>
-        )}
+        {/* Sort selector */}
+        <div className="flex items-center gap-2">
+          <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider flex items-center gap-1">
+            <ArrowUpDown className="w-3 h-3 text-[#ff705d]" /> Sort:
+          </span>
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as any)}
+            className="px-4 py-1.5 bg-white border border-hairline-mist font-sans font-semibold text-xs uppercase tracking-wider focus:outline-none cursor-pointer rounded-[50px] text-ink"
+          >
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="fee-asc">Tuition: Low to High</option>
+            <option value="fee-desc">Tuition: High to Low</option>
+            <option value="rate-asc">Acceptance: Low to High</option>
+            <option value="rate-desc">Acceptance: High to Low</option>
+          </select>
+        </div>
+
+        {/* Saved shortcut pill & Comparison Sandbox Button */}
+        <div className="ml-auto flex flex-wrap items-center gap-3">
+          {savedUnis.length > 0 && (
+            <div className="inline-flex items-center gap-2 bg-[#f5e211]/20 border border-[#f5e211]/40 rounded-[50px] px-4 py-1.5 font-sans text-xs font-semibold uppercase text-ink">
+              <Bookmark className="w-3.5 h-3.5 fill-ink text-ink" />
+              <span>Saved {savedUnis.length} items</span>
+            </div>
+          )}
+          
+          <Link 
+            to="/compare" 
+            className="inline-flex items-center gap-2 bg-ink text-white hover:bg-[#ff705d] border border-ink hover:border-transparent font-sans font-semibold text-xs uppercase tracking-wider px-5 py-2.5 rounded-[50px] transition-all select-none shadow-sm"
+          >
+            <Scale className="w-3.5 h-3.5 text-[#ff705d] stroke-[2.5px]" />
+            <span>Compare Sandbox</span>
+          </Link>
+        </div>
       </div>
 
       {/* Content Render */}
       {loading ? (
-        <div className="text-center py-24">
-          <div className="inline-block w-8 h-8 border-2 border-[#8ed462] border-t-transparent rounded-full animate-spin mb-4"></div>
-          <div className="font-sans text-sm font-semibold uppercase tracking-wider text-stone-gray animate-pulse">Syncing directory metrics...</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[...Array(6)].map((_, idx) => (
+            <Card key={idx} className="flex flex-col h-full bg-white relative p-8 animate-pulse border border-hairline-mist rounded-[40px]">
+              {/* Header Controls */}
+              <div className="flex justify-between items-start mb-6 w-full">
+                {/* University Logo placeholder */}
+                <div className="w-14 h-14 bg-stone-200 rounded-[15px]" />
+                
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-stone-200" />
+                  <div className="w-16 h-5 rounded-full bg-stone-200" />
+                </div>
+              </div>
+              
+              {/* Name placeholder */}
+              <div className="h-6 bg-stone-200 rounded w-3/4 mb-2.5" />
+              <div className="h-6 bg-stone-200 rounded w-1/2 mb-4" />
+              
+              {/* Location placeholder */}
+              <div className="flex items-center gap-1.5 mb-6">
+                <div className="w-3.5 h-3.5 rounded-full bg-stone-200" />
+                <div className="h-3.5 bg-stone-200 rounded w-1/3" />
+              </div>
+              
+              {/* Description placeholder */}
+              <div className="space-y-2 mb-6">
+                <div className="h-3 bg-stone-200 rounded w-full" />
+                <div className="h-3 bg-stone-200 rounded w-5/6" />
+              </div>
+              
+              {/* Stats placeholder */}
+              <div className="mt-auto space-y-3 pt-4 border-t border-hairline-mist border-dashed">
+                <div className="flex justify-between items-center">
+                  <div className="h-3.5 bg-stone-200 rounded w-1/4" />
+                  <div className="h-6 bg-stone-200 rounded-[50px] w-1/4" />
+                </div>
+                <div className="flex justify-between items-center">
+                  <div className="h-3.5 bg-stone-200 rounded w-1/4" />
+                  <div className="h-6 bg-stone-200 rounded-[50px] w-1/4" />
+                </div>
+              </div>
+              
+              {/* Button placeholder */}
+              <div className="h-9 bg-stone-200 rounded-[50px] w-full mt-6" />
+            </Card>
+          ))}
         </div>
       ) : (
         <>
@@ -154,74 +253,126 @@ export function Universities() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filtered.map(uni => {
-                const isSaved = savedUnis.includes(uni.id);
-                return (
-                  <Card 
-                    key={uni.id} 
-                    className="group cursor-pointer flex flex-col h-full bg-white relative p-8"
-                    onClick={() => setActiveDetailUni(uni)}
-                  >
-                    {/* Header Controls */}
-                    <div className="flex justify-between items-start mb-6 w-full">
-                      <UniversityLogo domain={uni.domain} name={uni.name} />
-                      
-                      <div className="flex items-center gap-2">
-                        {/* Save Item Toggle */}
-                        <button
-                          onClick={(e) => toggleSave(uni.id, e)}
-                          className={cn(
-                            "w-8 h-8 flex items-center justify-center border border-hairline-mist rounded-full bg-white transition-all hover:bg-gray-50 select-none",
-                            isSaved ? "bg-[#f5e211]/30 border-[#f5e211]" : ""
-                          )}
-                        >
-                          <Bookmark className={cn("w-3.5 h-3.5", isSaved ? "fill-ink text-ink" : "text-stone-gray")} />
-                        </button>
-                        <Badge variant={uni.type === 'Public' ? 'default' : 'warning'}>{uni.type}</Badge>
-                      </div>
-                    </div>
-                    
-                    {/* Main University Typography */}
-                    <h2 className="font-sans font-black text-2xl uppercase tracking-tight mb-2 leading-tight group-hover:text-[#ff705d] transition-colors pr-2 text-ink">
-                      {uni.name}
-                    </h2>
-                    
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-gray uppercase mb-4">
-                      <MapPin className="w-3.5 h-3.5 text-[#8ed462]" />
-                      <span>{uni.location}</span>
-                    </div>
-                    
-                    <p className="font-sans font-medium text-stone-gray text-xs leading-relaxed mb-6 line-clamp-2">
-                      {uni.description}
-                    </p>
-                    
-                    {/* Dynamic Stats Grid */}
-                    <div className="mt-auto space-y-3 pt-4 border-t border-hairline-mist border-dashed">
-                      
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="flex items-center gap-1.5 text-stone-gray uppercase"><DollarSign className="w-3.5 h-3.5 text-[#8ed462]" /> Tuition / Yr</span>
-                        <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
-                          AED {uni.tuitionFee?.toLocaleString() || uni.tuitionFee}
-                        </span>
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {currentItems.map(uni => {
+                  const isSaved = savedUnis.includes(uni.id);
+                  return (
+                    <Card 
+                      key={uni.id} 
+                      className="group cursor-pointer flex flex-col h-full bg-white relative p-8"
+                      onClick={() => setActiveDetailUni(uni)}
+                    >
+                      {/* Header Controls */}
+                      <div className="flex justify-between items-start mb-6 w-full">
+                        <UniversityLogo domain={uni.domain} name={uni.name} />
+                        
+                        <div className="flex items-center gap-2">
+                          {/* Save Item Toggle */}
+                          <button
+                            onClick={(e) => toggleSave(uni.id, e)}
+                            className={cn(
+                              "w-8 h-8 flex items-center justify-center border border-hairline-mist rounded-full bg-white transition-all hover:bg-gray-50 select-none",
+                              isSaved ? "bg-[#f5e211]/30 border-[#f5e211]" : ""
+                            )}
+                          >
+                            <Bookmark className={cn("w-3.5 h-3.5", isSaved ? "fill-ink text-ink" : "text-stone-gray")} />
+                          </button>
+                          <Badge variant={uni.type === 'Public' ? 'default' : 'warning'}>{uni.type}</Badge>
+                        </div>
                       </div>
                       
-                      {uni.acceptanceRate && (
+                      {/* Main University Typography */}
+                      <h2 className="font-sans font-black text-2xl uppercase tracking-tight mb-2 leading-tight group-hover:text-[#ff705d] transition-colors pr-2 text-ink">
+                        {uni.name}
+                      </h2>
+                      
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-gray uppercase mb-4">
+                        <MapPin className="w-3.5 h-3.5 text-[#8ed462]" />
+                        <span>{uni.location}</span>
+                      </div>
+                      
+                      <p className="font-sans font-medium text-stone-gray text-xs leading-relaxed mb-6 line-clamp-2">
+                        {uni.description}
+                      </p>
+                      
+                      {/* Dynamic Stats Grid */}
+                      <div className="mt-auto space-y-3 pt-4 border-t border-hairline-mist border-dashed">
+                        
                         <div className="flex justify-between items-center text-xs">
-                          <span className="flex items-center gap-1.5 text-stone-gray uppercase"><Star className="w-3.5 h-3.5 text-[#f5e211]" /> Acceptance</span>
+                          <span className="flex items-center gap-1.5 text-stone-gray uppercase"><DollarSign className="w-3.5 h-3.5 text-[#8ed462]" /> Tuition / Yr</span>
                           <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
-                            {uni.acceptanceRate}%
+                            AED {uni.tuitionFee?.toLocaleString() || uni.tuitionFee}
                           </span>
                         </div>
-                      )}
-                    </div>
-                    
-                    <Button variant="outline" size="sm" className="w-full mt-6 flex items-center justify-center gap-1.5 font-sans font-semibold text-xs rounded-[50px]">
-                      Analyze Profile <ChevronRight className="w-3.5 h-3.5" />
+                        
+                        {uni.acceptanceRate && (
+                          <div className="flex justify-between items-center text-xs">
+                            <span className="flex items-center gap-1.5 text-stone-gray uppercase"><Star className="w-3.5 h-3.5 text-[#f5e211]" /> Acceptance</span>
+                            <span className="font-sans font-bold bg-[#f5f1e4] px-3 py-1 rounded-full text-ink text-[11px] border border-hairline-mist">
+                              {uni.acceptanceRate}%
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <Button variant="outline" size="sm" className="w-full mt-6 flex items-center justify-center gap-1.5 font-sans font-semibold text-xs rounded-[50px]" asChild>
+                        <Link to={`/details/university/${uni.id}`} onClick={(e) => e.stopPropagation()}>
+                          Analyze Profile <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </Button>
+                    </Card>
+                  );
+                })}
+              </div>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-12 pt-6 border-t border-hairline-mist">
+                  <span className="font-sans text-xs text-stone-gray font-medium">
+                    Showing <strong className="text-ink">{indexOfFirstItem + 1}</strong> to <strong className="text-ink">{Math.min(indexOfLastItem, sortedAndFiltered.length)}</strong> of <strong className="text-ink">{sortedAndFiltered.length}</strong> universities
+                  </span>
+                  
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} 
+                      disabled={currentPage === 1}
+                      className={cn("px-4 py-2 flex items-center gap-1.5", currentPage === 1 ? "opacity-40 cursor-not-allowed" : "")}
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" /> Prev
                     </Button>
-                  </Card>
-                );
-              })}
+                    
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page)}
+                          className={cn(
+                            "w-8 h-8 rounded-full font-sans font-bold text-xs border flex items-center justify-center transition-all cursor-pointer",
+                            currentPage === page 
+                              ? "bg-ink text-white border-transparent shadow-sm" 
+                              : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
+                          )}
+                        >
+                          {page}
+                        </button>
+                      ))}
+                    </div>
+
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} 
+                      disabled={currentPage === totalPages}
+                      className={cn("px-4 py-2 flex items-center gap-1.5", currentPage === totalPages ? "opacity-40 cursor-not-allowed" : "")}
+                    >
+                      Next <ChevronRight className="w-3.5 h-3.5" />
+                    </Button>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </>
@@ -323,6 +474,11 @@ export function Universities() {
               <Button variant="secondary" size="sm" asChild>
                 <Link to="/compare" onClick={() => setActiveDetailUni(null)}>
                   Compare Side-by-Side
+                </Link>
+              </Button>
+              <Button variant="primary" size="sm" asChild>
+                <Link to={`/details/university/${activeDetailUni.id}`} onClick={() => setActiveDetailUni(null)}>
+                  Open Full Profile
                 </Link>
               </Button>
             </div>
