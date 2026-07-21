@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import massarLogoClean from '@/assets/massar_logo_footer.png';
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -86,11 +88,11 @@ export function Footer() {
               <div>
                 <h4 className="font-sans font-black uppercase tracking-wider text-xs text-[#2c2e2a] mb-6">DISCOVER</h4>
                 <ul className="space-y-3 font-sans font-bold text-xs uppercase tracking-wider">
-                  <li><a href="/universities" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Universities</a></li>
-                  <li><a href="/schools" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Schools Directory</a></li>
-                  <li><a href="/compare" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Compare Sandbox</a></li>
-                  <li><a href="/programs" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Opportunities</a></li>
-                  <li><a href="/perks" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Student Perks</a></li>
+                  <li><Link to="/universities" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Universities</Link></li>
+                  <li><Link to="/schools" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Schools Directory</Link></li>
+                  <li><Link to="/compare" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Compare Sandbox</Link></li>
+                  <li><Link to="/programs" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Opportunities</Link></li>
+                  <li><Link to="/perks" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Student Perks</Link></li>
                 </ul>
               </div>
 
@@ -132,118 +134,11 @@ export function Footer() {
       {/* Giant Continuous Loop Vector Illustration spelling 'massar' */}
       <div className="border-t border-hairline-mist pt-12 pb-6 overflow-hidden bg-white">
         <div className="max-w-5xl mx-auto px-4 select-none relative flex justify-center">
-          <svg 
-            viewBox="0 0 1000 300" 
+          <img 
+            src={massarLogoClean} 
+            alt="Massar Logo" 
             className="w-full max-w-4xl h-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.02)]"
-          >
-            {/* Solid Colorful nodes (Joints and Terminals) with inner dots, representing MASSAR branding */}
-            {/* Node 1: Blue with orange center (M loop start) */}
-            <g className="cursor-pointer transition-all duration-300 hover:scale-110 origin-[85px_70px]">
-              <circle cx="85" cy="70" r="22" fill="#2ba0ff" stroke="#2c2e2a" strokeWidth="4" />
-              <circle cx="85" cy="70" r="6" fill="#ff705d" />
-            </g>
-
-            {/* Node 2: Purple with yellow center (M right stem terminal) */}
-            <g className="cursor-pointer transition-all duration-300 hover:scale-110 origin-[278px_220px]">
-              <circle cx="278" cy="220" r="22" fill="#9f5ffd" stroke="#2c2e2a" strokeWidth="4" />
-              <circle cx="278" cy="220" r="6" fill="#f5e211" />
-            </g>
-
-            {/* Node 3: Orange with blue center (A loop) */}
-            <g className="cursor-pointer transition-all duration-300 hover:scale-110 origin-[435px_220px]">
-              <circle cx="435" cy="220" r="22" fill="#ff705d" stroke="#2c2e2a" strokeWidth="4" />
-              <circle cx="435" cy="220" r="6" fill="#2ba0ff" />
-            </g>
-
-            {/* Node 4: Green with pink center (S bottom-right terminal) */}
-            <g className="cursor-pointer transition-all duration-300 hover:scale-110 origin-[649px_220px]">
-              <circle cx="649" cy="220" r="22" fill="#8ed462" stroke="#2c2e2a" strokeWidth="4" />
-              <circle cx="649" cy="220" r="6" fill="#ff7fc1" />
-            </g>
-
-            {/* Node 5: Yellow with purple center (Second A suspended) */}
-            <g className="cursor-pointer transition-all duration-300 hover:scale-110 origin-[782px_175px]">
-              <circle cx="782" cy="175" r="22" fill="#f5e211" stroke="#2c2e2a" strokeWidth="4" />
-              <circle cx="782" cy="175" r="6" fill="#9f5ffd" />
-            </g>
-
-            {/* Node 6: Pink with green center (R terminal) */}
-            <g className="cursor-pointer transition-all duration-300 hover:scale-110 origin-[948px_130px]">
-              <circle cx="948" cy="130" r="22" fill="#ff7fc1" stroke="#2c2e2a" strokeWidth="4" />
-              <circle cx="948" cy="130" r="6" fill="#8ed462" />
-            </g>
-
-            {/* Beautiful, mathematically precise smooth lines spelling 'massar' */}
-            {/* Letter M */}
-            <path 
-              d="M 85,70 
-                 C 50,40 25,100 45,150 
-                 C 65,200 90,95 110,95 
-                 C 130,95 145,210 165,210 
-                 C 185,210 200,95 220,95 
-                 C 240,95 250,220 278,220" 
-              fill="none" 
-              stroke="#2c2e2a" 
-              strokeWidth="4" 
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
-            {/* Letter A */}
-            <path 
-              d="M 360,130 
-                 C 310,130 300,210 350,210 
-                 C 390,210 400,130 360,130 
-                 C 390,130 400,160 400,200 
-                 C 400,215 415,220 435,220" 
-              fill="none" 
-              stroke="#2c2e2a" 
-              strokeWidth="4" 
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
-            {/* Letters S-S */}
-            <path 
-              d="M 500,130 
-                 C 460,130 450,170 470,195 
-                 C 490,220 520,210 540,170 
-                 C 560,130 590,120 610,150 
-                 C 630,180 610,220 649,220" 
-              fill="none" 
-              stroke="#2c2e2a" 
-              strokeWidth="4" 
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
-            {/* Second Letter A */}
-            <path 
-              d="M 720,130 
-                 C 680,130 670,210 710,210 
-                 C 740,210 750,130 720,130 
-                 C 740,130 750,150 750,180 
-                 C 750,190 765,175 782,175" 
-              fill="none" 
-              stroke="#2c2e2a" 
-              strokeWidth="4" 
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-
-            {/* Letter R */}
-            <path 
-              d="M 820,210 
-                 C 820,170 820,130 840,130 
-                 C 860,130 880,140 880,170 
-                 C 880,200 910,180 948,130" 
-              fill="none" 
-              stroke="#2c2e2a" 
-              strokeWidth="4" 
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          />
         </div>
       </div>
 

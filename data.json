@@ -7,13 +7,13 @@
       "location": "Al Ain, Abu Dhabi",
       "type": "Public",
       "description": "The first and oldest comprehensive national university in the UAE.",
-      "tuitionFee": 17700,
-      "acceptanceRate": 70,
+      "tuitionFee": 30000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T07:46:07.535Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "2",
@@ -22,12 +22,12 @@
       "location": "Saadiyat Island, Abu Dhabi",
       "type": "Private",
       "description": "A highly selective liberal arts and science college in the Middle East.",
-      "tuitionFee": 65170,
-      "acceptanceRate": 3,
+      "tuitionFee": 60000,
+      "acceptanceRate": 5,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-17T07:46:07.535Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "3",
@@ -36,14 +36,14 @@
       "location": "University City, Sharjah",
       "type": "Private",
       "description": "An independent, non-profit, coeducational institution of higher education.",
-      "tuitionFee": 30900,
-      "acceptanceRate": 75,
+      "tuitionFee": 20000,
+      "acceptanceRate": 70,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-17T07:46:07.535Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "4",
@@ -52,13 +52,13 @@
       "location": "Abu Dhabi",
       "type": "Public",
       "description": "A world-class research university focusing on science, technology, and engineering.",
-      "tuitionFee": 28000,
-      "acceptanceRate": 25,
+      "tuitionFee": 32000,
+      "acceptanceRate": 20,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T07:46:07.535Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "5",
@@ -67,13 +67,13 @@
       "location": "Academic City, Dubai",
       "type": "Branch Campus",
       "description": "A top-ranked Indian private university branch offering world-class programs in engineering, biotechnology, and business studies in Dubai.",
-      "tuitionFee": 45000,
-      "acceptanceRate": 85,
+      "tuitionFee": 15000,
+      "acceptanceRate": 78,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:15:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "6",
@@ -82,12 +82,12 @@
       "location": "Academic City, Dubai",
       "type": "Branch Campus",
       "description": "The international branch campus of the premier Birla Institute of Technology and Science, specializing in high-caliber engineering, technology, and computer science degrees.",
-      "tuitionFee": 48500,
-      "acceptanceRate": 60,
+      "tuitionFee": 15800,
+      "acceptanceRate": 72,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-17T12:15:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "7",
@@ -96,12 +96,12 @@
       "location": "Zayed City, Abu Dhabi",
       "type": "Public",
       "description": "The highly prestigious first international branch of the Indian Institute of Technology Delhi, offering rigorous computational engineering, AI, and energy engineering degrees.",
-      "tuitionFee": 35000,
+      "tuitionFee": 25000,
       "acceptanceRate": 8,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-17T12:15:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "8",
@@ -110,13 +110,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Branch Campus",
       "description": "The first British university branch in Dubai, providing gold-standard UK degrees in mechanical engineering, petroleum science, and business management.",
-      "tuitionFee": 62000,
-      "acceptanceRate": 78,
+      "tuitionFee": 22000,
+      "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:15:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "9",
@@ -125,13 +125,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Branch Campus",
       "description": "A prestigious Russell Group member with a smart-designed campus in Dubai, offering elite UK degree pathways in computer science, business management, and education.",
-      "tuitionFee": 88500,
-      "acceptanceRate": 65,
+      "tuitionFee": 28000,
+      "acceptanceRate": 68,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:15:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "10",
@@ -140,13 +140,13 @@
       "location": "Academic City, Dubai",
       "type": "Public",
       "description": "A prominent federal university in the UAE with campus facilities across Dubai and Abu Dhabi, preparing global-ready students in humanities, communication, and business.",
-      "tuitionFee": 24000,
-      "acceptanceRate": 80,
+      "tuitionFee": 28000,
+      "acceptanceRate": 70,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:15:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "11",
@@ -156,12 +156,12 @@
       "type": "Private",
       "description": "An elite, graduate-level research university that consistently ranks as the absolute top institution in the region. All admitted students receive full funding fellowships.",
       "tuitionFee": "Fully Funded",
-      "acceptanceRate": 9,
+      "acceptanceRate": 7,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:21:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "12",
@@ -170,13 +170,13 @@
       "location": "Dhahran, Saudi Arabia",
       "type": "Public",
       "description": "A top-ranked public university highly prestigious and renowned for its cutting-edge programs in science, petroleum engineering, and advanced computing fields.",
-      "tuitionFee": 28000,
-      "acceptanceRate": 12,
+      "tuitionFee": 9000,
+      "acceptanceRate": 18,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:21:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "13",
@@ -185,13 +185,13 @@
       "location": "Doha, Qatar",
       "type": "Public",
       "description": "The premier national institution of higher education in Qatar, delivering high-quality undergraduate and graduate programs across diverse fields of study.",
-      "tuitionFee": 32000,
-      "acceptanceRate": 40,
+      "tuitionFee": 8200,
+      "acceptanceRate": 35,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "14",
@@ -200,13 +200,13 @@
       "location": "Riyadh, Saudi Arabia",
       "type": "Public",
       "description": "A highly prestigious public university in Riyadh, celebrated for its rigorous medical, engineering, and humanities departments, ranking among the top institutions in the Arab world.",
-      "tuitionFee": 22000,
-      "acceptanceRate": 15,
+      "tuitionFee": 6500,
+      "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "15",
@@ -215,14 +215,14 @@
       "location": "Abu Dhabi, United Arab Emirates",
       "type": "Private",
       "description": "An internationally accredited multi-campus private university in the UAE, famous for its leading business, law, and engineering programs.",
-      "tuitionFee": 52000,
-      "acceptanceRate": 75,
+      "tuitionFee": 16000,
+      "acceptanceRate": 78,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "16",
@@ -231,13 +231,13 @@
       "location": "Abha, Saudi Arabia",
       "type": "Public",
       "description": "A major public university in southwestern Saudi Arabia, offering comprehensive educational tracks in healthcare, technology, and Islamic studies.",
-      "tuitionFee": 18000,
-      "acceptanceRate": 35,
+      "tuitionFee": 5500,
+      "acceptanceRate": 72,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "17",
@@ -246,13 +246,13 @@
       "location": "Beirut, Lebanon",
       "type": "Private",
       "description": "A leading, independent American institution of higher education in Lebanon, renowned for its academic excellence, student-centeredness, and civic engagement.",
-      "tuitionFee": 24000,
-      "acceptanceRate": 68,
+      "tuitionFee": 19500,
+      "acceptanceRate": 73,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "18",
@@ -261,13 +261,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Private",
       "description": "A premier research-led university in Dubai offering high-standard British-style higher education in collaboration with top UK Russell Group institutions.",
-      "tuitionFee": 56000,
-      "acceptanceRate": 80,
+      "tuitionFee": 18000,
+      "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     },
     {
       "id": "19",
@@ -276,13 +276,13 @@
       "location": "Al Khobar, Saudi Arabia",
       "type": "Private",
       "description": "A rapidly growing, highly modern private university in Saudi Arabia's Eastern Province, designed to foster creative leadership and digital tech competencies.",
-      "tuitionFee": 44000,
-      "acceptanceRate": 70,
+      "tuitionFee": 16000,
+      "acceptanceRate": 72,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-17T12:38:00.000Z"
+      "lastUpdated": "2026-07-18T20:30:18.769Z"
     }
   ],
   "schools": [

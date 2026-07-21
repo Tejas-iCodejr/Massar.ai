@@ -83,6 +83,12 @@ function parseBoldAndLinks(text: string) {
   });
 }
 
+function isSafeUrl(url: string): boolean {
+  const trimmed = url.trim().toLowerCase();
+  if (trimmed.startsWith('/') || trimmed.startsWith('#')) return true;
+  return trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('mailto:') || trimmed.startsWith('tel:');
+}
+
 function parseLinks(text: string) {
   const parts: React.ReactNode[] = [];
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -97,10 +103,12 @@ function parseLinks(text: string) {
       parts.push(text.substring(lastIndex, matchIndex));
     }
     
+    const safeHref = isSafeUrl(linkUrl) ? linkUrl : '#';
+
     parts.push(
       <a 
         key={matchIndex}
-        href={linkUrl}
+        href={safeHref}
         target="_blank"
         rel="noopener noreferrer"
         referrerPolicy="no-referrer"

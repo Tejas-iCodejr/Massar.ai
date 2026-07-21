@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Sparkles, GraduationCap, School, Star, Search, Compass, BookOpen } from 'lucide-react';
+import { ArrowRight, Sparkles, GraduationCap, School, Star, Search, Compass, BookOpen, ChevronRight, Trophy, DollarSign, Check, Briefcase, Target, Award } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { cn } from '../lib/utils';
 import { UniversityEvents } from '../components/ui/UniversityEvents';
 import { InteractiveCompass, MilestoneConnector, DecorativeDoodle } from '../components/ui/InteractiveDoodle';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
+import heroIllustration from '@/assets/massar_hero_illustration.png';
 
 export function Home() {
   const [activePath, setActivePath] = useState<'middle' | 'high' | 'university'>('high');
@@ -143,38 +144,176 @@ export function Home() {
               </div>
             </motion.div>
             
-            {/* Right Column: Beautiful Paper-Cut Aesthetic Illustration Container & Interactive Milestone Bento (Static) */}
-            <div className="lg:col-span-5 flex flex-col gap-6 relative">
-              <div className="relative z-10 p-6 sm:p-8 bg-white border border-hairline-mist rounded-[40px] shadow-sm flex flex-col items-center text-center">
+            {/* Right Column: Hero Illustration and Floating Dashboard Cards */}
+            <div className="lg:col-span-5 relative w-full h-[520px] sm:h-[580px] lg:h-[550px] flex items-center justify-center mt-10 lg:mt-0 select-none">
+              
+              {/* Central Illustration Base */}
+              <div className="relative w-full max-w-[480px] aspect-square flex items-center justify-center">
                 
-                {/* Clean geometric vector art simulating flat paper-cut character */}
-                <div className="w-40 h-40 bg-[#f5e211]/30 rounded-full relative flex items-center justify-center mb-6 overflow-hidden border border-[#f5e211]/50">
-                  <svg className="w-32 h-32" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="80" r="32" fill="#ff705d" />
-                    <path d="M50 160 C 50 120, 150 120, 150 160 Z" fill="#8ed462" />
-                    <rect x="85" y="105" width="30" height="20" rx="4" fill="#2ba0ff" />
-                    <path d="M85 110 L100 125 L115 110" stroke="white" strokeWidth="3" strokeLinecap="round" />
-                    <circle cx="85" cy="80" r="4" fill="#2c2e2a" />
-                    <circle cx="115" cy="80" r="4" fill="#2c2e2a" />
+                {/* Background soft sun glow */}
+                <div className="absolute top-[10%] left-[20%] w-[60%] h-[60%] rounded-full bg-[#f5e211]/25 blur-3xl -z-10 animate-pulse" style={{ animationDuration: '4s' }} />
+                
+                {/* Main Illustration Image - Pulled up and scaled */}
+                <img 
+                  src={heroIllustration} 
+                  alt="Massar Illustration" 
+                  className="w-full h-full object-contain relative z-10 filter drop-shadow-[0_10px_20px_rgba(44,46,42,0.06)] transform -translate-y-12 scale-110"
+                />
+
+                {/* Floating Blue Star Doodle 1 */}
+                <div className="absolute top-[62%] left-[-15px] z-20 text-[#2ba0ff] animate-float">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
-                  <div className="absolute top-4 right-6 w-8 h-8 rounded-full bg-[#2ba0ff] opacity-80"></div>
-                  <div className="absolute bottom-6 left-6 w-6 h-6 rounded-full bg-[#ff705d] opacity-95"></div>
                 </div>
 
-                <div className="font-sans font-bold text-base text-ink mb-1">Every Step mapped for High-Achievers</div>
-                <p className="font-sans text-xs text-stone-gray max-w-xs leading-relaxed">
-                  Toggle stages below to calibrate your current educational focus. Map K-12 inspections, local branches, or partner student benefits.
-                </p>
-              </div>
+                {/* Floating Blue Star Doodle 2 */}
+                <div className="absolute top-[64%] left-[10%] z-20 text-[#2ba0ff] opacity-80 scale-75 animate-float" style={{ animationDelay: '1.5s' }}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </div>
 
-              {/* Interactive milestone connecter dashboard doodle */}
-              <div className="relative z-10">
-                <MilestoneConnector />
-              </div>
+                {/* --- 1. Top Universities Card (Tilted slightly left and adjusted position) --- */}
+                <div className="absolute top-[0%] left-[-22%] sm:left-[-30%] z-20 bg-white/95 backdrop-blur-md border border-[#e0dbce] rounded-3xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.06)] w-[215px] transform -rotate-3 transition-all hover:rotate-0 hover:scale-[1.03]">
+                  
+                  {/* Floating blue trophy badge on card's top-left */}
+                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#2ba0ff] rounded-full flex items-center justify-center text-white border-2 border-white shadow-md">
+                    <Award className="w-4 h-4" />
+                  </div>
 
-              {/* Decorative sunlit sticker spots */}
-              <div className="absolute -top-6 -right-6 w-16 h-16 bg-[#f5e211] rounded-full -z-0 opacity-40 blur-lg"></div>
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#8ed462] rounded-full -z-0 opacity-30 blur-xl"></div>
+                  <div className="pl-4">
+                    <span className="font-sans font-bold text-[11px] text-ink block leading-tight">Top Universities</span>
+                    <span className="font-sans font-semibold text-[9px] text-stone-gray block mb-2 leading-none">United Arab Emirates</span>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    {/* University Item 1 */}
+                    <div className="flex items-center gap-2 p-1 rounded-xl hover:bg-[#f5f1e4]/40 transition-colors">
+                      <div className="w-7 h-7 rounded-full bg-[#2ba0ff]/10 flex items-center justify-center text-[#2ba0ff] font-bold text-xs shrink-0">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                          <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" strokeWidth="2" />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-sans font-bold text-[9px] text-ink leading-tight truncate">Khalifa University</div>
+                        <div className="font-sans text-[7px] text-stone-gray leading-none truncate">United Arab Emirates</div>
+                      </div>
+                    </div>
+
+                    {/* University Item 2 */}
+                    <div className="flex items-center gap-2 p-1 rounded-xl hover:bg-[#f5f1e4]/40 transition-colors">
+                      <div className="w-7 h-7 rounded-full bg-[#1b365d]/10 flex items-center justify-center text-[#1b365d] shrink-0">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2L4 5v6c0 5.25 3.42 10.19 8 11.5 4.58-1.31 8-6.25 8-11.5V5l-8-3z" />
+                        </svg>
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-sans font-bold text-[9px] text-ink leading-tight truncate">American Univ. of Sharjah</div>
+                        <div className="font-sans text-[7px] text-stone-gray leading-none truncate">of United Arab Emirates</div>
+                      </div>
+                    </div>
+
+                    {/* University Item 3 */}
+                    <div className="flex items-center gap-2 p-1 rounded-xl hover:bg-[#f5f1e4]/40 transition-colors">
+                      <div className="w-7 h-7 rounded-full bg-[#57068c]/10 flex items-center justify-center text-[#57068c] shrink-0 font-sans font-black text-[7px]">
+                        NYU
+                      </div>
+                      <div className="min-w-0">
+                        <div className="font-sans font-bold text-[9px] text-ink leading-tight truncate">New York University</div>
+                        <div className="font-sans text-[7px] text-stone-gray leading-none truncate">Abu Dhabi</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* --- 2. Opportunities Card (Tilted slightly right and adjusted position) --- */}
+                <div className="absolute top-[42%] right-[-22%] sm:right-[-30%] z-20 bg-white/95 backdrop-blur-md border border-[#e0dbce] rounded-3xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.06)] w-[185px] transform rotate-3 transition-all hover:rotate-0 hover:scale-[1.03]">
+                  
+                  {/* Floating green checkmark badge on card's top-right */}
+                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-[#8ed462] rounded-full flex items-center justify-center text-white border-2 border-white shadow-md">
+                    <Check className="w-4 h-4 stroke-[3]" />
+                  </div>
+
+                  <span className="font-sans font-bold text-[11px] text-ink block mb-2 pl-1">Opportunities</span>
+
+                  <div className="space-y-1">
+                    {/* Item 1: Hackathons */}
+                    <div className="flex items-center justify-between p-1 rounded-xl hover:bg-[#f5f1e4]/40 transition-colors cursor-pointer group/item">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className="w-6.5 h-6.5 rounded-lg bg-[#f5e211]/20 flex items-center justify-center text-[#d4af37] shrink-0">
+                          <Target className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="font-sans font-bold text-[9px] text-ink leading-tight truncate">Hackathons</span>
+                      </div>
+                      <ChevronRight className="w-3 h-3 text-stone-gray shrink-0 transition-transform group-hover/item:translate-x-0.5" />
+                    </div>
+
+                    {/* Item 2: Scholarships */}
+                    <div className="flex items-center justify-between p-1 rounded-xl hover:bg-[#f5f1e4]/40 transition-colors cursor-pointer group/item">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className="w-6.5 h-6.5 rounded-lg bg-[#f5e211]/20 flex items-center justify-center text-[#d4af37] shrink-0">
+                          <DollarSign className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="font-sans font-bold text-[9px] text-ink leading-tight truncate">Scholarships</span>
+                      </div>
+                      <ChevronRight className="w-3 h-3 text-stone-gray shrink-0 transition-transform group-hover/item:translate-x-0.5" />
+                    </div>
+
+                    {/* Item 3: Internships */}
+                    <div className="flex items-center justify-between p-1 rounded-xl hover:bg-[#f5f1e4]/40 transition-colors cursor-pointer group/item">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className="w-6.5 h-6.5 rounded-lg bg-[#f5e211]/20 flex items-center justify-center text-[#d4af37] shrink-0">
+                          <Briefcase className="w-3.5 h-3.5" />
+                        </div>
+                        <span className="font-sans font-bold text-[9px] text-ink leading-tight truncate">Internships</span>
+                      </div>
+                      <ChevronRight className="w-3 h-3 text-stone-gray shrink-0 transition-transform group-hover/item:translate-x-0.5" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* --- 3. Pathway Planner Timeline Card (Tilted slightly right and adjusted position) --- */}
+                <div className="absolute bottom-[-6%] left-[6%] sm:left-[10%] z-20 bg-white/95 backdrop-blur-md border border-[#e0dbce] rounded-3xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.06)] w-[260px] transform rotate-1 transition-all hover:rotate-0 hover:scale-[1.03]">
+                  
+                  <span className="font-sans font-bold text-[11px] text-ink block mb-3">Pathway Planner</span>
+
+                  {/* Horizontal Timeline */}
+                  <div className="relative flex items-center justify-between px-1">
+                    
+                    {/* Background track line */}
+                    <div className="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-[#8ed462]/30 -z-10" />
+                    
+                    {/* K-12 node */}
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="w-3.5 h-3.5 rounded-full bg-[#8ed462] border-2 border-white shadow-sm flex items-center justify-center shrink-0">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                      </div>
+                      <span className="font-sans font-bold text-[7px] text-stone-gray leading-none">K-12</span>
+                    </div>
+
+                    {/* Undergraduate active node with coral/red halo */}
+                    <div className="flex flex-col items-center gap-1 relative">
+                      <div className="absolute -top-1.5 w-6 h-6 rounded-full bg-[#ff705d]/20 animate-ping" style={{ animationDuration: '2s' }} />
+                      <div className="w-3.5 h-3.5 rounded-full bg-[#ff705d] border-2 border-white shadow-sm flex items-center justify-center shrink-0 z-10">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                      </div>
+                      <span className="font-sans font-bold text-[7px] text-[#ff705d] leading-none">Undergraduate</span>
+                    </div>
+
+                    {/* Career node */}
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="w-3.5 h-3.5 rounded-full bg-[#8ed462] border-2 border-white shadow-sm flex items-center justify-center shrink-0">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                      </div>
+                      <span className="font-sans font-bold text-[7px] text-stone-gray leading-none">Career</span>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
             </div>
 
           </div>
@@ -381,60 +520,7 @@ export function Home() {
         <UniversityEvents />
       </motion.section>
 
-      {/* Helpful Illustrated Guidance Card */}
-      <motion.section 
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-        className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-      >
-        <div className="p-8 md:p-12 bg-white rounded-[50px] border border-hairline-mist shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="font-mono text-[10px] text-[#ff705d] font-bold uppercase block mb-2 tracking-widest">COMMUNITY VALUES</span>
-              <h3 className="font-sans font-black text-3xl sm:text-4xl text-[#2c2e2a] uppercase mb-6 leading-tight">
-                Empowering your search <br />
-                with clear credentials
-              </h3>
-              <p className="font-sans text-sm text-stone-gray leading-relaxed mb-6">
-                Educational journeys should be anchored on real facts. That's why Massar gathers direct parameters straight from institution registries, Ministry listings, and public inspection boards. We maintain transparency so that families and students can make comfortable, informed higher education transitions.
-              </p>
-              
-              <div className="flex items-center gap-6">
-                <div>
-                  <div className="font-sans font-bold text-2xl text-[#2ba0ff]">Verified</div>
-                  <div className="font-sans text-xs text-stone-gray">Direct Registry Sources</div>
-                </div>
-                <div className="w-px h-8 bg-hairline-mist"></div>
-                <div>
-                  <div className="font-sans font-bold text-2xl text-[#8ed462]">Accredited</div>
-                  <div className="font-sans text-xs text-stone-gray">Ministry & Board Sync</div>
-                </div>
-              </div>
-            </div>
 
-            <div className="p-8 bg-[#f5f1e4] rounded-[40px] border border-[#e0dbce] text-ink relative overflow-hidden flex flex-col md:flex-row gap-8 justify-between items-center min-h-[250px]">
-              <div className="flex-1 flex flex-col justify-between h-full min-h-[180px]">
-                <div>
-                  <span className="font-sans font-bold text-lg block mb-2 text-ink">Exclusive Student Perks Directory</span>
-                  <p className="font-sans text-xs text-stone-gray leading-relaxed max-w-sm">
-                    We've curated a dedicated catalogue of verified student benefits. From local software licensing credentials to food and hardware reductions across the UAE, check out what exclusive perks your student status unlocks today.
-                  </p>
-                </div>
-                <div className="mt-6">
-                  <Link to="/perks" className="inline-flex items-center gap-1.5 px-5 py-2 bg-[#ff705d] text-white font-sans font-semibold text-xs uppercase rounded-[50px] hover:opacity-90 transition-opacity">
-                    Check Perks Directory <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-              <div className="shrink-0">
-                <InteractiveCompass />
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
 
     </div>
   );

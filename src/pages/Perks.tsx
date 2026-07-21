@@ -5,29 +5,10 @@ import { Button } from '../components/ui/Button';
 import { Search, Percent, Gift, Laptop, Coffee, Flame, ArrowUpRight, Check, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark, Compass } from 'lucide-react';
 import { Perk } from '../types';
 import { cn } from '../lib/utils';
-import { SearchGroundingHub } from '../components/ui/SearchGroundingHub';
+
 import { Link } from 'react-router-dom';
 
-const perkQuickSearches = [
-  {
-    title: "Software & Pro Accounts",
-    query: "free student pro accounts, software licenses, development tools with school email address ID",
-    description: "Search for premium tools like Notion Pro, Figma, Canva, and IDEs that are 100% free with school credentials.",
-    icon: "perks" as const
-  },
-  {
-    title: "GitHub Student Developer Pack",
-    query: "what is included in the GitHub Student Developer Pack and how can students apply with student ID",
-    description: "Discover all the bundled student benefits, free cloud hosting, domains, and premium developer tools.",
-    icon: "hackathon" as const
-  },
-  {
-    title: "Verify Student ID Perks",
-    query: "how to get verified student discount on Apple, Microsoft Office 365, Autodesk with student card ID",
-    description: "Search for the latest corporate student programs and hardware savings available in the Middle East.",
-    icon: "fellowship" as const
-  }
-];
+
 
 export function Perks() {
   const [perks, setPerks] = useState<Perk[]>([]);
@@ -139,13 +120,7 @@ export function Perks() {
         </div>
       </div>
 
-      {/* Live Search Grounding Hub */}
-      <SearchGroundingHub 
-        category="perks"
-        title="Live AI Perks & Software Freebies Grounding"
-        subtitle="Search Google dynamically to find verified corporate student programs, free software accounts, developer bundles, and learning portals accessible with a valid student ID, school email, or ISIC card."
-        quickSearches={perkQuickSearches}
-      />
+
 
       {/* Grid Filter Blocks */}
       <div className="flex flex-wrap items-center gap-4 mb-10 pb-6 border-b border-hairline-mist">

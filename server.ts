@@ -24,7 +24,9 @@ async function loadData() {
 
 async function saveData() {
   if (cachedData) {
-    await fs.writeFile(DATA_FILE, JSON.stringify(cachedData, null, 2), "utf-8");
+    const tempFile = `${DATA_FILE}.tmp`;
+    await fs.writeFile(tempFile, JSON.stringify(cachedData, null, 2), "utf-8");
+    await fs.rename(tempFile, DATA_FILE);
   }
 }
 
@@ -232,10 +234,33 @@ function generateFallbackMaps(name: string, location: string, type: string): { t
   };
 }
 
+// In-memory sliding window rate limiter (15 requests/min per IP)
+const requestCounts = new Map<string, { count: number; resetTime: number }>();
+function apiRateLimiter(req: express.Request, res: express.Response, next: express.NextFunction) {
+  const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const windowMs = 60 * 1000;
+  const maxRequests = 30;
+
+  const current = requestCounts.get(ip);
+  if (!current || now > current.resetTime) {
+    requestCounts.set(ip, { count: 1, resetTime: now + windowMs });
+    return next();
+  }
+
+  if (current.count >= maxRequests) {
+    return res.status(429).json({ error: "Too many requests. Please try again in a minute." });
+  }
+
+  current.count++;
+  return next();
+}
+
 async function startServer() {
   const app = express();
   app.use(cors());
   app.use(express.json());
+  app.use("/api", apiRateLimiter);
 
   await loadData();
   setupScraperCron();
@@ -299,7 +324,7 @@ Structure your response as follows:
 Be extremely precise, factual, and draw upon the search results directly. Do not use generic placeholders.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-2.5-flash",
         contents: prompt,
         config: {
           tools: [{ googleSearch: {} }],
@@ -423,7 +448,7 @@ Recommend other tools or plugins that pair well with "${name}" to boost producti
       specificPrompt += `\n\nBe extremely precise, factual, elegant, and draw upon search grounding results. Do not include placeholders. Deliver professional markdown formatting.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-2.5-flash",
         contents: specificPrompt,
         config: {
           tools: [{ googleSearch: {} }],
@@ -482,7 +507,7 @@ Provide a detailed location overview including:
 Use accurate real-time regional mapping data to deliver precise information. Do not invent any coordinates.`;
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-2.5-flash",
         contents: prompt,
         config: {
           tools: [{ googleMaps: {} }],
@@ -513,7 +538,7 @@ Use accurate real-time regional mapping data to deliver precise information. Do 
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get("*all", (req, res) => {
+    app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }

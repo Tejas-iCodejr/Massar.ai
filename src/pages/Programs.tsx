@@ -5,29 +5,10 @@ import { Button } from '../components/ui/Button';
 import { Search, Calendar, Award, GraduationCap, ArrowUpRight, Cpu, Compass, BookOpen, Sun, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark } from 'lucide-react';
 import { Program } from '../types';
 import { cn } from '../lib/utils';
-import { SearchGroundingHub } from '../components/ui/SearchGroundingHub';
+
 import { Link } from 'react-router-dom';
 
-const programQuickSearches = [
-  {
-    title: "Global Student Hackathons",
-    query: "major upcoming global student hackathons coding competitions MLH NASA space apps google solution challenge 2026",
-    description: "Search for active programming contests, hackathons, and design sprints all around the world for students.",
-    icon: "hackathon" as const
-  },
-  {
-    title: "Elite Academic Summer Schools",
-    query: "prestigious pre-college and undergraduate summer school research programs stanford oxford MIT harvard 2026",
-    description: "Search for summer schools, university prep academies, and scientific camps at world-leading institutions.",
-    icon: "k12" as const
-  },
-  {
-    title: "Global Youth Fellowships",
-    query: "international youth leadership fellowships research grants and educational mentorship cohorts 2026",
-    description: "Search for outstanding international developer squads, leadership cohorts, and young innovator fellowships.",
-    icon: "fellowship" as const
-  }
-];
+
 
 export function Programs() {
   const [programs, setPrograms] = useState<Program[]>([]);
@@ -131,13 +112,7 @@ export function Programs() {
         </div>
       </div>
 
-      {/* Live Search Grounding Hub */}
-      <SearchGroundingHub 
-        category="programs"
-        title="Live AI Opportunity Grounding Hub"
-        subtitle="Search Google dynamically to discover active student development hackathons, Ivy League pre-college camps, and remote STEM tracks. Results are parsed and served with live clickable citations."
-        quickSearches={programQuickSearches}
-      />
+
 
       {/* Grid Filter Blocks */}
       <div className="flex flex-wrap items-center gap-4 mb-10 pb-6 border-b border-[#d5d5d4]">
