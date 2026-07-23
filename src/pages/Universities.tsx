@@ -6,6 +6,7 @@ import { Button } from '../components/ui/Button';
 import { Search, MapPin, DollarSign, Clock, Star, Landmark, Bookmark, CheckCircle, GraduationCap, X, ChevronRight, ChevronLeft, Scale, ArrowUpDown } from 'lucide-react';
 import { University } from '../types';
 import { cn } from '../lib/utils';
+import { CompareDock } from '../components/ui/CompareDock';
 import { Link } from 'react-router-dom';
 
 export function Universities() {
@@ -15,6 +16,7 @@ export function Universities() {
   const [selectedType, setSelectedType] = useState<'All' | 'Public' | 'Private' | 'Branch Campus'>('All');
   const [selectedLocation, setSelectedLocation] = useState<string>('All');
   const [savedUnis, setSavedUnis] = useState<string[]>([]);
+  const [compareIds, setCompareIds] = useState<string[]>([]);
   const [activeDetailUni, setActiveDetailUni] = useState<University | null>(null);
 
   // Pagination & Sorting States
@@ -268,6 +270,21 @@ export function Universities() {
                         <UniversityLogo domain={uni.domain} name={uni.name} />
                         
                         <div className="flex items-center gap-2">
+                          {/* Compare Toggle */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCompareIds(prev => prev.includes(uni.id) ? prev.filter(x => x !== uni.id) : prev.length < 3 ? [...prev, uni.id] : prev);
+                            }}
+                            className={cn(
+                              "w-8 h-8 flex items-center justify-center border border-hairline-mist rounded-full bg-white transition-all hover:bg-gray-50 select-none",
+                              compareIds.includes(uni.id) ? "bg-[#8ed462]/30 border-[#8ed462]" : ""
+                            )}
+                            title={compareIds.includes(uni.id) ? "Remove from Compare" : "Add to Compare"}
+                          >
+                            <Scale className={cn("w-3.5 h-3.5", compareIds.includes(uni.id) ? "text-ink stroke-[2.5]" : "text-stone-gray")} />
+                          </button>
+
                           {/* Save Item Toggle */}
                           <button
                             onClick={(e) => toggleSave(uni.id, e)}
@@ -486,6 +503,13 @@ export function Universities() {
           </div>
         </div>
       )}
+
+      {/* Floating Comparison Sandbox Dock */}
+      <CompareDock 
+        selectedItems={universities.filter(u => compareIds.includes(u.id))}
+        onRemove={(id) => setCompareIds(prev => prev.filter(x => x !== id))}
+        onClear={() => setCompareIds([])}
+      />
 
     </div>
   );

@@ -3,6 +3,7 @@ import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Search, Calendar, Award, GraduationCap, ArrowUpRight, Cpu, Compass, BookOpen, Sun, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark } from 'lucide-react';
+import { UniversityLogo } from '../components/ui/UniversityLogo';
 import { Program } from '../types';
 import { cn } from '../lib/utils';
 
@@ -218,17 +219,7 @@ export function Programs() {
                     <Card key={prog.id} className="bg-white flex flex-col justify-between p-8">
                       <div>
                         <div className="flex justify-between items-start mb-6">
-                          <div className="w-14 h-14 bg-[#2c2e2a]/5 border border-hairline-mist rounded-[15px] flex items-center justify-center text-ink select-none">
-                            {prog.type === 'Hackathon' ? (
-                              <Cpu className="w-7 h-7 text-[#2ba0ff]" />
-                            ) : prog.type === 'Fellowship' ? (
-                              <Award className="w-7 h-7 text-[#ff705d]" />
-                            ) : prog.type === 'Summer School' ? (
-                              <Sun className="w-7 h-7 text-[#ff9f2b]" />
-                            ) : (
-                              <BookOpen className="w-7 h-7 text-[#8ed462]" />
-                            )}
-                          </div>
+                          <UniversityLogo domain={prog.domain} name={prog.organizer} className="w-14 h-14" />
                           
                           <div className="flex items-center gap-2">
                             {/* Save Program Toggle */}

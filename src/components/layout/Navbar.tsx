@@ -38,6 +38,18 @@ export function Navbar() {
     }
   }, [searchOpen]);
 
+  // Global Cmd+K / Ctrl+K keyboard shortcut listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Filter search results
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -167,13 +179,14 @@ export function Navbar() {
             );
           })}
 
-          {/* Search Trigger (Icon Only) */}
+          {/* Search Trigger (Icon + Cmd+K Badge) */}
           <button
             onClick={() => setSearchOpen(true)}
-            aria-label="Search"
-            className="relative p-2 flex items-center justify-center font-sans font-medium rounded-full transition-all duration-150 ease-in-out hover:-translate-y-[1px] hover:bg-black/[0.02] select-none cursor-pointer text-ink/80 hover:text-ink group"
+            aria-label="Search (⌘K)"
+            className="relative px-3 py-1.5 flex items-center gap-1.5 font-sans font-medium rounded-full transition-all duration-150 ease-in-out hover:-translate-y-[1px] hover:bg-black/[0.03] select-none cursor-pointer text-ink/80 hover:text-ink group border border-hairline-mist bg-white/50"
           >
-            <Search className="w-[18px] h-[18px] transition-opacity opacity-70 group-hover:opacity-100" strokeWidth={1.5} />
+            <Search className="w-[16px] h-[16px] transition-opacity opacity-70 group-hover:opacity-100" strokeWidth={1.5} />
+            <span className="font-mono text-[10px] font-bold text-stone-500 bg-gray-100 border border-stone-200 px-1.5 py-0.5 rounded">⌘K</span>
           </button>
 
         </div>
@@ -219,18 +232,18 @@ export function Navbar() {
               
               {/* Search Header Input */}
               <div className="flex items-center gap-3 border-b border-hairline-mist pb-4 mb-4">
-                <Search className="w-5 h-5 text-stone-gray" strokeWidth={2} />
+                <Search className="w-5 h-5 text-[#ff705d]" strokeWidth={2} />
                 <input 
                   ref={searchInputRef}
                   type="text" 
                   value={searchQuery}
                   onChange={handleSearchChange}
                   placeholder="Search universities, schools, opportunities..."
-                  className="flex-grow bg-transparent border-0 outline-none font-sans font-medium text-base text-ink placeholder-stone-gray/60"
+                  className="flex-grow bg-transparent border-0 outline-none font-sans font-medium text-base text-ink placeholder-stone-gray/60 focus:placeholder-[#ff705d]/40"
                 />
                 <button 
                   onClick={() => setSearchOpen(false)}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/[0.04] text-stone-gray hover:text-ink transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#ff705d]/10 text-stone-gray hover:text-[#ff705d] transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -246,16 +259,16 @@ export function Navbar() {
                         setSearchOpen(false);
                         navigate(`/details/${item.type}/${item.id}`);
                       }}
-                      className="w-full text-left p-3.5 hover:bg-[#8ed462]/10 active:bg-[#8ed462]/20 rounded-2xl transition-all cursor-pointer select-none flex items-start gap-3.5 group border border-transparent hover:border-[#8ed462]/20"
+                      className="w-full text-left p-3.5 hover:bg-[#ff705d]/10 active:bg-[#ff705d]/20 rounded-2xl transition-all cursor-pointer select-none flex items-start gap-3.5 group border border-transparent hover:border-[#ff705d]/20"
                     >
-                      <div className="w-9 h-9 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                        {item.type === 'university' && <GraduationCap className="w-4.5 h-4.5 text-primary" strokeWidth={1.75} />}
-                        {item.type === 'school' && <School className="w-4.5 h-4.5 text-primary" strokeWidth={1.75} />}
-                        {item.type === 'program' && <BookOpen className="w-4.5 h-4.5 text-primary" strokeWidth={1.75} />}
+                      <div className="w-9 h-9 bg-[#ff705d]/10 rounded-xl flex items-center justify-center shrink-0">
+                        {item.type === 'university' && <GraduationCap className="w-4.5 h-4.5 text-[#ff705d]" strokeWidth={1.75} />}
+                        {item.type === 'school' && <School className="w-4.5 h-4.5 text-[#ff705d]" strokeWidth={1.75} />}
+                        {item.type === 'program' && <BookOpen className="w-4.5 h-4.5 text-[#ff705d]" strokeWidth={1.75} />}
                       </div>
                       <div className="flex-grow">
                         <div className="flex items-center justify-between">
-                          <span className="font-sans font-bold text-sm text-ink group-hover:text-primary transition-colors">{item.name}</span>
+                          <span className="font-sans font-bold text-sm text-ink group-hover:text-[#ff705d] transition-colors">{item.name}</span>
                           <span className="font-mono text-[9px] uppercase tracking-wider text-stone-gray px-2 py-0.5 bg-gray-100 rounded-md">{item.category}</span>
                         </div>
                         <p className="font-sans text-xs text-stone-gray mt-0.5 leading-normal">{item.desc}</p>

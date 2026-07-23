@@ -44,6 +44,53 @@ export function Details() {
   const [mapsError, setMapsError] = useState<string | null>(null);
   const [mapsResult, setMapsResult] = useState<{ text: string; groundingChunks: any[] } | null>(null);
 
+  // Touchpad Trackpad & Touchscreen Swipe-Right Gesture to Go Back
+  useEffect(() => {
+    let lastSwipeTime = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    // Trackpad horizontal wheel swipe (two-finger horizontal swipe left-to-right)
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && e.deltaX < -45) {
+        const now = Date.now();
+        if (now - lastSwipeTime > 700) {
+          lastSwipeTime = now;
+          navigate(-1);
+        }
+      }
+    };
+
+    // Touchscreen swipe right
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (e.changedTouches.length === 1) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        // Horizontal swipe right
+        if (deltaX > 75 && Math.abs(deltaY) < 60) {
+          navigate(-1);
+        }
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [navigate]);
+
   // Fetch target item details on mount
   useEffect(() => {
     if (!type || !id) return;
@@ -247,10 +294,10 @@ export function Details() {
       });
   }, [item, type]);
 
-  // Trigger Maps Grounding automatically once item is loaded
+  // Trigger Maps Grounding automatically once item is loaded (ONLY for physical institutions: universities & schools)
   useEffect(() => {
     if (!item || !type) return;
-    if (type === 'perk') return;
+    if (type === 'perk' || type === 'program') return;
 
     setLoadingMaps(true);
     setMapsError(null);
@@ -355,19 +402,18 @@ export function Details() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid-bg min-h-screen bg-[#f5f1e4]">
       
-      {/* Back button breadcrumb */}
-      <div className="mb-8">
-        <button 
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-[#ff705d]/10 border border-hairline-mist hover:border-[#ff705d] rounded-[50px] text-ink font-sans font-semibold text-xs uppercase transition-all select-none cursor-pointer"
-        >
-          <ArrowLeft className="w-4 h-4 text-[#ff705d]" />
-          <span>Back to previous page</span>
-        </button>
-      </div>
+      {/* Sleek Fixed Top Back Button (Always accessible at top of window alongside navbar) */}
+      <button 
+        onClick={() => navigate(-1)}
+        className="fixed top-6 left-20 sm:left-24 z-50 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md hover:bg-[#ff705d] hover:text-white border border-hairline-mist hover:border-[#ff705d] rounded-[50px] text-ink font-sans font-bold text-xs uppercase transition-all shadow-md select-none cursor-pointer group active:scale-95"
+        title="Go Back to Previous Page (Trackpad Swipe Enabled)"
+      >
+        <ArrowLeft className="w-4 h-4 text-[#ff705d] group-hover:text-white transition-colors" />
+        <span className="hidden sm:inline">Back</span>
+      </button>
 
       {/* Main Details Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-4">
         
         {/* Left Side: Deep Dynamic Analysis Content */}
         <div className="lg:col-span-8 space-y-8">
@@ -395,7 +441,7 @@ export function Details() {
                     {item.type && <Badge variant="default" className="text-[9px] font-bold uppercase">{item.type}</Badge>}
                     {item.category && <Badge variant="default" className="text-[9px] font-bold uppercase">{item.category}</Badge>}
                   </div>
-                  <h1 className="font-sans font-black text-3xl sm:text-4xl uppercase tracking-tight leading-none text-ink">
+                  <h1 className="font-sans font-black text-3xl sm:text-4xl tracking-tight leading-none text-ink">
                     {name}
                   </h1>
                   <p className="font-sans text-xs text-stone-gray font-bold uppercase tracking-wider mt-2.5">
@@ -428,8 +474,9 @@ export function Details() {
             </div>
           </Card>
 
-          {/* TWO-COLUMN REQUIREMENTS & STATISTICS MATRIX */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* TWO-COLUMN REQUIREMENTS & STATISTICS MATRIX (Universities, Schools, Programs Only) */}
+          {type !== 'perk' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             {/* Column 1: Core Requirements & Criteria */}
             <Card className="bg-white border border-hairline-mist p-6 rounded-[24px] shadow-sm relative overflow-hidden">
@@ -651,6 +698,7 @@ export function Details() {
             </Card>
 
           </div>
+          )}
 
           {/* Core Institutional Features & Academic Tabs */}
           {type === 'university' && (
@@ -713,25 +761,27 @@ export function Details() {
                 {groundingResult.groundingChunks && groundingResult.groundingChunks.length > 0 && (
                   <div className="mt-8 pt-6 border-t border-hairline-mist">
                     <div className="font-sans text-xs text-stone-gray uppercase font-bold tracking-wider mb-3 flex items-center gap-1.5">
-                      <Globe className="w-3.5 h-3.5 text-stone-gray" /> Verified Information Sources:
+                      <Globe className="w-3.5 h-3.5 text-stone-gray" /> Verified Information Sources (Top 2-3):
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {groundingResult.groundingChunks.map((chunk: any, cIdx: number) => {
-                        if (!chunk.web) return null;
-                        return (
-                          <a
-                            key={cIdx}
-                            href={chunk.web.uri}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            referrerPolicy="no-referrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#f5f1e4]/50 border border-hairline-mist hover:border-[#2c2e2a] hover:bg-[#8ed462]/10 rounded-[50px] font-sans text-[11px] text-ink font-semibold transition-colors select-none"
-                          >
-                            <span>{cIdx + 1}. {chunk.web.title || 'Source'}</span>
-                            <ExternalLink className="w-3 h-3 text-stone-gray" />
-                          </a>
-                        );
-                      })}
+                      {groundingResult.groundingChunks
+                        .filter((chunk: any) => chunk.web)
+                        .slice(0, 3)
+                        .map((chunk: any, cIdx: number) => {
+                          return (
+                            <a
+                              key={cIdx}
+                              href={chunk.web.uri}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              referrerPolicy="no-referrer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#f5f1e4]/50 border border-hairline-mist hover:border-[#2c2e2a] hover:bg-[#8ed462]/10 rounded-[50px] font-sans text-[11px] text-ink font-semibold transition-colors select-none"
+                            >
+                              <span>{cIdx + 1}. {chunk.web.title || 'Official Source'}</span>
+                              <ExternalLink className="w-3 h-3 text-stone-gray" />
+                            </a>
+                          );
+                        })}
                     </div>
                   </div>
                 )}
@@ -745,17 +795,6 @@ export function Details() {
               </div>
             )}
           </Card>
-
-          {/* Bottom Back Navigation */}
-          <div className="mt-6 flex justify-start">
-            <button 
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#ff705d]/10 border-2 border-ink rounded-[50px] text-ink font-sans font-black text-xs uppercase transition-all select-none cursor-pointer shadow-sm hover:shadow"
-            >
-              <ArrowLeft className="w-4 h-4 text-[#ff705d] stroke-[2.5]" />
-              <span>Back to previous page</span>
-            </button>
-          </div>
         </div>
 
         {/* Right Side: Quick Parameters & Action Sidebar */}
@@ -873,10 +912,10 @@ export function Details() {
 
                   <div className="flex items-center justify-between text-xs font-semibold">
                     <span className="text-stone-gray uppercase flex items-center gap-1.5">
-                      <HelpCircle className="w-4 h-4 text-[#8ed462]" /> Promo Code
+                      <ShieldCheck className="w-4 h-4 text-[#8ed462]" /> Verification
                     </span>
-                    <span className="text-[#ff705d] font-mono font-bold bg-[#f5f1e4] px-3 py-1 rounded-full border border-hairline-mist select-all cursor-pointer">
-                      MASSARSTUDENT
+                    <span className="text-[#8ed462] font-bold bg-[#8ed462]/10 px-3 py-1 rounded-full border border-[#8ed462]/20">
+                      School Email / ID
                     </span>
                   </div>
                 </>
@@ -885,11 +924,11 @@ export function Details() {
             </div>
           </Card>
 
-          {/* Campus Location Discovery (Google Maps Grounding) */}
-          {type !== 'perk' && (
+          {/* Campus Location (Google Maps Grounding - Universities & Schools Only) */}
+          {type !== 'perk' && type !== 'program' && (
             <Card className="bg-white border border-hairline-mist p-6 rounded-[32px] space-y-4">
               <h3 className="font-sans font-black text-xs uppercase tracking-wider text-stone-gray border-b border-hairline-mist pb-3 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#ff705d]" /> Campus Location & Navigation
+                <MapPin className="w-4 h-4 text-[#ff705d]" /> Institute Location & Address
               </h3>
 
               {loadingMaps ? (

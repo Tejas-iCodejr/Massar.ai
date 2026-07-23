@@ -3,6 +3,7 @@ import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
 import { Search, MapPin, BookOpen, Star, School as SchoolIcon, Filter, Eye, Award, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark } from 'lucide-react';
+import { UniversityLogo } from '../components/ui/UniversityLogo';
 import { School } from '../types';
 import { cn } from '../lib/utils';
 import { Link } from 'react-router-dom';
@@ -11,12 +12,13 @@ export function Schools() {
   const [schools, setSchools] = useState<School[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedEmirate, setSelectedEmirate] = useState<'All' | 'Dubai' | 'Abu Dhabi' | 'Sharjah'>('All');
+  const [selectedCountry, setSelectedCountry] = useState<'All' | 'UAE' | 'Saudi Arabia' | 'Qatar'>('All');
+  const [selectedEmirate, setSelectedEmirate] = useState<string>('All');
   const [selectedCurriculum, setSelectedCurriculum] = useState<string>('All');
   const [savedSchools, setSavedSchools] = useState<string[]>([]);
 
   // Sorting and Pagination
-  const [sortBy, setSortBy] = useState<'name-asc' | 'name-desc' | 'rating-desc'>('name-asc');
+  const [sortBy, setSortBy] = useState<'rank-asc' | 'name-asc' | 'name-desc' | 'rating-desc'>('rank-asc');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -38,7 +40,7 @@ export function Schools() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, selectedEmirate, selectedCurriculum]);
+  }, [searchTerm, selectedCountry, selectedEmirate, selectedCurriculum]);
 
   const toggleSaveSchool = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -54,16 +56,26 @@ export function Schools() {
   };
 
   const curriculums = ['All', ...Array.from(new Set(schools.map(s => s.curriculum)))];
+  const countries = ['All', 'UAE', 'Saudi Arabia', 'Qatar'];
+  
+  // Available cities/emirates based on selected country
+  const availableEmirates = ['All', ...Array.from(new Set(
+    schools
+      .filter(s => selectedCountry === 'All' || s.country === selectedCountry)
+      .map(s => s.emirate)
+  ))];
 
   const filtered = schools.filter(s => {
     const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           s.emirate.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          (s.country && s.country.toLowerCase().includes(searchTerm.toLowerCase())) ||
                           s.curriculum.toLowerCase().includes(searchTerm.toLowerCase());
     
+    const matchesCountry = selectedCountry === 'All' || s.country === selectedCountry;
     const matchesEmirate = selectedEmirate === 'All' || s.emirate === selectedEmirate;
     const matchesCurriculum = selectedCurriculum === 'All' || s.curriculum === selectedCurriculum;
 
-    return matchesSearch && matchesEmirate && matchesCurriculum;
+    return matchesSearch && matchesCountry && matchesEmirate && matchesCurriculum;
   });
 
   const ratingWeights: { [key: string]: number } = {
@@ -76,6 +88,7 @@ export function Schools() {
 
   // Sort logic
   const sortedAndFiltered = [...filtered].sort((a, b) => {
+    if (sortBy === 'rank-asc') return (a.ranking || 99) - (b.ranking || 99);
     if (sortBy === 'name-asc') return a.name.localeCompare(b.name);
     if (sortBy === 'name-desc') return b.name.localeCompare(a.name);
     if (sortBy === 'rating-desc') {
@@ -99,14 +112,14 @@ export function Schools() {
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-6 pb-8 border-b border-hairline-mist">
         <div>
           <div className="font-sans text-xs text-[#8ed462] uppercase font-bold tracking-wider mb-2 flex items-center gap-1.5">
-            <SchoolIcon className="w-4 h-4 text-[#8ed462]" /> K-12 Institutional Index
+            <SchoolIcon className="w-4 h-4 text-[#8ed462]" /> Top 50 Regional K-12 Institutional Index
           </div>
           <h1 className="font-sans font-black text-4xl sm:text-6xl uppercase tracking-tight text-ink leading-none">
-            K-12 Schools <br/>
-            <span className="font-serif italic font-normal text-[#ff705d] lowercase tracking-normal">directory</span>
+            Top K-12 Schools <br/>
+            <span className="font-serif italic font-normal text-[#ff705d] lowercase tracking-normal">UAE • Saudi Arabia • Qatar</span>
           </h1>
           <p className="font-sans font-medium text-stone-gray max-w-xl mt-3 text-sm leading-relaxed">
-            Discover primary, middle, and secondary schools evaluated by the official KHDA (Dubai) and ADEK (Abu Dhabi) inspection boards.
+            Discover top-ranked primary, middle, and secondary schools evaluated by KHDA, ADEK, QNSA, and Ministry Inspection Boards across the Gulf.
           </p>
         </div>
         
@@ -114,7 +127,7 @@ export function Schools() {
         <div className="relative w-full lg:w-96 flex">
           <input
             type="text"
-            placeholder="Search schools..."
+            placeholder="Search school name, country, city..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             className="w-full bg-white border border-hairline-mist p-4 pr-12 font-sans text-sm rounded-[50px] placeholder:text-stone-gray focus:outline-none focus:border-[#8ed462] shadow-sm transition-colors text-ink"
@@ -128,25 +141,42 @@ export function Schools() {
       {/* Grid Filter Blocks */}
       <div className="flex flex-wrap items-center gap-4 mb-10 pb-6 border-b border-hairline-mist">
         
-        {/* Emirate filter selector */}
+        {/* Country filter selector */}
         <div className="flex items-center gap-2 border-r border-hairline-mist pr-4">
           <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider flex items-center gap-1.5">
-            <Filter className="w-3.5 h-3.5 text-stone-gray" /> Emirate:
+            <Filter className="w-3.5 h-3.5 text-stone-gray" /> Country:
           </span>
           <div className="flex gap-1.5">
-            {(['All', 'Dubai', 'Abu Dhabi'] as const).map(emirate => (
+            {countries.map(country => (
               <button
-                key={emirate}
-                onClick={() => setSelectedEmirate(emirate)}
+                key={country}
+                onClick={() => {
+                  setSelectedCountry(country as any);
+                  setSelectedEmirate('All');
+                }}
                 className={cn(
                   "px-4 py-1.5 font-sans font-semibold text-xs rounded-[50px] border tracking-wider transition-all select-none cursor-pointer",
-                  selectedEmirate === emirate ? "bg-[#2ba0ff] text-white border-transparent shadow-sm" : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
+                  selectedCountry === country ? "bg-[#ff705d] text-white border-transparent shadow-sm" : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
                 )}
               >
-                {emirate}
+                {country}
               </button>
             ))}
           </div>
+        </div>
+
+        {/* City / Emirate selector */}
+        <div className="flex items-center gap-2 border-r border-hairline-mist pr-4">
+          <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider">City:</span>
+          <select
+            value={selectedEmirate}
+            onChange={e => setSelectedEmirate(e.target.value)}
+            className="px-4 py-1.5 bg-white border border-hairline-mist font-sans font-semibold text-xs uppercase tracking-wider focus:outline-none cursor-pointer rounded-[50px] text-ink"
+          >
+            {availableEmirates.map(em => (
+              <option key={em} value={em}>{em}</option>
+            ))}
+          </select>
         </div>
 
         {/* Curriculum selector */}
@@ -173,9 +203,10 @@ export function Schools() {
             onChange={e => setSortBy(e.target.value as any)}
             className="px-4 py-1.5 bg-white border border-hairline-mist font-sans font-semibold text-xs uppercase tracking-wider focus:outline-none cursor-pointer rounded-[50px] text-ink"
           >
+            <option value="rank-asc">Ranking (#1 to #50)</option>
+            <option value="rating-desc">Rating: Outstanding First</option>
             <option value="name-asc">Name (A-Z)</option>
             <option value="name-desc">Name (Z-A)</option>
-            <option value="rating-desc">Rating: Outstanding First</option>
           </select>
         </div>
 
@@ -214,11 +245,15 @@ export function Schools() {
                       
                       {/* Card Header */}
                       <div className="flex justify-between items-start mb-6">
-                        <div className="w-14 h-14 bg-[#2c2e2a]/5 border border-hairline-mist rounded-[15px] flex items-center justify-center font-sans font-black text-xl text-ink select-none transition-transform group-hover:rotate-6">
-                          {school.name.substring(0, 2).toUpperCase()}
-                        </div>
+                        <UniversityLogo domain={school.domain || 'dubaicollege.org'} name={school.name} className="w-14 h-14" />
                         
                         <div className="flex items-center gap-2">
+                          {school.ranking && (
+                            <span className="font-sans font-extrabold text-[11px] bg-[#ff705d]/10 text-[#ff705d] border border-[#ff705d]/30 px-2.5 py-0.5 rounded-full uppercase tracking-tight">
+                              #{school.ranking}
+                            </span>
+                          )}
+
                           {/* Save School Toggle */}
                           <button
                             onClick={(e) => toggleSaveSchool(school.id, e)}
@@ -242,10 +277,16 @@ export function Schools() {
                         {school.name}
                       </h2>
                       
-                      <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-gray uppercase mb-6">
+                      <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-gray uppercase mb-3">
                         <MapPin className="w-3.5 h-3.5 text-[#8ed462]" />
-                        <span>{school.emirate}, UAE</span>
+                        <span>{school.emirate}, {school.country}</span>
                       </div>
+
+                      {school.description && (
+                        <p className="font-sans font-medium text-stone-gray text-xs leading-relaxed mb-6 line-clamp-2">
+                          {school.description}
+                        </p>
+                      )}
 
                       {/* Specification List */}
                       <div className="mt-auto space-y-3 pt-4 border-t border-hairline-mist border-dashed">

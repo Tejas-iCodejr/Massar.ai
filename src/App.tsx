@@ -3,11 +3,24 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
+
+// Automatically reset scroll position to top header on page navigation
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [pathname]);
+
+  return null;
+}
 
 // Route-based code splitting
 const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
@@ -66,6 +79,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-grow">

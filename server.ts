@@ -134,85 +134,58 @@ To instantly claim and access these specialized benefits, students should make s
 
 function generateFallbackDetails(type: string, name: string, organizer: string, eligibility: string, location: string, extraInfo: string): string {
   const safeName = name || "Selected Institution";
-  const safeOrganizer = organizer || "Education Department";
-  const safeLocation = location || "UAE Campus";
-  const safeEligibility = eligibility || "All Qualified Students";
-  const safeExtraInfo = extraInfo || "August 15, 2026";
+  const safeOrganizer = organizer || "Education Board";
+  const safeLocation = location || "Middle East";
+  const safeEligibility = eligibility || "All Enrolled Students";
+  const safeExtraInfo = extraInfo || "Active Intake";
 
   if (type === "program") {
-    return `### What is the program?
-The program **${safeName}** is an outstanding regional educational initiative designed to empower ambitious students in the UAE and Gulf region. Through structured development paths, interactive workshops, and high-value mentorship from academic leaders, this program guides candidates through rigorous technical and leadership curriculums. 
+    return `### Program Overview & Focus
+**${safeName}** is a premier student development initiative organized by **${safeOrganizer}**. Designed for ambitious candidates, it provides practical project experience, expert mentorship, and industry-standard skills to prepare students for top academic and professional opportunities.
 
-Participants gain hands-on project experience, tackle real-world case studies, and collaborate in teams to solve challenging issues. The program has an active application cycle closing on **${safeExtraInfo}**. High-achieving students are highly encouraged to complete their portfolios and submit all verified credentials before this closing date.
-
-### What is the university/organizer?
-The organizing entity, **${safeOrganizer}**, is a highly respected institution known for its unwavering commitment to educational advancement and community development. Located in the heart of the educational district, they have built a regional legacy of academic excellence, research support, and high student placement success.
-
-Through state-of-the-art labs, research grants, and strong corporate partnerships, **${safeOrganizer}** continues to be a pioneering force in shaping the technical, medical, and artistic leaders of tomorrow across the Middle East.
-
-### Verified Participation & Benefits
-By participating in **${safeName}**, students earn officially verified certificates, portfolio points, and exclusive access to secondary research grants. Graduates of this program gain a major competitive advantage for upcoming job placements and elite university applications. The curriculum matches global standards, allowing students to seamlessly display these achievements to admissions officers and top-tier regional recruiters.`;
+### Key Deadlines & Eligibility
+- **Target Applicants:** ${safeEligibility}
+- **Application Deadline:** ${safeExtraInfo}
+- **Student Impact:** Earns verified portfolio credentials, certificates, and direct access to regional innovation networks.`;
   } else if (type === "university") {
-    return `### What is the university?
-**${safeName}** is a leading, top-tier higher education institution located in **${safeLocation}**. As a prestigious educational landmark in the UAE and wider Gulf region, it offers students a world-class academic environment, renowned faculty members, and state-of-the-art facilities.
+    return `### Overview & Academic Standing
+**${safeName}** is a leading higher education institution located in **${safeLocation}**. Renowned for academic excellence and accredited degree programs across Engineering, Medicine, Business, and Computer Science, it serves as a major hub for research and student innovation.
 
-The university is highly regarded for its diverse student body, stellar regional rankings, and academic programs designed to prepare future-ready professionals. It stands as a beacon of research and professional development, fostering a culture of innovation, critical thinking, and global community engagement.
-
-### Elite Colleges & Academic Majors
-The campus hosts several highly sought-after colleges, including the **College of Engineering & Information Technology**, the **College of Business Administration**, and the **College of Arts & Sciences**. Specialized courses are fully accredited by the Ministry of Education, offering deep research pathways, practical capstone projects, and strong industrial exposure.
-
-### Admissions, Intakes & Student Life
-The university holds two main intake cycles: **Fall Intake** (applications close in August) and **Spring Intake** (applications close in January). Student life is highly vibrant and engaging, featuring competitive athletics, specialized student clubs, collaborative hackathons, and cultural festivals. The secure student accommodation offers fully furnished study suites, athletic centers, and student services.`;
+### Admissions & Campus Essentials
+- **Intake Cycles:** Fall & Spring Intakes
+- **Tuition Range:** AED ${safeExtraInfo} / year
+- **Campus Environment:** State-of-the-art research labs, athletic complexes, and vibrant student organizations.`;
   } else if (type === "school") {
-    return `### What is the school?
-**${safeName}** is an esteemed K-12 educational community located in **${safeLocation}** that is dedicated to providing high-quality educational foundations. Utilizing the **${safeOrganizer}** curriculum, the school integrates a balanced approach of strong academics, personal character building, and creative expression.
+    return `### School Overview & Curriculum
+**${safeName}** is a premier K-12 school in **${safeLocation}** delivering the **${safeOrganizer}** curriculum. Officially rated **${safeEligibility}** by regional inspection boards, it emphasizes academic rigor, STEM excellence, and holistic student development.
 
-Featuring advanced smart classrooms, modern athletic fields, scientific labs, and dedicated libraries, the school offers an immersive and secure environment where students can thrive, explore their passions, and prepare for elite global universities.
-
-### Academic Excellence & Inspection Performance
-With a prestigious official inspection rating of **${safeEligibility}** from the state educational regulatory boards, the school is highly commended for its student achievement, supportive learning environment, and exemplary leadership. Review boards consistently highlight the school's strengths in STEM education, language instruction, and dedicated safety patrols.
-
-### Admission Process & Tuition Estimates
-Admissions follow a structured assessment process, starting with an online application and followed by an interactive placement review. The annual tuition fee ranges from **${safeExtraInfo}**, reflecting premium academic resources, comprehensive student support packages, and top-tier facilities. Flexible payment plans and sibling discounts are actively supported by the registrar.`;
+### Admissions & Tuition
+- **Tuition Scale:** ${safeExtraInfo}
+- **Admission Process:** Online registration followed by placement assessment.
+- **Facilities:** Modern smart classrooms, athletic suites, and scientific laboratories.`;
   } else {
     // perk
-    return `### What is the perk?
-The student benefit **${safeName}** provided by **${safeOrganizer}** offers outstanding value to all registered students. Under the **${safeEligibility}** category, this perk delivers major savings on premium software licenses, direct subscriptions, and educational materials.
+    return `### Benefit & Student Savings
+**${safeName}** provided by **${safeOrganizer}** offers exclusive student savings under the **${safeEligibility}** category. It unlocks free or discounted access to essential professional software, hardware, and educational materials.
 
-By enabling students to leverage these advanced professional tools without financial barriers, **${safeName}** serves as a vital companion for coding, design, research, or writing projects throughout their academic journeys.
-
-### How to Redeem Your Student Account
-Redeeming this perk is straightforward and highly secure:
-1. Visit the verified provider page or click the direct redemption link.
-2. Sign in or register using your official student email address (such as a **.edu** or school-assigned domain).
-3. Alternatively, upload a clear picture of your physical student ID card or log in via partner verification portals like UNiDAYS or SheerID.
-4. Once verified, the student discount or free premium license is instantly applied to your account for the academic year.
-
-### Maximize Your Software Bundle
-To make the most of **${safeName}**, students are highly encouraged to pair it with collaborative cloud workspaces, robust version control platforms, and citation index managers. This unified toolkit will streamline your homework, boost research efficiency, and help build a stellar professional portfolio.`;
+### Redemption Steps
+- **Verification:** Register with an official school email (\`.edu\` or institutional domain) or upload a physical student ID card.
+- **Validity:** Active for the current 2026/2027 academic year across regional secondary schools and universities.`;
   }
 }
 
 function generateFallbackMaps(name: string, location: string, type: string): { text: string; groundingChunks: any[] } {
-  const safeName = name || "Campus Location";
-  const safeLocation = location || "UAE District";
-  const safeType = type || "Institution";
+  const safeName = name || "Institution";
+  const safeLocation = location || "Middle East";
 
   const queryEscaped = encodeURIComponent(`${safeName} ${safeLocation}`);
   const mapsUri = `https://www.google.com/maps/search/?api=1&query=${queryEscaped}`;
 
-  const text = `### Campus Logistics & Location Overview
-**${safeName}** is situated in a premium, highly accessible zone within **${safeLocation}**. The campus coordinates are strategically positioned near major commercial, residential, and academic infrastructure, making it highly convenient for domestic and international students.
+  const text = `### Institute Location & Address
+**${safeName}** is located in **${safeLocation}**.
 
-### Best Student Transit Options
-- **Metro Access:** The primary campus is linked via regional rapid transit. Shuttles run continuously from the nearest metro/transit station directly to the main campus gates.
-- **Bus Networks:** Multiple state bus routes serve the campus daily with a dedicated stop located directly outside the student center.
-- **Driving & Parking:** Secure, multi-level student parking decks are fully operational, featuring smart-card access gates and dedicated spots for hybrid vehicles.
-
-### Nearby Student Hubs
-1. **The Academic Galleria:** A popular food and study district located just 5 minutes from the main library, offering students cozy bookshops, print hubs, and a wide variety of local and international dining options.
-2. **Community Green Park:** A spacious park with outdoor exercise trails, quiet shaded lawns for reading, and open-air amphitheaters that host weekend student performances.
-3. **The Innovation Hub:** A modern district containing co-working spaces, tech startup incubators, and student-run cafes where developers and creators network.`;
+- **Official Address:** ${safeName}, ${safeLocation}
+- **Region:** ${safeLocation}`;
 
   return {
     text,
@@ -220,11 +193,11 @@ function generateFallbackMaps(name: string, location: string, type: string): { t
       {
         maps: {
           uri: mapsUri,
-          title: `${safeName} (${safeLocation}) Official Map Link`,
+          title: `${safeName} (${safeLocation}) Google Maps Link`,
           placeAnswerSources: {
             reviewSnippets: [
               {
-                text: "Highly accessible campus location with excellent modern facilities, ample parking space, and close proximity to public transit lines."
+                text: `Official location profile for ${safeName} in ${safeLocation}.`
               }
             ]
           }
@@ -270,19 +243,24 @@ async function startServer() {
     res.json(cachedData);
   });
 
-  app.get("/api/universities", (req, res) => {
+  app.get("/api/universities", async (req, res) => {
+    if (!cachedData || cachedData.universities?.length < 5) await loadData();
     res.json(cachedData?.universities || []);
   });
 
-  app.get("/api/schools", (req, res) => {
+  app.get("/api/schools", async (req, res) => {
+    // Always refresh data from disk to ensure latest dataset is served
+    await loadData();
     res.json(cachedData?.schools || []);
   });
 
-  app.get("/api/programs", (req, res) => {
+  app.get("/api/programs", async (req, res) => {
+    await loadData();
     res.json(cachedData?.programs || []);
   });
 
-  app.get("/api/perks", (req, res) => {
+  app.get("/api/perks", async (req, res) => {
+    await loadData();
     res.json(cachedData?.perks || []);
   });
 
@@ -371,81 +349,73 @@ Be extremely precise, factual, and draw upon the search results directly. Do not
 
       let specificPrompt = "";
       if (type === "program") {
-        specificPrompt = `You are a helpful educational advisor on the Massar portal.
-We are presenting a dedicated information page for the program: "${name}".
-Organizer/Provider: "${organizer}"
-Eligibility: "${eligibility}"
-Deadline: "${extraInfo}"
+        specificPrompt = `You are a concise educational advisor on the Massar portal.
+Provide a crisp, student-focused profile for the program: "${name}" (${organizer}).
 
-Please use Google Search to find accurate, live details about this specific program and organization in the UAE/Gulf region.
-Create a highly structured response with exactly these Markdown sections:
+CRITICAL REQUIREMENTS:
+- Total word count MUST be strictly between 100 to 150 words total.
+- Draw facts from 2-3 authoritative sources max using Google Search.
+- Be direct and high-impact. Avoid multi-paragraph essays or long introductions.
 
-### What is the program?
-Write 2-3 detailed paragraphs explaining the program, its purpose, what students do, curriculum or topics covered, and any rewards/prizes. Mention its specific deadline "${extraInfo}".
+Structure into exactly these 2 Markdown sections:
 
-### What is the university/organizer?
-Write 1-2 detailed paragraphs explaining the organizing entity "${organizer}", its reputation, location, and key educational contributions in the Middle East.
+### Program Highlights & Focus
+(60-70 words: Core objective, topics covered, and host organizer reputation)
 
-### Verified Participation & Benefits
-Describe how students can sign up, what they gain by completing it, and how it boosts their academic/career portfolio in the region.`;
+### Key Deadlines & Student Impact
+(60-70 words: Target eligibility "${eligibility}", closing deadline "${extraInfo}", and verified career/portfolio benefits)`;
       } else if (type === "university") {
-        specificPrompt = `You are a helpful educational advisor on the Massar portal.
-We are presenting a dedicated profile page for the university: "${name}".
-Location: "${location}"
-Details: "${extraInfo}"
+        specificPrompt = `You are a concise educational advisor on the Massar portal.
+Provide a crisp, student-focused profile for the university: "${name}" in "${location}".
 
-Please use Google Search to find accurate, live details about "${name}".
-Create a highly structured response with exactly these Markdown sections:
+CRITICAL REQUIREMENTS:
+- Total word count MUST be strictly between 100 to 150 words total.
+- Draw facts from 2-3 authoritative sources max using Google Search.
+- Be direct and high-impact. Avoid long essays or fluffy introductions.
 
-### What is the university?
-Write 2-3 detailed paragraphs about "${name}". Describe its academic status (Public/Private), its main campus location in "${location}", its global/regional ranking, and its general reputation in the UAE and wider Gulf region.
+Structure into exactly these 2 Markdown sections:
 
-### Elite Colleges & Academic Majors
-Highlight the major colleges, fields of study (such as Engineering, Medicine, Business, Humanities), and specialized research centers that make this institution a leader.
+### Overview & Academic Standing
+(60-70 words: Institutional status, campus location in "${location}", regional ranking, and core accredited colleges/majors)
 
-### Admissions, Intakes & Student Life
-Describe typical intakes (e.g. Fall, Spring), student enrollment statistics, and general student life on campus.`;
+### Admissions & Student Life
+(60-70 words: Standard intake cycles, annual tuition fee estimates "${extraInfo}", and key campus environment highlights)`;
       } else if (type === "school") {
-        specificPrompt = `You are a helpful educational advisor on the Massar portal.
-We are presenting a dedicated profile page for the K-12 school: "${name}".
-Location: "${location}"
-Curriculum: "${organizer}"
-Rating: "${eligibility}"
-Tuition Range: "${extraInfo}"
+        specificPrompt = `You are a concise educational advisor on the Massar portal.
+Provide a crisp, student-focused profile for the K-12 school: "${name}" in "${location}".
 
-Please use Google Search to find accurate, live details about "${name}".
-Create a highly structured response with exactly these Markdown sections:
+CRITICAL REQUIREMENTS:
+- Total word count MUST be strictly between 100 to 150 words total.
+- Draw facts from 2-3 authoritative sources max using Google Search.
+- Be direct and high-impact. Avoid long essays.
 
-### What is the school?
-Write 2-3 detailed paragraphs about "${name}". Describe its background, its curriculum ("${organizer}"), campus culture, facilities, and general standing in the community.
+Structure into exactly these 2 Markdown sections:
 
-### Academic Excellence & Inspection Performance
-Detail its official inspection rating ("${eligibility}") from the KHDA (Dubai) or ADEK (Abu Dhabi) and highlight key strengths noted in reviews (e.g., student achievement, leadership, safety, teaching quality).
+### School Overview & Curriculum
+(60-70 words: "${organizer}" curriculum, official inspection rating of "${eligibility}", and key STEM/academic strengths)
 
-### Admission Process & Tuition Estimates
-Provide a realistic overview of the admission steps, mandatory documents, and detailed annual tuition ranges of "${extraInfo}".`;
+### Admissions & Tuition Scale
+(60-70 words: Assessment process, grade coverage, and annual tuition range of "${extraInfo}")`;
       } else {
         // perk
-        specificPrompt = `You are a helpful student benefits advisor on the Massar portal.
-We are presenting a dedicated redemption guide for the perk: "${name}".
-Provider/Brand: "${organizer}"
-Category: "${eligibility}"
-Description: "${extraInfo}"
+        specificPrompt = `You are a concise student benefit advisor on the Massar portal.
+Provide a crisp redemption guide for the perk: "${name}" by "${organizer}".
 
-Please use Google Search to find accurate, live details about "${name}".
-Create a highly structured response with exactly these Markdown sections:
+CRITICAL REQUIREMENTS:
+- Total word count MUST be strictly between 100 to 150 words total.
+- Draw facts from 2-3 authoritative sources max using Google Search.
+- Be direct and practical.
 
-### What is the perk?
-Write 2-3 detailed paragraphs about the "${name}" student benefit. Explain exactly what it includes (e.g., free accounts, software licenses, percentage discount), who provides it ("${organizer}"), and how much value/savings it delivers to the student.
+Structure into exactly these 2 Markdown sections:
 
-### How to Redeem Your Student Account
-Provide a step-by-step tutorial on how a student can verify their eligibility and claim the benefit. Highlight the use of valid school emails (.edu or school-specific domains), physical student ID cards, or SheerID/UNiDAYS portals.
+### Benefit & Student Value
+(60-70 words: Exact discount/tier included under "${eligibility}" category and value provided)
 
-### Maximize Your Software Bundle
-Recommend other tools or plugins that pair well with "${name}" to boost productivity, design, coding, or academic writing.`;
+### How to Redeem & Verify
+(60-70 words: Step-by-step verification using valid school email or student ID card)`;
       }
 
-      specificPrompt += `\n\nBe extremely precise, factual, elegant, and draw upon search grounding results. Do not include placeholders. Deliver professional markdown formatting.`;
+      specificPrompt += `\n\nBe extremely precise, factual, crisp, and strictly keep total response length between 100 and 150 words.`;
 
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
@@ -493,18 +463,17 @@ Recommend other tools or plugins that pair well with "${name}" to boost producti
         },
       });
 
-      const prompt = `You are a regional logistics and campus navigation specialist on the Massar portal.
-Find the exact location and geographic navigation details of the following entity:
+      const prompt = `You are an institutional directory specialist on the Massar portal.
+Find the concise official physical location of the following institution:
 Entity Name: "${name}"
 Stated Location: "${location}"
 Type: "${type}"
 
-Provide a detailed location overview including:
-- Official physical street address and campus coordinates.
-- Best student transit options (e.g. Metro station, bus lines, driving, or parking access).
-- 2-3 popular nearby student hubs (food districts, bookstores, parks, study spots, or public services).
+Provide a concise, direct location summary strictly limited to:
+- Official physical street address and campus location.
+- City, region, and district details.
 
-Use accurate real-time regional mapping data to deliver precise information. Do not invent any coordinates.`;
+Do NOT list transit options, nearby food districts, parks, co-working spaces, or off-campus locations. Focus exclusively on the institution's exact physical address and primary campus location.`;
 
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",

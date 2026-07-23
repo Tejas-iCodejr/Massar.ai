@@ -7,6 +7,7 @@ import {
 import { Card } from './Card';
 import { Button } from './Button';
 import { Badge } from './Badge';
+import { BudgetCalculator } from './BudgetCalculator';
 
 // Interfaces for structured data
 interface ProgramOffer {
@@ -585,6 +586,34 @@ const UNIVERSITY_PRESETS: Record<string, UniversityConfig> = {
       { year: "2024", enrollment: 1050, avgGpa: 3.28, avgSat: 1080, acceptanceRate: 72 },
       { year: "2023", enrollment: 980, avgGpa: 3.25, avgSat: 1050, acceptanceRate: 75 }
     ]
+  },
+  "20": {
+    id: "20",
+    name: "King Abdulaziz University (KAU)",
+    topPrograms: [
+      { name: "Bachelor of Medicine & Surgery (MBBS)", degree: "Bachelor", duration: "6 Years", qsRanking: "#109 globally", isTopFeatured: true },
+      { name: "B.Sc. in Computer Science & Artificial Intelligence", degree: "Bachelor", duration: "4 Years", qsRanking: "#85 globally", isTopFeatured: true },
+      { name: "B.Sc. in Nuclear & Chemical Engineering", degree: "Bachelor", duration: "4 Years", qsRanking: "#95 globally", isTopFeatured: true },
+      { name: "M.Sc. in Renewable Energy Systems", degree: "Master", duration: "2 Years", qsRanking: "#70 globally", isTopFeatured: false }
+    ],
+    counselor: {
+      name: "Dr. Huda Al-Ghamdi",
+      role: "Director of International Graduate & Undergraduate Admissions",
+      specialties: ["KAU Global Excellence Fellowships", "Medical College Entrance Index", "STEM Credit Equivalency"],
+      email: "admissions@kau.edu.sa",
+      phone: "+966 12 695 2000",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
+    },
+    examCriteria: {
+      sat: "Recommended 1420+ (or Qudrat 88+ and Tahsili 88+ score)",
+      ielts: "Minimum 6.5 overall (mandatory requirement)",
+      cambridge: "Accepted (C1 Advanced, minimum 176+)"
+    },
+    commonDataSets: [
+      { year: "2025", enrollment: 5200, avgGpa: 3.88, avgSat: 1430, acceptanceRate: 25 },
+      { year: "2024", enrollment: 4900, avgGpa: 3.85, avgSat: 1410, acceptanceRate: 26 },
+      { year: "2023", enrollment: 4600, avgGpa: 3.82, avgSat: 1390, acceptanceRate: 28 }
+    ]
   }
 };
 
@@ -812,10 +841,10 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
       
       {/* Premium Tab Bar Controls */}
       <div className="bg-white border border-hairline-mist rounded-[32px] p-2 flex flex-wrap gap-1 shadow-sm">
-        {(['programs', 'exams', 'counselor', 'cds'] as const).map((tab) => (
+        {(['programs', 'exams', 'counselor', 'cds', 'budget'] as const).map((tab) => (
           <button
             key={tab}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => setActiveTab(tab as any)}
             className={`flex-1 min-w-[120px] px-5 py-3 rounded-[24px] font-sans text-xs uppercase tracking-wider font-bold transition-all select-none cursor-pointer flex items-center justify-center gap-2 ${
               activeTab === tab
                 ? 'bg-ink text-[#f5f1e4] shadow-sm'
@@ -826,11 +855,13 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
             {tab === 'exams' && <Award className="w-4 h-4" />}
             {tab === 'counselor' && <UserCheck className="w-4 h-4" />}
             {tab === 'cds' && <FileSpreadsheet className="w-4 h-4" />}
+            {tab === 'budget' && <Sparkles className="w-4 h-4 text-[#8ed462]" />}
             <span>
               {tab === 'programs' && 'Programs & QS Ranking'}
               {tab === 'exams' && 'Exams & Requirements'}
               {tab === 'counselor' && 'Student Counselor'}
               {tab === 'cds' && 'Common Data Sets'}
+              {tab === 'budget' && 'Cost Calculator'}
             </span>
           </button>
         ))}
@@ -1371,6 +1402,13 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
             </div>
           </Card>
 
+        </div>
+      )}
+
+      {/* TAB 5: Student Budget Calculator */}
+      {activeTab === ('budget' as any) && (
+        <div className="animate-fade-in">
+          <BudgetCalculator universityName={universityName} />
         </div>
       )}
 

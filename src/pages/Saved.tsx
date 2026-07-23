@@ -402,7 +402,7 @@ export function Saved() {
                         </Badge>
                       </div>
 
-                      <h2 className="font-sans font-black text-2xl uppercase tracking-tight mb-1 leading-tight text-ink pr-8">
+                      <h2 className="font-sans font-black text-2xl tracking-tight mb-1 leading-tight text-ink pr-8">
                         {perk.title}
                       </h2>
 
@@ -416,10 +416,10 @@ export function Saved() {
                     </div>
 
                     <div className="space-y-4 mt-auto">
-                      <div className="p-3 border border-dashed border-hairline-mist font-mono text-xs rounded-[12px] bg-[#f5f1e4]/50 flex items-center justify-between text-ink">
-                        <span className="text-stone-gray font-bold uppercase text-[10px]">CODE:</span>
-                        <span className="text-[#ff705d] font-extrabold uppercase bg-white px-2 py-0.5 rounded border border-hairline-mist">
-                          MASSARSTUDENT
+                      <div className="p-3 border border-hairline-mist font-sans text-xs rounded-[12px] bg-[#f5f1e4]/40 flex items-center justify-between text-ink">
+                        <span className="text-stone-gray font-bold uppercase text-[10px]">Access Status:</span>
+                        <span className="text-[#8ed462] font-bold text-xs">
+                          Verified Student Offer
                         </span>
                       </div>
                       <Button variant="outline" size="sm" className="w-full rounded-[50px]" asChild>

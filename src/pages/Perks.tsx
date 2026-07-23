@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Card } from '../components/ui/Card';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
-import { Search, Percent, Gift, Laptop, Coffee, Flame, ArrowUpRight, Check, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark, Compass } from 'lucide-react';
+import { Search, Percent, Gift, Laptop, Coffee, Flame, ArrowUpRight, Check, ChevronLeft, ChevronRight, ArrowUpDown, Bookmark, Compass, ShieldCheck } from 'lucide-react';
+import { UniversityLogo } from '../components/ui/UniversityLogo';
 import { Perk } from '../types';
 import { cn } from '../lib/utils';
 
@@ -14,14 +15,14 @@ export function Perks() {
   const [perks, setPerks] = useState<Perk[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<'All' | 'Software' | 'Hardware' | 'Food' | 'Entertainment'>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [redeemedId, setRedeemedId] = useState<string | null>(null);
   const [savedPerks, setSavedPerks] = useState<string[]>([]);
 
   // Sorting and Pagination
   const [sortBy, setSortBy] = useState<'title-asc' | 'title-desc' | 'provider-asc'>('title-asc');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 12;
 
   useEffect(() => {
     fetch('/api/perks')
@@ -56,8 +57,11 @@ export function Perks() {
     localStorage.setItem('saved_perks', JSON.stringify(updated));
   };
 
-  const handleRedeem = (id: string) => {
-    setRedeemedId(id);
+  const handleRedeem = (perk: Perk) => {
+    setRedeemedId(perk.id);
+    if (perk.link) {
+      window.open(perk.link, '_blank', 'noopener,noreferrer');
+    }
     setTimeout(() => {
       setRedeemedId(null);
     }, 3000);
@@ -126,15 +130,15 @@ export function Perks() {
       <div className="flex flex-wrap items-center gap-4 mb-10 pb-6 border-b border-hairline-mist">
         
         {/* Category buttons */}
-        <div className="flex items-center gap-2 border-r border-hairline-mist pr-4">
-          <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider">Category:</span>
-          <div className="flex gap-1.5 font-sans">
-            {(['All', 'Software', 'Hardware', 'Food', 'Entertainment'] as const).map(cat => (
+        <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+          <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider shrink-0">Category:</span>
+          <div className="flex gap-1.5 font-sans overflow-x-auto">
+            {(['All', 'AI & ML', 'Development Tools', 'Design & Creative', 'Learning & Education', 'Media & Entertainment', 'Cloud & Hosting', 'Productivity', 'Apparel', 'Travel'] as const).map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={cn(
-                  "px-4 py-1.5 font-sans font-semibold text-xs rounded-[50px] border tracking-wider transition-all select-none cursor-pointer",
+                  "px-4 py-1.5 font-sans font-semibold text-xs rounded-[50px] border tracking-wider transition-all select-none cursor-pointer shrink-0 whitespace-nowrap",
                   selectedCategory === cat ? "bg-[#f5e211] text-ink border-transparent shadow-sm" : "bg-white text-ink border-hairline-mist hover:bg-gray-50"
                 )}
               >
@@ -147,12 +151,12 @@ export function Perks() {
         {/* Sort Selector */}
         <div className="flex items-center gap-2">
           <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider flex items-center gap-1">
-            <ArrowUpDown className="w-3 h-3 text-[#ff705d]" /> Sort:
+            <ArrowUpDown className="w-3.5 h-3.5" /> Sort:
           </span>
           <select
             value={sortBy}
-            onChange={e => setSortBy(e.target.value as any)}
-            className="px-4 py-1.5 bg-white border border-hairline-mist font-sans font-semibold text-xs uppercase tracking-wider focus:outline-none cursor-pointer rounded-[50px] text-ink"
+            onChange={(e: any) => setSortBy(e.target.value)}
+            className="bg-white border border-hairline-mist px-3 py-1.5 font-sans font-semibold text-xs rounded-[50px] text-ink outline-none cursor-pointer hover:bg-gray-50"
           >
             <option value="title-asc">Title (A-Z)</option>
             <option value="title-desc">Title (Z-A)</option>
@@ -160,11 +164,18 @@ export function Perks() {
           </select>
         </div>
 
-        {/* Saved perks pill */}
-        {savedPerks.length > 0 && (
-          <div className="ml-auto inline-flex items-center gap-2 bg-[#f5e211]/20 border border-[#f5e211]/40 rounded-[50px] px-4 py-1.5 font-sans text-xs font-semibold uppercase text-ink">
-            <Bookmark className="w-3.5 h-3.5 fill-ink text-ink" />
-            <span>Saved {savedPerks.length} perks</span>
+        {/* Active Filters count indicator */}
+        {(searchTerm || selectedCategory !== 'All') && (
+          <div className="ml-auto flex items-center gap-2">
+            <span className="font-sans text-xs text-stone-gray">
+              Found <strong className="text-ink">{filtered.length}</strong> matching perks
+            </span>
+            <button 
+              onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
+              className="text-xs text-[#ff705d] underline font-semibold hover:text-ink cursor-pointer"
+            >
+              Reset Filters
+            </button>
           </div>
         )}
       </div>
@@ -194,15 +205,7 @@ export function Perks() {
                     <Card key={perk.id} className="group flex flex-col justify-between h-full bg-white p-8">
                       <div>
                         <div className="flex justify-between items-start mb-6">
-                          <div className="w-14 h-14 bg-[#2c2e2a]/5 border border-hairline-mist rounded-[15px] flex items-center justify-center text-ink select-none transition-transform group-hover:rotate-6">
-                            {perk.category === 'Software' ? (
-                              <Laptop className="w-7 h-7 text-[#2ba0ff]" />
-                            ) : perk.category === 'Food' ? (
-                              <Coffee className="w-7 h-7 text-[#8ed462]" />
-                            ) : (
-                              <Gift className="w-7 h-7 text-[#ff705d]" />
-                            )}
-                          </div>
+                          <UniversityLogo domain={perk.domain} name={perk.provider} className="w-14 h-14" />
                           
                           <div className="flex items-center gap-2">
                             {/* Save Perk Toggle */}
@@ -222,7 +225,7 @@ export function Perks() {
                           </div>
                         </div>
 
-                        <h2 className="font-sans font-black text-2xl uppercase tracking-tight mb-1 leading-tight text-ink">
+                        <h2 className="font-sans font-black text-2xl tracking-tight mb-1 leading-tight text-ink">
                           {perk.title}
                         </h2>
                         
@@ -236,33 +239,35 @@ export function Perks() {
                       </div>
 
                       <div className="space-y-4 mt-auto">
-                        {/* Copy Promo Code Sandbox block */}
-                        <div className="p-3 border border-dashed border-hairline-mist font-mono text-xs rounded-[12px] bg-[#f5f1e4]/50 flex items-center justify-between text-ink">
-                          <span className="text-stone-gray font-bold uppercase text-[10px]">PROMO CODE:</span>
-                          <span className="text-[#ff705d] select-all cursor-pointer font-extrabold uppercase bg-white px-2.5 py-1 rounded-[6px] border border-hairline-mist">
-                            MASSARSTUDENT
-                          </span>
+                        {/* Proper Offer Redemption Guide */}
+                        <div className="p-3.5 border border-hairline-mist font-sans text-xs rounded-[16px] bg-[#f5f1e4]/40 space-y-1">
+                          <div className="flex items-center gap-1.5 font-bold text-[11px] text-ink uppercase tracking-wider">
+                            <ShieldCheck className="w-3.5 h-3.5 text-[#8ed462]" /> How to Claim Offer:
+                          </div>
+                          <p className="text-[11px] text-stone-gray leading-snug">
+                            Verify student status with your official school email (<code className="bg-white px-1 py-0.5 rounded font-mono text-[10px] text-ink border border-stone-200">.edu</code> or student ID) on the provider portal, then click <strong>Redeem</strong>.
+                          </p>
                         </div>
                         
                         <div className="flex gap-2">
                           <Button 
                             variant="outline" 
-                            className="flex-1 font-sans font-semibold text-xs flex items-center justify-center gap-1.5 rounded-[50px]"
-                            onClick={() => handleRedeem(perk.id)}
+                            className="flex-1 font-sans font-semibold text-xs flex items-center justify-center gap-1.5 rounded-[50px] bg-white hover:bg-[#8ed462]/10 hover:border-[#8ed462] cursor-pointer"
+                            onClick={() => handleRedeem(perk)}
                           >
                             {redeemedId === perk.id ? (
-                              <span className="flex items-center gap-1 text-[#8ed462]">
-                                <Check className="w-3.5 h-3.5 text-[#8ed462]" /> Applied!
+                              <span className="flex items-center gap-1 text-[#8ed462] font-bold">
+                                <Check className="w-3.5 h-3.5 text-[#8ed462]" /> Opening Portal...
                               </span>
                             ) : (
-                              <span className="flex items-center gap-1">
-                                Redeem <ArrowUpRight className="w-3 h-3" />
+                              <span className="flex items-center gap-1 font-bold text-ink">
+                                Redeem Offer <ArrowUpRight className="w-3 h-3 text-[#ff705d]" />
                               </span>
                             )}
                           </Button>
                           <Button 
                             variant="secondary" 
-                            className="flex-1 font-sans font-semibold text-xs flex items-center justify-center gap-1.5 rounded-[50px]"
+                            className="flex-1 font-sans font-semibold text-xs flex items-center justify-center gap-1.5 rounded-[50px] cursor-pointer"
                             asChild
                           >
                             <Link to={`/details/perk/${perk.id}`}>
