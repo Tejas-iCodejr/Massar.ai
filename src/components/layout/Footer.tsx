@@ -99,30 +99,30 @@ export function Footer() {
               <div>
                 <h4 className="font-sans font-black uppercase tracking-wider text-xs text-[#2c2e2a] mb-6">LEARN</h4>
                 <ul className="space-y-3 font-sans font-bold text-xs uppercase tracking-wider">
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">FAQ</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Board Reviews</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">KHDA Standards</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">ADEK Metrics</a></li>
+                  <li><Link to="/faq" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">FAQ</Link></li>
+                  <li><Link to="/accreditation" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Board Reviews</Link></li>
+                  <li><Link to="/accreditation" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">KHDA Standards</Link></li>
+                  <li><Link to="/accreditation" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">ADEK Metrics</Link></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-sans font-black uppercase tracking-wider text-xs text-[#2c2e2a] mb-6">CONTACT</h4>
                 <ul className="space-y-3 font-sans font-bold text-xs uppercase tracking-wider">
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Instagram</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Partner Portal</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Carry Us</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Support Center</a></li>
+                  <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Instagram</a></li>
+                  <li><Link to="/login" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Partner Portal</Link></li>
+                  <li><Link to="/planner" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Carry Us</Link></li>
+                  <li><Link to="/faq" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Support Center</Link></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="font-sans font-black uppercase tracking-wider text-xs text-[#2c2e2a] mb-6">LEGAL</h4>
                 <ul className="space-y-3 font-sans font-bold text-xs uppercase tracking-wider">
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Terms of Use</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Accreditation</a></li>
-                  <li><a href="#" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Regulatory</a></li>
+                  <li><Link to="/privacy" className="text-[#2c2e2a]/70 hover:text-[#ff705d] transition-colors">Privacy Policy</Link></li>
+                  <li><Link to="/terms" className="text-[#2c2e2a]/70 hover:text-[#2ba0ff] transition-colors">Terms of Use</Link></li>
+                  <li><Link to="/accreditation" className="text-[#2c2e2a]/70 hover:text-[#8ed462] transition-colors">Accreditation</Link></li>
+                  <li><Link to="/regulatory" className="text-[#2c2e2a]/70 hover:text-[#f5e211] transition-colors">Regulatory</Link></li>
                 </ul>
               </div>
             </div>
@@ -149,9 +149,9 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Massar Platform. All Rights Reserved.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-[#ff705d] transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-[#2ba0ff] transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-[#8ed462] transition-colors">Accreditation</a>
+            <Link to="/privacy" className="hover:text-[#ff705d] transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-[#2ba0ff] transition-colors">Terms of Service</Link>
+            <Link to="/accreditation" className="hover:text-[#8ed462] transition-colors">Accreditation</Link>
           </div>
         </div>
       </div>

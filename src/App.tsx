@@ -33,6 +33,8 @@ const Details = lazy(() => import('./pages/Details').then(m => ({ default: m.Det
 const Planner = lazy(() => import('./pages/Planner').then(m => ({ default: m.Planner })));
 const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })));
 const Saved = lazy(() => import('./pages/Saved').then(m => ({ default: m.Saved })));
+const Accreditation = lazy(() => import('./pages/Accreditation').then(m => ({ default: m.Accreditation })));
+const Legal = lazy(() => import('./pages/Legal').then(m => ({ default: m.Legal })));
 
 function PageFallback() {
   return (
@@ -69,6 +71,11 @@ function AnimatedRoutes() {
             <Route path="/details/:type/:id" element={<Details />} />
             <Route path="/login" element={<Login />} />
             <Route path="/saved" element={<Saved />} />
+            <Route path="/accreditation" element={<Accreditation />} />
+            <Route path="/privacy" element={<Legal />} />
+            <Route path="/terms" element={<Legal />} />
+            <Route path="/regulatory" element={<Legal />} />
+            <Route path="/faq" element={<Legal />} />
           </Routes>
         </Suspense>
       </motion.div>
