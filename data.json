@@ -2400,6 +2400,141 @@
       "description": "Financial innovation awards and project expansion grants for outstanding K-12 and undergraduate student inventors in the UAE and Gulf region.",
       "category": "Grants & Funding",
       "link": "https://ha.ae"
+    },
+    {
+      "id": "100",
+      "title": "Google Cloud Vertex AI Student Credits",
+      "provider": "Google Cloud",
+      "domain": "cloud.google.com",
+      "description": "$300 in free Google Cloud & Vertex AI credits + free access to Google Cloud Skills Boost labs for training LLMs and generative AI models.",
+      "category": "AI & ML",
+      "link": "https://cloud.google.com/edu/students"
+    },
+    {
+      "id": "101",
+      "title": "RunPod AI GPU Compute Grant",
+      "provider": "RunPod",
+      "domain": "runpod.io",
+      "description": "$50 free credit voucher for hosting PyTorch models and fine-tuning open-source LLMs on NVIDIA A100/H100 GPUs.",
+      "category": "AI & ML",
+      "link": "https://www.runpod.io/"
+    },
+    {
+      "id": "102",
+      "title": "Lambda Labs GPU Student Access",
+      "provider": "Lambda Labs",
+      "domain": "lambdalabs.com",
+      "description": "Discounted rate ($0.50/hr) on NVIDIA A10G and H100 GPU instances for university AI capstone projects and research papers.",
+      "category": "AI & ML",
+      "link": "https://lambdalabs.com/"
+    },
+    {
+      "id": "103",
+      "title": "AWS Educate Cloud Tier",
+      "provider": "Amazon Web Services",
+      "domain": "aws.amazon.com",
+      "description": "Free access to AWS Cloud learning labs, EC2/S3 cloud credits, and hands-on cloud architecture tools without requiring a credit card.",
+      "category": "Cloud & Hosting",
+      "link": "https://aws.amazon.com/education/awseducate/"
+    },
+    {
+      "id": "104",
+      "title": "Microsoft Learn Academic Exam Voucher",
+      "provider": "Microsoft",
+      "domain": "microsoft.com",
+      "description": "50% discount on official Microsoft certification exams (AZ-900, AI-900, DP-900) for verified university students.",
+      "category": "Learning & Education",
+      "link": "https://learn.microsoft.com/en-us/credentials/certifications/student-discounts"
+    },
+    {
+      "id": "105",
+      "title": "Google Cloud Career Launchpad Voucher",
+      "provider": "Google",
+      "domain": "cloud.google.com",
+      "description": "50% discount voucher for Associate Cloud Engineer (ACE) certification exams + free learning paths for university cohorts.",
+      "category": "Learning & Education",
+      "link": "https://cloud.google.com/edu/students"
+    },
+    {
+      "id": "106",
+      "title": "Cisco Networking Academy (NetAcad) Voucher",
+      "provider": "Cisco Systems",
+      "domain": "netacad.com",
+      "description": "Free access to CCNA, CyberOps Associate, and IoT modules + discounted certification exam vouchers for partner school students.",
+      "category": "Learning & Education",
+      "link": "https://www.netacad.com/"
+    },
+    {
+      "id": "107",
+      "title": "Red Hat Academy Student Subscription",
+      "provider": "Red Hat",
+      "domain": "redhat.com",
+      "description": "Free access to Red Hat Enterprise Linux (RHEL) courseware + 50% discount on the RHCSA EX200 certification exam.",
+      "category": "Learning & Education",
+      "link": "https://www.redhat.com/en/services/training/red-hat-academy"
+    },
+    {
+      "id": "108",
+      "title": "Autodesk Fusion 360 Education License",
+      "provider": "Autodesk",
+      "domain": "autodesk.com",
+      "description": "100% free professional 3D CAD, CAM, and generative design software license for student engineering teams & makers.",
+      "category": "Design & Creative",
+      "link": "https://www.autodesk.com/education/edu-software/overview"
+    },
+    {
+      "id": "109",
+      "title": "SolidWorks Student Edition",
+      "provider": "Dassault Systèmes",
+      "domain": "solidworks.com",
+      "description": "80% discount on 3D CAD design suites ($20/yr instead of $1,000+) for university engineering students.",
+      "category": "Design & Creative",
+      "link": "https://www.solidworks.com/product/students"
+    },
+    {
+      "id": "110",
+      "title": "Apple Education Store GCC Savings",
+      "provider": "Apple Inc.",
+      "domain": "apple.com",
+      "description": "Save up to AED 600 on Mac and iPad models + receive an Apple Pencil or AirPods during official Back-to-School promotion cycles.",
+      "category": "Hardware",
+      "link": "https://www.apple.com/ae-edu/shop"
+    },
+    {
+      "id": "111",
+      "title": "Samsung Student & Campus Discount",
+      "provider": "Samsung Electronics",
+      "domain": "samsung.com",
+      "description": "Up to 30% discount on Galaxy Book laptops, tablets, high-res monitors, and smartphones for verified GCC students.",
+      "category": "Hardware",
+      "link": "https://www.samsung.com/ae/multistore/uae_student/"
+    },
+    {
+      "id": "112",
+      "title": "Qatar Airways Student Club Privilege",
+      "provider": "Qatar Airways",
+      "domain": "qatarairways.com",
+      "description": "10% to 20% fare discounts, +10kg extra baggage allowance, complimentary onboard Wi-Fi, and date change flexibility.",
+      "category": "Travel",
+      "link": "https://www.qatarairways.com/en/student-club.html"
+    },
+    {
+      "id": "113",
+      "title": "Emirates Airline Student Special Offer",
+      "provider": "Emirates",
+      "domain": "emirates.com",
+      "description": "10% off Economy fares, 5% off Business Class fares, +10kg extra baggage (or 1 extra piece) for students traveling across GCC and globally.",
+      "category": "Travel",
+      "link": "https://www.emirates.com/ae/english/special-offers/student-special-fares/"
+    },
+    {
+      "id": "114",
+      "title": "ISIC International Student Identity Pass",
+      "provider": "ISIC Association",
+      "domain": "isic.org",
+      "description": "Official digital student identity card unlocking 150,000+ regional and global discounts across transit, museums, hotels, and tech.",
+      "category": "Travel",
+      "link": "https://www.isic.org/"
     }
   ]
 }
