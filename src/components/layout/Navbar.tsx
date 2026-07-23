@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Bookmark, Scale, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Bookmark, Scale, ChevronRight, ChevronLeft, ShieldCheck } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 import { motion, AnimatePresence } from 'motion/react';
@@ -80,6 +80,7 @@ export function Navbar() {
     { name: 'Planner', path: '/planner', icon: Calendar },
     { name: 'Saved Desk', path: '/saved', icon: Bookmark },
     { name: 'Compare Sandbox', path: '/compare', icon: Scale },
+    { name: 'Accreditation & Policies', path: '/accreditation', icon: ShieldCheck },
   ];
 
   return (

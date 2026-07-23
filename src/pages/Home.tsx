@@ -7,6 +7,8 @@ import { cn } from '../lib/utils';
 import { UniversityEvents } from '../components/ui/UniversityEvents';
 import { InteractiveCompass, MilestoneConnector, DecorativeDoodle } from '../components/ui/InteractiveDoodle';
 import { PathWizard } from '../components/ui/PathWizard';
+import { EquivalencyWizard } from '../components/ui/EquivalencyWizard';
+import { NationalVisionMapper } from '../components/ui/NationalVisionMapper';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react';
 import heroIllustration from '@/assets/massar_hero_illustration.png';
 
@@ -322,8 +324,10 @@ export function Home() {
       </section>
 
       {/* Interactive Path Wizard Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 space-y-12">
         <PathWizard />
+        <EquivalencyWizard />
+        <NationalVisionMapper />
       </div>
 
       {/* Path Choice Bento Interactive Stage Switcher */}

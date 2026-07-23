@@ -7,13 +7,13 @@
       "location": "Al Ain, Abu Dhabi",
       "type": "Public",
       "description": "Oldest national university in the UAE, ranked #261 globally by QS World University Rankings 2025.",
-      "tuitionFee": 30000,
-      "acceptanceRate": 75,
+      "tuitionFee": 28000,
+      "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "2",
@@ -22,12 +22,12 @@
       "location": "Saadiyat Island, Abu Dhabi",
       "type": "Private",
       "description": "Highly selective portal campus of NYU in the Middle East with comprehensive full-need financial aid.",
-      "tuitionFee": 60000,
-      "acceptanceRate": 5,
+      "tuitionFee": 78000,
+      "acceptanceRate": 4,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "3",
@@ -36,14 +36,14 @@
       "location": "University City, Sharjah",
       "type": "Private",
       "description": "Leading independent American-style institution ranked #332 in QS World University Rankings.",
-      "tuitionFee": 20000,
-      "acceptanceRate": 70,
+      "tuitionFee": 28000,
+      "acceptanceRate": 68,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "4",
@@ -52,13 +52,13 @@
       "location": "Abu Dhabi, UAE",
       "type": "Public",
       "description": "Top-ranked research-intensive university in the UAE (#202 globally in QS 2025) specializing in STEM and AI.",
-      "tuitionFee": 32000,
-      "acceptanceRate": 20,
+      "tuitionFee": 24000,
+      "acceptanceRate": 25,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "5",
@@ -68,12 +68,12 @@
       "type": "Branch Campus",
       "description": "Premier branch of Manipal India offering top-tier degrees in engineering, media, and biotechnology.",
       "tuitionFee": 15000,
-      "acceptanceRate": 78,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "6",
@@ -82,12 +82,12 @@
       "location": "Academic City, Dubai",
       "type": "Branch Campus",
       "description": "International campus of Birla Institute of Technology & Science, highly acclaimed for engineering and CS.",
-      "tuitionFee": 15800,
-      "acceptanceRate": 72,
+      "tuitionFee": 15000,
+      "acceptanceRate": 65,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "7",
@@ -97,11 +97,11 @@
       "type": "Branch Campus",
       "description": "Prestigious international campus of Indian Institute of Technology Delhi offering AI & Energy Engineering.",
       "tuitionFee": 25000,
-      "acceptanceRate": 8,
+      "acceptanceRate": 20,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "8",
@@ -110,13 +110,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Branch Campus",
       "description": "First British university branch in Dubai delivering triple-accredited UK engineering and business degrees.",
-      "tuitionFee": 22000,
-      "acceptanceRate": 65,
+      "tuitionFee": 18000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "9",
@@ -125,13 +125,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Branch Campus",
       "description": "Russell Group university branch (#84 globally) with a state-of-the-art smart campus in Dubai.",
-      "tuitionFee": 28000,
-      "acceptanceRate": 68,
+      "tuitionFee": 27000,
+      "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "10",
@@ -140,13 +140,13 @@
       "location": "Academic City, Dubai",
       "type": "Public",
       "description": "Federal national institution in the UAE ranked #651 in QS, delivering accredited degrees in tech and business.",
-      "tuitionFee": 28000,
-      "acceptanceRate": 70,
+      "tuitionFee": 19000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "11",
@@ -156,12 +156,12 @@
       "type": "Private",
       "description": "Elite graduate research university ranked #1 globally in Citations per Faculty. Fully funded fellowships for all.",
       "tuitionFee": "Fully Funded",
-      "acceptanceRate": 7,
+      "acceptanceRate": 5,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "12",
@@ -170,13 +170,13 @@
       "location": "Dhahran, Saudi Arabia",
       "type": "Public",
       "description": "Top-ranked university in the Arab world (#101 globally in QS 2025), world-renowned for petroleum & engineering.",
-      "tuitionFee": 9000,
-      "acceptanceRate": 18,
+      "tuitionFee": 8000,
+      "acceptanceRate": 20,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "13",
@@ -185,13 +185,13 @@
       "location": "Doha, Qatar",
       "type": "Public",
       "description": "Premier national university of Qatar, ranked #122 globally by QS 2025, offering premier STEM & health tracks.",
-      "tuitionFee": 8200,
+      "tuitionFee": 20000,
       "acceptanceRate": 35,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "14",
@@ -200,13 +200,13 @@
       "location": "Riyadh, Saudi Arabia",
       "type": "Public",
       "description": "First university in KSA (#203 globally in QS 2025), renowned for medical, engineering, and artificial intelligence programs.",
-      "tuitionFee": 6500,
-      "acceptanceRate": 65,
+      "tuitionFee": 5000,
+      "acceptanceRate": 35,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "15",
@@ -215,14 +215,14 @@
       "location": "Abu Dhabi, UAE",
       "type": "Private",
       "description": "Multi-campus private university in the UAE ranked #581 in QS 2025, AACSB and EQUIS accredited for business.",
-      "tuitionFee": 16000,
-      "acceptanceRate": 78,
+      "tuitionFee": 20000,
+      "acceptanceRate": 85,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "16",
@@ -231,13 +231,13 @@
       "location": "Abha, Saudi Arabia",
       "type": "Public",
       "description": "Major public research institution in southern KSA ranked #601 in QS 2025, specialized in healthcare & tech.",
-      "tuitionFee": 5500,
-      "acceptanceRate": 72,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "17",
@@ -246,13 +246,13 @@
       "location": "Beirut, Lebanon",
       "type": "Private",
       "description": "Leading American-accredited institution in the region, offering top business, pre-med, and engineering programs.",
-      "tuitionFee": 19500,
-      "acceptanceRate": 73,
+      "tuitionFee": 28000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "18",
@@ -261,13 +261,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Private",
       "description": "Research-led university operating in partnership with UK Russell Group universities (Edinburgh, Glasgow, Manchester).",
-      "tuitionFee": 18000,
+      "tuitionFee": 28000,
       "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "19",
@@ -276,13 +276,13 @@
       "location": "Al Khobar, Saudi Arabia",
       "type": "Private",
       "description": "Modern private university in KSA (#591 in QS 2025), designed with American curriculum standards for tech & leadership.",
-      "tuitionFee": 16000,
-      "acceptanceRate": 72,
+      "tuitionFee": 20000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "20",
@@ -291,13 +291,13 @@
       "location": "Jeddah, Saudi Arabia",
       "type": "Public",
       "description": "Consistently ranked #109 globally by QS World Rankings, KAU is one of the highest-impact research hubs in the Middle East.",
-      "tuitionFee": 7000,
-      "acceptanceRate": 25,
+      "tuitionFee": 5000,
+      "acceptanceRate": 35,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "21",
@@ -306,13 +306,13 @@
       "location": "University City, Sharjah",
       "type": "Private",
       "description": "Comprehensive regional university ranked #445 in QS 2025, offering premier medical, law, and engineering faculties.",
-      "tuitionFee": 21000,
-      "acceptanceRate": 68,
+      "tuitionFee": 18000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "22",
@@ -321,13 +321,13 @@
       "location": "Ajman, UAE",
       "type": "Private",
       "description": "First private university in the UAE, ranked #477 globally in QS 2025, famous for dentistry and architecture.",
-      "tuitionFee": 17500,
-      "acceptanceRate": 75,
+      "tuitionFee": 16000,
+      "acceptanceRate": 85,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "23",
@@ -336,14 +336,14 @@
       "location": "City Walk, Dubai",
       "type": "Private",
       "description": "Ranked #521 in QS 2025, CUD offers Canadian curriculum pathways with direct transfer options to top Canadian universities.",
-      "tuitionFee": 23000,
-      "acceptanceRate": 80,
+      "tuitionFee": 20000,
+      "acceptanceRate": 85,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "24",
@@ -352,13 +352,13 @@
       "location": "Al Ain, Abu Dhabi",
       "type": "Private",
       "description": "Ranked #551 in QS World Rankings 2025, accredited by ABET for engineering and ACPE for pharmacy.",
-      "tuitionFee": 16500,
-      "acceptanceRate": 76,
+      "tuitionFee": 16000,
+      "acceptanceRate": 85,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "25",
@@ -367,14 +367,14 @@
       "location": "Media City, Dubai",
       "type": "Private",
       "description": "SACSCOC American-accredited institution in Dubai (#601 in QS 2025), renowned for business, architecture, and journalism.",
-      "tuitionFee": 26000,
-      "acceptanceRate": 65,
+      "tuitionFee": 27000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "26",
@@ -383,13 +383,13 @@
       "location": "Dammam, Saudi Arabia",
       "type": "Public",
       "description": "Major public medical and research university in KSA's Eastern Province, ranked #651 in QS 2025.",
-      "tuitionFee": 6000,
-      "acceptanceRate": 40,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "27",
@@ -398,13 +398,13 @@
       "location": "Riyadh, Saudi Arabia",
       "type": "Public",
       "description": "Largest women's university in the world, ranked #701 in QS 2025, offering premier medical, science, and AI faculties.",
-      "tuitionFee": 5800,
-      "acceptanceRate": 55,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "28",
@@ -413,13 +413,13 @@
       "location": "Riyadh, Saudi Arabia",
       "type": "Private",
       "description": "Non-profit private university in Riyadh (#720 in QS 2025), accredited by AACSB and ABET for computing and law.",
-      "tuitionFee": 17000,
-      "acceptanceRate": 60,
+      "tuitionFee": 20000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "29",
@@ -428,13 +428,13 @@
       "location": "Makkah, Saudi Arabia",
       "type": "Public",
       "description": "Historic public university in Makkah ranked #441 in QS World Rankings, specialized in Islamic studies, engineering, and medicine.",
-      "tuitionFee": 6200,
-      "acceptanceRate": 50,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "30",
@@ -443,12 +443,12 @@
       "location": "Education City, Doha, Qatar",
       "type": "Public",
       "description": "Homegrown graduate research university in Qatar's Education City, specializing in genomics, cybersecurity, and Islamic studies.",
-      "tuitionFee": 14000,
-      "acceptanceRate": 25,
+      "tuitionFee": 35000,
+      "acceptanceRate": 15,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "31",
@@ -457,12 +457,12 @@
       "location": "Education City, Doha, Qatar",
       "type": "Branch Campus",
       "description": "Branch campus of Texas A&M University offering world-renowned chemical, electrical, mechanical, and petroleum engineering degrees.",
-      "tuitionFee": 27000,
-      "acceptanceRate": 30,
+      "tuitionFee": 55000,
+      "acceptanceRate": 18,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "32",
@@ -471,12 +471,12 @@
       "location": "Education City, Doha, Qatar",
       "type": "Branch Campus",
       "description": "Branch of Carnegie Mellon University delivering elite degrees in computer science, business administration, and information systems.",
-      "tuitionFee": 29000,
-      "acceptanceRate": 22,
+      "tuitionFee": 65000,
+      "acceptanceRate": 18,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "33",
@@ -485,12 +485,12 @@
       "location": "Education City, Doha, Qatar",
       "type": "Branch Campus",
       "description": "First American medical school established outside the US, delivering Cornell University MD degrees in Education City.",
-      "tuitionFee": 35000,
-      "acceptanceRate": 12,
+      "tuitionFee": 65000,
+      "acceptanceRate": 8,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "34",
@@ -499,12 +499,12 @@
       "location": "Reem Island, Abu Dhabi",
       "type": "Branch Campus",
       "description": "French humanities and science university in Abu Dhabi offering double-accredited European degrees from Sorbonne Paris.",
-      "tuitionFee": 24000,
-      "acceptanceRate": 60,
+      "tuitionFee": 28000,
+      "acceptanceRate": 55,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "35",
@@ -513,14 +513,14 @@
       "location": "Knowledge Park, Dubai",
       "type": "Branch Campus",
       "description": "Oldest international Australian university branch in Dubai, offering accredited Australian degrees in business and IT.",
-      "tuitionFee": 21500,
-      "acceptanceRate": 70,
+      "tuitionFee": 19000,
+      "acceptanceRate": 80,
       "intakes": [
         "Fall",
         "Spring",
         "Summer"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "36",
@@ -529,13 +529,13 @@
       "location": "Knowledge Park, Dubai",
       "type": "Branch Campus",
       "description": "Leading UK branch campus in Dubai with over 4,500 students, offering UK honors degrees in law, computer science, and psychology.",
-      "tuitionFee": 19000,
-      "acceptanceRate": 75,
+      "tuitionFee": 15000,
+      "acceptanceRate": 85,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "37",
@@ -544,13 +544,13 @@
       "location": "Silicon Oasis, Dubai",
       "type": "Branch Campus",
       "description": "Not-for-profit American branch campus in Dubai Silicon Oasis, offering ABET-accredited engineering and cybersecurity programs.",
-      "tuitionFee": 23500,
-      "acceptanceRate": 65,
+      "tuitionFee": 25000,
+      "acceptanceRate": 75,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "38",
@@ -559,13 +559,13 @@
       "location": "Riyadh, Saudi Arabia",
       "type": "Public",
       "description": "Major public university in Riyadh (#751 in QS 2025), combining Islamic jurisprudence with computer science and engineering.",
-      "tuitionFee": 5500,
-      "acceptanceRate": 60,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "39",
@@ -574,13 +574,13 @@
       "location": "Ras Al Khaimah, UAE",
       "type": "Public",
       "description": "Government-owned American-style university ranked #751 in QS 2025, accredited by SACSCOC and ABET.",
-      "tuitionFee": 18000,
-      "acceptanceRate": 78,
+      "tuitionFee": 19000,
+      "acceptanceRate": 80,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "40",
@@ -589,13 +589,13 @@
       "location": "Medina, Saudi Arabia",
       "type": "Public",
       "description": "Prominent public university in Medina (#901 in QS 2025), offering comprehensive programs in medicine, dentistry, and computer science.",
-      "tuitionFee": 5200,
-      "acceptanceRate": 65,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "41",
@@ -604,13 +604,13 @@
       "location": "Buraydah, Saudi Arabia",
       "type": "Public",
       "description": "One of KSA's largest public institutions (#851 in QS 2025), with 38 colleges covering agriculture, medicine, and engineering.",
-      "tuitionFee": 5400,
-      "acceptanceRate": 70,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "42",
@@ -619,13 +619,13 @@
       "location": "Riyadh, Saudi Arabia",
       "type": "Private",
       "description": "Student-centered non-profit private university in Riyadh (#901 in QS 2025), founded by King Faisal Foundation for medicine & business.",
-      "tuitionFee": 24000,
-      "acceptanceRate": 45,
+      "tuitionFee": 30000,
+      "acceptanceRate": 25,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "43",
@@ -634,13 +634,13 @@
       "location": "Jazan, Saudi Arabia",
       "type": "Public",
       "description": "Comprehensive public university in southern KSA (#951 in QS 2025), specializing in marine biology, medicine, and engineering.",
-      "tuitionFee": 5000,
-      "acceptanceRate": 75,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "44",
@@ -649,12 +649,12 @@
       "location": "Ajman, UAE",
       "type": "Private",
       "description": "Leading private medical university in the UAE, famous for medicine, pharmacy, dentistry, and biomedical research.",
-      "tuitionFee": 32000,
-      "acceptanceRate": 40,
+      "tuitionFee": 36000,
+      "acceptanceRate": 25,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "45",
@@ -663,13 +663,13 @@
       "location": "Abu Dhabi, UAE",
       "type": "Public",
       "description": "Largest applied higher education institution in the UAE with 16 campuses, educating over 23,000 national students.",
-      "tuitionFee": 12000,
-      "acceptanceRate": 82,
+      "tuitionFee": 15000,
+      "acceptanceRate": 70,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "46",
@@ -678,13 +678,13 @@
       "location": "Hail, Saudi Arabia",
       "type": "Public",
       "description": "Public university in northern KSA (#801 in QS 2025), offering modern faculties in software engineering, health, and arts.",
-      "tuitionFee": 5100,
-      "acceptanceRate": 72,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "47",
@@ -693,13 +693,13 @@
       "location": "Sakaka, Saudi Arabia",
       "type": "Public",
       "description": "Public research institution in Al Jouf region (#801 in QS 2025), featuring accredited medical, computer, and renewable energy tracks.",
-      "tuitionFee": 4900,
-      "acceptanceRate": 74,
+      "tuitionFee": 4000,
+      "acceptanceRate": 45,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "48",
@@ -708,13 +708,13 @@
       "location": "Jeddah, Saudi Arabia",
       "type": "Private",
       "description": "First private non-profit women's university in KSA, famous for innovative engineering, cinema, and computer science programs.",
-      "tuitionFee": 18500,
+      "tuitionFee": 18000,
       "acceptanceRate": 65,
       "intakes": [
         "Fall",
         "Spring"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "49",
@@ -723,12 +723,12 @@
       "location": "Education City, Doha, Qatar",
       "type": "Branch Campus",
       "description": "Medill School branch offering world-class journalism, media, communication, and strategic marketing degrees in Education City.",
-      "tuitionFee": 28500,
-      "acceptanceRate": 25,
+      "tuitionFee": 65000,
+      "acceptanceRate": 18,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     },
     {
       "id": "50",
@@ -737,12 +737,12 @@
       "location": "Education City, Doha, Qatar",
       "type": "Branch Campus",
       "description": "Edmund A. Walsh School of Foreign Service branch in Qatar, offering Bachelor of Science in Foreign Service (BSFS) degrees.",
-      "tuitionFee": 29500,
-      "acceptanceRate": 20,
+      "tuitionFee": 65000,
+      "acceptanceRate": 18,
       "intakes": [
         "Fall"
       ],
-      "lastUpdated": "2026-07-21T20:30:18.769Z"
+      "lastUpdated": "2026-07-23T20:30:40.417Z"
     }
   ],
   "schools": [
