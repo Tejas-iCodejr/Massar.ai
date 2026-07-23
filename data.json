@@ -1557,19 +1557,19 @@
     },
     {
       "id": "6",
-      "title": "Autodesk Student Software Suite",
+      "title": "Autodesk Education Suite & Fusion 360",
       "provider": "Autodesk",
       "domain": "autodesk.com",
-      "description": "Get free 1-year educational access to Autodesk products including AutoCAD, Revit, Maya, and Fusion 360. Verifiable via student ID or enrollment.",
+      "description": "100% free professional 1-year renewable licenses for AutoCAD, Revit, Maya, Fusion 360, and Inventor for student makers and engineering designers.",
       "category": "Design & Creative",
       "link": "https://www.autodesk.com/education/free-software/overview"
     },
     {
       "id": "7",
-      "title": "Apple Education Savings",
+      "title": "Apple Education Store GCC Savings",
       "provider": "Apple Middle East",
       "domain": "apple.com",
-      "description": "Save on a new Mac or iPad with Apple education pricing. Available to newly admitted and current UAE/Middle East university students and parents.",
+      "description": "Save up to AED 600 on new Mac and iPad models with official Apple Education pricing + receive Apple Pencil or AirPods bonus during promotional cycles for GCC university students.",
       "category": "Hardware",
       "link": "https://www.apple.com/ae-edu/shop"
     },
@@ -1611,10 +1611,10 @@
     },
     {
       "id": "12",
-      "title": "Emirates Student Flight Discount",
+      "title": "Emirates Airline Student Special Offer",
       "provider": "Emirates",
       "domain": "emirates.com",
-      "description": "Up to 10% off Economy Class and 5% off Premium/Business Class flights plus extra baggage allowance for student travelers.",
+      "description": "Up to 10% off Economy Class and 5% off Business Class flights plus +10kg extra baggage allowance for verified student travelers across the GCC and internationally.",
       "category": "Travel",
       "link": "https://www.emirates.com/ae/english/special-offers/student-special-fares/"
     },
@@ -2453,7 +2453,7 @@
       "domain": "cloud.google.com",
       "description": "50% discount voucher for Associate Cloud Engineer (ACE) certification exams + free learning paths for university cohorts.",
       "category": "Learning & Education",
-      "link": "https://cloud.google.com/edu/students"
+      "link": "https://cloud.google.com/innovators/students"
     },
     {
       "id": "106",
@@ -2474,15 +2474,6 @@
       "link": "https://www.redhat.com/en/services/training/red-hat-academy"
     },
     {
-      "id": "108",
-      "title": "Autodesk Fusion 360 Education License",
-      "provider": "Autodesk",
-      "domain": "autodesk.com",
-      "description": "100% free professional 3D CAD, CAM, and generative design software license for student engineering teams & makers.",
-      "category": "Design & Creative",
-      "link": "https://www.autodesk.com/education/edu-software/overview"
-    },
-    {
       "id": "109",
       "title": "SolidWorks Student Edition",
       "provider": "Dassault Systèmes",
@@ -2490,15 +2481,6 @@
       "description": "80% discount on 3D CAD design suites ($20/yr instead of $1,000+) for university engineering students.",
       "category": "Design & Creative",
       "link": "https://www.solidworks.com/product/students"
-    },
-    {
-      "id": "110",
-      "title": "Apple Education Store GCC Savings",
-      "provider": "Apple Inc.",
-      "domain": "apple.com",
-      "description": "Save up to AED 600 on Mac and iPad models + receive an Apple Pencil or AirPods during official Back-to-School promotion cycles.",
-      "category": "Hardware",
-      "link": "https://www.apple.com/ae-edu/shop"
     },
     {
       "id": "111",
@@ -2517,15 +2499,6 @@
       "description": "10% to 20% fare discounts, +10kg extra baggage allowance, complimentary onboard Wi-Fi, and date change flexibility.",
       "category": "Travel",
       "link": "https://www.qatarairways.com/en/student-club.html"
-    },
-    {
-      "id": "113",
-      "title": "Emirates Airline Student Special Offer",
-      "provider": "Emirates",
-      "domain": "emirates.com",
-      "description": "10% off Economy fares, 5% off Business Class fares, +10kg extra baggage (or 1 extra piece) for students traveling across GCC and globally.",
-      "category": "Travel",
-      "link": "https://www.emirates.com/ae/english/special-offers/student-special-fares/"
     },
     {
       "id": "114",
