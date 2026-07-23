@@ -133,7 +133,7 @@ export function Perks() {
         <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
           <span className="font-sans text-xs text-stone-gray uppercase font-semibold tracking-wider shrink-0">Category:</span>
           <div className="flex gap-1.5 font-sans overflow-x-auto">
-            {(['All', 'AI & ML', 'Development Tools', 'Design & Creative', 'Learning & Education', 'Media & Entertainment', 'Cloud & Hosting', 'Productivity', 'Apparel', 'Travel'] as const).map(cat => (
+            {(['All', 'Grants & Funding', 'AI & ML', 'Development Tools', 'Design & Creative', 'Learning & Education', 'Media & Entertainment', 'Cloud & Hosting', 'Productivity', 'Apparel', 'Travel'] as const).map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}

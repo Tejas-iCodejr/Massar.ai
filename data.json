@@ -2310,6 +2310,96 @@
       "description": "Free 12-month Starter plan. Manage team projects with interactive lists, Kanban boards, Gantt timelines, and task assignments.",
       "category": "Productivity",
       "link": "https://asana.com/nonprofit/education"
+    },
+    {
+      "id": "90",
+      "title": "Zayed Sustainability Prize Global High Schools Grant",
+      "provider": "Masdar & UAE Government",
+      "domain": "zayedsustainabilityprize.com",
+      "description": "Non-dilutive funding grant up to $150,000 USD awarded to student-led climate tech, clean energy, water, and food sustainability projects in high schools (K-12).",
+      "category": "Grants & Funding",
+      "link": "https://zayedsustainabilityprize.com/en/categories/global-high-schools"
+    },
+    {
+      "id": "91",
+      "title": "Undergraduate Research Experience Program (UREP)",
+      "provider": "QRDI Council & Qatar National Research Fund",
+      "domain": "qrdi.org.qa",
+      "description": "Equity-free research & builder grants for undergraduate student teams in Qatar to conduct hands-on AI, engineering, health, and clean energy innovation under faculty mentorship.",
+      "category": "Grants & Funding",
+      "link": "https://qrdi.org.qa/en-us/Funding/Undergraduate-Research-Experience-Program"
+    },
+    {
+      "id": "92",
+      "title": "Mohammed Bin Rashid Innovation Fund (MBRIF) Grant",
+      "provider": "Ministry of Finance UAE",
+      "domain": "mbrif.ae",
+      "description": "Government-backed innovation funding and non-dilutive accelerator grants for student founders and tech builders establishing operations in the UAE.",
+      "category": "Grants & Funding",
+      "link": "https://www.mbrif.ae/en/member-space/apply"
+    },
+    {
+      "id": "93",
+      "title": "RDIA Saudi Student Innovation Grant (SIGP)",
+      "provider": "Research, Development & Innovation Authority (KSA)",
+      "domain": "rdia.gov.sa",
+      "description": "Financial grants up to SAR 4,000,000 for university student researchers and young tech builders commercializing AI, robotics, and deep-tech inventions in Saudi Arabia.",
+      "category": "Grants & Funding",
+      "link": "https://rdia.gov.sa"
+    },
+    {
+      "id": "94",
+      "title": "TDRA ICT Fund BETHA Student Research Grant",
+      "provider": "Telecommunications & Digital Government Regulatory Authority",
+      "domain": "tdra.gov.ae",
+      "description": "Full tuition grants and research project funding for distinguished undergraduate & Master’s students pursuing AI, Computer Engineering, and Cybersecurity in the UAE.",
+      "category": "Grants & Funding",
+      "link": "https://tdra.gov.ae/en/Services/Betha"
+    },
+    {
+      "id": "95",
+      "title": "KAUST Destination & Seed Fund for Student Builders",
+      "provider": "KAUST Entrepreneurship Center",
+      "domain": "kaust.edu.sa",
+      "description": "Seed funding, lab prototyping grants up to $50,000 USD, and incubation space for university student founders building tech ventures in Saudi Arabia.",
+      "category": "Grants & Funding",
+      "link": "https://entrepreneurship.kaust.edu.sa"
+    },
+    {
+      "id": "96",
+      "title": "Dubai Future Foundation Student Free Zone Grant",
+      "provider": "Dubai Future Foundation",
+      "domain": "dubaifuture.ae",
+      "description": "Grants and free-zone incorporation support enabling university students in Dubai to register businesses, access prototype labs, and pitch to seed funds.",
+      "category": "Grants & Funding",
+      "link": "https://www.dubaifuture.ae"
+    },
+    {
+      "id": "97",
+      "title": "Sheraa Student Seed & Venture Grant",
+      "provider": "Sharjah Entrepreneurship Center",
+      "domain": "sheraa.ae",
+      "description": "Equity-free grant funding, mentorship, and co-working space for undergraduate and graduate student entrepreneurs building tech and social impact ventures.",
+      "category": "Grants & Funding",
+      "link": "https://sheraa.ae"
+    },
+    {
+      "id": "98",
+      "title": "QSTP Product Development & Proof of Concept Grant",
+      "provider": "Qatar Science & Technology Park",
+      "domain": "qstp.org.qa",
+      "description": "Cost-sharing grants up to QAR 1,400,000 for student innovators and tech builders developing working software or hardware prototypes.",
+      "category": "Grants & Funding",
+      "link": "https://qstp.org.qa/product-development-fund/"
+    },
+    {
+      "id": "99",
+      "title": "Hamdan Foundation Student Innovation Award Grant",
+      "provider": "Hamdan Bin Rashid Al Maktoum Foundation",
+      "domain": "ha.ae",
+      "description": "Financial innovation awards and project expansion grants for outstanding K-12 and undergraduate student inventors in the UAE and Gulf region.",
+      "category": "Grants & Funding",
+      "link": "https://ha.ae"
     }
   ]
 }
