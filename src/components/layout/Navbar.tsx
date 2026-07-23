@@ -233,18 +233,18 @@ export function Navbar() {
               
               {/* Search Header Input */}
               <div className="flex items-center gap-3 border-b border-hairline-mist pb-4 mb-4">
-                <Search className="w-5 h-5 text-[#ff705d]" strokeWidth={2} />
+                <Search className="w-5 h-5 text-[#2ba0ff]" strokeWidth={2} />
                 <input 
                   ref={searchInputRef}
                   type="text" 
                   value={searchQuery}
                   onChange={handleSearchChange}
                   placeholder="Search universities, schools, opportunities..."
-                  className="flex-grow bg-transparent border-0 outline-none font-sans font-medium text-base text-ink placeholder-stone-gray/60 focus:placeholder-[#ff705d]/40"
+                  className="flex-grow bg-transparent border-0 outline-none font-sans font-medium text-base text-ink placeholder-stone-gray/60 focus:placeholder-[#2ba0ff]/40"
                 />
                 <button 
                   onClick={() => setSearchOpen(false)}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#ff705d]/10 text-stone-gray hover:text-[#ff705d] transition-colors cursor-pointer"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[#2ba0ff]/10 text-stone-gray hover:text-[#2ba0ff] transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -260,16 +260,16 @@ export function Navbar() {
                         setSearchOpen(false);
                         navigate(`/details/${item.type}/${item.id}`);
                       }}
-                      className="w-full text-left p-3.5 hover:bg-[#ff705d]/10 active:bg-[#ff705d]/20 rounded-2xl transition-all cursor-pointer select-none flex items-start gap-3.5 group border border-transparent hover:border-[#ff705d]/20"
+                      className="w-full text-left p-3.5 hover:bg-[#2ba0ff]/10 active:bg-[#2ba0ff]/20 rounded-2xl transition-all cursor-pointer select-none flex items-start gap-3.5 group border border-transparent hover:border-[#2ba0ff]/20"
                     >
-                      <div className="w-9 h-9 bg-[#ff705d]/10 rounded-xl flex items-center justify-center shrink-0">
-                        {item.type === 'university' && <GraduationCap className="w-4.5 h-4.5 text-[#ff705d]" strokeWidth={1.75} />}
-                        {item.type === 'school' && <School className="w-4.5 h-4.5 text-[#ff705d]" strokeWidth={1.75} />}
-                        {item.type === 'program' && <BookOpen className="w-4.5 h-4.5 text-[#ff705d]" strokeWidth={1.75} />}
+                      <div className="w-9 h-9 bg-[#2ba0ff]/10 rounded-xl flex items-center justify-center shrink-0">
+                        {item.type === 'university' && <GraduationCap className="w-4.5 h-4.5 text-[#2ba0ff]" strokeWidth={1.75} />}
+                        {item.type === 'school' && <School className="w-4.5 h-4.5 text-[#2ba0ff]" strokeWidth={1.75} />}
+                        {item.type === 'program' && <BookOpen className="w-4.5 h-4.5 text-[#2ba0ff]" strokeWidth={1.75} />}
                       </div>
                       <div className="flex-grow">
                         <div className="flex items-center justify-between">
-                          <span className="font-sans font-bold text-sm text-ink group-hover:text-[#ff705d] transition-colors">{item.name}</span>
+                          <span className="font-sans font-bold text-sm text-ink group-hover:text-[#2ba0ff] transition-colors">{item.name}</span>
                           <span className="font-mono text-[9px] uppercase tracking-wider text-stone-gray px-2 py-0.5 bg-gray-100 rounded-md">{item.category}</span>
                         </div>
                         <p className="font-sans text-xs text-stone-gray mt-0.5 leading-normal">{item.desc}</p>
