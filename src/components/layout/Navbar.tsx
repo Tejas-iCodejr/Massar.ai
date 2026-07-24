@@ -317,44 +317,11 @@ export function Navbar() {
               className="fixed left-0 top-0 bottom-0 w-[300px] sm:w-[340px] bg-white border-r border-hairline-mist z-50 shadow-2xl p-6 sm:p-8 pt-24 flex flex-col justify-between overflow-y-auto"
             >
               
-              {/* Direct Grouped Navigation Sections */}
+              {/* Direct Workspace & Tools Navigation Section */}
               <div className="flex-1 space-y-6 overflow-y-auto pr-1">
                 
-                {/* SECTION 1: DIRECTORIES */}
+                {/* SECTION: WORKSPACE & TOOLS */}
                 <div>
-                  <span className="font-mono text-[9px] font-bold text-stone-gray uppercase tracking-widest pl-3 mb-2 block">
-                    Directories
-                  </span>
-                  
-                  <div className="space-y-1">
-                    {[...leftLinks, ...rightLinks].map((link) => {
-                      const Icon = link.icon;
-                      const isActive = location.pathname === link.path;
-                      return (
-                        <Link
-                          key={link.path}
-                          to={link.path}
-                          onClick={() => setDrawerOpen(false)}
-                          className={cn(
-                            "px-4 py-3 flex items-center justify-between font-sans font-semibold text-[14px] rounded-[50px] transition-all select-none group",
-                            isActive 
-                              ? "bg-[#8ed462]/20 text-ink font-bold shadow-xs border border-[#8ed462]/30" 
-                              : "text-ink/80 hover:bg-stone-100/80 hover:text-ink"
-                          )}
-                        >
-                          <div className="flex items-center gap-3">
-                            <Icon className={cn("w-4.5 h-4.5 transition-colors", isActive ? "text-ink font-bold" : "text-stone-gray group-hover:text-ink")} />
-                            <span>{link.name}</span>
-                          </div>
-                          <ChevronRight className={cn("w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5", isActive ? "text-ink" : "text-stone-gray/50")} />
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* SECTION 2: WORKSPACE & TOOLS */}
-                <div className="pt-2 border-t border-hairline-mist">
                   <span className="font-mono text-[9px] font-bold text-stone-gray uppercase tracking-widest pl-3 mb-2 block">
                     Workspace & Tools
                   </span>
