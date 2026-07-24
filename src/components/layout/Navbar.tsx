@@ -157,12 +157,12 @@ export function Navbar() {
         )}
       </button>
 
-      {/* Main Navbar Capsule (Authentic macOS Sequoia / visionOS Liquid Glass) */}
-      <div className="bg-white/40 backdrop-blur-[32px] backdrop-saturate-[190%] backdrop-brightness-[105%] border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.04),inset_0_1.5px_1px_0_rgba(255,255,255,0.9),inset_0_-1px_1px_0_rgba(0,0,0,0.03)] rounded-[50px] px-6 h-16 sm:h-20 flex items-center justify-between w-fit mx-auto transition-all duration-300 relative select-none overflow-hidden group/nav">
+      {/* Main Navbar Capsule (Ultra-Liquid macOS Sequoia & visionOS Glass) */}
+      <div className="bg-[#f5f1e4]/35 backdrop-blur-[45px] backdrop-saturate-[220%] backdrop-brightness-[108%] border-2 border-white/80 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1),0_8px_20px_-4px_rgba(0,0,0,0.06),inset_0_2px_2px_0_rgba(255,255,255,1),inset_0_-1.5px_2px_0_rgba(0,0,0,0.04)] rounded-[50px] px-6 h-16 sm:h-20 flex items-center justify-between w-fit mx-auto transition-all duration-300 relative select-none overflow-hidden group/nav">
         
-        {/* Top Specular Liquid Light Sheen Gradient */}
-        <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-80 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/[0.02] pointer-events-none" />
+        {/* Top Specular Liquid Light Sheen Ribbon */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/[0.02] pointer-events-none" />
 
         {/* Desktop View: Centered, evenly spaced links (8px system) */}
         <div className="hidden lg:flex items-center gap-6 h-full relative z-10">
@@ -176,10 +176,10 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative px-4 py-2 flex items-center gap-2 font-sans text-[14px] rounded-[50px] transition-all duration-200 ease-out select-none group/link",
+                  "relative px-4 py-2.5 flex items-center gap-2 font-sans text-[14px] rounded-[50px] transition-all duration-200 ease-out select-none group/link",
                   isActive 
-                    ? "bg-white/70 text-ink font-bold shadow-[0_2px_8px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.8)] border border-white/80" 
-                    : "text-ink/80 hover:text-ink hover:bg-white/40 hover:border hover:border-white/50 hover:shadow-xs"
+                    ? "bg-gradient-to-b from-white/95 to-white/70 text-ink font-bold shadow-[0_4px_16px_rgba(0,0,0,0.06),inset_0_1.5px_2px_rgba(255,255,255,1)] border border-white" 
+                    : "text-ink/80 hover:text-ink hover:bg-white/50 hover:border hover:border-white/70 hover:shadow-[0_2px_10px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.9)] hover:-translate-y-[1px]"
                 )}
               >
                 <Icon className={cn("w-[18px] h-[18px] transition-transform duration-200 group-hover/link:scale-110", isActive ? "text-[#4da81b]" : "text-stone-gray group-hover/link:text-ink")} strokeWidth={2} />
@@ -187,7 +187,7 @@ export function Navbar() {
                 {isActive && (
                   <motion.div 
                     layoutId="activeUnderline" 
-                    className="absolute -bottom-1 left-4 right-4 h-[3px] bg-[#8ed462] rounded-full shadow-[0_2px_6px_rgba(142,212,98,0.5)]" 
+                    className="absolute -bottom-1 left-4 right-4 h-[3.5px] bg-[#8ed462] rounded-full shadow-[0_3px_8px_rgba(142,212,98,0.6)]" 
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -195,9 +195,9 @@ export function Navbar() {
             );
           })}
 
-          {/* Center Logo Badge with Liquid Glass Embellishment */}
-          <Link to="/" className="flex items-center group h-full px-3 transition-transform duration-200 hover:scale-[1.03]">
-            <div className="w-10 h-10 bg-[#8ed462] rounded-[14px] flex items-center justify-center transition-all duration-300 group-hover:rotate-6 shadow-[0_4px_14px_rgba(142,212,98,0.4),inset_0_1px_1px_rgba(255,255,255,0.6)] border border-white/40">
+          {/* Center Glossy 3D Logo Badge */}
+          <Link to="/" className="flex items-center group h-full px-3 transition-transform duration-200 hover:scale-[1.04]">
+            <div className="w-10.5 h-10.5 bg-gradient-to-br from-[#a6e67e] via-[#8ed462] to-[#7ac24e] rounded-[16px] flex items-center justify-center transition-all duration-300 group-hover:rotate-6 shadow-[0_6px_20px_rgba(142,212,98,0.5),inset_0_2px_2px_rgba(255,255,255,0.8)] border border-white/60">
               <span className="text-[#2c2e2a] font-sans font-black text-xl select-none tracking-tighter">M</span>
             </div>
             <div className="ml-3 flex flex-col justify-center">
@@ -214,10 +214,10 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative px-4 py-2 flex items-center gap-2 font-sans text-[14px] rounded-[50px] transition-all duration-200 ease-out select-none group/link",
+                  "relative px-4 py-2.5 flex items-center gap-2 font-sans text-[14px] rounded-[50px] transition-all duration-200 ease-out select-none group/link",
                   isActive 
-                    ? "bg-white/70 text-ink font-bold shadow-[0_2px_8px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.8)] border border-white/80" 
-                    : "text-ink/80 hover:text-ink hover:bg-white/40 hover:border hover:border-white/50 hover:shadow-xs"
+                    ? "bg-gradient-to-b from-white/95 to-white/70 text-ink font-bold shadow-[0_4px_16px_rgba(0,0,0,0.06),inset_0_1.5px_2px_rgba(255,255,255,1)] border border-white" 
+                    : "text-ink/80 hover:text-ink hover:bg-white/50 hover:border hover:border-white/70 hover:shadow-[0_2px_10px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.9)] hover:-translate-y-[1px]"
                 )}
               >
                 <Icon className={cn("w-[18px] h-[18px] transition-transform duration-200 group-hover/link:scale-110", isActive ? "text-[#4da81b]" : "text-stone-gray group-hover/link:text-ink")} strokeWidth={2} />
@@ -225,7 +225,7 @@ export function Navbar() {
                 {isActive && (
                   <motion.div 
                     layoutId="activeUnderline" 
-                    className="absolute -bottom-1 left-4 right-4 h-[3px] bg-[#8ed462] rounded-full shadow-[0_2px_6px_rgba(142,212,98,0.5)]" 
+                    className="absolute -bottom-1 left-4 right-4 h-[3.5px] bg-[#8ed462] rounded-full shadow-[0_3px_8px_rgba(142,212,98,0.6)]" 
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -236,7 +236,7 @@ export function Navbar() {
           {/* Liquid Glass Search Trigger Button */}
           <button
             onClick={() => setSearchOpen(true)}
-            className="w-10 h-10 rounded-full bg-white/60 hover:bg-white/90 border border-white/80 shadow-[0_2px_8px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] flex items-center justify-center text-ink hover:text-[#2ba0ff] transition-all duration-200 hover:scale-105 cursor-pointer ml-1"
+            className="w-10.5 h-10.5 rounded-full bg-gradient-to-b from-white/80 to-white/50 hover:from-white hover:to-white/80 border border-white/90 shadow-[0_4px_12px_rgba(0,0,0,0.05),inset_0_1.5px_1.5px_rgba(255,255,255,1)] flex items-center justify-center text-ink hover:text-[#2ba0ff] transition-all duration-200 hover:scale-105 cursor-pointer ml-1"
             title="Search Directory (⌘K)"
           >
             <Search className="w-4 h-4" strokeWidth={2.2} />
