@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Card } from '../components/ui/Card';
 import { UniversityLogo } from '../components/ui/UniversityLogo';
 import { Button } from '../components/ui/Button';
 import { University } from '../types';
-import { Scale, ArrowRight, X, Sparkles, ChevronDown, CheckCircle, Award } from 'lucide-react';
+import { Scale, ArrowRight, X, Sparkles, ChevronDown, Search, Check, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
@@ -50,12 +50,9 @@ export function Compare() {
     localStorage.setItem('compare_ids', JSON.stringify(activeIds));
   }, [slot1Id, slot2Id, slot3Id]);
 
-  // Smart Exclusion Filtering for Dropdowns
-  // Slot 1 excludes Slot 2 and Slot 3
+  // Smart Mutual Exclusion Filtering for Dropdowns
   const optionsForSlot1 = universities.filter(u => u.id !== slot2Id && u.id !== slot3Id);
-  // Slot 2 excludes Slot 1 and Slot 3
   const optionsForSlot2 = universities.filter(u => u.id !== slot1Id && u.id !== slot3Id);
-  // Slot 3 excludes Slot 1 and Slot 2
   const optionsForSlot3 = universities.filter(u => u.id !== slot1Id && u.id !== slot2Id);
 
   const uni1 = universities.find(u => u.id === slot1Id);
@@ -107,26 +104,13 @@ export function Compare() {
           
           {/* ================= SLOT 1 COLUMN ================= */}
           <div className="space-y-4">
-            <div className="bg-white border-2 border-ink rounded-[24px] p-4 shadow-[3px_3px_0px_#2c2e2a]">
-              <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5">
-                University 1 Selection
-              </label>
-              <div className="relative">
-                <select
-                  value={slot1Id}
-                  onChange={e => setSlot1Id(e.target.value)}
-                  className="w-full bg-[#f5f1e4]/60 border border-hairline-mist p-3 pr-10 rounded-xl font-sans font-bold text-xs text-ink appearance-none focus:outline-none focus:border-[#2ba0ff] cursor-pointer"
-                >
-                  <option value="">-- Choose 1st University --</option>
-                  {optionsForSlot1.map(u => (
-                    <option key={u.id} value={u.id}>
-                      {u.name} ({u.location})
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="w-4 h-4 text-stone-gray absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-            </div>
+            <SearchableUniversitySelect
+              slotLabel="University 1 Selection"
+              placeholder="Search & choose 1st University..."
+              selectedId={slot1Id}
+              options={optionsForSlot1}
+              onSelect={setSlot1Id}
+            />
 
             {uni1 ? (
               <RenderUniversityCard uni={uni1} onRemove={() => handleClearSlot(1)} />
@@ -137,26 +121,13 @@ export function Compare() {
 
           {/* ================= SLOT 2 COLUMN ================= */}
           <div className="space-y-4">
-            <div className="bg-white border-2 border-ink rounded-[24px] p-4 shadow-[3px_3px_0px_#2c2e2a]">
-              <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5">
-                University 2 Selection
-              </label>
-              <div className="relative">
-                <select
-                  value={slot2Id}
-                  onChange={e => setSlot2Id(e.target.value)}
-                  className="w-full bg-[#f5f1e4]/60 border border-hairline-mist p-3 pr-10 rounded-xl font-sans font-bold text-xs text-ink appearance-none focus:outline-none focus:border-[#2ba0ff] cursor-pointer"
-                >
-                  <option value="">-- Choose 2nd University --</option>
-                  {optionsForSlot2.map(u => (
-                    <option key={u.id} value={u.id}>
-                      {u.name} ({u.location})
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="w-4 h-4 text-stone-gray absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-            </div>
+            <SearchableUniversitySelect
+              slotLabel="University 2 Selection"
+              placeholder="Search & choose 2nd University..."
+              selectedId={slot2Id}
+              options={optionsForSlot2}
+              onSelect={setSlot2Id}
+            />
 
             {uni2 ? (
               <RenderUniversityCard uni={uni2} onRemove={() => handleClearSlot(2)} />
@@ -167,26 +138,13 @@ export function Compare() {
 
           {/* ================= SLOT 3 COLUMN ================= */}
           <div className="space-y-4">
-            <div className="bg-white border-2 border-ink rounded-[24px] p-4 shadow-[3px_3px_0px_#2c2e2a]">
-              <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5">
-                University 3 Selection (Optional)
-              </label>
-              <div className="relative">
-                <select
-                  value={slot3Id}
-                  onChange={e => setSlot3Id(e.target.value)}
-                  className="w-full bg-[#f5f1e4]/60 border border-hairline-mist p-3 pr-10 rounded-xl font-sans font-bold text-xs text-ink appearance-none focus:outline-none focus:border-[#2ba0ff] cursor-pointer"
-                >
-                  <option value="">-- Choose 3rd University --</option>
-                  {optionsForSlot3.map(u => (
-                    <option key={u.id} value={u.id}>
-                      {u.name} ({u.location})
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="w-4 h-4 text-stone-gray absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-            </div>
+            <SearchableUniversitySelect
+              slotLabel="University 3 Selection (Optional)"
+              placeholder="Search & choose 3rd University..."
+              selectedId={slot3Id}
+              options={optionsForSlot3}
+              onSelect={setSlot3Id}
+            />
 
             {uni3 ? (
               <RenderUniversityCard uni={uni3} onRemove={() => handleClearSlot(3)} />
@@ -198,6 +156,171 @@ export function Compare() {
         </div>
       )}
 
+    </div>
+  );
+}
+
+// Subcomponent: Custom App-Styled Searchable University Dropdown
+function SearchableUniversitySelect({
+  slotLabel,
+  placeholder,
+  selectedId,
+  options,
+  onSelect
+}: {
+  slotLabel: string;
+  placeholder: string;
+  selectedId: string;
+  options: University[];
+  onSelect: (id: string) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const selectedUni = options.find(u => u.id === selectedId) || null;
+
+  // Filter options based on search query
+  const filteredOptions = options.filter(u => {
+    const q = searchTerm.toLowerCase();
+    return u.name.toLowerCase().includes(q) || 
+           u.location.toLowerCase().includes(q) || 
+           u.type.toLowerCase().includes(q);
+  });
+
+  // Focus search input when dropdown opens
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => searchInputRef.current?.focus(), 100);
+    } else {
+      setSearchTerm('');
+    }
+  }, [isOpen]);
+
+  // Click outside listener
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative font-sans" ref={dropdownRef}>
+      <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5 pl-1">
+        {slotLabel}
+      </label>
+
+      {/* Trigger Box - Styled with App UI Aesthetics */}
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        className={cn(
+          "w-full bg-white border-2 border-ink p-3 rounded-[20px] shadow-[3px_3px_0px_#2c2e2a] transition-all cursor-pointer flex items-center justify-between gap-2 select-none",
+          isOpen ? "ring-2 ring-[#2ba0ff]/50 border-[#2ba0ff]" : "hover:bg-stone-50"
+        )}
+      >
+        {selectedUni ? (
+          <div className="flex items-center gap-3 min-w-0">
+            <UniversityLogo domain={selectedUni.domain} name={selectedUni.name} className="w-8 h-8 rounded-xl border border-hairline-mist shrink-0" />
+            <div className="min-w-0">
+              <div className="font-sans font-black text-xs text-ink truncate">{selectedUni.name}</div>
+              <div className="font-mono text-[9px] text-stone-gray truncate">{selectedUni.location} • {selectedUni.type}</div>
+            </div>
+          </div>
+        ) : (
+          <span className="font-sans font-bold text-xs text-stone-gray px-1">
+            {placeholder}
+          </span>
+        )}
+
+        <div className="flex items-center gap-1 shrink-0">
+          {selectedId && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelect('');
+                setIsOpen(false);
+              }}
+              className="p-1 text-stone-gray hover:text-[#ff705d] transition-colors rounded-full hover:bg-stone-100"
+              title="Clear selection"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+          <ChevronDown className={cn("w-4 h-4 text-stone-gray transition-transform duration-200", isOpen && "rotate-180 text-[#2ba0ff]")} />
+        </div>
+      </div>
+
+      {/* Dropdown Menu Overlay with Top Search Bar */}
+      {isOpen && (
+        <div className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-ink rounded-[24px] shadow-[4px_4px_0px_#2c2e2a] z-40 p-3 space-y-2 max-h-80 flex flex-col overflow-hidden animate-fade-in">
+          
+          {/* Top Search Bar */}
+          <div className="relative shrink-0">
+            <input
+              ref={searchInputRef}
+              type="text"
+              placeholder="Search by name or emirate region..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              className="w-full bg-[#f5f1e4]/70 border border-hairline-mist py-2.5 px-3 pl-9 rounded-xl font-sans font-medium text-xs text-ink placeholder-stone-gray focus:outline-none focus:border-[#2ba0ff] focus:bg-white"
+            />
+            <Search className="w-4 h-4 text-[#2ba0ff] absolute left-3 top-1/2 -translate-y-1/2" />
+            {searchTerm && (
+              <button 
+                onClick={() => setSearchTerm('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-gray hover:text-ink text-xs font-bold"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+
+          {/* Filtered Options List */}
+          <div className="overflow-y-auto flex-1 space-y-1 pr-1">
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((uni) => {
+                const isSelected = uni.id === selectedId;
+                return (
+                  <div
+                    key={uni.id}
+                    onClick={() => {
+                      onSelect(uni.id);
+                      setIsOpen(false);
+                    }}
+                    className={cn(
+                      "p-2.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-3 group select-none",
+                      isSelected 
+                        ? "bg-[#2ba0ff]/15 border-[#2ba0ff]/40 text-ink font-bold" 
+                        : "bg-white border-transparent hover:bg-[#f5f1e4]/60 hover:border-hairline-mist text-ink"
+                    )}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <UniversityLogo domain={uni.domain} name={uni.name} className="w-7 h-7 rounded-lg border border-hairline-mist shrink-0" />
+                      <div className="min-w-0">
+                        <div className="font-sans font-bold text-xs truncate group-hover:text-[#2ba0ff] transition-colors">{uni.name}</div>
+                        <div className="font-mono text-[9px] text-stone-gray truncate">{uni.location}</div>
+                      </div>
+                    </div>
+
+                    {isSelected && (
+                      <Check className="w-4 h-4 text-[#2ba0ff] shrink-0 stroke-[3px]" />
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="p-6 text-center text-stone-gray font-sans text-xs">
+                No matching universities found.
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -286,7 +409,7 @@ function RenderEmptySlot({ slotNumber, onSelect, options }: { slotNumber: number
           Empty Comparison Slot
         </h4>
         <p className="font-sans text-xs text-stone-gray mt-1 max-w-xs leading-relaxed">
-          Select a university from the dropdown above to calibrate metrics side-by-side.
+          Search or choose a university from the dropdown above to calibrate metrics side-by-side.
         </p>
       </div>
 
