@@ -8,6 +8,7 @@ import { Card } from './Card';
 import { Button } from './Button';
 import { Badge } from './Badge';
 import { BudgetCalculator } from './BudgetCalculator';
+import { CourseProfessorExplorer } from './CourseProfessorExplorer';
 
 // Interfaces for structured data
 interface ProgramOffer {
@@ -628,7 +629,7 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
   const initialConfig = UNIVERSITY_PRESETS[presetKey];
 
   // State management
-  const [activeTab, setActiveTab] = useState<'programs' | 'exams' | 'counselor' | 'cds'>('programs');
+  const [activeTab, setActiveTab] = useState<'programs' | 'professors' | 'exams' | 'counselor' | 'cds' | 'budget'>('programs');
   const [selectedProgram, setSelectedProgram] = useState<string>(initialConfig.topPrograms[0].name);
   const [config, setConfig] = useState<UniversityConfig>(initialConfig);
   
@@ -841,7 +842,7 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
       
       {/* Premium Tab Bar Controls */}
       <div className="bg-white border border-hairline-mist rounded-[32px] p-2 flex flex-wrap gap-1 shadow-sm">
-        {(['programs', 'exams', 'counselor', 'cds', 'budget'] as const).map((tab) => (
+        {(['programs', 'professors', 'exams', 'counselor', 'cds', 'budget'] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab as any)}
@@ -852,12 +853,14 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
             }`}
           >
             {tab === 'programs' && <BookOpen className="w-4 h-4" />}
+            {tab === 'professors' && <GraduationCap className="w-4 h-4 text-[#2ba0ff]" />}
             {tab === 'exams' && <Award className="w-4 h-4" />}
             {tab === 'counselor' && <UserCheck className="w-4 h-4" />}
             {tab === 'cds' && <FileSpreadsheet className="w-4 h-4" />}
             {tab === 'budget' && <Sparkles className="w-4 h-4 text-[#8ed462]" />}
             <span>
               {tab === 'programs' && 'Programs & QS Ranking'}
+              {tab === 'professors' && 'Course & Top Professors'}
               {tab === 'exams' && 'Exams & Requirements'}
               {tab === 'counselor' && 'Student Counselor'}
               {tab === 'cds' && 'Common Data Sets'}
@@ -964,7 +967,14 @@ export function UniversityDetailsExpanded({ universityId, universityName }: Prop
         </div>
       )}
 
-      {/* TAB 2: Exams & Requirements */}
+      {/* TAB 2: Course Selection & Top World-Ranked Professors */}
+      {activeTab === 'professors' && (
+        <div className="animate-fade-in">
+          <CourseProfessorExplorer universityId={universityId} universityName={universityName} />
+        </div>
+      )}
+
+      {/* TAB 3: Exams & Requirements */}
       {activeTab === 'exams' && (
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 animate-fade-in">
           
