@@ -323,8 +323,115 @@ export function Home() {
         </div>
       </section>
 
+      {/* UI/UX Pro Max Bento Grid Feature Showcase */}
+      <section className="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="font-mono text-xs font-bold uppercase tracking-widest text-[#2ba0ff] bg-[#2ba0ff]/10 px-3 py-1 rounded-full border border-[#2ba0ff]/20 inline-block mb-3">
+            MASSAR PLATFORM CAPABILITIES
+          </span>
+          <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#2c2e2a] uppercase tracking-tight">
+            Decision-Support Ecosystem
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-stone-gray mt-2">
+            Explore verified directories, automated equivalence tools, and side-by-side comparators built for Middle East students.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          {/* Bento Box 1: AI Grounded Search */}
+          <div className="md:col-span-7 bg-white/80 backdrop-blur-md border border-white/90 shadow-[0_15px_35px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,1)] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-[#2ba0ff]/40 transition-all duration-300">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[#2ba0ff]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#2ba0ff]/20 transition-all" />
+            
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#2ba0ff]/10 border border-[#2ba0ff]/20 flex items-center justify-center text-[#2ba0ff] mb-4 shadow-xs">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#2ba0ff] block mb-1">AI Grounded Intelligence</span>
+              <h3 className="font-sans font-black text-2xl text-[#2c2e2a] mb-2">Live Search & Maps Verification</h3>
+              <p className="font-sans text-sm text-stone-gray leading-relaxed max-w-md">
+                Powered by Gemini 2.5 Flash with live Google Search & Maps tool grounding. Get official campus addresses, tuition figures, and accredited program profiles.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-hairline-mist flex items-center justify-between">
+              <span className="font-sans text-xs font-bold text-[#2c2e2a]">Real-Time Google Grounding</span>
+              <Link to="/universities" className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-[#2ba0ff] hover:underline">
+                Search Directory <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Bento Box 2: Student Perks Vault */}
+          <div className="md:col-span-5 bg-white/80 backdrop-blur-md border border-white/90 shadow-[0_15px_35px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,1)] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-[#ff705d]/40 transition-all duration-300">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[#ff705d]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#ff705d]/20 transition-all" />
+
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#ff705d]/10 border border-[#ff705d]/20 flex items-center justify-center text-[#ff705d] mb-4 shadow-xs">
+                <Award className="w-6 h-6" />
+              </div>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#ff705d] block mb-1">Student Value</span>
+              <h3 className="font-sans font-black text-2xl text-[#2c2e2a] mb-2">111+ Verified Student Perks</h3>
+              <p className="font-sans text-sm text-stone-gray leading-relaxed">
+                Unlock developer software bundles, cloud credits, design subscriptions, and regional academic grants.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-hairline-mist flex items-center justify-between">
+              <span className="font-mono text-xs font-bold text-stone-gray">UNiDAYS / SheerID Verified</span>
+              <Link to="/perks" className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-[#ff705d] hover:underline">
+                Explore Perks <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Bento Box 3: Side-by-Side Multi-Uni Comparator */}
+          <div className="md:col-span-6 bg-white/80 backdrop-blur-md border border-white/90 shadow-[0_15px_35px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,1)] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-[#8ed462]/40 transition-all duration-300">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#8ed462]/10 border border-[#8ed462]/20 flex items-center justify-center text-[#4da81b] mb-4 shadow-xs">
+                <Trophy className="w-6 h-6" />
+              </div>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#4da81b] block mb-1">Decision Support</span>
+              <h3 className="font-sans font-black text-2xl text-[#2c2e2a] mb-2">3-Slot Mutually Exclusive Comparator</h3>
+              <p className="font-sans text-sm text-stone-gray leading-relaxed">
+                Compare tuition fees, global ranks, acceptance rates, and campus amenities side-by-side with smart mutual exclusion selectors.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-hairline-mist flex items-center justify-between">
+              <span className="font-sans text-xs font-bold text-[#2c2e2a]">Interactive Metric Diffing</span>
+              <Link to="/compare" className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-[#4da81b] hover:underline">
+                Compare Now <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Bento Box 4: eDAS 2.0 MOE Attestation Wizard */}
+          <div className="md:col-span-6 bg-white/80 backdrop-blur-md border border-white/90 shadow-[0_15px_35px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,1)] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:border-[#f5e211]/60 transition-all duration-300">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-[#f5e211]/20 border border-[#f5e211]/40 flex items-center justify-center text-[#b89500] mb-4 shadow-xs">
+                <Compass className="w-6 h-6" />
+              </div>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#b89500] block mb-1">Ministry Guidance</span>
+              <h3 className="font-sans font-black text-2xl text-[#2c2e2a] mb-2">MOE / eDAS 2.0 Attestation Wizard</h3>
+              <p className="font-sans text-sm text-stone-gray leading-relaxed">
+                Step-by-step guidance through Ministry of Education equivalency attestations for British, IB, American, and Indian curriculums.
+              </p>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-hairline-mist flex items-center justify-between">
+              <span className="font-sans text-xs font-bold text-[#2c2e2a]">Official MOE Checklist</span>
+              <a href="#equivalency-wizard" className="inline-flex items-center gap-1.5 font-sans text-xs font-bold text-[#b89500] hover:underline">
+                Launch Wizard <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* Interactive Path Wizard Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 space-y-12">
+      <div id="equivalency-wizard" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 space-y-12">
         <PathWizard />
         <EquivalencyWizard />
         <NationalVisionMapper />

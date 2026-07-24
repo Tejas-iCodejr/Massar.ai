@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Bookmark, Scale, ChevronRight, ChevronLeft, ShieldCheck, FileText, Sparkles, TrendingUp } from 'lucide-react';
+import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Bookmark, Scale, ChevronRight, ChevronLeft, ShieldCheck, FileText, Sparkles, TrendingUp, Home, Columns2, Gift, Grid } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 import { motion, AnimatePresence } from 'motion/react';
@@ -490,6 +490,61 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
+
+      {/* Floating Glass Bottom Navigation Dock (Mobile / Tablet 1-Thumb Access) */}
+      <div className="lg:hidden fixed bottom-4 left-4 right-4 z-45 bg-white/75 backdrop-blur-[40px] backdrop-saturate-[200%] border-2 border-white/90 shadow-[0_15px_40px_-8px_rgba(0,0,0,0.15),inset_0_1.5px_2px_rgba(255,255,255,1)] rounded-[50px] px-5 py-2.5 flex items-center justify-around select-none">
+        <Link 
+          to="/" 
+          className={cn(
+            "flex flex-col items-center gap-1 text-[11px] font-sans font-bold transition-all duration-200 active:scale-95",
+            location.pathname === "/" ? "text-[#4da81b]" : "text-ink/70 hover:text-ink"
+          )}
+        >
+          <Home className="w-5 h-5" strokeWidth={location.pathname === "/" ? 2.5 : 1.8} />
+          <span>Home</span>
+        </Link>
+
+        <Link 
+          to="/universities" 
+          className={cn(
+            "flex flex-col items-center gap-1 text-[11px] font-sans font-bold transition-all duration-200 active:scale-95",
+            location.pathname === "/universities" ? "text-[#4da81b]" : "text-ink/70 hover:text-ink"
+          )}
+        >
+          <GraduationCap className="w-5 h-5" strokeWidth={location.pathname === "/universities" ? 2.5 : 1.8} />
+          <span>Universities</span>
+        </Link>
+
+        <Link 
+          to="/compare" 
+          className={cn(
+            "flex flex-col items-center gap-1 text-[11px] font-sans font-bold transition-all duration-200 active:scale-95",
+            location.pathname === "/compare" ? "text-[#2ba0ff]" : "text-ink/70 hover:text-ink"
+          )}
+        >
+          <Columns2 className="w-5 h-5" strokeWidth={location.pathname === "/compare" ? 2.5 : 1.8} />
+          <span>Compare</span>
+        </Link>
+
+        <Link 
+          to="/perks" 
+          className={cn(
+            "flex flex-col items-center gap-1 text-[11px] font-sans font-bold transition-all duration-200 active:scale-95",
+            location.pathname === "/perks" ? "text-[#ff705d]" : "text-ink/70 hover:text-ink"
+          )}
+        >
+          <Gift className="w-5 h-5" strokeWidth={location.pathname === "/perks" ? 2.5 : 1.8} />
+          <span>Perks</span>
+        </Link>
+
+        <button 
+          onClick={() => setDrawerOpen(true)} 
+          className="flex flex-col items-center gap-1 text-[11px] font-sans font-bold text-ink/70 hover:text-ink transition-all duration-200 active:scale-95 cursor-pointer"
+        >
+          <Grid className="w-5 h-5 text-stone-gray" strokeWidth={1.8} />
+          <span>Tools</span>
+        </button>
+      </div>
     </nav>
   );
 }
