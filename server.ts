@@ -1,5 +1,6 @@
 import compression from "compression";
 import express from "express";
+import helmet from "helmet";
 import path from "path";
 import cors from "cors";
 import fs from "fs/promises";
@@ -39,7 +40,7 @@ async function setupScraperCron() {
   }
   const ai = new GoogleGenAI({ apiKey });
 
-  // Run daily at 2:00 AM (to save quota and avoid rate-limiting issues in demo environment)
+  // Run daily at 2:00 AM
   cron.schedule("0 2 * * *", async () => {
     console.log("Running AI Scraper job to update university data...");
     if (!cachedData) await loadData();
@@ -94,8 +95,13 @@ async function setupScraperCron() {
   });
 }
 
+function sanitizeInput(str: string): string {
+  if (typeof str !== "string") return "";
+  return str.replace(/<[^>]*>?/gm, "").trim().substring(0, 500);
+}
+
 function generateFallbackSearch(query: string): { text: string; groundingChunks: any[]; webSearchQueries: string[] } {
-  const safeQuery = query || "student benefits";
+  const safeQuery = sanitizeInput(query) || "student benefits";
 
   const text = `### Curated Opportunities Found
 
@@ -108,7 +114,7 @@ Thank you for your search regarding **"${safeQuery}"**. We have compiled elite o
   - **How to apply / redeem:** Log in to your Massar dashboard, click "Redeem" under software perks, and authorize using your academic email account.
 
 - **Name / Title:** Regional Innovation Academic Grant
-  - **Organizer / Provider:** Gulf Gulf Research Foundation
+  - **Organizer / Provider:** Gulf Research Foundation
   - **Eligibility:** Active undergraduate and high school students with an average score of 90% or higher.
   - **Description:** Generous financial aids and project grants designed to support innovative local research, engineering initiatives, and creative writing.
   - **How to apply / redeem:** Submit your project proposal, transcripts, and a recommendation letter via our secure research portal.
@@ -124,7 +130,7 @@ To instantly claim and access these specialized benefits, students should make s
     groundingChunks: [
       {
         web: {
-          uri: "https://ais-dev-smor34xptz2fwjnaamz22b-127198199497.asia-southeast1.run.app",
+          uri: "https://massar.ai",
           title: "Massar Official Student Hub"
         }
       }
@@ -134,11 +140,11 @@ To instantly claim and access these specialized benefits, students should make s
 }
 
 function generateFallbackDetails(type: string, name: string, organizer: string, eligibility: string, location: string, extraInfo: string): string {
-  const safeName = name || "Selected Institution";
-  const safeOrganizer = organizer || "Education Board";
-  const safeLocation = location || "Middle East";
-  const safeEligibility = eligibility || "All Enrolled Students";
-  const safeExtraInfo = extraInfo || "Active Intake";
+  const safeName = sanitizeInput(name) || "Selected Institution";
+  const safeOrganizer = sanitizeInput(organizer) || "Education Board";
+  const safeLocation = sanitizeInput(location) || "Middle East";
+  const safeEligibility = sanitizeInput(eligibility) || "All Enrolled Students";
+  const safeExtraInfo = sanitizeInput(extraInfo) || "Active Intake";
 
   if (type === "program") {
     return `### Program Overview & Focus
@@ -165,7 +171,6 @@ function generateFallbackDetails(type: string, name: string, organizer: string, 
 - **Admission Process:** Online registration followed by placement assessment.
 - **Facilities:** Modern smart classrooms, athletic suites, and scientific laboratories.`;
   } else {
-    // perk
     return `### Benefit & Student Savings
 **${safeName}** provided by **${safeOrganizer}** offers exclusive student savings under the **${safeEligibility}** category. It unlocks free or discounted access to essential professional software, hardware, and educational materials.
 
@@ -176,8 +181,8 @@ function generateFallbackDetails(type: string, name: string, organizer: string, 
 }
 
 function generateFallbackMaps(name: string, location: string, type: string): { text: string; groundingChunks: any[] } {
-  const safeName = name || "Institution";
-  const safeLocation = location || "Middle East";
+  const safeName = sanitizeInput(name) || "Institution";
+  const safeLocation = sanitizeInput(location) || "Middle East";
 
   const queryEscaped = encodeURIComponent(`${safeName} ${safeLocation}`);
   const mapsUri = `https://www.google.com/maps/search/?api=1&query=${queryEscaped}`;
@@ -208,13 +213,13 @@ function generateFallbackMaps(name: string, location: string, type: string): { t
   };
 }
 
-// In-memory sliding window rate limiter (15 requests/min per IP)
+// In-memory sliding window rate limiter
 const requestCounts = new Map<string, { count: number; resetTime: number }>();
 function apiRateLimiter(req: express.Request, res: express.Response, next: express.NextFunction) {
   const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "unknown";
   const now = Date.now();
   const windowMs = 60 * 1000;
-  const maxRequests = 30;
+  const maxRequests = 40;
 
   const current = requestCounts.get(ip);
   if (!current || now > current.resetTime) {
@@ -223,7 +228,7 @@ function apiRateLimiter(req: express.Request, res: express.Response, next: expre
   }
 
   if (current.count >= maxRequests) {
-    return res.status(429).json({ error: "Too many requests. Please try again in a minute." });
+    return res.status(429).json({ error: "Rate limit exceeded. Please wait a minute before retrying." });
   }
 
   current.count++;
@@ -236,9 +241,15 @@ function setApiCacheHeaders(res: express.Response) {
 
 async function startServer() {
   const app = express();
+  
+  // Security Headers Middleware
+  app.use(helmet({
+    contentSecurityPolicy: false, // Disabled for dev flexibility, enabled for headers
+    crossOriginEmbedderPolicy: false,
+  }));
   app.use(compression());
   app.use(cors());
-  app.use(express.json());
+  app.use(express.json({ limit: "1mb" }));
   app.use("/api", apiRateLimiter);
 
   await loadData();
