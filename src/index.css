@@ -54,53 +54,16 @@
   animation: gentleFloat 6s infinite ease-in-out;
 }
 
-/* Continuous Marquee Animation */
+/* Infinite text ticker animation */
 @keyframes marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
-  display: inline-block;
-  animation: marquee 25s linear infinite;
-}
-
-/* Lenis Smooth Scroll CSS Rules */
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-/* Split Text Mask Rules */
-.split-word-mask {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  line-height: 1.15;
-}
-
-.split-word {
-  display: inline-block;
-  will-change: transform, opacity, filter;
-}
-
-/* Sticky Card Stack Rules */
-[data-sticky-stack] {
-  position: relative;
-}
-
-[data-stack-card] {
-  position: sticky;
-  top: 14vh;
-  transform-origin: center top;
-  will-change: transform, opacity, filter;
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
 }
 
 .animate-marquee-reverse {

@@ -83,22 +83,18 @@ function AnimatedRoutes() {
   );
 }
 
-import { SmoothScrollProvider } from './components/scroll/SmoothScrollProvider';
-
 export default function App() {
   return (
-    <SmoothScrollProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-grow">
-            <AnimatedRoutes />
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </SmoothScrollProvider>
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <AnimatedRoutes />
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
