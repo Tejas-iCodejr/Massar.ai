@@ -314,70 +314,19 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed left-0 top-0 bottom-0 w-[300px] sm:w-[340px] bg-white border-r border-hairline-mist z-50 shadow-2xl p-8 pt-28 flex flex-col justify-between overflow-hidden"
+              className="fixed left-0 top-0 bottom-0 w-[300px] sm:w-[340px] bg-white border-r border-hairline-mist z-50 shadow-2xl p-6 sm:p-8 pt-24 flex flex-col justify-between overflow-y-auto"
             >
               
-              {/* Sliding Navigation Panels Wrapper */}
-              <div className="relative flex-1 overflow-hidden mb-6">
-                <motion.div 
-                  animate={{ x: submenu === 'main' ? '0%' : submenu === 'directory' ? '-100%' : '-200%' }}
-                  transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                  className="flex w-[300%] h-full"
-                >
+              {/* Direct Grouped Navigation Sections */}
+              <div className="flex-1 space-y-6 overflow-y-auto pr-1">
+                
+                {/* SECTION 1: DIRECTORIES */}
+                <div>
+                  <span className="font-mono text-[9px] font-bold text-stone-gray uppercase tracking-widest pl-3 mb-2 block">
+                    Directories
+                  </span>
                   
-                  {/* Panel 1: Main Menu (Level 1) */}
-                  <div className="w-1/3 pr-4 flex flex-col gap-2">
-                    <span className="font-mono text-[9px] text-stone-gray uppercase tracking-widest pl-3 mb-2 block">Menu</span>
-                    
-                    {/* Home / Discover Link */}
-                    <Link
-                      to="/"
-                      onClick={() => setDrawerOpen(false)}
-                      className="px-4 py-3 flex items-center justify-between font-sans font-medium text-[14px] rounded-[50px] transition-all text-ink/80 hover:bg-gray-50 group select-none"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Compass className="w-4 h-4 text-stone-gray group-hover:text-ink" />
-                        <span>Discover</span>
-                      </div>
-                    </Link>
-
-                    {/* Directory Parent Item */}
-                    <button
-                      onClick={() => setSubmenu('directory')}
-                      className="px-4 py-3 flex items-center justify-between font-sans font-medium text-[14px] rounded-[50px] transition-all text-ink/80 hover:bg-gray-50 group cursor-pointer select-none"
-                    >
-                      <div className="flex items-center gap-3">
-                        <GraduationCap className="w-4 h-4 text-stone-gray group-hover:text-ink" />
-                        <span>Directory</span>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-stone-gray group-hover:text-ink transition-transform" />
-                    </button>
-
-                    {/* Workspace Parent Item */}
-                    <button
-                      onClick={() => setSubmenu('workspace')}
-                      className="px-4 py-3 flex items-center justify-between font-sans font-medium text-[14px] rounded-[50px] transition-all text-ink/80 hover:bg-gray-50 group cursor-pointer select-none"
-                    >
-                      <div className="flex items-center gap-3">
-                        <Bookmark className="w-4 h-4 text-stone-gray group-hover:text-ink" />
-                        <span>Workspace Tools</span>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-stone-gray group-hover:text-ink transition-transform" />
-                    </button>
-                  </div>
-
-                  {/* Panel 2: Directory Submenu (Level 2) */}
-                  <div className="w-1/3 px-4 flex flex-col gap-2">
-                    {/* Back Button */}
-                    <button
-                      onClick={() => setSubmenu('main')}
-                      className="flex items-center gap-2 text-stone-gray hover:text-ink text-xs font-sans font-semibold py-2 px-3 hover:bg-gray-50 rounded-[50px] self-start cursor-pointer transition-colors border border-hairline-mist select-none"
-                    >
-                      <ChevronLeft className="w-3.5 h-3.5" /> Back to Menu
-                    </button>
-                    
-                    <span className="font-mono text-[9px] text-stone-gray uppercase tracking-widest pl-3 mt-4 mb-2 block">Directory</span>
-                    
+                  <div className="space-y-1">
                     {[...leftLinks, ...rightLinks].map((link) => {
                       const Icon = link.icon;
                       const isActive = location.pathname === link.path;
@@ -387,31 +336,30 @@ export function Navbar() {
                           to={link.path}
                           onClick={() => setDrawerOpen(false)}
                           className={cn(
-                            "px-4 py-3 flex items-center gap-3 font-sans font-medium text-[14px] rounded-[50px] transition-all select-none",
+                            "px-4 py-3 flex items-center justify-between font-sans font-semibold text-[14px] rounded-[50px] transition-all select-none group",
                             isActive 
-                              ? "bg-primary/20 text-ink font-bold" 
-                              : "text-ink/80 hover:bg-gray-50"
+                              ? "bg-[#8ed462]/20 text-ink font-bold shadow-xs border border-[#8ed462]/30" 
+                              : "text-ink/80 hover:bg-stone-100/80 hover:text-ink"
                           )}
                         >
-                          <Icon className="w-4 h-4 text-ink/70" />
-                          <span>{link.name}</span>
+                          <div className="flex items-center gap-3">
+                            <Icon className={cn("w-4.5 h-4.5 transition-colors", isActive ? "text-ink font-bold" : "text-stone-gray group-hover:text-ink")} />
+                            <span>{link.name}</span>
+                          </div>
+                          <ChevronRight className={cn("w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5", isActive ? "text-ink" : "text-stone-gray/50")} />
                         </Link>
                       );
                     })}
                   </div>
+                </div>
 
-                  {/* Panel 3: Workspace Submenu (Level 2) */}
-                  <div className="w-1/3 pl-4 flex flex-col gap-2">
-                    {/* Back Button */}
-                    <button
-                      onClick={() => setSubmenu('main')}
-                      className="flex items-center gap-2 text-stone-gray hover:text-ink text-xs font-sans font-semibold py-2 px-3 hover:bg-gray-50 rounded-[50px] self-start cursor-pointer transition-colors border border-hairline-mist select-none"
-                    >
-                      <ChevronLeft className="w-3.5 h-3.5" /> Back to Menu
-                    </button>
-                    
-                    <span className="font-mono text-[9px] text-stone-gray uppercase tracking-widest pl-3 mt-4 mb-2 block">Workspace</span>
-                    
+                {/* SECTION 2: WORKSPACE & TOOLS */}
+                <div className="pt-2 border-t border-hairline-mist">
+                  <span className="font-mono text-[9px] font-bold text-stone-gray uppercase tracking-widest pl-3 mb-2 block">
+                    Workspace & Tools
+                  </span>
+
+                  <div className="space-y-1">
                     {drawerLinks.map((link) => {
                       const Icon = link.icon;
                       const isActive = location.pathname === link.path;
@@ -421,20 +369,23 @@ export function Navbar() {
                           to={link.path}
                           onClick={() => setDrawerOpen(false)}
                           className={cn(
-                            "px-4 py-3 flex items-center gap-3 font-sans font-medium text-[14px] rounded-[50px] transition-all select-none",
+                            "px-4 py-3 flex items-center justify-between font-sans font-semibold text-[14px] rounded-[50px] transition-all select-none group",
                             isActive 
-                              ? "bg-secondary/15 text-secondary font-bold" 
-                              : "text-ink/80 hover:bg-gray-50"
+                              ? "bg-[#ff705d]/15 text-[#ff705d] font-bold shadow-xs border border-[#ff705d]/30" 
+                              : "text-ink/80 hover:bg-stone-100/80 hover:text-ink"
                           )}
                         >
-                          <Icon className="w-4 h-4 text-stone-gray" />
-                          <span>{link.name}</span>
+                          <div className="flex items-center gap-3">
+                            <Icon className={cn("w-4.5 h-4.5 transition-colors", isActive ? "text-[#ff705d]" : "text-stone-gray group-hover:text-ink")} />
+                            <span>{link.name}</span>
+                          </div>
+                          <ChevronRight className={cn("w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5", isActive ? "text-[#ff705d]" : "text-stone-gray/50")} />
                         </Link>
                       );
                     })}
                   </div>
+                </div>
 
-                </motion.div>
               </div>
 
               {/* Drawer Footer Actions (Stationary) */}
