@@ -3,183 +3,301 @@ import { Card } from '../components/ui/Card';
 import { UniversityLogo } from '../components/ui/UniversityLogo';
 import { Button } from '../components/ui/Button';
 import { University } from '../types';
-import { Check, X, Scale, Plus, AlertCircle, ArrowRight } from 'lucide-react';
+import { Scale, ArrowRight, X, Sparkles, ChevronDown, CheckCircle, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { cn } from '../lib/utils';
 
 export function Compare() {
   const [universities, setUniversities] = useState<University[]>([]);
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // 3 Comparison Slot States
+  const [slot1Id, setSlot1Id] = useState<string>('');
+  const [slot2Id, setSlot2Id] = useState<string>('');
+  const [slot3Id, setSlot3Id] = useState<string>('');
 
   useEffect(() => {
     fetch('/api/universities')
       .then(res => res.json())
       .then(data => {
         setUniversities(data);
-        if (data.length > 0) {
-          setSelectedIds([data[0].id, data[1]?.id].filter(Boolean));
+        
+        // Initialize from localStorage or defaults
+        try {
+          const stored = JSON.parse(localStorage.getItem('compare_ids') || '[]');
+          if (stored.length > 0) {
+            setSlot1Id(stored[0] || data[0]?.id || '');
+            setSlot2Id(stored[1] || data[1]?.id || '');
+            setSlot3Id(stored[2] || '');
+          } else if (data.length >= 2) {
+            setSlot1Id(data[0].id);
+            setSlot2Id(data[1].id);
+            setSlot3Id('');
+          }
+        } catch (e) {
+          if (data.length >= 2) {
+            setSlot1Id(data[0].id);
+            setSlot2Id(data[1].id);
+          }
         }
         setLoading(false);
       });
   }, []);
 
-  const toggleSelection = (id: string) => {
-    if (selectedIds.includes(id)) {
-      setSelectedIds(selectedIds.filter(i => i !== id));
-    } else if (selectedIds.length < 3) {
-      setSelectedIds([...selectedIds, id]);
-    }
-  };
+  // Update local storage when slots change
+  useEffect(() => {
+    const activeIds = [slot1Id, slot2Id, slot3Id].filter(Boolean);
+    localStorage.setItem('compare_ids', JSON.stringify(activeIds));
+  }, [slot1Id, slot2Id, slot3Id]);
 
-  const selectedUnis = selectedIds.map(id => universities.find(u => u.id === id)).filter(Boolean) as University[];
+  // Smart Exclusion Filtering for Dropdowns
+  // Slot 1 excludes Slot 2 and Slot 3
+  const optionsForSlot1 = universities.filter(u => u.id !== slot2Id && u.id !== slot3Id);
+  // Slot 2 excludes Slot 1 and Slot 3
+  const optionsForSlot2 = universities.filter(u => u.id !== slot1Id && u.id !== slot3Id);
+  // Slot 3 excludes Slot 1 and Slot 2
+  const optionsForSlot3 = universities.filter(u => u.id !== slot1Id && u.id !== slot2Id);
+
+  const uni1 = universities.find(u => u.id === slot1Id);
+  const uni2 = universities.find(u => u.id === slot2Id);
+  const uni3 = universities.find(u => u.id === slot3Id);
+
+  const handleClearSlot = (slotIndex: 1 | 2 | 3) => {
+    if (slotIndex === 1) setSlot1Id('');
+    if (slotIndex === 2) setSlot2Id('');
+    if (slotIndex === 3) setSlot3Id('');
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid-bg min-h-screen bg-[#f5f1e4]">
       
       {/* Page Header */}
-      <div className="mb-12 pb-8 border-b border-hairline-mist">
-        <div className="font-sans text-xs text-[#8ed462] uppercase font-bold tracking-wider mb-2 flex items-center gap-1.5">
-          <Scale className="w-4 h-4 text-[#8ed462]" /> Evaluation Sandbox
+      <div className="mb-10 pb-8 border-b border-hairline-mist flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div className="font-sans text-xs text-[#8ed462] uppercase font-bold tracking-wider mb-2 flex items-center gap-1.5">
+            <Scale className="w-4 h-4 text-[#8ed462]" /> Evaluation Sandbox
+          </div>
+          <h1 className="font-sans font-black text-4xl sm:text-6xl uppercase tracking-tight text-ink leading-none">
+            Side-by-Side <br/>
+            <span className="font-serif italic font-normal text-[#ff705d] lowercase tracking-normal">comparator</span>
+          </h1>
+          <p className="font-sans font-medium text-stone-gray max-w-xl text-sm leading-relaxed mt-3">
+            Cross-examine tuition fees, intake periods, acceptance rates, and regional rankings for up to three institutions dynamically.
+          </p>
         </div>
-        <h1 className="font-sans font-black text-4xl sm:text-6xl uppercase tracking-tight text-ink leading-none mb-4">
-          Side-by-Side <br/>
-          <span className="font-serif italic font-normal text-[#ff705d] lowercase tracking-normal">comparator</span>
-        </h1>
-        <p className="font-sans font-medium text-stone-gray max-w-xl text-sm leading-relaxed">
-          Cross-examine tuition, intake periods, acceptance rates, and region specifics for up to three institutions dynamically.
-        </p>
+
+        {/* Quick Reset Button */}
+        {(slot1Id || slot2Id || slot3Id) && (
+          <button
+            onClick={() => { setSlot1Id(''); setSlot2Id(''); setSlot3Id(''); }}
+            className="text-xs font-mono font-bold text-stone-gray hover:text-[#ff705d] px-4 py-2 bg-white border border-hairline-mist rounded-full shadow-xs transition-colors self-start md:self-auto cursor-pointer"
+          >
+            Clear All Selections
+          </button>
+        )}
       </div>
 
       {loading ? (
         <div className="text-center py-24">
           <div className="inline-block w-8 h-8 border-2 border-[#8ed462] border-t-transparent rounded-full animate-spin mb-4"></div>
-          <div className="font-sans text-sm font-semibold uppercase tracking-wider text-stone-gray animate-pulse">Initializing sandbox arrays...</div>
+          <div className="font-sans text-sm font-semibold uppercase tracking-wider text-stone-gray animate-pulse">Initializing comparison matrix...</div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           
-          {/* Selector Panel Left */}
-          <div className="lg:col-span-1 space-y-6">
-            <Card variant="default" interactive={false} className="p-6">
-              <h3 className="font-sans font-black uppercase text-sm tracking-tight mb-4 border-b border-hairline-mist pb-2 flex justify-between items-center text-ink">
-                <span>Select Presets</span>
-                <span className="font-mono text-[9px] bg-ink text-white px-2 py-0.5 rounded-[50px] font-bold">MAX 3</span>
-              </h3>
-              
-              <div className="space-y-2">
-                {universities.map(uni => {
-                  const isSelected = selectedIds.includes(uni.id);
-                  return (
-                    <div 
-                      key={uni.id} 
-                      onClick={() => toggleSelection(uni.id)}
-                      className={`p-3 border border-hairline-mist rounded-[50px] cursor-pointer flex items-center justify-between font-sans font-bold text-xs tracking-wider transition-all select-none ${isSelected ? 'bg-[#f5e211]/20 border-[#f5e211]/50 text-ink shadow-sm' : 'bg-[#f5f1e4]/50 hover:bg-white text-ink'}`}
-                    >
-                      <span className="truncate pr-2">{uni.name}</span>
-                      {isSelected ? (
-                        <Check className="w-3.5 h-3.5 flex-shrink-0 text-ink stroke-[3px]" />
-                      ) : (
-                        <Plus className="w-3.5 h-3.5 flex-shrink-0 text-stone-gray stroke-[3px]" />
-                      )}
-                    </div>
-                  );
-                })}
+          {/* ================= SLOT 1 COLUMN ================= */}
+          <div className="space-y-4">
+            <div className="bg-white border-2 border-ink rounded-[24px] p-4 shadow-[3px_3px_0px_#2c2e2a]">
+              <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5">
+                University 1 Selection
+              </label>
+              <div className="relative">
+                <select
+                  value={slot1Id}
+                  onChange={e => setSlot1Id(e.target.value)}
+                  className="w-full bg-[#f5f1e4]/60 border border-hairline-mist p-3 pr-10 rounded-xl font-sans font-bold text-xs text-ink appearance-none focus:outline-none focus:border-[#2ba0ff] cursor-pointer"
+                >
+                  <option value="">-- Choose 1st University --</option>
+                  {optionsForSlot1.map(u => (
+                    <option key={u.id} value={u.id}>
+                      {u.name} ({u.location})
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-stone-gray absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
-            </Card>
-
-            <div className="p-5 border border-[#8ed462]/30 bg-[#8ed462]/10 rounded-[30px] font-sans text-xs font-semibold leading-relaxed text-ink/80 flex gap-2">
-              <AlertCircle className="w-4 h-4 text-[#ff705d] flex-shrink-0 mt-0.5" />
-              <span>
-                To analyze a different set of campuses, click cards on the list to toggle selection. High contrast selections represent active presets.
-              </span>
             </div>
+
+            {uni1 ? (
+              <RenderUniversityCard uni={uni1} onRemove={() => handleClearSlot(1)} />
+            ) : (
+              <RenderEmptySlot slotNumber={1} onSelect={setSlot1Id} options={optionsForSlot1} />
+            )}
           </div>
 
-          {/* Comparison Cards Right */}
-          <div className="lg:col-span-3">
-            {selectedUnis.length === 0 ? (
-              <div className="h-96 border border-dashed border-hairline-mist rounded-[40px] flex flex-col items-center justify-center bg-white/40 p-8 text-center">
-                <Scale className="w-12 h-12 text-[#ff705d] mb-4 animate-bounce" />
-                <span className="font-sans font-black uppercase text-xl text-ink/75 tracking-tight mb-2">No Campuses Active</span>
-                <p className="font-sans text-stone-gray text-xs max-w-xs leading-relaxed">
-                  Toggle on universities from the left preset checklist to calibrate side-by-side matrices instantly.
-                </p>
+          {/* ================= SLOT 2 COLUMN ================= */}
+          <div className="space-y-4">
+            <div className="bg-white border-2 border-ink rounded-[24px] p-4 shadow-[3px_3px_0px_#2c2e2a]">
+              <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5">
+                University 2 Selection
+              </label>
+              <div className="relative">
+                <select
+                  value={slot2Id}
+                  onChange={e => setSlot2Id(e.target.value)}
+                  className="w-full bg-[#f5f1e4]/60 border border-hairline-mist p-3 pr-10 rounded-xl font-sans font-bold text-xs text-ink appearance-none focus:outline-none focus:border-[#2ba0ff] cursor-pointer"
+                >
+                  <option value="">-- Choose 2nd University --</option>
+                  {optionsForSlot2.map(u => (
+                    <option key={u.id} value={u.id}>
+                      {u.name} ({u.location})
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-stone-gray absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
+            </div>
+
+            {uni2 ? (
+              <RenderUniversityCard uni={uni2} onRemove={() => handleClearSlot(2)} />
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {selectedUnis.map(uni => (
-                  <Card key={uni.id} className="bg-white flex flex-col h-full justify-between p-8">
-                    
-                    {/* Header bar of comparison block */}
-                    <div>
-                      <div className="flex justify-between items-start mb-6">
-                        <UniversityLogo domain={uni.domain} name={uni.name} className="w-12 h-12 text-xs" />
-                        <button 
-                          onClick={() => toggleSelection(uni.id)} 
-                          className="w-8 h-8 border border-hairline-mist rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors text-stone-gray"
-                        >
-                          <X className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                      
-                      <h3 className="font-sans font-black text-xl text-ink uppercase tracking-tight leading-tight mb-6 min-h-[48px] line-clamp-2">
-                        {uni.name}
-                      </h3>
-                      
-                      {/* Metric lines with dashed dividers */}
-                      <div className="space-y-4 pt-4 border-t border-hairline-mist border-dashed">
-                        
-                        <div>
-                          <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">EMIRATE REGION</div>
-                          <div className="font-sans font-bold text-sm text-ink">{uni.location}</div>
-                        </div>
-                        
-                        <div>
-                          <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">CLASSIFICATION</div>
-                          <div className="font-sans font-bold text-sm text-ink">{uni.type} University</div>
-                        </div>
-                        
-                        <div>
-                          <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">TUITION COST / YEAR</div>
-                          <div className="font-sans font-black text-sm text-[#ff705d]">
-                            AED {uni.tuitionFee?.toLocaleString() || uni.tuitionFee}
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">ADMISSIONS RATE</div>
-                          <div className="font-sans font-black text-sm text-[#2ba0ff]">
-                            {uni.acceptanceRate ? `${uni.acceptanceRate}%` : 'N/A'}
-                          </div>
-                        </div>
+              <RenderEmptySlot slotNumber={2} onSelect={setSlot2Id} options={optionsForSlot2} />
+            )}
+          </div>
 
-                        <div>
-                          <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">OFFERED INTAKES</div>
-                          <div className="flex flex-wrap gap-1 mt-1.5">
-                            {uni.intakes?.map(intake => (
-                              <span key={intake} className="bg-[#ff705d]/10 border border-[#ff705d]/20 text-ink font-mono text-[9px] font-bold uppercase px-2 py-0.5 rounded-full">
-                                {intake}
-                              </span>
-                            )) || <span className="text-xs font-semibold">Fall</span>}
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-
-                    <Button variant="outline" size="sm" className="mt-8 w-full font-sans font-semibold text-xs uppercase flex items-center justify-center gap-1 rounded-[50px]">
-                      Learn More <ArrowRight className="w-3.5 h-3.5" />
-                    </Button>
-                    
-                  </Card>
-                ))}
+          {/* ================= SLOT 3 COLUMN ================= */}
+          <div className="space-y-4">
+            <div className="bg-white border-2 border-ink rounded-[24px] p-4 shadow-[3px_3px_0px_#2c2e2a]">
+              <label className="font-mono text-[10px] uppercase font-bold text-stone-gray tracking-wider block mb-1.5">
+                University 3 Selection (Optional)
+              </label>
+              <div className="relative">
+                <select
+                  value={slot3Id}
+                  onChange={e => setSlot3Id(e.target.value)}
+                  className="w-full bg-[#f5f1e4]/60 border border-hairline-mist p-3 pr-10 rounded-xl font-sans font-bold text-xs text-ink appearance-none focus:outline-none focus:border-[#2ba0ff] cursor-pointer"
+                >
+                  <option value="">-- Choose 3rd University --</option>
+                  {optionsForSlot3.map(u => (
+                    <option key={u.id} value={u.id}>
+                      {u.name} ({u.location})
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-stone-gray absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
+            </div>
+
+            {uni3 ? (
+              <RenderUniversityCard uni={uni3} onRemove={() => handleClearSlot(3)} />
+            ) : (
+              <RenderEmptySlot slotNumber={3} onSelect={setSlot3Id} options={optionsForSlot3} />
             )}
           </div>
 
         </div>
       )}
 
+    </div>
+  );
+}
+
+// Subcomponent: Active University Comparison Card
+function RenderUniversityCard({ uni, onRemove }: { uni: University; onRemove: () => void }) {
+  return (
+    <Card className="bg-white border-2 border-ink rounded-[32px] p-6 sm:p-8 flex flex-col justify-between h-full shadow-[4px_4px_0px_#2c2e2a] relative overflow-hidden">
+      <div>
+        <div className="flex justify-between items-start mb-6">
+          <UniversityLogo domain={uni.domain} name={uni.name} className="w-14 h-14 rounded-[18px]" />
+          <button 
+            onClick={onRemove} 
+            className="w-8 h-8 border border-hairline-mist rounded-full flex items-center justify-center hover:bg-[#ff705d]/10 hover:text-[#ff705d] transition-colors text-stone-gray cursor-pointer"
+            title="Remove from slot"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <h3 className="font-sans font-black text-xl text-ink uppercase tracking-tight leading-tight mb-6 line-clamp-2">
+          {uni.name}
+        </h3>
+
+        <div className="space-y-4 pt-4 border-t border-hairline-mist border-dashed">
+          <div>
+            <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">EMIRATE REGION</div>
+            <div className="font-sans font-bold text-sm text-ink">{uni.location}</div>
+          </div>
+
+          <div>
+            <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">CLASSIFICATION</div>
+            <div className="font-sans font-bold text-sm text-ink">{uni.type} University</div>
+          </div>
+
+          <div>
+            <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">ANNUAL TUITION FEE</div>
+            <div className="font-sans font-black text-lg text-[#ff705d]">
+              AED {uni.tuitionFee?.toLocaleString() || uni.tuitionFee}
+            </div>
+          </div>
+
+          <div>
+            <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">ADMISSIONS ACCEPTANCE RATE</div>
+            <div className="font-sans font-black text-base text-[#2ba0ff]">
+              {uni.acceptanceRate ? `${uni.acceptanceRate}%` : 'N/A'}
+            </div>
+          </div>
+
+          <div>
+            <div className="font-mono text-[9px] text-stone-gray uppercase font-bold tracking-widest mb-1">OFFERED INTAKES</div>
+            <div className="flex flex-wrap gap-1 mt-1.5">
+              {uni.intakes?.map(intake => (
+                <span key={intake} className="bg-[#ff705d]/10 border border-[#ff705d]/20 text-ink font-mono text-[9px] font-bold uppercase px-2.5 py-0.5 rounded-full">
+                  {intake}
+                </span>
+              )) || <span className="text-xs font-semibold">Fall & Spring</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Button 
+        variant="primary" 
+        size="sm" 
+        className="mt-8 w-full font-sans font-bold text-xs uppercase flex items-center justify-center gap-1.5 rounded-[50px] py-3.5"
+        asChild
+      >
+        <Link to={`/details/university/${uni.id}`}>
+          Learn More <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </Button>
+    </Card>
+  );
+}
+
+// Subcomponent: Empty Slot Card Prompt
+function RenderEmptySlot({ slotNumber, onSelect, options }: { slotNumber: number; onSelect: (id: string) => void; options: University[] }) {
+  return (
+    <div className="min-h-[420px] border-2 border-dashed border-hairline-mist rounded-[32px] bg-white/50 p-6 flex flex-col items-center justify-center text-center space-y-4">
+      <div className="w-12 h-12 rounded-2xl bg-[#2ba0ff]/10 text-[#2ba0ff] flex items-center justify-center font-mono font-bold text-lg">
+        #{slotNumber}
+      </div>
+      <div>
+        <h4 className="font-sans font-black text-base uppercase text-ink">
+          Empty Comparison Slot
+        </h4>
+        <p className="font-sans text-xs text-stone-gray mt-1 max-w-xs leading-relaxed">
+          Select a university from the dropdown above to calibrate metrics side-by-side.
+        </p>
+      </div>
+
+      {options.length > 0 && (
+        <button
+          onClick={() => onSelect(options[0].id)}
+          className="text-xs font-sans font-bold text-[#2ba0ff] hover:underline cursor-pointer pt-2"
+        >
+          + Quick Select {options[0].name}
+        </button>
+      )}
     </div>
   );
 }
