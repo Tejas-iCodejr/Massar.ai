@@ -1,3 +1,4 @@
+import compression from "compression";
 import express from "express";
 import path from "path";
 import cors from "cors";
@@ -229,8 +230,13 @@ function apiRateLimiter(req: express.Request, res: express.Response, next: expre
   return next();
 }
 
+function setApiCacheHeaders(res: express.Response) {
+  res.setHeader("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=3600");
+}
+
 async function startServer() {
   const app = express();
+  app.use(compression());
   app.use(cors());
   app.use(express.json());
   app.use("/api", apiRateLimiter);
@@ -238,29 +244,33 @@ async function startServer() {
   await loadData();
   setupScraperCron();
 
-  // API Routes
+  // High-performance In-Memory API Routes with HTTP Caching
   app.get("/api/data", (req, res) => {
+    setApiCacheHeaders(res);
     res.json(cachedData);
   });
 
   app.get("/api/universities", async (req, res) => {
     if (!cachedData || cachedData.universities?.length < 5) await loadData();
+    setApiCacheHeaders(res);
     res.json(cachedData?.universities || []);
   });
 
   app.get("/api/schools", async (req, res) => {
-    // Always refresh data from disk to ensure latest dataset is served
-    await loadData();
+    if (!cachedData || cachedData.schools?.length < 5) await loadData();
+    setApiCacheHeaders(res);
     res.json(cachedData?.schools || []);
   });
 
   app.get("/api/programs", async (req, res) => {
-    await loadData();
+    if (!cachedData || cachedData.programs?.length < 5) await loadData();
+    setApiCacheHeaders(res);
     res.json(cachedData?.programs || []);
   });
 
   app.get("/api/perks", async (req, res) => {
-    await loadData();
+    if (!cachedData || cachedData.perks?.length < 5) await loadData();
+    setApiCacheHeaders(res);
     res.json(cachedData?.perks || []);
   });
 
