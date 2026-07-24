@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Bookmark, Scale, ChevronRight, ChevronLeft, ShieldCheck } from 'lucide-react';
+import { Compass, GraduationCap, School, BookOpen, Star, Search, Globe, User, Menu, Calendar, X, Bookmark, Scale, ChevronRight, ChevronLeft, ShieldCheck, FileText, Sparkles, TrendingUp } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 import { motion, AnimatePresence } from 'motion/react';
@@ -77,10 +77,55 @@ export function Navbar() {
   ];
 
   const drawerLinks = [
-    { name: 'Planner', path: '/planner', icon: Calendar },
-    { name: 'Saved Desk', path: '/saved', icon: Bookmark },
-    { name: 'Compare Sandbox', path: '/compare', icon: Scale },
-    { name: 'Accreditation & Policies', path: '/accreditation', icon: ShieldCheck },
+    { 
+      name: 'Academic Planner', 
+      path: '/planner', 
+      icon: Calendar,
+      desc: 'Schedule advising & application dates',
+      badgeColor: 'bg-[#ff705d]/10 text-[#ff705d] border-[#ff705d]/20'
+    },
+    { 
+      name: 'Saved Desk', 
+      path: '/saved', 
+      icon: Bookmark,
+      desc: 'View bookmarked campuses & saved perks',
+      badgeColor: 'bg-[#f5e211]/20 text-ink border-[#f5e211]/40'
+    },
+    { 
+      name: 'Compare Sandbox', 
+      path: '/compare', 
+      icon: Scale,
+      desc: 'Side-by-side tuition & criteria matrix',
+      badgeColor: 'bg-[#2ba0ff]/10 text-[#2ba0ff] border-[#2ba0ff]/20'
+    },
+    { 
+      name: 'Accreditation & Policies', 
+      path: '/accreditation', 
+      icon: ShieldCheck,
+      desc: 'CAA, KHDA, ADEK & PDPL legal rules',
+      badgeColor: 'bg-[#8ed462]/15 text-[#4da81b] border-[#8ed462]/30'
+    },
+    { 
+      name: 'Equivalency Wizard', 
+      path: '/accreditation#equivalency', 
+      icon: FileText,
+      desc: 'MOE eDAS 2.0 digital attestation guide',
+      badgeColor: 'bg-[#9f5ffd]/10 text-[#9f5ffd] border-[#9f5ffd]/20'
+    },
+    { 
+      name: 'Net Cost Calculator', 
+      path: '/universities#budget', 
+      icon: Sparkles,
+      desc: 'Tuition, housing & lifestyle budget',
+      badgeColor: 'bg-[#ff705d]/10 text-[#ff705d] border-[#ff705d]/20'
+    },
+    { 
+      name: 'National Vision Mapper', 
+      path: '/universities#vision', 
+      icon: TrendingUp,
+      desc: 'UAE 2031 & KSA 2030 job market matrix',
+      badgeColor: 'bg-[#2ba0ff]/10 text-[#2ba0ff] border-[#2ba0ff]/20'
+    },
   ];
 
   return (
@@ -314,19 +359,50 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed left-0 top-0 bottom-0 w-[300px] sm:w-[340px] bg-white border-r border-hairline-mist z-50 shadow-2xl p-6 sm:p-8 pt-24 flex flex-col justify-between overflow-y-auto"
+              className="fixed left-0 top-0 bottom-0 w-[320px] sm:w-[360px] bg-white border-r border-hairline-mist z-50 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
             >
               
-              {/* Direct Workspace & Tools Navigation Section */}
+              {/* Drawer Content Wrapper */}
               <div className="flex-1 space-y-6 overflow-y-auto pr-1">
                 
-                {/* SECTION: WORKSPACE & TOOLS */}
-                <div>
-                  <span className="font-mono text-[9px] font-bold text-stone-gray uppercase tracking-widest pl-3 mb-2 block">
-                    Workspace & Tools
-                  </span>
+                {/* DRAWER HEADER: Brand Emblem & Close Button */}
+                <div className="flex items-center justify-between pb-4 border-b border-hairline-mist">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-[#8ed462] flex items-center justify-center text-ink shadow-xs font-black">
+                      <Compass className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-sans font-black text-base text-ink uppercase tracking-tight leading-none">
+                        Massar Workspace
+                      </h3>
+                      <span className="font-mono text-[10px] text-stone-gray font-bold uppercase tracking-wider">
+                        Student Career OS
+                      </span>
+                    </div>
+                  </div>
 
-                  <div className="space-y-1">
+                  <button
+                    onClick={() => setDrawerOpen(false)}
+                    className="w-8 h-8 rounded-full bg-stone-100 hover:bg-ink hover:text-white transition-colors flex items-center justify-center text-stone-gray cursor-pointer"
+                    title="Close Drawer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                {/* WORKSPACE & TOOLS SECTION */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between px-1">
+                    <span className="font-mono text-[10px] font-bold text-stone-gray uppercase tracking-widest block">
+                      Interactive Tools
+                    </span>
+                    <span className="font-mono text-[9px] font-bold text-[#ff705d] bg-[#ff705d]/10 px-2 py-0.5 rounded-full border border-[#ff705d]/20">
+                      7 Available
+                    </span>
+                  </div>
+
+                  {/* Rich Cards Grid */}
+                  <div className="space-y-2.5">
                     {drawerLinks.map((link) => {
                       const Icon = link.icon;
                       const isActive = location.pathname === link.path;
@@ -336,17 +412,42 @@ export function Navbar() {
                           to={link.path}
                           onClick={() => setDrawerOpen(false)}
                           className={cn(
-                            "px-4 py-3 flex items-center justify-between font-sans font-semibold text-[14px] rounded-[50px] transition-all select-none group",
+                            "p-3.5 flex items-start gap-3.5 rounded-[22px] border transition-all select-none group relative overflow-hidden",
                             isActive 
-                              ? "bg-[#ff705d]/15 text-[#ff705d] font-bold shadow-xs border border-[#ff705d]/30" 
-                              : "text-ink/80 hover:bg-stone-100/80 hover:text-ink"
+                              ? "bg-ink text-[#f5f1e4] border-ink shadow-md" 
+                              : "bg-[#f5f1e4]/40 border-hairline-mist hover:bg-white hover:border-ink hover:shadow-xs text-ink"
                           )}
                         >
-                          <div className="flex items-center gap-3">
-                            <Icon className={cn("w-4.5 h-4.5 transition-colors", isActive ? "text-[#ff705d]" : "text-stone-gray group-hover:text-ink")} />
-                            <span>{link.name}</span>
+                          {/* Icon Badge */}
+                          <div className={cn(
+                            "w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border mt-0.5",
+                            isActive ? "bg-white/10 text-[#f5e211] border-white/20" : link.badgeColor
+                          )}>
+                            <Icon className="w-4.5 h-4.5" />
                           </div>
-                          <ChevronRight className={cn("w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5", isActive ? "text-[#ff705d]" : "text-stone-gray/50")} />
+
+                          {/* Text Details */}
+                          <div className="flex-grow min-w-0">
+                            <div className="flex items-center justify-between gap-1">
+                              <span className={cn(
+                                "font-sans font-bold text-xs leading-snug truncate",
+                                isActive ? "text-[#f5f1e4]" : "text-ink group-hover:text-ink"
+                              )}>
+                                {link.name}
+                              </span>
+                              <ChevronRight className={cn(
+                                "w-3.5 h-3.5 shrink-0 transition-transform group-hover:translate-x-1",
+                                isActive ? "text-[#f5e211]" : "text-stone-gray group-hover:text-ink"
+                              )} />
+                            </div>
+                            
+                            <p className={cn(
+                              "font-sans text-[11px] leading-tight mt-0.5 multiline-truncate",
+                              isActive ? "text-stone-300" : "text-stone-gray"
+                            )}>
+                              {link.desc}
+                            </p>
+                          </div>
                         </Link>
                       );
                     })}
@@ -356,24 +457,24 @@ export function Navbar() {
               </div>
 
               {/* Drawer Footer Actions (Stationary) */}
-              <div className="flex flex-col gap-4 border-t border-hairline-mist pt-6 shrink-0">
+              <div className="flex flex-col gap-3 border-t border-hairline-mist pt-4 shrink-0 mt-4">
                 
                 {/* Language Selector */}
                 <button
                   onClick={() => setLang(lang === 'EN' ? 'AR' : 'EN')}
-                  className="flex items-center justify-between px-4 py-3 border border-hairline-mist rounded-[50px] font-sans text-[12px] font-bold bg-white text-ink hover:bg-gray-50 transition-all cursor-pointer select-none"
+                  className="flex items-center justify-between px-4 py-2.5 border border-hairline-mist rounded-[50px] font-sans text-[12px] font-bold bg-[#f5f1e4]/50 text-ink hover:bg-white transition-all cursor-pointer select-none"
                 >
                   <div className="flex items-center gap-2">
                     <Globe className="w-4 h-4 text-stone-gray" />
                     <span>Language</span>
                   </div>
-                  <span className="text-secondary font-mono">{lang}</span>
+                  <span className="text-[#ff705d] font-mono text-xs font-black bg-[#ff705d]/10 px-2 py-0.5 rounded-md">{lang}</span>
                 </button>
 
                 {/* Login Button */}
-                <Button variant="primary" className="w-full flex items-center justify-center border border-ink font-sans font-bold py-3.5 text-xs rounded-[50px]" asChild>
+                <Button variant="primary" className="w-full flex items-center justify-center bg-ink text-white hover:bg-stone-800 border border-ink font-sans font-bold py-3 text-xs rounded-[50px] shadow-sm" asChild>
                   <Link to="/login" onClick={() => setDrawerOpen(false)}>
-                    <User className="w-4 h-4 mr-2" /> Login
+                    <User className="w-4 h-4 mr-2 text-[#f5e211]" /> Student Login
                   </Link>
                 </Button>
 
