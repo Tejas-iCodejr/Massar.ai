@@ -157,11 +157,15 @@ export function Navbar() {
         )}
       </button>
 
-      {/* Main Navbar Capsule (iOS-Style Frosted Glass) */}
-      <div className="bg-white/45 backdrop-blur-[24px] backdrop-saturate-[180%] border border-white/40 shadow-[0_8px_32px_rgba(31,38,135,0.06),inset_0_1px_1px_rgba(255,255,255,0.3)] rounded-[50px] px-6 h-16 sm:h-20 flex items-center justify-between w-fit mx-auto transition-all duration-300 relative select-none">
+      {/* Main Navbar Capsule (Authentic macOS Sequoia / visionOS Liquid Glass) */}
+      <div className="bg-white/40 backdrop-blur-[32px] backdrop-saturate-[190%] backdrop-brightness-[105%] border border-white/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08),0_4px_12px_-2px_rgba(0,0,0,0.04),inset_0_1.5px_1px_0_rgba(255,255,255,0.9),inset_0_-1px_1px_0_rgba(0,0,0,0.03)] rounded-[50px] px-6 h-16 sm:h-20 flex items-center justify-between w-fit mx-auto transition-all duration-300 relative select-none overflow-hidden group/nav">
         
+        {/* Top Specular Liquid Light Sheen Gradient */}
+        <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/90 to-transparent opacity-80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/[0.02] pointer-events-none" />
+
         {/* Desktop View: Centered, evenly spaced links (8px system) */}
-        <div className="hidden lg:flex items-center gap-8 h-full">
+        <div className="hidden lg:flex items-center gap-6 h-full relative z-10">
           
           {/* Left Links */}
           {leftLinks.map((link) => {
@@ -172,16 +176,18 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative px-4 py-2 flex items-center gap-2 font-sans font-medium text-[14px] rounded-[50px] transition-all duration-150 ease-in-out hover:-translate-y-[1px] hover:bg-black/[0.02] select-none group",
-                  isActive ? "text-ink font-bold" : "text-ink/80 hover:text-ink"
+                  "relative px-4 py-2 flex items-center gap-2 font-sans text-[14px] rounded-[50px] transition-all duration-200 ease-out select-none group/link",
+                  isActive 
+                    ? "bg-white/70 text-ink font-bold shadow-[0_2px_8px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.8)] border border-white/80" 
+                    : "text-ink/80 hover:text-ink hover:bg-white/40 hover:border hover:border-white/50 hover:shadow-xs"
                 )}
               >
-                <Icon className="w-[18px] h-[18px] transition-opacity" strokeWidth={1.5} style={{ opacity: isActive ? 1 : 0.7 }} />
+                <Icon className={cn("w-[18px] h-[18px] transition-transform duration-200 group-hover/link:scale-110", isActive ? "text-[#4da81b]" : "text-stone-gray group-hover/link:text-ink")} strokeWidth={2} />
                 <span>{link.name}</span>
                 {isActive && (
                   <motion.div 
                     layoutId="activeUnderline" 
-                    className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#8ed462] rounded-full" 
+                    className="absolute -bottom-1 left-4 right-4 h-[3px] bg-[#8ed462] rounded-full shadow-[0_2px_6px_rgba(142,212,98,0.5)]" 
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -189,13 +195,13 @@ export function Navbar() {
             );
           })}
 
-          {/* Center Logo */}
-          <Link to="/" className="flex items-center group h-full px-2">
-            <div className="w-10 h-10 bg-primary rounded-[12px] flex items-center justify-center transition-transform duration-300 group-hover:rotate-6 shadow-sm">
-              <span className="text-white font-sans font-black text-xl select-none">M</span>
+          {/* Center Logo Badge with Liquid Glass Embellishment */}
+          <Link to="/" className="flex items-center group h-full px-3 transition-transform duration-200 hover:scale-[1.03]">
+            <div className="w-10 h-10 bg-[#8ed462] rounded-[14px] flex items-center justify-center transition-all duration-300 group-hover:rotate-6 shadow-[0_4px_14px_rgba(142,212,98,0.4),inset_0_1px_1px_rgba(255,255,255,0.6)] border border-white/40">
+              <span className="text-[#2c2e2a] font-sans font-black text-xl select-none tracking-tighter">M</span>
             </div>
             <div className="ml-3 flex flex-col justify-center">
-              <span className="font-sans font-bold text-lg tracking-tight text-ink leading-none">Massar</span>
+              <span className="font-sans font-black text-lg tracking-tight text-ink leading-none">Massar</span>
             </div>
           </Link>
 
@@ -208,16 +214,18 @@ export function Navbar() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative px-4 py-2 flex items-center gap-2 font-sans font-medium text-[14px] rounded-[50px] transition-all duration-150 ease-in-out hover:-translate-y-[1px] hover:bg-black/[0.02] select-none group",
-                  isActive ? "text-ink font-bold" : "text-ink/80 hover:text-ink"
+                  "relative px-4 py-2 flex items-center gap-2 font-sans text-[14px] rounded-[50px] transition-all duration-200 ease-out select-none group/link",
+                  isActive 
+                    ? "bg-white/70 text-ink font-bold shadow-[0_2px_8px_rgba(0,0,0,0.05),inset_0_1px_1px_rgba(255,255,255,0.8)] border border-white/80" 
+                    : "text-ink/80 hover:text-ink hover:bg-white/40 hover:border hover:border-white/50 hover:shadow-xs"
                 )}
               >
-                <Icon className="w-[18px] h-[18px] transition-opacity" strokeWidth={1.5} style={{ opacity: isActive ? 1 : 0.7 }} />
+                <Icon className={cn("w-[18px] h-[18px] transition-transform duration-200 group-hover/link:scale-110", isActive ? "text-[#4da81b]" : "text-stone-gray group-hover/link:text-ink")} strokeWidth={2} />
                 <span>{link.name}</span>
                 {isActive && (
                   <motion.div 
                     layoutId="activeUnderline" 
-                    className="absolute bottom-0 left-4 right-4 h-[2px] bg-[#8ed462] rounded-full" 
+                    className="absolute -bottom-1 left-4 right-4 h-[3px] bg-[#8ed462] rounded-full shadow-[0_2px_6px_rgba(142,212,98,0.5)]" 
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -225,14 +233,13 @@ export function Navbar() {
             );
           })}
 
-          {/* Search Trigger (Icon + Cmd+K Badge) */}
+          {/* Liquid Glass Search Trigger Button */}
           <button
             onClick={() => setSearchOpen(true)}
-            aria-label="Search (⌘K)"
-            className="relative px-3 py-1.5 flex items-center gap-1.5 font-sans font-medium rounded-full transition-all duration-150 ease-in-out hover:-translate-y-[1px] hover:bg-black/[0.03] select-none cursor-pointer text-ink/80 hover:text-ink group border border-hairline-mist bg-white/50"
+            className="w-10 h-10 rounded-full bg-white/60 hover:bg-white/90 border border-white/80 shadow-[0_2px_8px_rgba(0,0,0,0.04),inset_0_1px_1px_rgba(255,255,255,0.8)] flex items-center justify-center text-ink hover:text-[#2ba0ff] transition-all duration-200 hover:scale-105 cursor-pointer ml-1"
+            title="Search Directory (⌘K)"
           >
-            <Search className="w-[16px] h-[16px] transition-opacity opacity-70 group-hover:opacity-100" strokeWidth={1.5} />
-            <span className="font-mono text-[10px] font-bold text-stone-500 bg-gray-100 border border-stone-200 px-1.5 py-0.5 rounded">⌘K</span>
+            <Search className="w-4 h-4" strokeWidth={2.2} />
           </button>
 
         </div>
