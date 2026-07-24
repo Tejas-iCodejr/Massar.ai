@@ -78,7 +78,7 @@
     {
       "id": "6",
       "name": "BITS Pilani, Dubai Campus",
-      "domain": "bits-dubai.ac.ae",
+      "domain": "bits-pilani.ac.in",
       "location": "Academic City, Dubai",
       "type": "Branch Campus",
       "description": "International campus of Birla Institute of Technology & Science, highly acclaimed for engineering and CS.",
@@ -905,7 +905,7 @@
     {
       "id": "14",
       "name": "Horizon English School",
-      "domain": "horizonschool.com",
+      "domain": "horizonenglishschool.com",
       "curriculum": "British",
       "emirate": "Dubai",
       "country": "UAE",
@@ -953,7 +953,7 @@
     {
       "id": "18",
       "name": "The Millennium School Dubai",
-      "domain": "millenniumschool-dubai.com",
+      "domain": "themillenniumschool-dubai.com",
       "curriculum": "CBSE",
       "emirate": "Dubai",
       "country": "UAE",
@@ -1121,7 +1121,7 @@
     {
       "id": "32",
       "name": "The King's School Riyadh",
-      "domain": "kings.edu.sa",
+      "domain": "kingscollege-riyadh.com",
       "curriculum": "British",
       "emirate": "Riyadh",
       "country": "Saudi Arabia",
@@ -1169,7 +1169,7 @@
     {
       "id": "36",
       "name": "British International School Jeddah (BISJ)",
-      "domain": "contis.bisj.com",
+      "domain": "bisj.com",
       "curriculum": "British",
       "emirate": "Jeddah",
       "country": "Saudi Arabia",
@@ -1181,7 +1181,7 @@
     {
       "id": "37",
       "name": "Al-Bayan International School",
-      "domain": "bis.edu.sa",
+      "domain": "bis.edu.kw",
       "curriculum": "American",
       "emirate": "Dammam",
       "country": "Saudi Arabia",
@@ -1462,7 +1462,7 @@
       "id": "12",
       "title": "Middle East Youth Fellowship",
       "organizer": "MEYE Initiative",
-      "domain": "meyexpo.com",
+      "domain": "meyef.org",
       "type": "Fellowship",
       "eligibility": "High School & Undergrad",
       "deadline": "2026-10-15",
