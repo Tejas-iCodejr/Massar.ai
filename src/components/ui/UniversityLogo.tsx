@@ -367,10 +367,10 @@ export function UniversityLogo({ domain, name, className }: LogoProps) {
   const sources: string[] = [];
   
   if (resolvedDomain && resolvedDomain.length >= 3) {
-    sources.push(`https://cdn.brandfetch.io/${resolvedDomain}/w/400/h/400`);
-    sources.push(`https://unavatar.io/${resolvedDomain}`);
-    sources.push(`https://icon.horse/icon/${resolvedDomain}`);
     sources.push(`https://www.google.com/s2/favicons?domain=${resolvedDomain}&sz=128`);
+    sources.push(`https://icon.horse/icon/${resolvedDomain}`);
+    sources.push(`https://unavatar.io/${resolvedDomain}`);
+    sources.push(`https://cdn.brandfetch.io/${resolvedDomain}/w/400/h/400`);
   }
 
   const currentUrl = sources[level];
