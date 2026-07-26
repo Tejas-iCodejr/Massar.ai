@@ -27,6 +27,24 @@ export function Navbar() {
   const [searchResults, setSearchResults] = useState(SEARCH_DATABASE);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  /**
+   * Liquid glass: feed the pointer position to the capsule as CSS variables so
+   * the specular highlight tracks the cursor. Written straight to the element —
+   * a state update per mouse move would re-render the whole nav.
+   */
+  const trackGlass = (event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'mouse') return;
+    const element = event.currentTarget;
+    const box = element.getBoundingClientRect();
+    element.style.setProperty('--lx', `${event.clientX - box.left}px`);
+    element.style.setProperty('--ly', `${event.clientY - box.top}px`);
+    element.style.setProperty('--liquid-specular', '1');
+  };
+
+  const releaseGlass = (event: React.PointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty('--liquid-specular', '0');
+  };
+
   // Focus input when search overlay opens
   useEffect(() => {
     if (searchOpen) {
@@ -158,7 +176,11 @@ export function Navbar() {
       </button>
 
       {/* Main Navbar Capsule (Ultra-Liquid macOS Sequoia & visionOS Glass) */}
-      <div className="bg-[#f5f1e4]/35 backdrop-blur-[45px] backdrop-saturate-[220%] backdrop-brightness-[108%] border-2 border-white/80 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1),0_8px_20px_-4px_rgba(0,0,0,0.06),inset_0_2px_2px_0_rgba(255,255,255,1),inset_0_-1.5px_2px_0_rgba(0,0,0,0.04)] rounded-[50px] px-6 h-16 sm:h-20 flex items-center justify-between w-fit mx-auto transition-all duration-300 relative select-none overflow-hidden group/nav">
+      <div
+        onPointerMove={trackGlass}
+        onPointerLeave={releaseGlass}
+        className="liquid-glass bg-[#f5f1e4]/35 backdrop-blur-[45px] backdrop-saturate-[220%] backdrop-brightness-[108%] border-2 border-white/80 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1),0_8px_20px_-4px_rgba(0,0,0,0.06),inset_0_2px_2px_0_rgba(255,255,255,1),inset_0_-1.5px_2px_0_rgba(0,0,0,0.04)] rounded-[50px] px-6 h-16 sm:h-20 flex items-center justify-between w-fit mx-auto transition-all duration-300 relative select-none overflow-hidden group/nav"
+      >
         
         {/* Top Specular Liquid Light Sheen Ribbon */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent opacity-95 pointer-events-none" />
@@ -245,7 +267,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile/Tablet View Capsule Content (Just Logo & Search Icon) */}
-        <div className="lg:hidden flex items-center justify-between w-full gap-4">
+        <div className="lg:hidden flex items-center justify-between w-full gap-4 relative z-10">
           <Link to="/" className="flex items-center group">
             <div className="w-9 h-9 bg-primary rounded-[10px] flex items-center justify-center shadow-sm">
               <span className="text-white font-sans font-black text-lg select-none">M</span>

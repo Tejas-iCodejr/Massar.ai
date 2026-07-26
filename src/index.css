@@ -37,39 +37,66 @@
                     linear-gradient(to bottom, rgba(44, 46, 42, 0.03) 1px, transparent 1px);
 }
 
-.grid-bg-dark {
-  background-size: 60px 60px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+/* ---------------------------------------------------------------------------
+   Liquid glass
+   Layered specular + a slow drifting sheen over the existing backdrop blur.
+
+   Deliberately no SVG `feDisplacementMap` via `backdrop-filter: url(...)`:
+   support for filter references in backdrop-filter is inconsistent, and where
+   it half-works it drops the blur entirely — trading a solid effect in every
+   browser for a broken bar in some. The specular and sheen carry the "liquid"
+   read without that risk.
+--------------------------------------------------------------------------- */
+.liquid-glass {
+  --lx: 50%;
+  --ly: 0%;
+  position: relative;
+  isolation: isolate;
 }
 
-/* Gentle float animation for animated storybook doodles */
-@keyframes gentleFloat {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+/* Specular highlight, tracked to the pointer. */
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    140px 90px at var(--lx) var(--ly),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.25) 45%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  opacity: var(--liquid-specular, 0);
+  transition: opacity 400ms ease;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.animate-float {
-  animation: gentleFloat 6s infinite ease-in-out;
+/* Slow sweep of light around the rim — the cue that reads as "liquid". */
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  inset: -60%;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0) 0deg,
+    rgba(255, 255, 255, 0.55) 38deg,
+    rgba(255, 255, 255, 0) 96deg,
+    rgba(255, 255, 255, 0) 250deg,
+    rgba(255, 255, 255, 0.4) 300deg,
+    rgba(255, 255, 255, 0) 350deg
+  );
+  animation: liquidDrift 18s linear infinite;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Infinite text ticker animation */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-
-.animate-marquee-reverse {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite reverse;
+@keyframes liquidDrift {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Accessibility: Respect OS Reduced Motion Settings */
@@ -83,9 +110,7 @@
     scroll-behavior: auto !important;
   }
 
-  .animate-marquee,
-  .animate-marquee-reverse,
-  .animate-float {
+  .liquid-glass::after {
     animation: none !important;
   }
 }
