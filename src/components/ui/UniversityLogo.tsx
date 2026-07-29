@@ -361,6 +361,8 @@ function getBrandTint(name: string): { bg: string; text: string; border: string 
 const CUSTOM_LOGOS: Record<string, string> = {
   "Ajman University": "/logos/ajman_university.png",
   "ajman.ac.ae": "/logos/ajman_university.png",
+  "Al Ain University": "/logos/al_ain_university.png",
+  "aau.ac.ae": "/logos/al_ain_university.png",
 };
 
 export function UniversityLogo({ domain, name, className }: LogoProps) {
