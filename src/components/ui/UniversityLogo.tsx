@@ -369,6 +369,8 @@ const CUSTOM_LOGOS: Record<string, string> = {
   "alfaisal.edu": "/logos/alfaisal_university.png",
   "Canadian University Dubai": "/logos/cud_university.png",
   "cud.ac.ae": "/logos/cud_university.png",
+  "Effat University": "/logos/effat_university.png",
+  "effatuniversity.edu.sa": "/logos/effat_university.png",
 };
 
 export function UniversityLogo({ domain, name, className }: LogoProps) {
