@@ -357,6 +357,12 @@ function getBrandTint(name: string): { bg: string; text: string; border: string 
   return tints[Math.abs(hash) % tints.length];
 }
 
+// Local custom logo overrides for specific entities
+const CUSTOM_LOGOS: Record<string, string> = {
+  "Ajman University": "/logos/ajman_university.png",
+  "ajman.ac.ae": "/logos/ajman_university.png",
+};
+
 export function UniversityLogo({ domain, name, className }: LogoProps) {
   const [level, setLevel] = useState<number>(0);
   
@@ -366,6 +372,11 @@ export function UniversityLogo({ domain, name, className }: LogoProps) {
 
   // Build High-Definition CDN sources list (HD Vector/PNG first)
   const sources: string[] = [];
+
+  const customLogo = CUSTOM_LOGOS[name] || (cleanDomain ? CUSTOM_LOGOS[cleanDomain] : undefined);
+  if (customLogo) {
+    sources.push(customLogo);
+  }
   
   if (cleanDomain && cleanDomain.length >= 3) {
     sources.push(`https://cdn.brandfetch.io/${cleanDomain}/w/400/h/400`);
