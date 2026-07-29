@@ -360,17 +360,19 @@ function getBrandTint(name: string): { bg: string; text: string; border: string 
 export function UniversityLogo({ domain, name, className }: LogoProps) {
   const [level, setLevel] = useState<number>(0);
   
-  // Resolve domain from parameter or fallback lookup table
-  const resolvedDomain = (domain || DOMAIN_LOOKUP[name] || "").replace(/^https?:\/\//, '').replace(/\/.*$/, '').trim();
+  // Clean domain parameter or resolve from lookup table, stripping subpaths & protocol
+  const rawDomain = domain || DOMAIN_LOOKUP[name] || "";
+  const cleanDomain = rawDomain.replace(/^https?:\/\//, '').split('/')[0].trim();
 
-  // Build HD CDN sources list ONLY if a valid domain exists
+  // Build High-Definition CDN sources list (HD Vector/PNG first)
   const sources: string[] = [];
   
-  if (resolvedDomain && resolvedDomain.length >= 3) {
-    sources.push(`https://www.google.com/s2/favicons?domain=${resolvedDomain}&sz=128`);
-    sources.push(`https://icon.horse/icon/${resolvedDomain}`);
-    sources.push(`https://unavatar.io/${resolvedDomain}`);
-    sources.push(`https://cdn.brandfetch.io/${resolvedDomain}/w/400/h/400`);
+  if (cleanDomain && cleanDomain.length >= 3) {
+    sources.push(`https://cdn.brandfetch.io/${cleanDomain}/w/400/h/400`);
+    sources.push(`https://logo.clearbit.com/${cleanDomain}`);
+    sources.push(`https://unavatar.io/${cleanDomain}?fallback=false`);
+    sources.push(`https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=128`);
+    sources.push(`https://icon.horse/icon/${cleanDomain}`);
   }
 
   const currentUrl = sources[level];
@@ -381,7 +383,7 @@ export function UniversityLogo({ domain, name, className }: LogoProps) {
     if (level < sources.length - 1) {
       setLevel(prev => prev + 1);
     } else {
-      setLevel(sources.length); // Trigger vibrant emblem fallback
+      setLevel(sources.length); // Trigger high-contrast brand emblem fallback
     }
   };
 
@@ -401,12 +403,13 @@ export function UniversityLogo({ domain, name, className }: LogoProps) {
           src={currentUrl}
           alt={`${name} logo`}
           className="w-full h-full object-contain p-2 font-sans text-[8px]"
+          style={{ imageRendering: '-webkit-optimize-contrast' }}
           onError={handleError}
           loading="lazy"
         />
       ) : (
         <div className="flex flex-col items-center justify-center p-1 text-center w-full h-full">
-          <GraduationCap className={cn("w-4 h-4 mb-0.5", brandStyle.text)} strokeWidth={2.5} />
+          <GraduationCap className={cn("w-4.5 h-4.5 mb-0.5", brandStyle.text)} strokeWidth={2.5} />
           <span className={cn("font-sans font-black text-[11px] tracking-tight leading-none uppercase", brandStyle.text)}>
             {acronym}
           </span>
