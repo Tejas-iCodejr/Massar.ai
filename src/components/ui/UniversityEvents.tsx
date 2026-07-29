@@ -5,6 +5,7 @@ import { Button } from './Button';
 import { Badge } from './Badge';
 import { googleSignIn, initAuth, createCalendarEvent } from '../../lib/calendar';
 import { User } from 'firebase/auth';
+import { cn } from '../../lib/utils';
 
 export interface UniversityEvent {
   id: string;
@@ -251,62 +252,125 @@ export function UniversityEvents() {
           const isSynced = syncedIds.includes(evt.id);
           const isSyncing = syncingId === evt.id;
 
-          const dateStr = new Date(evt.date).toLocaleDateString(undefined, {
+          const dateObj = new Date(evt.date);
+          const monthShort = dateObj.toLocaleDateString(undefined, { month: 'short' }).toUpperCase();
+          const dayNum = dateObj.getDate();
+          const dateStr = dateObj.toLocaleDateString(undefined, {
             weekday: 'short',
             month: 'short',
             day: 'numeric',
             year: 'numeric'
           });
 
+          // Category Theme Configs for 3D & Color acccenting
+          const theme = evt.category === 'Hackathon' ? {
+            gradient: 'from-[#2ba0ff]/10 via-[#2ba0ff]/5 to-white',
+            borderColor: 'border-[#2ba0ff]/30 hover:border-[#2ba0ff]',
+            leftBar: 'bg-[#2ba0ff]',
+            badgeBg: 'bg-[#2ba0ff]/15 text-[#0066cc] border-[#2ba0ff]/30',
+            iconColor: 'text-[#2ba0ff]',
+            dateBg: 'bg-[#2ba0ff] text-white',
+            btnBg: 'bg-ink text-white hover:bg-[#2ba0ff] hover:text-white',
+          } : evt.category === 'Open Day' ? {
+            gradient: 'from-[#8ed462]/15 via-[#8ed462]/5 to-white',
+            borderColor: 'border-[#8ed462]/40 hover:border-[#4da81b]',
+            leftBar: 'bg-[#4da81b]',
+            badgeBg: 'bg-[#8ed462]/20 text-[#2d7a04] border-[#8ed462]/40',
+            iconColor: 'text-[#4da81b]',
+            dateBg: 'bg-[#4da81b] text-white',
+            btnBg: 'bg-ink text-white hover:bg-[#4da81b] hover:text-white',
+          } : evt.category === 'Seminar' ? {
+            gradient: 'from-[#ff705d]/12 via-[#ff705d]/5 to-white',
+            borderColor: 'border-[#ff705d]/30 hover:border-[#ff705d]',
+            leftBar: 'bg-[#ff705d]',
+            badgeBg: 'bg-[#ff705d]/15 text-[#d93823] border-[#ff705d]/30',
+            iconColor: 'text-[#ff705d]',
+            dateBg: 'bg-[#ff705d] text-white',
+            btnBg: 'bg-ink text-white hover:bg-[#ff705d] hover:text-white',
+          } : {
+            gradient: 'from-[#9f5ffd]/12 via-[#9f5ffd]/5 to-white',
+            borderColor: 'border-[#9f5ffd]/30 hover:border-[#9f5ffd]',
+            leftBar: 'bg-[#9f5ffd]',
+            badgeBg: 'bg-[#9f5ffd]/15 text-[#6c1cd9] border-[#9f5ffd]/30',
+            iconColor: 'text-[#9f5ffd]',
+            dateBg: 'bg-[#9f5ffd] text-white',
+            btnBg: 'bg-ink text-white hover:bg-[#9f5ffd] hover:text-white',
+          };
+
           return (
-            <Card
+            <div
               key={evt.id}
-              className="bg-white border border-hairline-mist p-6 rounded-[32px] flex flex-col justify-between h-full transition-all hover:translate-y-[-2px] hover:shadow-sm"
+              className={cn(
+                "group relative bg-gradient-to-br border p-6 rounded-[32px] flex flex-col justify-between h-full transition-all duration-300 transform-gpu hover:-translate-y-1.5 hover:shadow-xl hover:shadow-black/5 overflow-hidden",
+                theme.gradient,
+                theme.borderColor
+              )}
             >
-              <div>
+              {/* Subtle 3D Top Corner Accent Bar */}
+              <div className={cn("absolute top-0 left-0 w-full h-1.5", theme.leftBar)} />
+              
+              {/* Subtle Background Glow Blob */}
+              <div className={cn("absolute -top-12 -right-12 w-28 h-28 rounded-full blur-2xl opacity-40 pointer-events-none", theme.leftBar)} />
+
+              <div className="relative z-10">
+                {/* Header with 3D Date Emblem & Category Badge */}
                 <div className="flex justify-between items-start gap-4 mb-4">
-                  <span className="font-mono text-[9px] font-bold text-stone-gray block">
-                    {evt.university}
-                  </span>
-                  <Badge variant={
-                    evt.category === 'Open Day' ? 'success' :
-                    evt.category === 'Seminar' ? 'default' :
-                    evt.category === 'Hackathon' ? 'warning' : 'warning'
-                  } className="rounded-full text-[9px] px-2.5 font-bold uppercase shrink-0">
-                    {evt.category}
-                  </Badge>
+                  <div>
+                    <span className="font-mono text-[10px] font-extrabold text-stone-gray/80 tracking-wider block uppercase mb-1">
+                      {evt.university}
+                    </span>
+                    <span className={cn("inline-block font-mono text-[9px] px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider border", theme.badgeBg)}>
+                      {evt.category}
+                    </span>
+                  </div>
+
+                  {/* 3D Glass Date Emblem */}
+                  <div className="flex flex-col items-center justify-center w-12 h-13 bg-white/90 backdrop-blur-md rounded-2xl border border-white/80 shadow-[0_8px_16px_-4px_rgba(0,0,0,0.08)] shrink-0 overflow-hidden group-hover:scale-105 transition-transform">
+                    <span className={cn("w-full text-center py-0.5 font-mono text-[8px] font-black uppercase tracking-wider", theme.dateBg)}>
+                      {monthShort}
+                    </span>
+                    <span className="font-sans font-black text-sm text-ink leading-tight py-0.5">
+                      {dayNum}
+                    </span>
+                  </div>
                 </div>
 
-                <h3 className="font-sans font-extrabold text-base text-ink mb-2 leading-snug line-clamp-2 hover:text-[#ff705d] transition-colors">
+                <h3 className="font-sans font-black text-lg text-ink mb-2 leading-snug line-clamp-2 group-hover:text-[#ff705d] transition-colors">
                   {evt.title}
                 </h3>
 
-                <p className="font-sans text-xs text-stone-gray line-clamp-3 mb-5 leading-relaxed">
+                <p className="font-sans text-xs text-stone-gray/90 line-clamp-3 mb-5 leading-relaxed font-medium">
                   {evt.description}
                 </p>
 
-                {/* Event details list */}
-                <div className="space-y-2.5 pb-5 mb-5 border-b border-dashed border-hairline-mist">
-                  <div className="flex items-center gap-2 text-stone-gray font-sans text-xs">
-                    <Calendar className="w-4 h-4 text-stone-400 shrink-0" />
+                {/* Event Details Matrix with Styled Icons */}
+                <div className="space-y-2.5 pb-4 mb-5 border-b border-stone-200/60">
+                  <div className="flex items-center gap-2.5 text-ink font-sans text-xs font-semibold">
+                    <div className="w-6 h-6 rounded-lg bg-white/80 shadow-xs flex items-center justify-center shrink-0 border border-stone-100">
+                      <Calendar className={cn("w-3.5 h-3.5", theme.iconColor)} />
+                    </div>
                     <span>{dateStr}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-stone-gray font-sans text-xs">
-                    <Clock className="w-4 h-4 text-stone-400 shrink-0" />
+                  <div className="flex items-center gap-2.5 text-ink font-sans text-xs font-semibold">
+                    <div className="w-6 h-6 rounded-lg bg-white/80 shadow-xs flex items-center justify-center shrink-0 border border-stone-100">
+                      <Clock className={cn("w-3.5 h-3.5", theme.iconColor)} />
+                    </div>
                     <span>{evt.time} GST</span>
                   </div>
-                  <div className="flex items-center gap-2 text-stone-gray font-sans text-xs">
-                    <MapPin className="w-4 h-4 text-stone-400 shrink-0" />
+                  <div className="flex items-center gap-2.5 text-ink font-sans text-xs font-semibold">
+                    <div className="w-6 h-6 rounded-lg bg-white/80 shadow-xs flex items-center justify-center shrink-0 border border-stone-100">
+                      <MapPin className={cn("w-3.5 h-3.5", theme.iconColor)} />
+                    </div>
                     <span className="truncate">{evt.location}</span>
                   </div>
                 </div>
               </div>
 
-              {/* Sync and tags footer */}
-              <div className="space-y-4">
+              {/* Sync Button & Hashtags Footer */}
+              <div className="space-y-3.5 relative z-10">
                 <div className="flex flex-wrap gap-1.5">
                   {evt.tags.map((tg, i) => (
-                    <span key={i} className="font-sans text-[9px] font-semibold bg-stone-50 text-stone-gray border border-stone-100 rounded-md px-2 py-0.5">
+                    <span key={i} className="font-sans text-[9px] font-bold bg-white/80 text-ink/70 border border-stone-200/80 rounded-md px-2 py-0.5 shadow-2xs group-hover:border-stone-300 transition-colors">
                       #{tg}
                     </span>
                   ))}
@@ -315,20 +379,24 @@ export function UniversityEvents() {
                 <Button
                   onClick={() => handleSync(evt)}
                   disabled={isSynced || isSyncing}
-                  variant="primary"
-                  className="w-full justify-center gap-1.5 rounded-full py-2 text-[11px] font-bold uppercase transition-all border border-ink bg-white text-ink hover:bg-stone-50"
+                  className={cn(
+                    "w-full justify-center gap-2 rounded-full py-2.5 text-[11px] font-extrabold uppercase tracking-wider transition-all duration-200 shadow-sm cursor-pointer select-none active:scale-98",
+                    isSynced 
+                      ? "bg-[#8ed462]/20 text-[#2d7a04] border border-[#8ed462]/50 shadow-inner" 
+                      : theme.btnBg
+                  )}
                 >
                   {isSyncing ? (
                     <Loader className="w-3.5 h-3.5 animate-spin" />
                   ) : isSynced ? (
-                    <Check className="w-3.5 h-3.5 text-[#8ed462]" />
+                    <Check className="w-3.5 h-3.5 text-[#4da81b]" />
                   ) : (
-                    <CalendarPlus className="w-3.5 h-3.5 text-stone-600" />
+                    <CalendarPlus className="w-3.5 h-3.5 text-current" />
                   )}
                   <span>{isSynced ? 'Synced to Calendar' : 'Sync to Calendar'}</span>
                 </Button>
               </div>
-            </Card>
+            </div>
           );
         })}
       </div>
