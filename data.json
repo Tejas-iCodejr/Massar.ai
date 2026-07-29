@@ -3849,7 +3849,127 @@
   ],
   "programs": [
     {
-      "id": "1",
+      "id": "prog_1",
+      "title": "TDRA National UAE Hackathon",
+      "organizer": "Telecommunications & Digital Government Regulatory Authority (TDRA)",
+      "domain": "hackathon.ae",
+      "type": "Hackathon",
+      "eligibility": "UAE High School & University Students",
+      "deadline": "2026-11-15",
+      "link": "https://hackathon.ae/",
+      "groundedOverview": {
+        "text": "### Program Highlights & Focus\nThe TDRA National UAE Hackathon is the UAE's premier national innovation event under the theme 'Making Impact... Going Beyond the Idea'. It brings together students, young coders, and innovators from across all 7 emirates to design AI-driven solutions for digital government, cybersecurity, and public services.\n\n### Eligibility & Key Deadlines\nOpen to all UAE high school and university students. Participants gain access to mentorship, open government datasets, and project incubation support. Closing Deadline: November 15, 2026.",
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://hackathon.ae/",
+              "title": "TDRA UAE Hackathon Official Portal"
+            }
+          }
+        ],
+        "webSearchQueries": [
+          "TDRA UAE Hackathon 2026 2027"
+        ]
+      }
+    },
+    {
+      "id": "prog_2",
+      "title": "Emirates Young Scientist Competition (EYSC)",
+      "organizer": "Ministry of Education & ATRC UAE",
+      "domain": "moe.gov.ae",
+      "type": "Fellowship",
+      "eligibility": "Grades 5-12 High School Students",
+      "deadline": "2026-12-10",
+      "link": "https://www.moe.gov.ae/",
+      "groundedOverview": {
+        "text": "### Program Highlights & Focus\nThe Emirates Young Scientist Competition (EYSC) is the UAE's flagship scientific research competition for school students, held alongside the National Science, Technology & Innovation (NSTI) Festival. It empowers young researchers in AI, biotechnology, renewable energy, and space exploration.\n\n### Eligibility & Key Deadlines\nOpen to student research teams in Grades 5 through 12. Finalists present projects to international scientists and receive research grants. Submission Deadline: December 10, 2026.",
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://www.moe.gov.ae/",
+              "title": "Emirates Young Scientist Competition Official Guidelines"
+            }
+          }
+        ],
+        "webSearchQueries": [
+          "Emirates Young Scientist Competition EYSC"
+        ]
+      }
+    },
+    {
+      "id": "prog_3",
+      "title": "DEWA CleanTech & AI Sustainability Challenge",
+      "organizer": "DEWA Sustainability & Innovation Centre",
+      "domain": "dewa.gov.ae",
+      "type": "Hackathon",
+      "eligibility": "Senior Undergraduate & Postgrad Teams",
+      "deadline": "2026-10-20",
+      "link": "https://www.dewa.gov.ae/",
+      "groundedOverview": {
+        "text": "### Program Highlights & Focus\nHosted at the Solar Park Innovation Centre in Dubai, the DEWA CleanTech Challenge invites university engineering and science students to build AI-driven solutions for decarbonization, smart power grids, and clean energy storage.\n\n### Eligibility & Key Deadlines\nOpen to university undergraduate and graduate student teams across the GCC. Offers cash prizes and incubator access at DEWA Innovation Hub. Registration Deadline: October 20, 2026.",
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://www.dewa.gov.ae/",
+              "title": "DEWA Innovation Challenge Portal"
+            }
+          }
+        ],
+        "webSearchQueries": [
+          "DEWA CleanTech Hackathon Dubai"
+        ]
+      }
+    },
+    {
+      "id": "prog_4",
+      "title": "NYUAD International Hackathon for Social Good",
+      "organizer": "NYU Abu Dhabi",
+      "domain": "nyu.edu",
+      "type": "Hackathon",
+      "eligibility": "Global & UAE University Students",
+      "deadline": "2026-11-20",
+      "link": "https://nyuad.nyu.edu/en/events/annual-nyuad-hackathon.html",
+      "groundedOverview": {
+        "text": "### Program Highlights & Focus\nAn internationally acclaimed annual hackathon uniting global student talent at NYU Abu Dhabi. Focuses on Quantum Computing, Machine Learning, and Climate Action aligned with UN Sustainable Development Goals.\n\n### Eligibility & Key Deadlines\nOpen to selected university students worldwide. Mentored by leaders from Google, MIT, and Oxford. Application Closing: November 20, 2026.",
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://nyuad.nyu.edu/en/events/annual-nyuad-hackathon.html",
+              "title": "NYUAD Annual Hackathon Official Portal"
+            }
+          }
+        ],
+        "webSearchQueries": [
+          "NYUAD Hackathon for Social Good"
+        ]
+      }
+    },
+    {
+      "id": "prog_5",
+      "title": "Abu Dhabi University URIC Research Competition",
+      "organizer": "Abu Dhabi University",
+      "domain": "adu.ac.ae",
+      "type": "Fellowship",
+      "eligibility": "Undergraduate STEM & Humanities Students",
+      "deadline": "2026-12-05",
+      "link": "https://www.adu.ac.ae/",
+      "groundedOverview": {
+        "text": "### Program Highlights & Focus\nThe Undergraduate Research and Innovation Competition (URIC) at Abu Dhabi University is one of the largest regional university research platforms. Students submit peer-reviewed research papers across Artificial Intelligence, Biomedical Engineering, Business, and Architecture.\n\n### Eligibility & Key Deadlines\nOpen to enrolled undergraduate students in Middle East higher education institutions. Abstract Submission Deadline: December 5, 2026.",
+        "groundingChunks": [
+          {
+            "web": {
+              "uri": "https://www.adu.ac.ae/",
+              "title": "ADU URIC Research Competition Portal"
+            }
+          }
+        ],
+        "webSearchQueries": [
+          "Abu Dhabi University URIC Competition"
+        ]
+      }
+    },
+    {
+      "id": "prog_6",
       "title": "NASA Space Apps Challenge",
       "organizer": "NASA & Global Partners",
       "domain": "nasa.gov",
@@ -3858,12 +3978,12 @@
       "deadline": "2026-10-01",
       "link": "https://www.spaceappschallenge.org/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nNASA Space Apps Challenge hosted by NASA & Global Partners is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to All Students (K12 & University). Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: NASA & Global Partners.",
+        "text": "### Program Highlights & Focus\nNASA Space Apps Challenge is the world's largest global hackathon. Students solve challenges using open data from NASA and space agency partners to address real-world problems on Earth and in space.\n\n### Eligibility & Key Deadlines\nOpen to all students (high school and university). Includes local MENA event tracks. Registration Deadline: October 1, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=NASA%20Space%20Apps%20Challenge",
-              "title": "NASA Space Apps Challenge Official Guide"
+              "uri": "https://www.spaceappschallenge.org/",
+              "title": "NASA Space Apps Challenge Official Portal"
             }
           }
         ],
@@ -3873,7 +3993,7 @@
       }
     },
     {
-      "id": "2",
+      "id": "prog_7",
       "title": "Stanford Pre-Collegiate Summer Institute",
       "organizer": "Stanford University",
       "domain": "stanford.edu",
@@ -3882,12 +4002,12 @@
       "deadline": "2026-08-15",
       "link": "https://spcs.stanford.edu/programs/stanford-pre-collegiate-summer-institutes",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nStanford Pre-Collegiate Summer Institute hosted by Stanford University is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to High School Students (Grades 8-11). Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Stanford University.",
+        "text": "### Program Highlights & Focus\nAn intensive academic enrichment program giving high-achieving high school students unmatchable exposure to advanced computer science, biosciences, and artificial intelligence taught by Stanford scholars.\n\n### Eligibility & Key Deadlines\nOpen to high school students in Grades 8-11. Application Deadline: August 15, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Stanford%20Pre-Collegiate%20Summer%20Institute",
-              "title": "Stanford Pre-Collegiate Summer Institute Official Guide"
+              "uri": "https://spcs.stanford.edu/programs/stanford-pre-collegiate-summer-institutes",
+              "title": "Stanford Pre-Collegiate Official Portal"
             }
           }
         ],
@@ -3897,7 +4017,7 @@
       }
     },
     {
-      "id": "3",
+      "id": "prog_8",
       "title": "Google Solution Challenge",
       "organizer": "Google Developers",
       "domain": "google.com",
@@ -3906,12 +4026,12 @@
       "deadline": "2026-12-15",
       "link": "https://developers.google.com/community/gdsc/solution-challenge",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nGoogle Solution Challenge hosted by Google Developers is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to University Students. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Google Developers.",
+        "text": "### Program Highlights & Focus\nInvites university students in Google Developer Student Clubs to build solutions for one or more of the United Nations 17 Sustainable Development Goals using Google tech.\n\n### Eligibility & Key Deadlines\nOpen to university students. Top winners receive cash prizes, Google mentoring, and feature showcase. Deadline: December 15, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Google%20Solution%20Challenge",
-              "title": "Google Solution Challenge Official Guide"
+              "uri": "https://developers.google.com/community/gdsc/solution-challenge",
+              "title": "Google Solution Challenge Guide"
             }
           }
         ],
@@ -3921,7 +4041,7 @@
       }
     },
     {
-      "id": "4",
+      "id": "prog_9",
       "title": "Oxford Summer Academy",
       "organizer": "Oxford Study Courses",
       "domain": "ox.ac.uk",
@@ -3930,11 +4050,11 @@
       "deadline": "2026-08-20",
       "link": "https://www.oxfordsummeracademy.com/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nOxford Summer Academy hosted by Oxford Study Courses is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Students aged 15-19. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Oxford Study Courses.",
+        "text": "### Program Highlights & Focus\nA premier academic immersion program hosted at Oxford colleges. Combines academic electives (Medicine, Law, Tech) with leadership and university prep.\n\n### Eligibility & Key Deadlines\nOpen to secondary students aged 15-19. Registration Closing: August 20, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Oxford%20Summer%20Academy",
+              "uri": "https://www.oxfordsummeracademy.com/",
               "title": "Oxford Summer Academy Official Guide"
             }
           }
@@ -3945,7 +4065,7 @@
       }
     },
     {
-      "id": "5",
+      "id": "prog_10",
       "title": "Harvard CS50x Computer Science Core",
       "organizer": "Harvard University (edX)",
       "domain": "harvard.edu",
@@ -3954,22 +4074,22 @@
       "deadline": "2026-12-31",
       "link": "https://pll.harvard.edu/course/cs50-introduction-computer-science",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nHarvard CS50x Computer Science Core hosted by Harvard University (edX) is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to All Students & Life-long Learners. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Harvard University (edX).",
+        "text": "### Program Highlights & Focus\nHarvard University's flagship introductory course to computer science and programming. Covers C, Python, SQL, HTML, CSS, JavaScript, and algorithmic thinking.\n\n### Eligibility & Key Deadlines\nOpen to all learners with self-paced certification. Enrollment open through December 31, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Harvard%20CS50x%20Computer%20Science%20Core",
-              "title": "Harvard CS50x Computer Science Core Official Guide"
+              "uri": "https://pll.harvard.edu/course/cs50-introduction-computer-science",
+              "title": "Harvard CS50 Official Portal"
             }
           }
         ],
         "webSearchQueries": [
-          "Harvard CS50x Computer Science Core"
+          "Harvard CS50x Core"
         ]
       }
     },
     {
-      "id": "6",
+      "id": "prog_11",
       "title": "TechGirls Leadership & Exchange Program",
       "organizer": "U.S. Department of State",
       "domain": "state.gov",
@@ -3978,46 +4098,22 @@
       "deadline": "2026-11-01",
       "link": "https://techgirlsglobal.org/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nTechGirls Leadership & Exchange Program hosted by U.S. Department of State is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Female High School Students (Ages 15-17). Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: U.S. Department of State.",
+        "text": "### Program Highlights & Focus\nAn intensive STEM exchange program empowering young women from the Middle East and globally to pursue tech careers through tech camps and leadership mentoring.\n\n### Eligibility & Key Deadlines\nOpen to female high school students aged 15-17. Fully funded exchange program. Application Deadline: November 1, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=TechGirls%20Leadership%20%26%20Exchange%20Program",
-              "title": "TechGirls Leadership & Exchange Program Official Guide"
+              "uri": "https://techgirlsglobal.org/",
+              "title": "TechGirls Global Exchange Portal"
             }
           }
         ],
         "webSearchQueries": [
-          "TechGirls Leadership & Exchange Program"
+          "TechGirls Leadership Exchange"
         ]
       }
     },
     {
-      "id": "7",
-      "title": "NYUAD Hackathon for Social Good",
-      "organizer": "NYU Abu Dhabi",
-      "domain": "nyu.edu",
-      "type": "Hackathon",
-      "eligibility": "University & Elite High School",
-      "deadline": "2026-11-20",
-      "link": "https://nyuad.nyu.edu/en/events/annual-nyuad-hackathon.html",
-      "groundedOverview": {
-        "text": "### Program Highlights & Focus\nNYUAD Hackathon for Social Good hosted by NYU Abu Dhabi is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to University & Elite High School. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: NYU Abu Dhabi.",
-        "groundingChunks": [
-          {
-            "web": {
-              "uri": "https://www.google.com/search?q=NYUAD%20Hackathon%20for%20Social%20Good",
-              "title": "NYUAD Hackathon for Social Good Official Guide"
-            }
-          }
-        ],
-        "webSearchQueries": [
-          "NYUAD Hackathon for Social Good"
-        ]
-      }
-    },
-    {
-      "id": "8",
+      "id": "prog_12",
       "title": "Mawhiba International Summer Program",
       "organizer": "Mawhiba Saudi Arabia",
       "domain": "mawhiba.org",
@@ -4026,12 +4122,12 @@
       "deadline": "2026-10-05",
       "link": "https://www.mawhiba.org/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nMawhiba International Summer Program hosted by Mawhiba Saudi Arabia is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to K12 High Achievers (Grades 9-12). Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Mawhiba Saudi Arabia.",
+        "text": "### Program Highlights & Focus\nSpecialized research enrichment program for gifted students across the MENA region, providing hands-on scientific projects in engineering, biotechnology, and AI.\n\n### Eligibility & Key Deadlines\nOpen to high-achieving high school students. Application Deadline: October 5, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Mawhiba%20International%20Summer%20Program",
-              "title": "Mawhiba International Summer Program Official Guide"
+              "uri": "https://www.mawhiba.org/",
+              "title": "Mawhiba Official Portal"
             }
           }
         ],
@@ -4041,7 +4137,7 @@
       }
     },
     {
-      "id": "9",
+      "id": "prog_13",
       "title": "MIT Beaver Works Summer Institute",
       "organizer": "Massachusetts Institute of Technology",
       "domain": "mit.edu",
@@ -4050,22 +4146,22 @@
       "deadline": "2026-09-10",
       "link": "https://beaverworks.ll.mit.edu/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nMIT Beaver Works Summer Institute hosted by Massachusetts Institute of Technology is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Rising High School Seniors. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Massachusetts Institute of Technology.",
+        "text": "### Program Highlights & Focus\nA rigorous STEM program for high school seniors featuring project-based courses in autonomous RACECARS, cybersecurity, quantum software, and cube satellites.\n\n### Eligibility & Key Deadlines\nOpen to rising high school seniors with strong STEM background. Deadline: September 10, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=MIT%20Beaver%20Works%20Summer%20Institute",
-              "title": "MIT Beaver Works Summer Institute Official Guide"
+              "uri": "https://beaverworks.ll.mit.edu/",
+              "title": "MIT Beaver Works Official Guide"
             }
           }
         ],
         "webSearchQueries": [
-          "MIT Beaver Works Summer Institute"
+          "MIT Beaver Works Institute"
         ]
       }
     },
     {
-      "id": "10",
+      "id": "prog_14",
       "title": "Coders HQ Junior Python Virtual Academy",
       "organizer": "Coders HQ UAE",
       "domain": "codershq.ae",
@@ -4074,22 +4170,22 @@
       "deadline": "2026-12-01",
       "link": "https://codershq.ae/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nCoders HQ Junior Python Virtual Academy hosted by Coders HQ UAE is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to K12 level (Ages 8-15). Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Coders HQ UAE.",
+        "text": "### Program Highlights & Focus\nNational coding bootcamp launched under the UAE National Program for Coders. Teaches Python logic, game development, and AI basics to school students.\n\n### Eligibility & Key Deadlines\nOpen to UAE school students aged 8-15. Free virtual enrollment. Deadline: December 1, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Coders%20HQ%20Junior%20Python%20Virtual%20Academy",
-              "title": "Coders HQ Junior Python Virtual Academy Official Guide"
+              "uri": "https://codershq.ae/",
+              "title": "Coders HQ UAE Official Portal"
             }
           }
         ],
         "webSearchQueries": [
-          "Coders HQ Junior Python Virtual Academy"
+          "Coders HQ Junior Academy"
         ]
       }
     },
     {
-      "id": "11",
+      "id": "prog_15",
       "title": "Major League Hacking (MLH) Global Hackathons",
       "organizer": "MLH Organization",
       "domain": "mlh.io",
@@ -4098,22 +4194,22 @@
       "deadline": "2026-11-30",
       "link": "https://mlh.io/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nMajor League Hacking (MLH) Global Hackathons hosted by MLH Organization is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to K12 & University Developers. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: MLH Organization.",
+        "text": "### Program Highlights & Focus\nThe official student hackathon league hosting weekend hackathons globally and virtually. Students build apps, games, and hardware prototypes in 36-hour sprints.\n\n### Eligibility & Key Deadlines\nOpen to high school and university students of all skill levels. Continuous weekend intakes through November 30, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Major%20League%20Hacking%20(MLH)%20Global%20Hackathons",
-              "title": "Major League Hacking (MLH) Global Hackathons Official Guide"
+              "uri": "https://mlh.io/",
+              "title": "MLH Global Hackathon League"
             }
           }
         ],
         "webSearchQueries": [
-          "Major League Hacking (MLH) Global Hackathons"
+          "Major League Hacking MLH"
         ]
       }
     },
     {
-      "id": "12",
+      "id": "prog_16",
       "title": "Middle East Youth Fellowship",
       "organizer": "MEYE Initiative",
       "domain": "meyef.org",
@@ -4122,12 +4218,12 @@
       "deadline": "2026-10-15",
       "link": "https://meyexpo.com/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nMiddle East Youth Fellowship hosted by MEYE Initiative is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to High School & Undergrad. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: MEYE Initiative.",
+        "text": "### Program Highlights & Focus\nA regional leadership development fellowship connecting ambitious youth with policymakers, tech founders, and sustainability experts across the Middle East.\n\n### Eligibility & Key Deadlines\nOpen to secondary and undergraduate students. Application Deadline: October 15, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Middle%20East%20Youth%20Fellowship",
-              "title": "Middle East Youth Fellowship Official Guide"
+              "uri": "https://meyexpo.com/",
+              "title": "Middle East Youth Fellowship Guide"
             }
           }
         ],
@@ -4137,21 +4233,21 @@
       }
     },
     {
-      "id": "13",
+      "id": "prog_17",
       "title": "Archestra MCP Apps Hackathon",
       "organizer": "Devpost & Archestra",
       "domain": "devpost.com",
       "type": "Hackathon",
       "eligibility": "Global Virtual Developers & Students",
-      "deadline": "2026-07-29",
+      "deadline": "2026-10-29",
       "link": "https://devpost.com/hackathons",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nArchestra MCP Apps Hackathon hosted by Devpost & Archestra is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Global Virtual Developers & Students. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Devpost & Archestra.",
+        "text": "### Program Highlights & Focus\nA cutting-edge hackathon focused on building AI agents and Model Context Protocol (MCP) toolkits for autonomous workflows and developer tools.\n\n### Eligibility & Key Deadlines\nOpen to global developers and computer science students. Submission Deadline: October 29, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Archestra%20MCP%20Apps%20Hackathon",
-              "title": "Archestra MCP Apps Hackathon Official Guide"
+              "uri": "https://devpost.com/hackathons",
+              "title": "Devpost MCP Hackathon Portal"
             }
           }
         ],
@@ -4161,31 +4257,31 @@
       }
     },
     {
-      "id": "14",
+      "id": "prog_18",
       "title": "Snowflake CoCo CLI Global Hackathon",
       "organizer": "Snowflake Inc.",
       "domain": "snowflake.com",
       "type": "Hackathon",
       "eligibility": "Virtual Developers (Global & MENA)",
-      "deadline": "2026-08-02",
+      "deadline": "2026-08-18",
       "link": "https://snowflake.com/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nSnowflake CoCo CLI Global Hackathon hosted by Snowflake Inc. is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Virtual Developers (Global & MENA). Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Snowflake Inc..",
+        "text": "### Program Highlights & Focus\nA global data engineering hackathon inviting developers and students to build cloud analytics and CLI extensions using Snowflake AI tools.\n\n### Eligibility & Key Deadlines\nOpen to virtual developers globally. Registration Deadline: August 18, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=Snowflake%20CoCo%20CLI%20Global%20Hackathon",
-              "title": "Snowflake CoCo CLI Global Hackathon Official Guide"
+              "uri": "https://snowflake.com/",
+              "title": "Snowflake Global Hackathon"
             }
           }
         ],
         "webSearchQueries": [
-          "Snowflake CoCo CLI Global Hackathon"
+          "Snowflake CoCo CLI Hackathon"
         ]
       }
     },
     {
-      "id": "15",
+      "id": "prog_19",
       "title": "AI Factory Online Global Hackathon",
       "organizer": "Lablab.ai",
       "domain": "lablab.ai",
@@ -4194,22 +4290,22 @@
       "deadline": "2026-08-10",
       "link": "https://lablab.ai/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nAI Factory Online Global Hackathon hosted by Lablab.ai is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Virtual AI Engineers & Students. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: Lablab.ai.",
+        "text": "### Program Highlights & Focus\nAn online 48-hour AI buildathon empowering student coders to deploy generative AI applications, multimodal agents, and LLM automation tools.\n\n### Eligibility & Key Deadlines\nOpen to virtual AI engineers and students. Registration Closing: August 10, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=AI%20Factory%20Online%20Global%20Hackathon",
-              "title": "AI Factory Online Global Hackathon Official Guide"
+              "uri": "https://lablab.ai/",
+              "title": "Lablab.ai Hackathon Portal"
             }
           }
         ],
         "webSearchQueries": [
-          "AI Factory Online Global Hackathon"
+          "AI Factory Online Hackathon"
         ]
       }
     },
     {
-      "id": "16",
+      "id": "prog_20",
       "title": "AI Infra Summit Virtual Hackathon",
       "organizer": "AI Infra Association",
       "domain": "lablab.ai",
@@ -4218,17 +4314,17 @@
       "deadline": "2026-09-17",
       "link": "https://lablab.ai/",
       "groundedOverview": {
-        "text": "### Program Highlights & Focus\nAI Infra Summit Virtual Hackathon hosted by AI Infra Association is an elite educational opportunity focused on technology, entrepreneurship, and hands-on portfolio creation for ambitious students.\n\n### Eligibility & Key Deadlines\nOpen to Hybrid / Online Global Track. Participants receive mentorship, networking opportunities, and project acceleration guidance. Registration deadline: AI Infra Association.",
+        "text": "### Program Highlights & Focus\nFocuses on infrastructure-level AI innovations, model quantization, high-performance computing, and distributed training pipelines for student researchers.\n\n### Eligibility & Key Deadlines\nOpen to online track participants globally. Registration Deadline: September 17, 2026.",
         "groundingChunks": [
           {
             "web": {
-              "uri": "https://www.google.com/search?q=AI%20Infra%20Summit%20Virtual%20Hackathon",
-              "title": "AI Infra Summit Virtual Hackathon Official Guide"
+              "uri": "https://lablab.ai/",
+              "title": "AI Infra Summit Portal"
             }
           }
         ],
         "webSearchQueries": [
-          "AI Infra Summit Virtual Hackathon"
+          "AI Infra Summit Hackathon"
         ]
       }
     }
