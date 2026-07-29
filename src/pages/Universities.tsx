@@ -8,8 +8,6 @@ import { University } from '../types';
 import { cn } from '../lib/utils';
 import { CompareDock } from '../components/ui/CompareDock';
 import { EquivalencyWizard } from '../components/ui/EquivalencyWizard';
-import { NationalVisionMapper } from '../components/ui/NationalVisionMapper';
-import { BudgetCalculator } from '../components/ui/BudgetCalculator';
 import { Link } from 'react-router-dom';
 
 export function Universities() {
@@ -401,8 +399,6 @@ export function Universities() {
       {/* Interactive Student Solution Tools addressing Pain Points */}
       <div className="mt-16 space-y-12">
         <EquivalencyWizard />
-        <BudgetCalculator universityName="Selected UAE / GCC Universities" baseTuition={45000} />
-        <NationalVisionMapper />
       </div>
 
       {/* Slide-out Interactive Detail Drawer / Dialog */}

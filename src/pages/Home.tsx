@@ -3,7 +3,6 @@ import { ArrowRight, Columns2, Gift, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Hero } from '../components/home/Hero';
-import { PathWizard } from '../components/ui/PathWizard';
 import { UniversityEvents } from '../components/ui/UniversityEvents';
 
 /**
@@ -44,8 +43,6 @@ const CAPABILITIES = [
 
 const SECONDARY_TOOLS = [
   { label: 'Equivalency & MOE attestation', href: '/accreditation' },
-  { label: 'Net cost calculator', href: '/universities#budget' },
-  { label: 'National vision mapper', href: '/universities#vision' },
 ];
 
 export function Home() {
@@ -134,11 +131,6 @@ export function Home() {
             </Link>
           ))}
         </div>
-      </section>
-
-      {/* Decision wizard */}
-      <section id="path-wizard" className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 lg:px-8">
-        <PathWizard />
       </section>
 
       {/* Live events */}

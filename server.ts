@@ -7,9 +7,15 @@ import fs from "fs/promises";
 import { createServer as createViteServer } from "vite";
 import cron from "node-cron";
 import { GoogleGenAI } from "@google/genai";
+import { createClient } from "@supabase/supabase-js";
+import "dotenv/config";
 
 const PORT = 3000;
 const DATA_FILE = path.resolve(process.cwd(), "data.json");
+
+const supabaseUrl = process.env.SUPABASE_URL || "https://jyoedcgxfbcbloasucxj.supabase.co";
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "sb_publishable_dAGCAFElRkycXFIEOXF-qw_Png6pQxb";
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 let cachedData: any = null;
 
@@ -83,6 +89,24 @@ async function setupScraperCron() {
         if (updatedCount > 0) {
           console.log(`Updated ${updatedCount} universities via AI scraper.`);
           await saveData();
+          try {
+            const uniRows = cachedData.universities.map((u: any) => ({
+              id: u.id,
+              name: u.name,
+              domain: u.domain || '',
+              location: u.location || '',
+              type: u.type || '',
+              description: u.description || '',
+              tuition_fee: typeof u.tuitionFee === 'number' ? u.tuitionFee : parseFloat(u.tuitionFee) || 0,
+              acceptance_rate: typeof u.acceptanceRate === 'number' ? u.acceptanceRate : parseFloat(u.acceptanceRate) || 0,
+              intakes: u.intakes || [],
+              grounded_overview: u.groundedOverview || null,
+              grounded_location: u.groundedLocation || null,
+            }));
+            await supabase.from('universities').upsert(uniRows, { onConflict: 'id' });
+          } catch (sbErr) {
+            console.error('Failed to sync updated universities to Supabase:', sbErr);
+          }
         }
       }
     } catch (error: any) {
@@ -239,8 +263,36 @@ function setApiCacheHeaders(res: express.Response) {
   res.setHeader("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=3600");
 }
 
+// High-performance Grounding Query Caching Store (Cache TTL: 24 Hours)
+const groundingCache = new Map<string, { data: any; timestamp: number }>();
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
+function getCachedResult(key: string) {
+  const cached = groundingCache.get(key);
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+    return cached.data;
+  }
+  return null;
+}
+
+function setCachedResult(key: string, data: any) {
+  groundingCache.set(key, { data, timestamp: Date.now() });
+}
+
+// Periodic memory pruning routine (runs every 10 minutes to prevent memory leaks)
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, record] of requestCounts.entries()) {
+    if (now > record.resetTime) requestCounts.delete(ip);
+  }
+  for (const [key, item] of groundingCache.entries()) {
+    if (now - item.timestamp > CACHE_TTL_MS) groundingCache.delete(key);
+  }
+}, 10 * 60 * 1000);
+
 async function startServer() {
   const app = express();
+  app.set("trust proxy", true);
   
   // Security Headers Middleware
   app.use(helmet({
@@ -262,24 +314,108 @@ async function startServer() {
   });
 
   app.get("/api/universities", async (req, res) => {
+    try {
+      const { data, error } = await supabase.from("universities").select("*");
+      if (!error && data && data.length > 0) {
+        setApiCacheHeaders(res);
+        const formatted = data.map((u: any) => ({
+          id: u.id,
+          name: u.name,
+          domain: u.domain,
+          location: u.location,
+          type: u.type,
+          description: u.description,
+          tuitionFee: u.tuition_fee,
+          acceptanceRate: u.acceptance_rate,
+          intakes: u.intakes,
+          groundedOverview: u.grounded_overview,
+          groundedLocation: u.grounded_location,
+        }));
+        return res.json(formatted);
+      }
+    } catch (e) {
+      console.warn("Supabase fetch fallback:", e);
+    }
     if (!cachedData || cachedData.universities?.length < 5) await loadData();
     setApiCacheHeaders(res);
     res.json(cachedData?.universities || []);
   });
 
   app.get("/api/schools", async (req, res) => {
+    try {
+      const { data, error } = await supabase.from("schools").select("*");
+      if (!error && data && data.length > 0) {
+        setApiCacheHeaders(res);
+        const formatted = data.map((s: any) => ({
+          id: s.id,
+          name: s.name,
+          domain: s.domain,
+          curriculum: s.curriculum,
+          emirate: s.emirate,
+          country: s.country,
+          rating: s.rating,
+          tuitionRange: s.tuition_range,
+          description: s.description,
+          ranking: s.ranking,
+          groundedOverview: s.grounded_overview,
+          groundedLocation: s.grounded_location,
+        }));
+        return res.json(formatted);
+      }
+    } catch (e) {
+      console.warn("Supabase fetch fallback:", e);
+    }
     if (!cachedData || cachedData.schools?.length < 5) await loadData();
     setApiCacheHeaders(res);
     res.json(cachedData?.schools || []);
   });
 
   app.get("/api/programs", async (req, res) => {
+    try {
+      const { data, error } = await supabase.from("programs").select("*");
+      if (!error && data && data.length > 0) {
+        setApiCacheHeaders(res);
+        const formatted = data.map((p: any) => ({
+          id: p.id,
+          title: p.title,
+          organizer: p.organizer,
+          domain: p.domain,
+          type: p.type,
+          eligibility: p.eligibility,
+          deadline: p.deadline,
+          link: p.link,
+          groundedOverview: p.grounded_overview,
+        }));
+        return res.json(formatted);
+      }
+    } catch (e) {
+      console.warn("Supabase fetch fallback:", e);
+    }
     if (!cachedData || cachedData.programs?.length < 5) await loadData();
     setApiCacheHeaders(res);
     res.json(cachedData?.programs || []);
   });
 
   app.get("/api/perks", async (req, res) => {
+    try {
+      const { data, error } = await supabase.from("perks").select("*");
+      if (!error && data && data.length > 0) {
+        setApiCacheHeaders(res);
+        const formatted = data.map((pk: any) => ({
+          id: pk.id,
+          title: pk.title,
+          provider: pk.provider,
+          domain: pk.domain,
+          description: pk.description,
+          category: pk.category,
+          link: pk.link,
+          groundedOverview: pk.grounded_overview,
+        }));
+        return res.json(formatted);
+      }
+    } catch (e) {
+      console.warn("Supabase fetch fallback:", e);
+    }
     if (!cachedData || cachedData.perks?.length < 5) await loadData();
     setApiCacheHeaders(res);
     res.json(cachedData?.perks || []);
@@ -287,10 +423,19 @@ async function startServer() {
 
   app.post("/api/search-grounding", async (req, res) => {
     const { query } = req.body;
+    const cacheKey = `search:${(query || '').toLowerCase().trim()}`;
+    const cached = getCachedResult(cacheKey);
+    if (cached) {
+      console.log(`[Cache Hit] Serving search grounding for: "${query}"`);
+      return res.json(cached);
+    }
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.warn("GEMINI_API_KEY missing, using fallback search grounding.");
-      return res.json(generateFallbackSearch(query));
+      const fallback = generateFallbackSearch(query);
+      setCachedResult(cacheKey, fallback);
+      return res.json(fallback);
     }
 
     try {
@@ -334,28 +479,42 @@ Be extremely precise, factual, and draw upon the search results directly. Do not
       const chunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
       const searchQueries = response.candidates?.[0]?.groundingMetadata?.webSearchQueries || [];
 
-      res.json({
+      const result = {
         text,
         groundingChunks: chunks,
         webSearchQueries: searchQueries,
-      });
+      };
+
+      setCachedResult(cacheKey, result);
+      res.json(result);
     } catch (err: any) {
       const isQuota = err?.message?.includes("429") || err?.message?.includes("RESOURCE_EXHAUSTED") || err?.status === 429;
       console.log(`[Status] Search Grounding fallback utilized. Quota Limit Reached: ${isQuota}`);
-      res.json(generateFallbackSearch(query));
+      const fallback = generateFallbackSearch(query);
+      setCachedResult(cacheKey, fallback);
+      res.json(fallback);
     }
   });
 
   app.post("/api/details-grounding", async (req, res) => {
     const { type, name, organizer, eligibility, location, extraInfo } = req.body;
+    const cacheKey = `details:${type}:${(name || '').toLowerCase().trim()}`;
+    const cached = getCachedResult(cacheKey);
+    if (cached) {
+      console.log(`[Cache Hit] Serving details grounding for: "${name}" (${type})`);
+      return res.json(cached);
+    }
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.warn("GEMINI_API_KEY missing, using fallback details grounding.");
-      return res.json({
+      const fallback = {
         text: generateFallbackDetails(type, name, organizer, eligibility, location, extraInfo),
         groundingChunks: [],
         webSearchQueries: []
-      });
+      };
+      setCachedResult(cacheKey, fallback);
+      return res.json(fallback);
     }
 
     try {
@@ -450,28 +609,42 @@ Structure into exactly these 2 Markdown sections:
       const chunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
       const searchQueries = response.candidates?.[0]?.groundingMetadata?.webSearchQueries || [];
 
-      res.json({
+      const result = {
         text,
         groundingChunks: chunks,
         webSearchQueries: searchQueries,
-      });
+      };
+
+      setCachedResult(cacheKey, result);
+      res.json(result);
     } catch (err: any) {
       const isQuota = err?.message?.includes("429") || err?.message?.includes("RESOURCE_EXHAUSTED") || err?.status === 429;
       console.log(`[Status] Details Grounding fallback utilized for ${name}. Quota Limit Reached: ${isQuota}`);
-      res.json({
+      const fallback = {
         text: generateFallbackDetails(type, name, organizer, eligibility, location, extraInfo),
         groundingChunks: [],
         webSearchQueries: []
-      });
+      };
+      setCachedResult(cacheKey, fallback);
+      res.json(fallback);
     }
   });
 
   app.post("/api/maps-grounding", async (req, res) => {
     const { name, location, type } = req.body;
+    const cacheKey = `maps:${type}:${(name || '').toLowerCase().trim()}`;
+    const cached = getCachedResult(cacheKey);
+    if (cached) {
+      console.log(`[Cache Hit] Serving maps grounding for: "${name}" (${type})`);
+      return res.json(cached);
+    }
+
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.warn("GEMINI_API_KEY missing, using fallback maps grounding.");
-      return res.json(generateFallbackMaps(name, location, type));
+      const fallback = generateFallbackMaps(name, location, type);
+      setCachedResult(cacheKey, fallback);
+      return res.json(fallback);
     }
 
     try {
@@ -507,10 +680,13 @@ Do NOT list transit options, nearby food districts, parks, co-working spaces, or
       const text = response.text || "Detailed map coordinates currently unavailable.";
       const chunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks || [];
 
-      res.json({
+      const result = {
         text,
         groundingChunks: chunks,
-      });
+      };
+
+      setCachedResult(cacheKey, result);
+      res.json(result);
     } catch (err: any) {
       const isQuota = err?.message?.includes("429") || err?.message?.includes("RESOURCE_EXHAUSTED") || err?.status === 429;
       console.log(`[Status] Maps Grounding fallback utilized for ${name}. Quota Limit Reached: ${isQuota}`);

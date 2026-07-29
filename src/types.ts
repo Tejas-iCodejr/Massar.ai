@@ -1,3 +1,14 @@
+export interface GroundedOverview {
+  text: string;
+  groundingChunks?: any[];
+  webSearchQueries?: string[];
+}
+
+export interface GroundedLocation {
+  text: string;
+  groundingChunks?: any[];
+}
+
 export interface University {
   id: string;
   name: string;
@@ -9,6 +20,8 @@ export interface University {
   acceptanceRate?: number | string;
   intakes: string[];
   lastUpdated?: string;
+  groundedOverview?: GroundedOverview;
+  groundedLocation?: GroundedLocation;
 }
 
 export interface School {
@@ -22,6 +35,8 @@ export interface School {
   tuitionRange: string;
   description?: string;
   ranking?: number;
+  groundedOverview?: GroundedOverview;
+  groundedLocation?: GroundedLocation;
 }
 
 export interface Program {
@@ -33,6 +48,8 @@ export interface Program {
   eligibility: string;
   deadline: string;
   link: string;
+  groundedOverview?: GroundedOverview;
+  groundedLocation?: GroundedLocation;
 }
 
 export interface Perk {
@@ -43,4 +60,6 @@ export interface Perk {
   description: string;
   category: "AI & ML" | "Development Tools" | "Design & Creative" | "Learning & Education" | "Media & Entertainment" | "Cloud & Hosting" | "Productivity" | "Apparel" | "Travel" | "Software" | "Hardware" | "Food" | "Entertainment";
   link: string;
+  groundedOverview?: GroundedOverview;
+  groundedLocation?: GroundedLocation;
 }

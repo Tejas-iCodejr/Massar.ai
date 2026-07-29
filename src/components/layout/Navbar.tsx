@@ -130,20 +130,6 @@ export function Navbar() {
       desc: 'MOE eDAS 2.0 digital attestation guide',
       badgeColor: 'bg-[#9f5ffd]/10 text-[#9f5ffd] border-[#9f5ffd]/20'
     },
-    { 
-      name: 'Net Cost Calculator', 
-      path: '/universities#budget', 
-      icon: Sparkles,
-      desc: 'Tuition, housing & lifestyle budget',
-      badgeColor: 'bg-[#ff705d]/10 text-[#ff705d] border-[#ff705d]/20'
-    },
-    { 
-      name: 'National Vision Mapper', 
-      path: '/universities#vision', 
-      icon: TrendingUp,
-      desc: 'UAE 2031 & KSA 2030 job market matrix',
-      badgeColor: 'bg-[#2ba0ff]/10 text-[#2ba0ff] border-[#2ba0ff]/20'
-    },
   ];
 
   return (
@@ -159,20 +145,15 @@ export function Navbar() {
             setDrawerOpen(true);
           }
         }}
-        className="fixed top-6 left-6 sm:top-8 sm:left-8 shrink-0 flex items-center justify-center text-ink hover:opacity-75 transition-all select-none cursor-pointer z-55 bg-transparent border-0 shadow-none outline-none"
-      >
-        {drawerOpen ? (
-          /* Naked single-line close/minimize icon */
-          <svg className="w-6 h-6 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <line x1="4" y1="12" x2="20" y2="12" />
-          </svg>
-        ) : (
-          /* Naked two-line hamburger icon (top longer, bottom shorter) */
-          <svg className="w-6 h-6 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <line x1="4" y1="9" x2="20" y2="9" />
-            <line x1="4" y1="15" x2="14" y2="15" />
-          </svg>
+        className={cn(
+          "fixed top-6 left-6 sm:top-8 sm:left-8 shrink-0 flex items-center justify-center text-ink hover:opacity-75 transition-all select-none cursor-pointer z-40 bg-transparent border-0 shadow-none outline-none",
+          drawerOpen && "opacity-0 pointer-events-none"
         )}
+      >
+        <svg className="w-6 h-6 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <line x1="4" y1="9" x2="20" y2="9" />
+          <line x1="4" y1="15" x2="14" y2="15" />
+        </svg>
       </button>
 
       {/* Main Navbar Capsule (Ultra-Liquid macOS Sequoia & visionOS Glass) */}
@@ -379,7 +360,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setDrawerOpen(false)}
-              className="fixed inset-0 bg-[#2c2e2a]/30 backdrop-blur-xs z-50 cursor-pointer"
+              className="fixed inset-0 bg-[#2c2e2a]/30 backdrop-blur-xs z-[90] cursor-pointer"
             />
 
             {/* Left Drawer Panel */}
@@ -388,7 +369,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed left-0 top-0 bottom-0 w-[320px] sm:w-[360px] bg-white border-r border-hairline-mist z-50 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
+              className="fixed left-0 top-0 bottom-0 w-[320px] sm:w-[360px] bg-white border-r border-hairline-mist z-[100] shadow-2xl p-6 flex flex-col justify-between overflow-y-auto"
             >
               
               {/* Drawer Content Wrapper */}

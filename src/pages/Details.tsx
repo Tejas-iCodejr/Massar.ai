@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Sparkles, Globe, MapPin, ExternalLink, Calendar, Bookmark, CheckCircle, Award, ShieldCheck, HelpCircle, Loader, Landmark, BookOpen, GraduationCap, Cpu, Laptop, Gift, Coffee, DollarSign, Star, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Sparkles, Globe, MapPin, ExternalLink, Calendar, Bookmark, CheckCircle, Award, ShieldCheck, HelpCircle, Loader, Landmark, BookOpen, GraduationCap, Cpu, Laptop, Gift, Coffee, DollarSign, Star, AlertTriangle, Copy, Check, Zap, Percent } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
@@ -37,7 +37,10 @@ export function Details() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [isScheduling, setIsScheduling] = useState(false);
   const [scheduleSuccess, setScheduleSuccess] = useState<string | null>(null);
-  const [advisingDate, setAdvisingDate] = useState('2026-07-20');
+  const [advisingDate, setAdvisingDate] = useState(() => {
+    const tomorrow = new Date(Date.now() + 86400000);
+    return tomorrow.toISOString().split('T')[0];
+  });
   const [advisingTime, setAdvisingTime] = useState('11:00');
 
   const [loadingMaps, setLoadingMaps] = useState(false);
@@ -224,9 +227,13 @@ export function Details() {
     setScheduleSuccess(null);
 
     try {
-      // Create event on 2026-08-15 12:00 or a custom parsed date
-      const dlISO = new Date(`2026-08-15T12:00:00`).toISOString();
-      const endISO = new Date(`2026-08-15T13:00:00`).toISOString();
+      let targetDate = new Date(deadlineStr);
+      if (isNaN(targetDate.getTime())) {
+        targetDate = new Date(Date.now() + 14 * 86400000);
+      }
+      targetDate.setHours(12, 0, 0, 0);
+      const dlISO = targetDate.toISOString();
+      const endISO = new Date(targetDate.getTime() + 3600000).toISOString();
 
       await createCalendarEvent(token, {
         summary: eventSummary,
@@ -252,9 +259,27 @@ export function Details() {
     }
   };
 
-  // Trigger search grounding automatically once item is loaded
+  // Trigger search grounding automatically once item is loaded (with pre-generated item data check)
   useEffect(() => {
-    if (!item || !type) return;
+    if (!item || !type || !id) return;
+
+    if (item.groundedOverview) {
+      setGroundingResult(item.groundedOverview);
+      setLoadingGrounding(false);
+      return;
+    }
+
+    const cacheKey = `cache_details_${type}_${id}`;
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        setGroundingResult(JSON.parse(cached));
+        setLoadingGrounding(false);
+        return;
+      }
+    } catch (e) {
+      console.warn("LocalStorage error", e);
+    }
 
     setLoadingGrounding(true);
     setGroundingError(null);
@@ -284,6 +309,9 @@ export function Details() {
       })
       .then(data => {
         setGroundingResult(data);
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify(data));
+        } catch (e) {}
       })
       .catch(err => {
         console.error("Grounding error", err);
@@ -292,12 +320,30 @@ export function Details() {
       .finally(() => {
         setLoadingGrounding(false);
       });
-  }, [item, type]);
+  }, [item, type, id]);
 
-  // Trigger Maps Grounding automatically once item is loaded (ONLY for physical institutions: universities & schools)
+  // Trigger Maps Grounding automatically once item is loaded (with pre-generated item data check)
   useEffect(() => {
-    if (!item || !type) return;
+    if (!item || !type || !id) return;
     if (type === 'perk' || type === 'program') return;
+
+    if (item.groundedLocation) {
+      setMapsResult(item.groundedLocation);
+      setLoadingMaps(false);
+      return;
+    }
+
+    const cacheKey = `cache_maps_${type}_${id}`;
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        setMapsResult(JSON.parse(cached));
+        setLoadingMaps(false);
+        return;
+      }
+    } catch (e) {
+      console.warn("LocalStorage error", e);
+    }
 
     setLoadingMaps(true);
     setMapsError(null);
@@ -324,6 +370,9 @@ export function Details() {
       })
       .then(data => {
         setMapsResult(data);
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify(data));
+        } catch (e) {}
       })
       .catch(err => {
         console.error("Maps grounding error", err);
@@ -332,7 +381,7 @@ export function Details() {
       .finally(() => {
         setLoadingMaps(false);
       });
-  }, [item, type]);
+  }, [item, type, id]);
 
   const toggleSave = () => {
     if (!type || !id) return;
@@ -405,7 +454,7 @@ export function Details() {
       {/* Sleek Fixed Top Back Button (Always accessible at top of window alongside navbar) */}
       <button 
         onClick={() => navigate(-1)}
-        className="fixed top-6 left-20 sm:left-24 z-50 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md hover:bg-[#ff705d] hover:text-white border border-hairline-mist hover:border-[#ff705d] rounded-[50px] text-ink font-sans font-bold text-xs uppercase transition-all shadow-md select-none cursor-pointer group active:scale-95"
+        className="fixed top-6 left-20 sm:left-24 z-30 inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md hover:bg-[#ff705d] hover:text-white border border-hairline-mist hover:border-[#ff705d] rounded-[50px] text-ink font-sans font-bold text-xs uppercase transition-all shadow-md select-none cursor-pointer group active:scale-95"
         title="Go Back to Previous Page (Trackpad Swipe Enabled)"
       >
         <ArrowLeft className="w-4 h-4 text-[#ff705d] group-hover:text-white transition-colors" />
@@ -424,7 +473,7 @@ export function Details() {
             
             <div className="flex flex-col sm:flex-row gap-6 items-start justify-between relative z-10">
               <div className="flex gap-4 items-center">
-                {type === 'university' ? (
+                {type === 'university' || (type === 'perk' && item.domain) ? (
                   <UniversityLogo domain={item.domain} name={name} className="w-16 h-16 rounded-[20px]" />
                 ) : (
                   <div className="w-16 h-16 bg-[#2c2e2a]/5 border border-hairline-mist rounded-[20px] flex items-center justify-center font-sans font-black text-2xl text-ink">
@@ -473,6 +522,63 @@ export function Details() {
               </div>
             </div>
           </Card>
+
+          {/* DEDICATED PERK CLAIM & VERIFICATION BLOCK */}
+          {type === 'perk' && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="bg-white border border-hairline-mist p-6 rounded-[24px] shadow-sm relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-[#8ed462]" />
+                <div className="pl-2 space-y-4">
+                  <h3 className="font-sans font-black text-sm uppercase tracking-wider text-ink flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#8ed462]" /> How to Claim Offer
+                  </h3>
+
+                  <div className="space-y-3 font-sans text-xs text-stone-gray">
+                    <div className="flex items-start gap-3 p-3 bg-stone-50 rounded-xl border border-stone-100">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#8ed462] font-mono text-xs font-bold text-ink shrink-0">1</span>
+                      <div>
+                        <strong className="text-ink block">Launch Provider Portal</strong>
+                        <span>Click "Redeem Offer" to visit the official {subtitle} student portal.</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 p-3 bg-stone-50 rounded-xl border border-stone-100">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#2ba0ff] font-mono text-xs font-bold text-white shrink-0">2</span>
+                      <div>
+                        <strong className="text-ink block">Verify Student Status</strong>
+                        <span>Sign up using your official student email (<code className="bg-white px-1 py-0.5 rounded font-mono text-[10px] text-ink border border-stone-200">.edu</code> or <code className="bg-white px-1 py-0.5 rounded font-mono text-[10px] text-ink border border-stone-200">.ae</code>) or student identity card to claim your benefit.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="bg-white border border-hairline-mist p-6 rounded-[24px] shadow-sm relative overflow-hidden flex flex-col justify-between">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-[#ff705d]" />
+                <div className="pl-2 space-y-4">
+                  <h3 className="font-sans font-black text-sm uppercase tracking-wider text-ink flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-[#ff705d]" /> Verified Student Benefit
+                  </h3>
+
+                  <p className="font-sans text-xs text-stone-gray leading-relaxed p-4 bg-[#f5f1e4]/50 border border-hairline-mist rounded-2xl">
+                    This benefit is verified for active students in secondary schools and universities across the UAE and Gulf region. No referral codes are needed—simply click below to access the provider portal.
+                  </p>
+                </div>
+
+                <div className="pl-2 pt-4">
+                  <a
+                    href={realExternalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#ff705d] hover:bg-[#ff8676] text-white rounded-[50px] font-sans font-bold text-xs uppercase tracking-wider transition-all shadow-sm"
+                  >
+                    <span>Redeem Offer Now</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </Card>
+            </div>
+          )}
 
           {/* TWO-COLUMN REQUIREMENTS & STATISTICS MATRIX (Universities, Schools, Programs Only) */}
           {type !== 'perk' && (
@@ -561,12 +667,6 @@ export function Details() {
 
                   {type === 'perk' && (
                     <>
-                      <div>
-                        <div className="text-[10px] uppercase font-bold text-stone-gray tracking-wider mb-1">Redemption Coupon Code</div>
-                        <div className="font-mono text-sm text-ink font-bold bg-[#f5e211]/20 border border-[#f5e211]/50 px-3.5 py-2 rounded-lg text-center select-all cursor-pointer">
-                          MASSARSTUDENT
-                        </div>
-                      </div>
                       <div>
                         <div className="text-[10px] uppercase font-bold text-stone-gray tracking-wider mb-1">Verification Required</div>
                         <div className="font-sans text-xs text-ink font-semibold flex items-center gap-2">

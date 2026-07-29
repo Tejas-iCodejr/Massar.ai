@@ -16,21 +16,23 @@ const STUDENTS = [
   {
     variant: 'short-hair' as const,
     panel: '#ff705d',
-    alt: 'Illustration of a student wearing headphones and a backpack',
-    // Tallest in the middle, so the row reads as a curve rather than a wall.
-    height: 'h-[210px] sm:h-[290px] lg:h-[350px]',
+    photo: '/students/arab_boy.png',
+    alt: '10-12 year old Arab boy student with a red shirt and backpack',
+    height: 'h-[170px] sm:h-[220px] lg:h-[265px]',
   },
   {
     variant: 'hijab' as const,
     panel: '#8ed462',
-    alt: 'Illustration of a student in a hijab holding a notebook',
-    height: 'h-[245px] sm:h-[340px] lg:h-[410px]',
+    photo: '/students/teenage_girl.png',
+    alt: 'Teenage Arab girl student in a coral hijab holding a notebook',
+    height: 'h-[200px] sm:h-[260px] lg:h-[315px]',
   },
   {
     variant: 'curls' as const,
     panel: '#2ba0ff',
-    alt: 'Illustration of a student with curly hair carrying a backpack',
-    height: 'h-[210px] sm:h-[290px] lg:h-[350px]',
+    photo: '/students/african_boy.png',
+    alt: 'African boy student with afro curls, headphones and yellow shirt',
+    height: 'h-[170px] sm:h-[220px] lg:h-[265px]',
   },
 ];
 
@@ -108,7 +110,7 @@ function BackgroundDoodles() {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pb-0 pt-6 sm:pt-10">
+    <section className="relative overflow-hidden pb-0 pt-2 sm:pt-4">
       {/* Soft warm wash behind the type, so the frames below have something to sit on. */}
       <div
         aria-hidden="true"
@@ -127,19 +129,19 @@ export function Hero() {
             Schools · Universities · Opportunities
           </span>
 
-          <h1 className="mt-6 max-w-4xl font-sans text-[2.6rem] font-black leading-[0.95] -tracking-[0.045em] text-ink sm:text-6xl lg:text-[4.4rem]">
+          <h1 className="mt-3 max-w-4xl font-sans text-3xl font-black leading-[0.98] -tracking-[0.045em] text-ink sm:text-5xl lg:text-[3.6rem]">
             Find the right path to{' '}
             <span className="text-[#ff705d]">unlock your future.</span>
           </h1>
 
-          <p className="mt-7 max-w-2xl font-sans text-base font-medium leading-relaxed text-ink/65 sm:text-lg">
+          <p className="mt-3 max-w-xl font-sans text-xs font-medium leading-relaxed text-ink/65 sm:text-base">
             Verified schools, universities and student opportunities across the Gulf — compare what
             actually matters and decide with confidence.
           </p>
 
           {/* Proof row */}
-          <div className="mt-9 flex flex-col items-center gap-2">
-            <span className="font-sans text-xs font-semibold text-stone-gray">
+          <div className="mt-4 flex flex-col items-center gap-1.5 sm:mt-5">
+            <span className="font-sans text-[11px] font-semibold text-stone-gray sm:text-xs">
               100+ institutions indexed
             </span>
             <div className="flex items-center">
@@ -148,51 +150,50 @@ export function Hero() {
                 return (
                   <span
                     key={index}
-                    className="-ml-2.5 flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-white shadow-[0_4px_12px_rgba(44,46,42,0.08)] first:ml-0"
+                    className="-ml-2 flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-white shadow-[0_4px_12px_rgba(44,46,42,0.08)] first:ml-0 sm:h-9 sm:w-9"
                     style={{ color: entry.tint }}
                   >
-                    <Icon className="h-4.5 w-4.5" strokeWidth={2.2} />
+                    <Icon className="h-4 w-4" strokeWidth={2.2} />
                   </span>
                 );
               })}
-              <span className="-ml-2.5 flex h-10 items-center justify-center rounded-full border-2 border-white bg-[#8ed462] px-3 font-sans text-xs font-black text-ink shadow-[0_4px_12px_rgba(44,46,42,0.08)]">
+              <span className="-ml-2 flex h-8 items-center justify-center rounded-full border-2 border-white bg-[#8ed462] px-2.5 font-sans text-[11px] font-black text-ink shadow-[0_4px_12px_rgba(44,46,42,0.08)] sm:h-9 sm:px-3 sm:text-xs">
                 111 perks
               </span>
             </div>
           </div>
 
           {/* Calls to action */}
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5 sm:mt-5 sm:gap-3">
             <Link
               to="/universities"
-              className="inline-flex items-center gap-2 rounded-[50px] border border-transparent bg-[#ff705d] px-8 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-[#ff8676] active:scale-[0.98]"
+              className="inline-flex items-center gap-2 rounded-[50px] border border-transparent bg-[#ff705d] px-6 py-2.5 font-sans text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-[#ff8676] active:scale-[0.98] sm:px-7 sm:py-3 sm:text-sm"
             >
-              Get started <ArrowRight className="h-4 w-4" />
+              Get started <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             </Link>
 
-            {/* The reference's second button plays a video; there is no video, so
-                this points at the path wizard further down the page instead. */}
-            <a
-              href="#path-wizard"
-              className="group inline-flex items-center gap-3 rounded-[50px] border border-ink bg-white py-2 pl-2 pr-7 font-sans text-sm font-semibold uppercase tracking-wider text-ink transition-all hover:bg-ink hover:text-[#f5f1e4] active:scale-[0.98]"
+            <Link
+              to="/universities"
+              className="group inline-flex items-center gap-2.5 rounded-[50px] border border-ink bg-white py-1.5 pl-1.5 pr-5 font-sans text-xs font-semibold uppercase tracking-wider text-ink transition-all hover:bg-ink hover:text-[#f5f1e4] active:scale-[0.98] sm:py-2 sm:pl-2 sm:pr-6 sm:text-sm"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#8ed462] text-ink transition-transform group-hover:scale-105">
-                <Compass className="h-4.5 w-4.5" strokeWidth={2.2} />
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#8ed462] text-ink transition-transform group-hover:scale-105 sm:h-9 sm:w-9">
+                <Compass className="h-4 w-4" strokeWidth={2.2} />
               </span>
               Find your path
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Students */}
-      <div className="relative mx-auto mt-10 max-w-4xl px-4 sm:mt-12 sm:px-6 lg:px-8">
+      <div className="relative mx-auto mt-5 max-w-3xl px-4 sm:mt-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-3 items-end gap-1 sm:gap-3">
           {STUDENTS.map((student) => (
             <StudentPortrait
               key={student.variant}
               variant={student.variant}
               panel={student.panel}
+              photo={student.photo}
               alt={student.alt}
               className={student.height}
             />
