@@ -119,6 +119,56 @@ async function setupScraperCron() {
   });
 }
 
+async function purgeExpiredOpportunities() {
+  if (!cachedData) await loadData();
+  if (!cachedData || !Array.isArray(cachedData.programs)) return { removedCount: 0, removedTitles: [] };
+
+  const now = new Date();
+  const expiredIds: string[] = [];
+  const expiredTitles: string[] = [];
+
+  const activePrograms = cachedData.programs.filter((prog: any) => {
+    if (!prog.deadline) return true;
+    const deadlineDate = new Date(`${prog.deadline}T16:00:00`);
+    if (isNaN(deadlineDate.getTime())) return true;
+
+    if (now >= deadlineDate) {
+      expiredIds.push(prog.id);
+      expiredTitles.push(prog.title);
+      return false;
+    }
+    return true;
+  });
+
+  if (expiredIds.length > 0) {
+    cachedData.programs = activePrograms;
+    await saveData();
+
+    try {
+      const { error } = await supabase.from("programs").delete().in("id", expiredIds);
+      if (error) {
+        console.error("Failed to delete expired opportunities from Supabase:", error);
+      } else {
+        console.log(`[Supabase Sync] Successfully purged ${expiredIds.length} expired opportunities.`);
+      }
+    } catch (e) {
+      console.error("Supabase purge error:", e);
+    }
+
+    console.log(`[4:00 PM Expiry Cron] Purged ${expiredIds.length} expired opportunities: ${expiredTitles.join(", ")}`);
+  }
+
+  return { removedCount: expiredIds.length, removedTitles: expiredTitles };
+}
+
+function setupExpiryCron() {
+  // Run daily at 4:00 PM (16:00)
+  cron.schedule("0 16 * * *", async () => {
+    console.log("[4:00 PM Expiry Cron] Checking for expired opportunity deadlines...");
+    await purgeExpiredOpportunities();
+  });
+}
+
 function sanitizeInput(str: string): string {
   if (typeof str !== "string") return "";
   return str.replace(/<[^>]*>?/gm, "").trim().substring(0, 500);
@@ -306,6 +356,17 @@ async function startServer() {
 
   await loadData();
   setupScraperCron();
+  setupExpiryCron();
+
+  // Admin trigger to purge expired opportunities on demand
+  app.post("/api/admin/purge-expired", async (req, res) => {
+    try {
+      const result = await purgeExpiredOpportunities();
+      res.json({ success: true, message: `Purged ${result.removedCount} expired opportunities.`, ...result });
+    } catch (e: any) {
+      res.status(500).json({ error: e.message || "Failed to purge expired opportunities." });
+    }
+  });
 
   // High-performance In-Memory API Routes with HTTP Caching
   app.get("/api/data", (req, res) => {
