@@ -365,6 +365,8 @@ const CUSTOM_LOGOS: Record<string, string> = {
   "aau.ac.ae": "/logos/al_ain_university.png",
   "Al-Imam Muhammad Ibn Saud Islamic University": "/logos/imamu_university.png",
   "imamu.edu.sa": "/logos/imamu_university.png",
+  "Alfaisal University": "/logos/alfaisal_university.png",
+  "alfaisal.edu": "/logos/alfaisal_university.png",
 };
 
 export function UniversityLogo({ domain, name, className }: LogoProps) {
