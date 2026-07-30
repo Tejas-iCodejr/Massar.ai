@@ -1,4 +1,4 @@
-import { app, loadData } from "../server.js";
+import { app, loadData } from "../server";
 
 let loaded = false;
 

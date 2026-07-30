@@ -4,11 +4,11 @@ import helmet from "helmet";
 import path from "path";
 import cors from "cors";
 import fs from "fs/promises";
-import { createServer as createViteServer } from "vite";
 import cron from "node-cron";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@supabase/supabase-js";
 import "dotenv/config";
+import initialData from "./data.json";
 
 const PORT = parseInt(process.env.PORT || "3000", 10);
 const DATA_FILE = path.resolve(process.cwd(), "data.json");
@@ -17,16 +17,19 @@ const supabaseUrl = process.env.SUPABASE_URL || "https://jyoedcgxfbcbloasucxj.su
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "sb_publishable_dAGCAFElRkycXFIEOXF-qw_Png6pQxb";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-let cachedData: any = null;
+let cachedData: any = initialData;
 
 export async function loadData() {
+  if (cachedData && (cachedData.universities?.length > 0 || cachedData.schools?.length > 0)) {
+    return cachedData;
+  }
   try {
     const raw = await fs.readFile(DATA_FILE, "utf-8");
     cachedData = JSON.parse(raw);
     return cachedData;
   } catch (err) {
-    console.error("Failed to load data.json", err);
-    return { universities: [], schools: [], programs: [], perks: [] };
+    cachedData = initialData;
+    return cachedData;
   }
 }
 
@@ -757,6 +760,7 @@ Do NOT list transit options, nearby food districts, parks, co-working spaces, or
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
