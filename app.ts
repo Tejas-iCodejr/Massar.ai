@@ -6,7 +6,7 @@ import fs from "fs";
 import path from "path";
 import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@supabase/supabase-js";
-import initialData from "./data.json";
+import { DATA } from "./src/dataStore";
 
 export const app = express();
 app.set("trust proxy", true);
@@ -48,24 +48,8 @@ const supabaseUrl = process.env.SUPABASE_URL || "https://jyoedcgxfbcbloasucxj.su
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "sb_publishable_dAGCAFElRkycXFIEOXF-qw_Png6pQxb";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-let cachedData: any = initialData;
-
 export function loadData() {
-  if (cachedData && (cachedData.universities?.length > 0 || cachedData.schools?.length > 0)) {
-    return cachedData;
-  }
-  try {
-    const dataFile = path.resolve(process.cwd(), "data.json");
-    if (fs.existsSync(dataFile)) {
-      const raw = fs.readFileSync(dataFile, "utf-8");
-      cachedData = JSON.parse(raw);
-    } else {
-      cachedData = initialData;
-    }
-  } catch (err) {
-    cachedData = initialData;
-  }
-  return cachedData;
+  return DATA;
 }
 
 function setApiCacheHeaders(res: express.Response) {

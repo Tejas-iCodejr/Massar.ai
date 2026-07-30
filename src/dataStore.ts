@@ -1,0 +1,2513 @@
+export const DATA = {
+  "universities": [
+    {
+      "id": "1",
+      "name": "United Arab Emirates University",
+      "domain": "uaeu.ac.ae",
+      "location": "Al Ain, Abu Dhabi",
+      "type": "Public",
+      "description": "Oldest national university in the UAE, ranked #261 globally by QS World University Rankings 2025.",
+      "tuitionFee": 20000,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "2",
+      "name": "New York University Abu Dhabi",
+      "domain": "nyuad.nyu.edu",
+      "location": "Saadiyat Island, Abu Dhabi",
+      "type": "Private",
+      "description": "Highly selective portal campus of NYU in the Middle East with comprehensive full-need financial aid.",
+      "tuitionFee": 58000,
+      "acceptanceRate": 4,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "3",
+      "name": "American University of Sharjah",
+      "domain": "aus.edu",
+      "location": "University City, Sharjah",
+      "type": "Private",
+      "description": "Leading independent American-style institution ranked #332 in QS World University Rankings.",
+      "tuitionFee": 26000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "4",
+      "name": "Khalifa University",
+      "domain": "ku.ac.ae",
+      "location": "Abu Dhabi, UAE",
+      "type": "Public",
+      "description": "Top-ranked research-intensive university in the UAE (#202 globally in QS 2025) specializing in STEM and AI.",
+      "tuitionFee": 28000,
+      "acceptanceRate": 25,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "5",
+      "name": "Manipal Academy of Higher Education, Dubai",
+      "domain": "manipaldubai.com",
+      "location": "Academic City, Dubai",
+      "type": "Branch Campus",
+      "description": "Premier branch of Manipal India offering top-tier degrees in engineering, media, and biotechnology.",
+      "tuitionFee": 14000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "6",
+      "name": "BITS Pilani, Dubai Campus",
+      "domain": "bits-pilani.ac.in",
+      "location": "Academic City, Dubai",
+      "type": "Branch Campus",
+      "description": "International campus of Birla Institute of Technology & Science, highly acclaimed for engineering and CS.",
+      "tuitionFee": 14000,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "7",
+      "name": "IIT Delhi - Abu Dhabi",
+      "domain": "abudhabi.iitd.ac.in",
+      "location": "Zayed City, Abu Dhabi",
+      "type": "Branch Campus",
+      "description": "Prestigious international campus of Indian Institute of Technology Delhi offering AI & Energy Engineering.",
+      "tuitionFee": 22000,
+      "acceptanceRate": 18,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "8",
+      "name": "Heriot-Watt University Dubai",
+      "domain": "hw.ac.uk",
+      "location": "Knowledge Park, Dubai",
+      "type": "Branch Campus",
+      "description": "First British university branch in Dubai delivering triple-accredited UK engineering and business degrees.",
+      "tuitionFee": 17000,
+      "acceptanceRate": 75,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "9",
+      "name": "University of Birmingham Dubai",
+      "domain": "birmingham.ac.uk",
+      "location": "Knowledge Park, Dubai",
+      "type": "Branch Campus",
+      "description": "Russell Group university branch (#84 globally) with a state-of-the-art smart campus in Dubai.",
+      "tuitionFee": 28000,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "10",
+      "name": "Zayed University",
+      "domain": "zu.ac.ae",
+      "location": "Academic City, Dubai",
+      "type": "Public",
+      "description": "Federal national institution in the UAE ranked #651 in QS, delivering accredited degrees in tech and business.",
+      "tuitionFee": 16000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "11",
+      "name": "King Abdullah University of Science and Technology (KAUST)",
+      "domain": "kaust.edu.sa",
+      "location": "Thuwal, Saudi Arabia",
+      "type": "Private",
+      "description": "Elite graduate research university ranked #1 globally in Citations per Faculty. Fully funded fellowships for all.",
+      "tuitionFee": "Fully Funded",
+      "acceptanceRate": 8,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "12",
+      "name": "King Fahd University of Petroleum and Minerals (KFUPM)",
+      "domain": "kfupm.edu.sa",
+      "location": "Dhahran, Saudi Arabia",
+      "type": "Public",
+      "description": "Top-ranked university in the Arab world (#101 globally in QS 2025), world-renowned for petroleum & engineering.",
+      "tuitionFee": 10000,
+      "acceptanceRate": 20,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "13",
+      "name": "Qatar University",
+      "domain": "qu.edu.qa",
+      "location": "Doha, Qatar",
+      "type": "Public",
+      "description": "Premier national university of Qatar, ranked #122 globally by QS 2025, offering premier STEM & health tracks.",
+      "tuitionFee": 10000,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "14",
+      "name": "King Saud University",
+      "domain": "ksu.edu.sa",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "Public",
+      "description": "First university in KSA (#203 globally in QS 2025), renowned for medical, engineering, and artificial intelligence programs.",
+      "tuitionFee": 7000,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "15",
+      "name": "Abu Dhabi University",
+      "domain": "adu.ac.ae",
+      "location": "Abu Dhabi, UAE",
+      "type": "Private",
+      "description": "Multi-campus private university in the UAE ranked #581 in QS 2025, AACSB and EQUIS accredited for business.",
+      "tuitionFee": 20000,
+      "acceptanceRate": 75,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "16",
+      "name": "King Khalid University",
+      "domain": "kku.edu.sa",
+      "location": "Abha, Saudi Arabia",
+      "type": "Public",
+      "description": "Major public research institution in southern KSA ranked #601 in QS 2025, specialized in healthcare & tech.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "17",
+      "name": "Lebanese American University",
+      "domain": "lau.edu.lb",
+      "location": "Beirut, Lebanon",
+      "type": "Private",
+      "description": "Leading American-accredited institution in the region, offering top business, pre-med, and engineering programs.",
+      "tuitionFee": 27000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "18",
+      "name": "The British University in Dubai",
+      "domain": "buid.ac.ae",
+      "location": "Knowledge Park, Dubai",
+      "type": "Private",
+      "description": "Research-led university operating in partnership with UK Russell Group universities (Edinburgh, Glasgow, Manchester).",
+      "tuitionFee": 25000,
+      "acceptanceRate": 75,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "19",
+      "name": "Prince Mohammad Bin Fahd University",
+      "domain": "pmu.edu.sa",
+      "location": "Al Khobar, Saudi Arabia",
+      "type": "Private",
+      "description": "Modern private university in KSA (#591 in QS 2025), designed with American curriculum standards for tech & leadership.",
+      "tuitionFee": 18000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "20",
+      "name": "King Abdulaziz University (KAU)",
+      "domain": "kau.edu.sa",
+      "location": "Jeddah, Saudi Arabia",
+      "type": "Public",
+      "description": "Consistently ranked #109 globally by QS World Rankings, KAU is one of the highest-impact research hubs in the Middle East.",
+      "tuitionFee": 7000,
+      "acceptanceRate": 68,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "21",
+      "name": "University of Sharjah",
+      "domain": "sharjah.ac.ae",
+      "location": "University City, Sharjah",
+      "type": "Private",
+      "description": "Comprehensive regional university ranked #445 in QS 2025, offering premier medical, law, and engineering faculties.",
+      "tuitionFee": 18000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "22",
+      "name": "Ajman University",
+      "domain": "ajman.ac.ae",
+      "location": "Ajman, UAE",
+      "type": "Private",
+      "description": "First private university in the UAE, ranked #477 globally in QS 2025, famous for dentistry and architecture.",
+      "tuitionFee": 15000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.144Z"
+    },
+    {
+      "id": "23",
+      "name": "Canadian University Dubai",
+      "domain": "cud.ac.ae",
+      "location": "City Walk, Dubai",
+      "type": "Private",
+      "description": "Ranked #521 in QS 2025, CUD offers Canadian curriculum pathways with direct transfer options to top Canadian universities.",
+      "tuitionFee": 18000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "24",
+      "name": "Al Ain University",
+      "domain": "aau.ac.ae",
+      "location": "Al Ain, Abu Dhabi",
+      "type": "Private",
+      "description": "Ranked #551 in QS World Rankings 2025, accredited by ABET for engineering and ACPE for pharmacy.",
+      "tuitionFee": 16000,
+      "acceptanceRate": 82,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "25",
+      "name": "American University in Dubai (AUD)",
+      "domain": "aud.edu",
+      "location": "Media City, Dubai",
+      "type": "Private",
+      "description": "SACSCOC American-accredited institution in Dubai (#601 in QS 2025), renowned for business, architecture, and journalism.",
+      "tuitionFee": 28000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "26",
+      "name": "Imam Abdulrahman Bin Faisal University (IAU)",
+      "domain": "iau.edu.sa",
+      "location": "Dammam, Saudi Arabia",
+      "type": "Public",
+      "description": "Major public medical and research university in KSA's Eastern Province, ranked #651 in QS 2025.",
+      "tuitionFee": 7000,
+      "acceptanceRate": 68,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "27",
+      "name": "Princess Nourah bint Abdulrahman University",
+      "domain": "pnu.edu.sa",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "Public",
+      "description": "Largest women's university in the world, ranked #701 in QS 2025, offering premier medical, science, and AI faculties.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "28",
+      "name": "Prince Sultan University",
+      "domain": "psu.edu.sa",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "Private",
+      "description": "Non-profit private university in Riyadh (#720 in QS 2025), accredited by AACSB and ABET for computing and law.",
+      "tuitionFee": 18000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "29",
+      "name": "Umm Al-Qura University",
+      "domain": "uqu.edu.sa",
+      "location": "Makkah, Saudi Arabia",
+      "type": "Public",
+      "description": "Historic public university in Makkah ranked #441 in QS World Rankings, specialized in Islamic studies, engineering, and medicine.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "30",
+      "name": "Hamad Bin Khalifa University (HBKU)",
+      "domain": "hbku.edu.qa",
+      "location": "Education City, Doha, Qatar",
+      "type": "Public",
+      "description": "Homegrown graduate research university in Qatar's Education City, specializing in genomics, cybersecurity, and Islamic studies.",
+      "tuitionFee": 30000,
+      "acceptanceRate": 25,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "31",
+      "name": "Texas A&M University at Qatar",
+      "domain": "qatar.tamu.edu",
+      "location": "Education City, Doha, Qatar",
+      "type": "Branch Campus",
+      "description": "Branch campus of Texas A&M University offering world-renowned chemical, electrical, mechanical, and petroleum engineering degrees.",
+      "tuitionFee": 45000,
+      "acceptanceRate": 30,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "32",
+      "name": "Carnegie Mellon University in Qatar",
+      "domain": "qatar.cmu.edu",
+      "location": "Education City, Doha, Qatar",
+      "type": "Branch Campus",
+      "description": "Branch of Carnegie Mellon University delivering elite degrees in computer science, business administration, and information systems.",
+      "tuitionFee": 65000,
+      "acceptanceRate": 20,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "33",
+      "name": "Weill Cornell Medicine - Qatar",
+      "domain": "qatar-weill.cornell.edu",
+      "location": "Education City, Doha, Qatar",
+      "type": "Branch Campus",
+      "description": "First American medical school established outside the US, delivering Cornell University MD degrees in Education City.",
+      "tuitionFee": 75000,
+      "acceptanceRate": 8,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "34",
+      "name": "Sorbonne University Abu Dhabi",
+      "domain": "sorbonne.ae",
+      "location": "Reem Island, Abu Dhabi",
+      "type": "Branch Campus",
+      "description": "French humanities and science university in Abu Dhabi offering double-accredited European degrees from Sorbonne Paris.",
+      "tuitionFee": 26000,
+      "acceptanceRate": 65,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "35",
+      "name": "University of Wollongong in Dubai",
+      "domain": "uowdubai.ac.ae",
+      "location": "Knowledge Park, Dubai",
+      "type": "Branch Campus",
+      "description": "Oldest international Australian university branch in Dubai, offering accredited Australian degrees in business and IT.",
+      "tuitionFee": 20000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring",
+        "Summer"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "36",
+      "name": "Middlesex University Dubai",
+      "domain": "mdx.ac.ae",
+      "location": "Knowledge Park, Dubai",
+      "type": "Branch Campus",
+      "description": "Leading UK branch campus in Dubai with over 4,500 students, offering UK honors degrees in law, computer science, and psychology.",
+      "tuitionFee": 16000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "37",
+      "name": "Rochester Institute of Technology Dubai (RIT Dubai)",
+      "domain": "rit.edu/dubai",
+      "location": "Silicon Oasis, Dubai",
+      "type": "Branch Campus",
+      "description": "Not-for-profit American branch campus in Dubai Silicon Oasis, offering ABET-accredited engineering and cybersecurity programs.",
+      "tuitionFee": 27000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "38",
+      "name": "Al-Imam Muhammad Ibn Saud Islamic University",
+      "domain": "imamu.edu.sa",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "Public",
+      "description": "Major public university in Riyadh (#751 in QS 2025), combining Islamic jurisprudence with computer science and engineering.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "39",
+      "name": "American University of Ras Al Khaimah (AURAK)",
+      "domain": "aurak.ac.ae",
+      "location": "Ras Al Khaimah, UAE",
+      "type": "Public",
+      "description": "Government-owned American-style university ranked #751 in QS 2025, accredited by SACSCOC and ABET.",
+      "tuitionFee": 20000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "40",
+      "name": "Taibah University",
+      "domain": "taibahu.edu.sa",
+      "location": "Medina, Saudi Arabia",
+      "type": "Public",
+      "description": "Prominent public university in Medina (#901 in QS 2025), offering comprehensive programs in medicine, dentistry, and computer science.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "41",
+      "name": "Qassim University",
+      "domain": "qu.edu.sa",
+      "location": "Buraydah, Saudi Arabia",
+      "type": "Public",
+      "description": "One of KSA's largest public institutions (#851 in QS 2025), with 38 colleges covering agriculture, medicine, and engineering.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "42",
+      "name": "Alfaisal University",
+      "domain": "alfaisal.edu",
+      "location": "Riyadh, Saudi Arabia",
+      "type": "Private",
+      "description": "Student-centered non-profit private university in Riyadh (#901 in QS 2025), founded by King Faisal Foundation for medicine & business.",
+      "tuitionFee": 28000,
+      "acceptanceRate": 35,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "43",
+      "name": "Jazan University",
+      "domain": "jazanu.edu.sa",
+      "location": "Jazan, Saudi Arabia",
+      "type": "Public",
+      "description": "Comprehensive public university in southern KSA (#951 in QS 2025), specializing in marine biology, medicine, and engineering.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 78,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "44",
+      "name": "Gulf Medical University",
+      "domain": "gmu.ac.ae",
+      "location": "Ajman, UAE",
+      "type": "Private",
+      "description": "Leading private medical university in the UAE, famous for medicine, pharmacy, dentistry, and biomedical research.",
+      "tuitionFee": 35000,
+      "acceptanceRate": 25,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "45",
+      "name": "Higher Colleges of Technology (HCT)",
+      "domain": "hct.ac.ae",
+      "location": "Abu Dhabi, UAE",
+      "type": "Public",
+      "description": "Largest applied higher education institution in the UAE with 16 campuses, educating over 23,000 national students.",
+      "tuitionFee": 14000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "46",
+      "name": "University of Ha'il",
+      "domain": "uoh.edu.sa",
+      "location": "Hail, Saudi Arabia",
+      "type": "Public",
+      "description": "Public university in northern KSA (#801 in QS 2025), offering modern faculties in software engineering, health, and arts.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "47",
+      "name": "Jouf University",
+      "domain": "ju.edu.sa",
+      "location": "Sakaka, Saudi Arabia",
+      "type": "Public",
+      "description": "Public research institution in Al Jouf region (#801 in QS 2025), featuring accredited medical, computer, and renewable energy tracks.",
+      "tuitionFee": 6000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "48",
+      "name": "Effat University",
+      "domain": "effatuniversity.edu.sa",
+      "location": "Jeddah, Saudi Arabia",
+      "type": "Private",
+      "description": "First private non-profit women's university in KSA, famous for innovative engineering, cinema, and computer science programs.",
+      "tuitionFee": 18000,
+      "acceptanceRate": 72,
+      "intakes": [
+        "Fall",
+        "Spring"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "49",
+      "name": "Northwestern University in Qatar",
+      "domain": "qatar.northwestern.edu",
+      "location": "Education City, Doha, Qatar",
+      "type": "Branch Campus",
+      "description": "Medill School branch offering world-class journalism, media, communication, and strategic marketing degrees in Education City.",
+      "tuitionFee": 65000,
+      "acceptanceRate": 20,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    },
+    {
+      "id": "50",
+      "name": "Georgetown University in Qatar",
+      "domain": "qatar.georgetown.edu",
+      "location": "Education City, Doha, Qatar",
+      "type": "Branch Campus",
+      "description": "Edmund A. Walsh School of Foreign Service branch in Qatar, offering Bachelor of Science in Foreign Service (BSFS) degrees.",
+      "tuitionFee": 65000,
+      "acceptanceRate": 20,
+      "intakes": [
+        "Fall"
+      ],
+      "lastUpdated": "2026-07-29T20:30:46.145Z"
+    }
+  ],
+  "schools": [
+    {
+      "id": "1",
+      "name": "Dubai College",
+      "domain": "dubaicollege.org",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "80K - 98K AED",
+      "ranking": 1,
+      "description": "The premier non-profit British curriculum school in Dubai, renowned for top academic results and Oxford/Cambridge placements."
+    },
+    {
+      "id": "2",
+      "name": "Jumeirah English Speaking School (JESS) Arabian Ranches",
+      "domain": "jess.sch.ae",
+      "curriculum": "British / IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "44K - 96K AED",
+      "ranking": 2,
+      "description": "Leading non-profit IB World School offering gold-standard primary and secondary education with exemplary pastoral care."
+    },
+    {
+      "id": "3",
+      "name": "Raha International School",
+      "domain": "ris.ae",
+      "curriculum": "IB",
+      "emirate": "Abu Dhabi",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "40K - 63K AED",
+      "ranking": 3,
+      "description": "First school in Abu Dhabi to be awarded Outstanding rating by ADEK across all 3 IB learning programs."
+    },
+    {
+      "id": "4",
+      "name": "The British School Al Khubairat (BSAK)",
+      "domain": "britishschool.sch.ae",
+      "curriculum": "British",
+      "emirate": "Abu Dhabi",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "35K - 72K AED",
+      "ranking": 4,
+      "description": "Abu Dhabi's flagship non-profit British community school established under royal decree in 1968."
+    },
+    {
+      "id": "5",
+      "name": "Kings' School Dubai",
+      "domain": "kings-edu.com",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "45K - 68K AED",
+      "ranking": 5,
+      "description": "The only school in Dubai to achieve an Outstanding KHDA rating every consecutive year since inspection began."
+    },
+    {
+      "id": "6",
+      "name": "Brighton College Abu Dhabi",
+      "domain": "brightoncollege.ae",
+      "curriculum": "British",
+      "emirate": "Abu Dhabi",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "50K - 80K AED",
+      "ranking": 6,
+      "description": "Top performing co-educational British curriculum school producing exceptional A-Level results in the UAE capital."
+    },
+    {
+      "id": "7",
+      "name": "Dubai International Academy (DIA) Emirates Hills",
+      "domain": "diadubai.com",
+      "curriculum": "IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "42K - 75K AED",
+      "ranking": 7,
+      "description": "First school in the UAE to offer a full continuum IB curriculum, boasting world-class diploma pass rates."
+    },
+    {
+      "id": "8",
+      "name": "Dubai British School Emirates Hills",
+      "domain": "dubaibritishschool.ae",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "50K - 76K AED",
+      "ranking": 8,
+      "description": "Taaleem flagship British school delivering top GCSE & A-Level results with a strong performing arts program."
+    },
+    {
+      "id": "9",
+      "name": "Cranleigh Abu Dhabi",
+      "domain": "cranleigh.ae",
+      "curriculum": "British",
+      "emirate": "Abu Dhabi",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "65K - 96K AED",
+      "ranking": 9,
+      "description": "Award-winning British independent school located on Saadiyat Island, renowned for arts, sports, and academics."
+    },
+    {
+      "id": "10",
+      "name": "Nord Anglia International School Dubai",
+      "domain": "nordangliaeducation.com",
+      "curriculum": "British / IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "66K - 99K AED",
+      "ranking": 10,
+      "description": "Global flagship campus offering Juilliard arts collaborations, MIT STEAM initiatives, and elite IB pathways."
+    },
+    {
+      "id": "11",
+      "name": "GEMS Wellington International School",
+      "domain": "wellingtoninternationalschool.com",
+      "curriculum": "British / IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "45K - 89K AED",
+      "ranking": 11,
+      "description": "GEMS premier institution combining British National Curriculum with IB Diploma options in Al Sufouh."
+    },
+    {
+      "id": "12",
+      "name": "GEMS World Academy Dubai",
+      "domain": "gemsworldacademy-dubai.com",
+      "curriculum": "IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Very Good",
+      "tuitionRange": "65K - 118K AED",
+      "ranking": 12,
+      "description": "State-of-the-art IB World School equipped with planetarium, Olympic pool, and 3D design hubs."
+    },
+    {
+      "id": "13",
+      "name": "Repton School Dubai",
+      "domain": "reptondubai.org",
+      "curriculum": "British / IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "53K - 96K AED",
+      "ranking": 13,
+      "description": "Prestigious UK boarding heritage school combining classic academic rigor with modern digital innovation."
+    },
+    {
+      "id": "14",
+      "name": "Horizon English School",
+      "domain": "horizonenglishschool.com",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "40K - 55K AED",
+      "ranking": 14,
+      "description": "Community primary school in Jumeirah recognized for innovative STEM learning and warm family culture."
+    },
+    {
+      "id": "15",
+      "name": "Jumeirah College",
+      "domain": "jumeirahcollege.com",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "75K - 93K AED",
+      "ranking": 15,
+      "description": "GEMS secondary school delivering top A-Level results and global university placements."
+    },
+    {
+      "id": "16",
+      "name": "Victory Heights Primary School",
+      "domain": "vhprimary.com",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "38K - 52K AED",
+      "ranking": 16,
+      "description": "Outstanding British primary school in Sports City focused on student wellbeing and outdoor learning."
+    },
+    {
+      "id": "17",
+      "name": "Dubai English Speaking College (DESC)",
+      "domain": "descdubai.com",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "75K - 85K AED",
+      "ranking": 17,
+      "description": "Sister secondary school to DESS, recipient of International School of the Year accolades."
+    },
+    {
+      "id": "18",
+      "name": "The Millennium School Dubai",
+      "domain": "themillenniumschool-dubai.com",
+      "curriculum": "CBSE",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Very Good",
+      "tuitionRange": "16K - 26K AED",
+      "ranking": 18,
+      "description": "Leading Indian curriculum school in Dubai providing high-value CBSE academics and robotics."
+    },
+    {
+      "id": "19",
+      "name": "GEMS Modern Academy",
+      "domain": "gemsmodernacademy-dubai.com",
+      "curriculum": "CISCE / IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "29K - 69K AED",
+      "ranking": 19,
+      "description": "Dual-curriculum CISCE and IB World School famous for entrepreneurship and innovation labs."
+    },
+    {
+      "id": "20",
+      "name": "Sharjah English School",
+      "domain": "sharjahenglishschool.org",
+      "curriculum": "British",
+      "emirate": "Sharjah",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "27K - 68K AED",
+      "ranking": 20,
+      "description": "Sharjah's non-profit British curriculum school offering small class sizes and extensive sports grounds."
+    },
+    {
+      "id": "21",
+      "name": "American Community School of Abu Dhabi (ACS)",
+      "domain": "acs.sch.ae",
+      "curriculum": "American",
+      "emirate": "Abu Dhabi",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "48K - 87K AED",
+      "ranking": 21,
+      "description": "Non-profit American school serving the US diplomatic and expat community in Abu Dhabi since 1972."
+    },
+    {
+      "id": "22",
+      "name": "Lyc\u00e9e Fran\u00e7ais International Georges Pompidou",
+      "domain": "lfigp.org",
+      "curriculum": "French",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "30K - 48K AED",
+      "ranking": 22,
+      "description": "Premier French ministry-accredited school delivering French Baccalaureate with bilingual trilingual tracks."
+    },
+    {
+      "id": "23",
+      "name": "The English College Dubai",
+      "domain": "englishcollege.ac.ae",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Very Good",
+      "tuitionRange": "36K - 64K AED",
+      "ranking": 23,
+      "description": "Heritage British secondary school in Al Safa acquired by ISP, praised for strong academic value."
+    },
+    {
+      "id": "24",
+      "name": "Deira International School",
+      "domain": "disdubai.ae",
+      "curriculum": "IB",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Outstanding",
+      "tuitionRange": "40K - 80K AED",
+      "ranking": 24,
+      "description": "Al Futtaim non-profit IB World School located in Dubai Festival City with top examination benchmarks."
+    },
+    {
+      "id": "25",
+      "name": "Royal Grammar School Guildford Dubai (RGS)",
+      "domain": "rgsgdubai.ae",
+      "curriculum": "British",
+      "emirate": "Dubai",
+      "country": "UAE",
+      "rating": "Very Good",
+      "tuitionRange": "75K - 97K AED",
+      "ranking": 25,
+      "description": "500-year British independent school campus in Tilal Al Ghaf featuring eco-friendly sustainable design."
+    },
+    {
+      "id": "26",
+      "name": "British International School Riyadh (BISR)",
+      "domain": "bisr.com.sa",
+      "curriculum": "British",
+      "emirate": "Riyadh",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "42K - 88K SAR",
+      "ranking": 26,
+      "description": "Multi-campus British international school in KSA capital, accredited by BSME and BSO inspection teams."
+    },
+    {
+      "id": "27",
+      "name": "American International School of Jeddah (AISJ)",
+      "domain": "aisj.edu.sa",
+      "curriculum": "American",
+      "emirate": "Jeddah",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "45K - 85K SAR",
+      "ranking": 27,
+      "description": "Cognia-accredited American curriculum school in Jeddah featuring modern STEM and AP course offerings."
+    },
+    {
+      "id": "28",
+      "name": "King Faisal School",
+      "domain": "kfs.sch.sa",
+      "curriculum": "IB",
+      "emirate": "Riyadh",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "40K - 75K SAR",
+      "ranking": 28,
+      "description": "Prestigious IB World School in Diplomatic Quarter Riyadh, fostering future Saudi leaders."
+    },
+    {
+      "id": "29",
+      "name": "Dhahran Ahliyya Schools (DAS)",
+      "domain": "das.sch.sa",
+      "curriculum": "IB / Saudi National",
+      "emirate": "Dhahran",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "32K - 60K SAR",
+      "ranking": 29,
+      "description": "Bilingual IB World School in KSA Eastern Province with dual Saudi National and IB diplomas."
+    },
+    {
+      "id": "30",
+      "name": "ISG Dhahran (International Schools Group)",
+      "domain": "isg.edu.sa",
+      "curriculum": "American / British",
+      "emirate": "Dhahran",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "48K - 89K SAR",
+      "ranking": 30,
+      "description": "Consortium of American and British international schools serving Saudi Aramco and global expat families."
+    },
+    {
+      "id": "31",
+      "name": "American International School Riyadh (AISR)",
+      "domain": "aisr.org",
+      "curriculum": "American",
+      "emirate": "Riyadh",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "50K - 92K SAR",
+      "ranking": 31,
+      "description": "Premier IB & AP accredited American community school in Riyadh with state-of-the-art campus."
+    },
+    {
+      "id": "32",
+      "name": "The King's School Riyadh",
+      "domain": "kingscollege-riyadh.com",
+      "curriculum": "British",
+      "emirate": "Riyadh",
+      "country": "Saudi Arabia",
+      "rating": "Very Good",
+      "tuitionRange": "55K - 95K SAR",
+      "ranking": 32,
+      "description": "Top-tier British independent school offering UK national curriculum under KSA Vision 2030."
+    },
+    {
+      "id": "33",
+      "name": "Jeddah Prep and Grammar School (JPGS)",
+      "domain": "jpgs.org",
+      "curriculum": "British",
+      "emirate": "Jeddah",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "38K - 72K SAR",
+      "ranking": 33,
+      "description": "Oldest British curriculum school in Western Saudi Arabia, offering Cambridge IGCSE and A-Levels."
+    },
+    {
+      "id": "34",
+      "name": "KAUST Schools",
+      "domain": "tks.kaust.edu.sa",
+      "curriculum": "IB",
+      "emirate": "Thuwal",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "45K - 80K SAR",
+      "ranking": 34,
+      "description": "Elite IB World School situated inside KAUST University campus, catering to global research faculty children."
+    },
+    {
+      "id": "35",
+      "name": "Kingdom Schools",
+      "domain": "kingdomschools.edu.sa",
+      "curriculum": "American / IB",
+      "emirate": "Riyadh",
+      "country": "Saudi Arabia",
+      "rating": "Very Good",
+      "tuitionRange": "35K - 68K SAR",
+      "ranking": 35,
+      "description": "Established by Kingdom Holding Company, offering bilingual American diploma and university prep."
+    },
+    {
+      "id": "36",
+      "name": "British International School Jeddah (BISJ)",
+      "domain": "bisj.com",
+      "curriculum": "British",
+      "emirate": "Jeddah",
+      "country": "Saudi Arabia",
+      "rating": "Outstanding",
+      "tuitionRange": "40K - 82K SAR",
+      "ranking": 36,
+      "description": "Leading British curriculum school on the Red Sea coast offering Duke of Edinburgh awards and IB options."
+    },
+    {
+      "id": "37",
+      "name": "Al-Bayan International School",
+      "domain": "bis.edu.kw",
+      "curriculum": "American",
+      "emirate": "Dammam",
+      "country": "Saudi Arabia",
+      "rating": "Very Good",
+      "tuitionRange": "30K - 55K SAR",
+      "ranking": 37,
+      "description": "Cognia-accredited American school in Eastern Province fostering STEM inquiry and character development."
+    },
+    {
+      "id": "38",
+      "name": "Manarat Al-Riyadh International School",
+      "domain": "maarif.com.sa",
+      "curriculum": "CBSE / British",
+      "emirate": "Riyadh",
+      "country": "Saudi Arabia",
+      "rating": "Very Good",
+      "tuitionRange": "20K - 38K SAR",
+      "ranking": 38,
+      "description": "Maarif Education school delivering high academic performance across CBSE and Cambridge streams."
+    },
+    {
+      "id": "39",
+      "name": "Doha College",
+      "domain": "dohacollege.com",
+      "curriculum": "British",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "45K - 78K QAR",
+      "ranking": 39,
+      "description": "Qatar's leading non-profit British international school, sponsored by the British Embassy in 1980."
+    },
+    {
+      "id": "40",
+      "name": "American School of Doha (ASD)",
+      "domain": "asd.edu.qa",
+      "curriculum": "American / IB",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "55K - 88K QAR",
+      "ranking": 40,
+      "description": "Independent non-profit American school offering AP and IB Diploma options with world-class facilities."
+    },
+    {
+      "id": "41",
+      "name": "Qatar Academy Doha (QAD)",
+      "domain": "qad.edu.qa",
+      "curriculum": "IB",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "48K - 82K QAR",
+      "ranking": 41,
+      "description": "Flagship Qatar Foundation IB World School located in Education City Doha."
+    },
+    {
+      "id": "42",
+      "name": "Sherborne Qatar",
+      "domain": "sherborneqatar.org",
+      "curriculum": "British",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "42K - 76K QAR",
+      "ranking": 42,
+      "description": "Official overseas branch of Sherborne School UK, offering traditional British independent school ethos."
+    },
+    {
+      "id": "43",
+      "name": "Park House English School",
+      "domain": "parkhouseenglishschool.com",
+      "curriculum": "British",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "35K - 62K QAR",
+      "ranking": 43,
+      "description": "Long-established British school in Doha acquired by ISP, praised for excellent pastoral care."
+    },
+    {
+      "id": "44",
+      "name": "International School of London (ISL) Qatar",
+      "domain": "islqatar.org",
+      "curriculum": "IB",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "52K - 82K QAR",
+      "ranking": 44,
+      "description": "Renowned IB World School offering mother-tongue language programs in over 12 languages."
+    },
+    {
+      "id": "45",
+      "name": "Swiss International School Qatar (SISQ)",
+      "domain": "sisq.qa",
+      "curriculum": "IB",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "55K - 85K QAR",
+      "ranking": 45,
+      "description": "Full-continuum IB school offering multilingual instruction in French, German, and English."
+    },
+    {
+      "id": "46",
+      "name": "Compass International School Doha",
+      "domain": "nordangliaeducation.com",
+      "curriculum": "British / IB",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "48K - 78K QAR",
+      "ranking": 46,
+      "description": "Nord Anglia campus in Qatar delivering British curriculum leading to the IB Diploma."
+    },
+    {
+      "id": "47",
+      "name": "Hamilton International School Doha",
+      "domain": "hamiltoninternationalschool.qa",
+      "curriculum": "American / IB",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Very Good",
+      "tuitionRange": "45K - 72K QAR",
+      "ranking": 47,
+      "description": "Modern International Schools Partnership campus in Mesaieeet boasting a 850-seat theater."
+    },
+    {
+      "id": "48",
+      "name": "DESA (Doha English Speaking School)",
+      "domain": "dess.org",
+      "curriculum": "British",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Outstanding",
+      "tuitionRange": "38K - 58K QAR",
+      "ranking": 48,
+      "description": "Oldest British primary school in Qatar, recognized by BSO as one of the best British schools globally."
+    },
+    {
+      "id": "49",
+      "name": "GEMS Wellington School Qatar",
+      "domain": "gemswellingtonschool-qatar.com",
+      "curriculum": "British",
+      "emirate": "Al Wakra",
+      "country": "Qatar",
+      "rating": "Very Good",
+      "tuitionRange": "40K - 68K QAR",
+      "ranking": 49,
+      "description": "GEMS school in Al Wakra offering British National Curriculum with sports and music academies."
+    },
+    {
+      "id": "50",
+      "name": "MES Indian School Doha",
+      "domain": "mesqatar.org",
+      "curriculum": "CBSE",
+      "emirate": "Doha",
+      "country": "Qatar",
+      "rating": "Very Good",
+      "tuitionRange": "12K - 22K QAR",
+      "ranking": 50,
+      "description": "Largest Indian expatriate school in Qatar, providing quality CBSE education since 1974."
+    }
+  ],
+  "programs": [
+    {
+      "id": "1",
+      "title": "NASA Space Apps Challenge",
+      "organizer": "NASA & Global Partners",
+      "domain": "nasa.gov",
+      "type": "Hackathon",
+      "eligibility": "All Students (K12 & University)",
+      "deadline": "2026-10-01",
+      "link": "https://www.spaceappschallenge.org/"
+    },
+    {
+      "id": "2",
+      "title": "Stanford Pre-Collegiate Summer Institute",
+      "organizer": "Stanford University",
+      "domain": "stanford.edu",
+      "type": "Summer School",
+      "eligibility": "High School Students (Grades 8-11)",
+      "deadline": "2026-08-15",
+      "link": "https://spcs.stanford.edu/programs/stanford-pre-collegiate-summer-institutes"
+    },
+    {
+      "id": "3",
+      "title": "Google Solution Challenge",
+      "organizer": "Google Developers",
+      "domain": "google.com",
+      "type": "Hackathon",
+      "eligibility": "University Students",
+      "deadline": "2026-12-15",
+      "link": "https://developers.google.com/community/gdsc/solution-challenge"
+    },
+    {
+      "id": "4",
+      "title": "Oxford Summer Academy",
+      "organizer": "Oxford Study Courses",
+      "domain": "ox.ac.uk",
+      "type": "Summer School",
+      "eligibility": "Students aged 15-19",
+      "deadline": "2026-08-20",
+      "link": "https://www.oxfordsummeracademy.com/"
+    },
+    {
+      "id": "5",
+      "title": "Harvard CS50x Computer Science Core",
+      "organizer": "Harvard University (edX)",
+      "domain": "harvard.edu",
+      "type": "Course",
+      "eligibility": "All Students & Life-long Learners",
+      "deadline": "2026-12-31",
+      "link": "https://pll.harvard.edu/course/cs50-introduction-computer-science"
+    },
+    {
+      "id": "6",
+      "title": "TechGirls Leadership & Exchange Program",
+      "organizer": "U.S. Department of State",
+      "domain": "state.gov",
+      "type": "Fellowship",
+      "eligibility": "Female High School Students (Ages 15-17)",
+      "deadline": "2026-11-01",
+      "link": "https://techgirlsglobal.org/"
+    },
+    {
+      "id": "7",
+      "title": "NYUAD Hackathon for Social Good",
+      "organizer": "NYU Abu Dhabi",
+      "domain": "nyu.edu",
+      "type": "Hackathon",
+      "eligibility": "University & Elite High School",
+      "deadline": "2026-11-20",
+      "link": "https://nyuad.nyu.edu/en/events/annual-nyuad-hackathon.html"
+    },
+    {
+      "id": "8",
+      "title": "Mawhiba International Summer Program",
+      "organizer": "Mawhiba Saudi Arabia",
+      "domain": "mawhiba.org",
+      "type": "Fellowship",
+      "eligibility": "K12 High Achievers (Grades 9-12)",
+      "deadline": "2026-10-05",
+      "link": "https://www.mawhiba.org/"
+    },
+    {
+      "id": "9",
+      "title": "MIT Beaver Works Summer Institute",
+      "organizer": "Massachusetts Institute of Technology",
+      "domain": "mit.edu",
+      "type": "Summer School",
+      "eligibility": "Rising High School Seniors",
+      "deadline": "2026-09-10",
+      "link": "https://beaverworks.ll.mit.edu/"
+    },
+    {
+      "id": "10",
+      "title": "Coders HQ Junior Python Virtual Academy",
+      "organizer": "Coders HQ UAE",
+      "domain": "codershq.ae",
+      "type": "Course",
+      "eligibility": "K12 level (Ages 8-15)",
+      "deadline": "2026-12-01",
+      "link": "https://codershq.ae/"
+    },
+    {
+      "id": "11",
+      "title": "Major League Hacking (MLH) Global Hackathons",
+      "organizer": "MLH Organization",
+      "domain": "mlh.io",
+      "type": "Hackathon",
+      "eligibility": "K12 & University Developers",
+      "deadline": "2026-11-30",
+      "link": "https://mlh.io/"
+    },
+    {
+      "id": "12",
+      "title": "Middle East Youth Fellowship",
+      "organizer": "MEYE Initiative",
+      "domain": "meyef.org",
+      "type": "Fellowship",
+      "eligibility": "High School & Undergrad",
+      "deadline": "2026-10-15",
+      "link": "https://meyexpo.com/"
+    },
+    {
+      "id": "13",
+      "title": "Archestra MCP Apps Hackathon",
+      "organizer": "Devpost & Archestra",
+      "domain": "devpost.com",
+      "type": "Hackathon",
+      "eligibility": "Global Virtual Developers & Students",
+      "deadline": "2026-07-29",
+      "link": "https://devpost.com/hackathons"
+    },
+    {
+      "id": "14",
+      "title": "Snowflake CoCo CLI Global Hackathon",
+      "organizer": "Snowflake Inc.",
+      "domain": "snowflake.com",
+      "type": "Hackathon",
+      "eligibility": "Virtual Developers (Global & MENA)",
+      "deadline": "2026-08-02",
+      "link": "https://snowflake.com/"
+    },
+    {
+      "id": "15",
+      "title": "AI Factory Online Global Hackathon",
+      "organizer": "Lablab.ai",
+      "domain": "lablab.ai",
+      "type": "Hackathon",
+      "eligibility": "Virtual AI Engineers & Students",
+      "deadline": "2026-08-10",
+      "link": "https://lablab.ai/"
+    },
+    {
+      "id": "16",
+      "title": "AI Infra Summit Virtual Hackathon",
+      "organizer": "AI Infra Association",
+      "domain": "lablab.ai",
+      "type": "Hackathon",
+      "eligibility": "Hybrid / Online Global Track",
+      "deadline": "2026-09-17",
+      "link": "https://lablab.ai/event/ai-infra-summit"
+    }
+  ],
+  "perks": [
+    {
+      "id": "1",
+      "title": "GitHub Student Developer Pack",
+      "provider": "GitHub & Partners",
+      "domain": "github.com",
+      "description": "Free access to GitHub Pro, Canva Pro, JetBrains IDE licenses, Azure $100 credits, and 80+ elite developer tools for verified school students.",
+      "category": "Development Tools",
+      "link": "https://education.github.com/pack"
+    },
+    {
+      "id": "2",
+      "title": "Notion Student Personal Pro",
+      "provider": "Notion Labs",
+      "domain": "notion.so",
+      "description": "Unlock the complete Personal Pro plan (unlimited file uploads, version history, unlimited guests) 100% free with a school email or student card.",
+      "category": "Productivity",
+      "link": "https://www.notion.so/students"
+    },
+    {
+      "id": "3",
+      "title": "Figma for Education",
+      "provider": "Figma Inc.",
+      "domain": "figma.com",
+      "description": "Get the Professional Team Plan for free. Design, prototype, and collaborate in real time. Verifiable with student ID or school enrollment letter.",
+      "category": "Design & Creative",
+      "link": "https://www.figma.com/education/"
+    },
+    {
+      "id": "4",
+      "title": "Microsoft Office 365 Education",
+      "provider": "Microsoft",
+      "domain": "microsoft.com",
+      "description": "Free Access to Word, Excel, PowerPoint, Teams, and 1TB OneDrive cloud storage. Requires a valid institutional student email ID.",
+      "category": "Productivity",
+      "link": "https://www.microsoft.com/en-us/education/products/office"
+    },
+    {
+      "id": "5",
+      "title": "JetBrains Academic Subscription",
+      "provider": "JetBrains",
+      "domain": "jetbrains.com",
+      "description": "Free individual licenses for IntelliJ IDEA Ultimate, WebStorm, PyCharm Professional, ReSharper, and other IDEs. Renew free yearly with school email.",
+      "category": "Development Tools",
+      "link": "https://www.jetbrains.com/community/education/"
+    },
+    {
+      "id": "6",
+      "title": "Autodesk Education Suite & Fusion 360",
+      "provider": "Autodesk",
+      "domain": "autodesk.com",
+      "description": "100% free professional 1-year renewable licenses for AutoCAD, Revit, Maya, Fusion 360, and Inventor for student makers and engineering designers.",
+      "category": "Design & Creative",
+      "link": "https://www.autodesk.com/education/free-software/overview"
+    },
+    {
+      "id": "7",
+      "title": "Apple Education Store GCC Savings",
+      "provider": "Apple Middle East",
+      "domain": "apple.com",
+      "description": "Save up to AED 600 on new Mac and iPad models with official Apple Education pricing + receive Apple Pencil or AirPods bonus during promotional cycles for GCC university students.",
+      "category": "Hardware",
+      "link": "https://www.apple.com/ae-edu/shop"
+    },
+    {
+      "id": "8",
+      "title": "Spotify Premium for Students",
+      "provider": "Spotify Middle East",
+      "domain": "spotify.com",
+      "description": "Get premium music subscription with 50% discount. Play offline, on-demand, without any ads. Verifiable via SheerID (school portal authentication).",
+      "category": "Media & Entertainment",
+      "link": "https://www.spotify.com/ae-en/student/"
+    },
+    {
+      "id": "9",
+      "title": "Canva for Education",
+      "provider": "Canva",
+      "domain": "canva.com",
+      "description": "100% free premium templates, millions of photos, fonts, graphics, and video editing for students and educators with school credentials.",
+      "category": "Design & Creative",
+      "link": "https://www.canva.com/education/"
+    },
+    {
+      "id": "10",
+      "title": "Ryanair Student Discount",
+      "provider": "Ryanair",
+      "domain": "ryanair.com",
+      "description": "10% off flights + free 20kg check-in bag for Erasmus and international students holding a valid ESNcard.",
+      "category": "Travel",
+      "link": "https://www.ryanair.com/gb/en/plan-trip/travel-extras/esn-discount"
+    },
+    {
+      "id": "11",
+      "title": "YNAB Student Subscription",
+      "provider": "YNAB",
+      "domain": "ynab.com",
+      "description": "Free YNAB (You Need A Budget) for 1 full year. Comprehensive budgeting tool for managing student expenses and building savings goals.",
+      "category": "Travel",
+      "link": "https://www.ynab.com/college/"
+    },
+    {
+      "id": "12",
+      "title": "Emirates Airline Student Special Offer",
+      "provider": "Emirates",
+      "domain": "emirates.com",
+      "description": "Up to 10% off Economy Class and 5% off Business Class flights plus +10kg extra baggage allowance for verified student travelers across the GCC and internationally.",
+      "category": "Travel",
+      "link": "https://www.emirates.com/ae/english/special-offers/student-special-fares/"
+    },
+    {
+      "id": "13",
+      "title": "adidas Student Offer",
+      "provider": "adidas",
+      "domain": "adidas.com",
+      "description": "Up to 30% off full price sportswear, sneakers, and athletic gear from the world's leading sports brand.",
+      "category": "Apparel",
+      "link": "https://www.adidas.com/us/student-discount"
+    },
+    {
+      "id": "14",
+      "title": "Levi's Student Discount",
+      "provider": "Levi's",
+      "domain": "levis.com",
+      "description": "Up to 20% off sitewide on iconic denim jeans, jackets, and casual clothing from the original American denim brand.",
+      "category": "Apparel",
+      "link": "https://www.levi.com/US/en_US/features/student-discount"
+    },
+    {
+      "id": "15",
+      "title": "Nike Student Offer",
+      "provider": "Nike",
+      "domain": "nike.com",
+      "description": "Up to 15% off sitewide on iconic sports footwear, apparel, and athletic accessories for eligible students.",
+      "category": "Apparel",
+      "link": "https://www.nike.com/help/a/student-discount"
+    },
+    {
+      "id": "16",
+      "title": "Crocs Student Savings",
+      "provider": "Crocs",
+      "domain": "crocs.com",
+      "description": "25% off sitewide on iconic clogs, slides, and casual everyday footwear known for ultimate comfort.",
+      "category": "Apparel",
+      "link": "https://www.crocs.com/student-discount.html"
+    },
+    {
+      "id": "17",
+      "title": "PUMA Student Discount",
+      "provider": "PUMA",
+      "domain": "puma.com",
+      "description": "Up to 15% off sitewide on sportswear, footwear, and activewear from one of the world's leading sports brands.",
+      "category": "Apparel",
+      "link": "https://us.puma.com/us/en/student-discount"
+    },
+    {
+      "id": "18",
+      "title": "H&M Student Offer",
+      "provider": "H&M",
+      "domain": "hm.com",
+      "description": "10% off student discount on modern fashion and clothing via UNiDAYS or Student Beans authentication.",
+      "category": "Apparel",
+      "link": "https://www2.hm.com/en_us/customer-service/student-discount.html"
+    },
+    {
+      "id": "19",
+      "title": "Paramount+ Student Plan",
+      "provider": "Paramount+",
+      "domain": "paramountplus.com",
+      "description": "50% off any plan for 1 year. Stream thousands of movies, exclusive series, and live sports on Essential or Premium tiers.",
+      "category": "Media & Entertainment",
+      "link": "https://www.paramountplus.com/student/"
+    },
+    {
+      "id": "20",
+      "title": "MUBI Student Membership",
+      "provider": "MUBI",
+      "domain": "mubi.com",
+      "description": "Free 2 months then discounted monthly rate (~35% Off). Curated cinema streaming platform for international, indie, and classic films.",
+      "category": "Media & Entertainment",
+      "link": "https://mubi.com/student"
+    },
+    {
+      "id": "21",
+      "title": "Apple TV+ Student Access",
+      "provider": "Apple TV+",
+      "domain": "apple.com",
+      "description": "Stream Apple Originals for free when included with an active Apple Music Student subscription.",
+      "category": "Media & Entertainment",
+      "link": "https://www.apple.com/apple-tv-plus/"
+    },
+    {
+      "id": "22",
+      "title": "Apple Music Student Plan",
+      "provider": "Apple Music",
+      "domain": "apple.com",
+      "description": "1 month free trial, then ~50% off monthly subscription for up to 48 months. Access 100M+ ad-free tracks with offline playback.",
+      "category": "Media & Entertainment",
+      "link": "https://www.apple.com/apple-music/"
+    },
+    {
+      "id": "23",
+      "title": "The New York Times Student",
+      "provider": "The New York Times",
+      "domain": "nytimes.com",
+      "description": "Student rate ~$1/week + free digital access via partnered schools and university libraries for articles, cooking, and podcasts.",
+      "category": "Media & Entertainment",
+      "link": "https://www.nytimes.com/subscription/education"
+    },
+    {
+      "id": "24",
+      "title": "YouTube Premium Student",
+      "provider": "YouTube Premium",
+      "domain": "youtube.com",
+      "description": "1 month free trial, then ~50% off for up to 48 months. Enjoy ad-free YouTube videos, background play, and YouTube Music.",
+      "category": "Media & Entertainment",
+      "link": "https://www.youtube.com/premium/student"
+    },
+    {
+      "id": "25",
+      "title": "YouTube Music Student",
+      "provider": "YouTube Music",
+      "domain": "youtube.com",
+      "description": "1 month free trial, then ~50% off for up to 4 years. Ad-free music streaming with offline downloads and background playback.",
+      "category": "Media & Entertainment",
+      "link": "https://www.youtube.com/musicpremium/student"
+    },
+    {
+      "id": "26",
+      "title": "The Economist Espresso",
+      "provider": "The Economist",
+      "domain": "economist.com",
+      "description": "Free annual Espresso subscription (worth $99/yr). Daily world news app featuring concise global briefings, podcasts & newsletters.",
+      "category": "Media & Entertainment",
+      "link": "https://www.economist.com/espresso"
+    },
+    {
+      "id": "27",
+      "title": "HackerRank Skill Certifications",
+      "provider": "HackerRank",
+      "domain": "hackerrank.com",
+      "description": "Free coding practice, problem sets, and verified skill certificates in Python, Problem Solving, React, SQL, and algorithms.",
+      "category": "Learning & Education",
+      "link": "https://www.hackerrank.com/skills-verification"
+    },
+    {
+      "id": "28",
+      "title": "Kali Linux Revealed Training",
+      "provider": "Kali Linux",
+      "domain": "kali.org",
+      "description": "Free official Kali Linux course and training materials for penetration testing, cybersecurity, and security fundamentals.",
+      "category": "Learning & Education",
+      "link": "https://www.kali.org/courses/kali-linux-revealed/"
+    },
+    {
+      "id": "29",
+      "title": "NVIDIA Deep Learning Institute",
+      "provider": "NVIDIA",
+      "domain": "nvidia.com",
+      "description": "Free AI & GPU courses with official certificates. Hands-on training in Generative AI, CUDA, computer vision, and data science.",
+      "category": "Learning & Education",
+      "link": "https://www.nvidia.com/en-us/training/"
+    },
+    {
+      "id": "30",
+      "title": "SAP Learning Student Edition",
+      "provider": "SAP",
+      "domain": "sap.com",
+      "description": "Free student edition access + 2 free SAP certification exams for enterprise software, ERP systems, and cloud analytics.",
+      "category": "Learning & Education",
+      "link": "https://learning.sap.com/students"
+    },
+    {
+      "id": "31",
+      "title": "Kickresume Premium",
+      "provider": "Kickresume",
+      "domain": "kickresume.com",
+      "description": "Free Premium membership for 6 months. AI-powered resume and cover letter builder with ATS checker and career tools.",
+      "category": "Learning & Education",
+      "link": "https://www.kickresume.com/en/help/student-discount/"
+    },
+    {
+      "id": "32",
+      "title": "Anthropic Academy AI Courses",
+      "provider": "Anthropic",
+      "domain": "anthropic.com",
+      "description": "17+ free AI courses (no code required). Official training on Claude, Claude Code, Model Context Protocol (MCP), and prompt engineering.",
+      "category": "Learning & Education",
+      "link": "https://www.anthropic.com/courses"
+    },
+    {
+      "id": "33",
+      "title": "RoleSharp Student Premium",
+      "provider": "RoleSharp",
+      "domain": "rolesharp.com",
+      "description": "Free 6 months of Student Premium ($72 value). AI resume builder that tailors resumes to specific company job listings and ATS formats.",
+      "category": "Learning & Education",
+      "link": "https://rolesharp.com/"
+    },
+    {
+      "id": "34",
+      "title": "edX University Course Audit",
+      "provider": "edX",
+      "domain": "edx.org",
+      "description": "Free online courses from MIT, Harvard, Oxford, and 250+ top universities. Free to audit, learn, and complete coursework.",
+      "category": "Learning & Education",
+      "link": "https://www.edx.org/"
+    },
+    {
+      "id": "35",
+      "title": "Scrimba Pro Pass",
+      "provider": "Scrimba",
+      "domain": "scrimba.com",
+      "description": "Free 1 month Scrimba Pro (access to 40+ courses). Interactive frontend coding courses with live, in-video code editing.",
+      "category": "Learning & Education",
+      "link": "https://scrimba.com/pricing"
+    },
+    {
+      "id": "36",
+      "title": "DataCamp Student Access",
+      "provider": "DataCamp",
+      "domain": "datacamp.com",
+      "description": "3 months of free subscription access. Learn Data Science, Python, SQL, and AI skills through interactive, guided coding practice.",
+      "category": "Learning & Education",
+      "link": "https://www.datacamp.com/donations/students"
+    },
+    {
+      "id": "37",
+      "title": "IBM SkillsBuild",
+      "provider": "IBM",
+      "domain": "ibm.com",
+      "description": "100% free digital skills platform with badged courses in Artificial Intelligence, Cloud Computing, Cybersecurity, and Web Dev.",
+      "category": "Learning & Education",
+      "link": "https://skillsbuild.org/students"
+    },
+    {
+      "id": "38",
+      "title": "Codedex Club",
+      "provider": "Codedex",
+      "domain": "codedex.io",
+      "description": "Free 6 months of premium Club membership. Gamified coding lessons to learn Python, HTML/CSS, JavaScript, and web development.",
+      "category": "Learning & Education",
+      "link": "https://www.codedex.io/"
+    },
+    {
+      "id": "39",
+      "title": "Clerk Pro Student Plan",
+      "provider": "Clerk",
+      "domain": "clerk.com",
+      "description": "Free Pro plan ($240/yr value) for your student years. Complete authentication and user management platform with prebuilt React/Next.js UI.",
+      "category": "Development Tools",
+      "link": "https://clerk.com/education"
+    },
+    {
+      "id": "40",
+      "title": "Transloadit Encoding Pack",
+      "provider": "Transloadit",
+      "domain": "transloadit.com",
+      "description": "Free 5 GB/month file encoding & processing via GitHub Student Developer Pack for video, image, and audio uploads.",
+      "category": "Development Tools",
+      "link": "https://transloadit.com/github-students/"
+    },
+    {
+      "id": "41",
+      "title": "Zed AI Code Editor Pro",
+      "provider": "Zed",
+      "domain": "zed.dev",
+      "description": "Free Zed Pro for 1 year. Next-generation AI-powered code editor with real-time multiplayer collaboration and inline edit predictions.",
+      "category": "Development Tools",
+      "link": "https://zed.dev/education"
+    },
+    {
+      "id": "42",
+      "title": "SimpleAnalytics Starter Plan",
+      "provider": "SimpleAnalytics",
+      "domain": "simpleanalytics.com",
+      "description": "Free Starter plan for 1 year + 100k page views per month. Privacy-friendly website analytics platform without tracking cookies.",
+      "category": "Development Tools",
+      "link": "https://simpleanalytics.com/students"
+    },
+    {
+      "id": "43",
+      "title": "Sentry Error Monitoring",
+      "provider": "Sentry",
+      "domain": "sentry.io",
+      "description": "Free 1 year (renewable): 50K error events, 5GB log storage + $20 AI/mo credit for error tracking and session replay.",
+      "category": "Development Tools",
+      "link": "https://sentry.io/for/education/"
+    },
+    {
+      "id": "44",
+      "title": "New Relic Student Edition",
+      "provider": "New Relic",
+      "domain": "newrelic.com",
+      "description": "Free full access while a student ($300/month value). Track application performance and monitor errors across cloud infrastructure.",
+      "category": "Development Tools",
+      "link": "https://newrelic.com/social-impact/students"
+    },
+    {
+      "id": "45",
+      "title": "Navicat Database NFR License",
+      "provider": "Navicat",
+      "domain": "navicat.com",
+      "description": "Free 1-year NFR license for students. Powerful database management tool for connecting, querying, and modeling databases visually.",
+      "category": "Development Tools",
+      "link": "https://www.navicat.com/en/sponsorship/education/student"
+    },
+    {
+      "id": "46",
+      "title": "PopSQL Collaborative SQL",
+      "provider": "PopSQL",
+      "domain": "popsql.com",
+      "description": "Free Premium subscription. Collaborative SQL editor for writing queries, sharing data dashboards, and visualizing analytics in real time.",
+      "category": "Development Tools",
+      "link": "https://popsql.com/education"
+    },
+    {
+      "id": "47",
+      "title": "Polypane Responsive Browser",
+      "provider": "Polypane",
+      "domain": "polypane.app",
+      "description": "Free license for 1 year. Specialist browser for building, testing, and debugging responsive website designs across multiple screens simultaneously.",
+      "category": "Development Tools",
+      "link": "https://polypane.app/education/"
+    },
+    {
+      "id": "48",
+      "title": "POEditor Localization Plus",
+      "provider": "POEditor",
+      "domain": "poeditor.com",
+      "description": "Free Plus plan for 1 year. Translate and manage software localization and translation string projects with collaborative tools.",
+      "category": "Development Tools",
+      "link": "https://poeditor.com/student/"
+    },
+    {
+      "id": "49",
+      "title": "Pageclip Form Backend",
+      "provider": "Pageclip",
+      "domain": "pageclip.co",
+      "description": "Free basic plan while a student. Form backend service for collecting HTML form submissions directly from static websites.",
+      "category": "Development Tools",
+      "link": "https://pageclip.co/"
+    },
+    {
+      "id": "50",
+      "title": "Postman Student Expert",
+      "provider": "Postman",
+      "domain": "postman.com",
+      "description": "Free Student Expert API certification, digital badge, and interactive learning modules for building, testing, and documenting APIs.",
+      "category": "Development Tools",
+      "link": "https://www.postman.com/company/student-program/"
+    },
+    {
+      "id": "51",
+      "title": "Mapbox for Students",
+      "provider": "Mapbox",
+      "domain": "mapbox.com",
+      "description": "Free Mapbox access for students. Mapping APIs, custom map styling, and location data tools for web and mobile projects.",
+      "category": "Development Tools",
+      "link": "https://www.mapbox.com/community/education/"
+    },
+    {
+      "id": "52",
+      "title": "LocalStack AWS Emulator",
+      "provider": "LocalStack",
+      "domain": "localstack.cloud",
+      "description": "Free AWS emulator license. Emulate AWS cloud infrastructure services (S3, Lambda, DynamoDB) locally on your dev machine.",
+      "category": "Development Tools",
+      "link": "https://localstack.cloud/"
+    },
+    {
+      "id": "53",
+      "title": "LambdaTest Cross-Browser Plan",
+      "provider": "LambdaTest",
+      "domain": "lambdatest.com",
+      "description": "Free Live Plan for 1 year. Cloud platform for automated and manual cross-browser and operating system compatibility testing.",
+      "category": "Development Tools",
+      "link": "https://www.lambdatest.com/education-discount"
+    },
+    {
+      "id": "54",
+      "title": "Honeybadger Exception Monitoring",
+      "provider": "Honeybadger",
+      "domain": "honeybadger.io",
+      "description": "Free Small plan for 1 year. Monitor application exceptions, uptime, and cron job health across web applications.",
+      "category": "Development Tools",
+      "link": "https://www.honeybadger.io/for/students/"
+    },
+    {
+      "id": "55",
+      "title": "GitLens for VS Code",
+      "provider": "GitLens",
+      "domain": "gitkraken.com",
+      "description": "6 months free then 80% off. Supercharge VS Code with visual Git authorship history, inline flame graphs, and GitHub integration.",
+      "category": "Development Tools",
+      "link": "https://www.gitkraken.com/gitlens"
+    },
+    {
+      "id": "56",
+      "title": "GitKraken Pro GUI",
+      "provider": "GitKraken",
+      "domain": "gitkraken.com",
+      "description": "6 months free then 80% off Pro plan. Intuitive Git client with a rich visual graph interface for managing repositories.",
+      "category": "Development Tools",
+      "link": "https://www.gitkraken.com/student-developer-pack"
+    },
+    {
+      "id": "57",
+      "title": "Flux AI PCB Design",
+      "provider": "Flux",
+      "domain": "flux.ai",
+      "description": "Free Pro Plan for students. Modern browser-based PCB design tool with AI assistance, real-time collaboration, and simulation.",
+      "category": "Development Tools",
+      "link": "https://www.flux.ai/education"
+    },
+    {
+      "id": "58",
+      "title": "Datadog Pro Infrastructure",
+      "provider": "Datadog",
+      "domain": "datadoghq.com",
+      "description": "Free Datadog Pro account via GitHub Student Developer Pack to monitor cloud infrastructure metrics, traces, and logs.",
+      "category": "Development Tools",
+      "link": "https://www.datadoghq.com/partner/student-developer-pack/"
+    },
+    {
+      "id": "59",
+      "title": "BrowserStack Automate Mobile",
+      "provider": "BrowserStack",
+      "domain": "browserstack.com",
+      "description": "Free Automate Mobile Plan for 1 year. Test web and mobile apps on 2000+ real iOS and Android mobile devices and desktop browsers.",
+      "category": "Development Tools",
+      "link": "https://www.browserstack.com/open-source"
+    },
+    {
+      "id": "60",
+      "title": "Appfigures Analytics",
+      "provider": "Appfigures",
+      "domain": "appfigures.com",
+      "description": "Free universal analytics and performance reports for 1 year. Track app downloads, revenue, reviews, and rankings across app stores.",
+      "category": "Development Tools",
+      "link": "https://appfigures.com/"
+    },
+    {
+      "id": "61",
+      "title": "Cargo Portfolio Site",
+      "provider": "Cargo",
+      "domain": "cargo.site",
+      "description": "Free portfolio website while enrolled (worth $14/mo). Premium no-code website builder for artists, designers, and creators.",
+      "category": "Design & Creative",
+      "link": "https://cargo.site/"
+    },
+    {
+      "id": "62",
+      "title": "UXPin Interactive Prototyping",
+      "provider": "UXPin",
+      "domain": "uxpin.com",
+      "description": "Free for students. Advanced UI/UX design and prototyping tool featuring real React code components, states, logic, and AI.",
+      "category": "Design & Creative",
+      "link": "https://www.uxpin.com/community/education/"
+    },
+    {
+      "id": "63",
+      "title": "Altium Designer PCB License",
+      "provider": "Altium",
+      "domain": "altium.com",
+      "description": "Free 1-year student license, renewable yearly. Industry-standard PCB design and electronic circuit simulation software.",
+      "category": "Design & Creative",
+      "link": "https://www.altium.com/solutions/academic-programs/student-licenses"
+    },
+    {
+      "id": "64",
+      "title": "CST Studio Suite EM Simulation",
+      "provider": "Dassault Syst\u00e8mes",
+      "domain": "3ds.com",
+      "description": "Free Learning Edition license for EM simulation. High-performance 3D electromagnetic field simulation software.",
+      "category": "Design & Creative",
+      "link": "https://www.3ds.com/products-services/simulia/products/cst-studio-suite/student-edition/"
+    },
+    {
+      "id": "65",
+      "title": "Divisare Architecture Archive",
+      "provider": "Divisare",
+      "domain": "divisare.com",
+      "description": "Free 1-year full access, then \u20ac18/yr. Ad-free curated architecture archive featuring 25 years of contemporary design projects.",
+      "category": "Design & Creative",
+      "link": "https://divisare.com/students"
+    },
+    {
+      "id": "66",
+      "title": "Jitter Motion Design Pro",
+      "provider": "Jitter",
+      "domain": "jitter.video",
+      "description": "Free Pro plan. Fast browser-based motion design tool for creating animated graphics, GIFs, UI micro-interactions, and videos.",
+      "category": "Design & Creative",
+      "link": "https://jitter.video/"
+    },
+    {
+      "id": "67",
+      "title": "Autograph 2D/3D Motion Graphics",
+      "provider": "Left Angle",
+      "domain": "left-angle.com",
+      "description": "Free 2D/3D motion graphics app for all. Professional motion graphics and VFX tool combining 2D layout and 3D compositing.",
+      "category": "Design & Creative",
+      "link": "https://www.left-angle.com/"
+    },
+    {
+      "id": "68",
+      "title": "Cavalry 2D Animation Software",
+      "provider": "Scene Group",
+      "domain": "cavalry.scenegroup.co",
+      "description": "Free 2D animation software for everyone. Professional real-time 2D animation tool with procedural rigs, generative art, and Lottie export.",
+      "category": "Design & Creative",
+      "link": "https://cavalry.scenegroup.co/"
+    },
+    {
+      "id": "69",
+      "title": "Unreal Engine Academic License",
+      "provider": "Epic Games",
+      "domain": "unrealengine.com",
+      "description": "100% free for students for academic projects and personal use. Advanced 3D real-time game engine for games, film, and virtual worlds.",
+      "category": "Design & Creative",
+      "link": "https://www.unrealengine.com/en-US/academic-installation"
+    },
+    {
+      "id": "70",
+      "title": "Unity Student Plan",
+      "provider": "Unity Technologies",
+      "domain": "unity.com",
+      "description": "Free Unity Student plan. Complete 3D and 2D game development platform with cloud diagnostics and learning materials.",
+      "category": "Design & Creative",
+      "link": "https://unity.com/products/unity-student"
+    },
+    {
+      "id": "71",
+      "title": "Miro Education Plan",
+      "provider": "Miro",
+      "domain": "miro.com",
+      "description": "Free Education plan for 2 years. Visual collaborative whiteboard platform for student brainstorming, diagramming, and team workshops.",
+      "category": "Design & Creative",
+      "link": "https://miro.com/education/"
+    },
+    {
+      "id": "72",
+      "title": "Tencent Cloud Student VPS",
+      "provider": "Tencent Cloud",
+      "domain": "tencentcloud.com",
+      "description": "Free 3-month VPS + free tier credits on 30+ cloud products including compute, cloud storage, CDN, and AI services.",
+      "category": "Cloud & Hosting",
+      "link": "https://www.tencentcloud.com/"
+    },
+    {
+      "id": "73",
+      "title": "Name.com Custom Domain & SSL",
+      "provider": "Name.com",
+      "domain": "name.com",
+      "description": "Free custom domain + SSL security certificate + privacy protection for 1 year. Choose from 15 available domain extensions.",
+      "category": "Cloud & Hosting",
+      "link": "https://www.name.com/github-students"
+    },
+    {
+      "id": "74",
+      "title": "Namecheap .me Domain",
+      "provider": "Namecheap",
+      "domain": "namecheap.com",
+      "description": "Free .me domain registration + SSL certificate for 1 year for hosting student portfolio websites and developer projects.",
+      "category": "Cloud & Hosting",
+      "link": "https://nc.me/"
+    },
+    {
+      "id": "75",
+      "title": "Camber Cloud Compute Pass",
+      "provider": "Camber",
+      "domain": "camber.cloud",
+      "description": "Free Student plan: 200 CPU hours, 75GB Storage, 200 LLM execution hours for testing, computing, and analysis projects.",
+      "category": "Cloud & Hosting",
+      "link": "https://camber.cloud/"
+    },
+    {
+      "id": "76",
+      "title": ".TECH Domain Name",
+      "provider": "Dot TECH",
+      "domain": "get.tech",
+      "description": "Free .TECH domain extension for 1 year. Ideal for tech startups, student projects, hackathon prototypes, and portfolios.",
+      "category": "Cloud & Hosting",
+      "link": "https://get.tech/students"
+    },
+    {
+      "id": "77",
+      "title": "Appwrite Pro Backend",
+      "provider": "Appwrite",
+      "domain": "appwrite.io",
+      "description": "Free Pro plan until graduation ($300/yr value). Build secure open-source backends for web and mobile applications with databases and auth.",
+      "category": "Cloud & Hosting",
+      "link": "https://appwrite.io/education"
+    },
+    {
+      "id": "78",
+      "title": "Kaggle GPU & TPU Notebooks",
+      "provider": "Kaggle",
+      "domain": "kaggle.com",
+      "description": "Free GPUs & TPUs \u2014 30 hours/week compute time with zero credit card required. Access cloud Jupyter notebooks, datasets, and ML competitions.",
+      "category": "AI & ML",
+      "link": "https://www.kaggle.com/"
+    },
+    {
+      "id": "79",
+      "title": "Brik AI Design Platform",
+      "provider": "Brik",
+      "domain": "brik.ai",
+      "description": "3 months Pro free. Next-gen AI platform to generate interactive design components and software tools directly from text prompts.",
+      "category": "AI & ML",
+      "link": "https://brik.ai/"
+    },
+    {
+      "id": "80",
+      "title": "Kiro AI-Native IDE",
+      "provider": "Kiro",
+      "domain": "kiro.dev",
+      "description": "1,000 credits/month free for 1 year. AI-native development environment with vibe coding and spec-driven software creation modes.",
+      "category": "AI & ML",
+      "link": "https://kiro.dev/"
+    },
+    {
+      "id": "81",
+      "title": "Weights & Biases Academic Pro",
+      "provider": "Weights & Biases",
+      "domain": "wandb.ai",
+      "description": "Free Pro tier for academic institutions. Machine learning experiment tracking, model evaluation, and dataset versioning platform.",
+      "category": "AI & ML",
+      "link": "https://wandb.ai/site/academic"
+    },
+    {
+      "id": "82",
+      "title": "Hugging Face University Hub",
+      "provider": "Hugging Face",
+      "domain": "huggingface.co",
+      "description": "Free Hub for university students. Host, share, and collaborate on open-source machine learning models, datasets, and Spaces.",
+      "category": "AI & ML",
+      "link": "https://huggingface.co/education"
+    },
+    {
+      "id": "83",
+      "title": "ElevenReader Ultra AI Audio",
+      "provider": "ElevenLabs",
+      "domain": "elevenlabs.io",
+      "description": "1 year of ElevenReader Ultra free ($99 value). Turn reading notes, PDFs, and textbooks into natural AI audio voices and personal podcasts.",
+      "category": "AI & ML",
+      "link": "https://elevenreader.io/"
+    },
+    {
+      "id": "84",
+      "title": "CARTO Spatial Analytics",
+      "provider": "CARTO",
+      "domain": "carto.com",
+      "description": "Free account upgrades and premium features for 2 years. Analyze and visualize spatial location data with interactive GIS maps.",
+      "category": "AI & ML",
+      "link": "https://carto.com/education-program"
+    },
+    {
+      "id": "85",
+      "title": "Superhuman AI Email Client",
+      "provider": "Superhuman",
+      "domain": "superhuman.com",
+      "description": "Free 1 month + $10/month (67% off) on request. Blazing-fast email client with AI triage, keyboard shortcuts, and smart inbox management.",
+      "category": "Productivity",
+      "link": "https://superhuman.com/"
+    },
+    {
+      "id": "86",
+      "title": "Linear Issue Tracker",
+      "provider": "Linear",
+      "domain": "linear.app",
+      "description": "Free Basic or Business plan for 1 year (up to $192 value). AI-powered issue tracking, roadmap planning, and software project management.",
+      "category": "Productivity",
+      "link": "https://linear.app/education"
+    },
+    {
+      "id": "87",
+      "title": "Beautiful.ai AI Presentations",
+      "provider": "Beautiful.ai",
+      "domain": "beautiful.ai",
+      "description": "Free Pro for 1 year ($144 value). Generative AI presentation software that formats professional slides and pitch decks in minutes.",
+      "category": "Productivity",
+      "link": "https://www.beautiful.ai/education"
+    },
+    {
+      "id": "88",
+      "title": "Basecamp for Students",
+      "provider": "Basecamp",
+      "domain": "basecamp.com",
+      "description": "100% free accounts for students and teachers. Project management platform for organizing student group tasks, teams, and files.",
+      "category": "Productivity",
+      "link": "https://basecamp.com/help/student-discount"
+    },
+    {
+      "id": "89",
+      "title": "Asana Starter Plan",
+      "provider": "Asana",
+      "domain": "asana.com",
+      "description": "Free 12-month Starter plan. Manage team projects with interactive lists, Kanban boards, Gantt timelines, and task assignments.",
+      "category": "Productivity",
+      "link": "https://asana.com/nonprofit/education"
+    },
+    {
+      "id": "90",
+      "title": "Zayed Sustainability Prize Global High Schools Grant",
+      "provider": "Masdar & UAE Government",
+      "domain": "zayedsustainabilityprize.com",
+      "description": "Non-dilutive funding grant up to $150,000 USD awarded to student-led climate tech, clean energy, water, and food sustainability projects in high schools (K-12).",
+      "category": "Grants & Funding",
+      "link": "https://zayedsustainabilityprize.com/en/categories/global-high-schools"
+    },
+    {
+      "id": "91",
+      "title": "Undergraduate Research Experience Program (UREP)",
+      "provider": "QRDI Council & Qatar National Research Fund",
+      "domain": "qrdi.org.qa",
+      "description": "Equity-free research & builder grants for undergraduate student teams in Qatar to conduct hands-on AI, engineering, health, and clean energy innovation under faculty mentorship.",
+      "category": "Grants & Funding",
+      "link": "https://qrdi.org.qa/en-us/Funding/Undergraduate-Research-Experience-Program"
+    },
+    {
+      "id": "92",
+      "title": "Mohammed Bin Rashid Innovation Fund (MBRIF) Grant",
+      "provider": "Ministry of Finance UAE",
+      "domain": "mbrif.ae",
+      "description": "Government-backed innovation funding and non-dilutive accelerator grants for student founders and tech builders establishing operations in the UAE.",
+      "category": "Grants & Funding",
+      "link": "https://www.mbrif.ae/en/member-space/apply"
+    },
+    {
+      "id": "93",
+      "title": "RDIA Saudi Student Innovation Grant (SIGP)",
+      "provider": "Research, Development & Innovation Authority (KSA)",
+      "domain": "rdia.gov.sa",
+      "description": "Financial grants up to SAR 4,000,000 for university student researchers and young tech builders commercializing AI, robotics, and deep-tech inventions in Saudi Arabia.",
+      "category": "Grants & Funding",
+      "link": "https://rdia.gov.sa"
+    },
+    {
+      "id": "94",
+      "title": "TDRA ICT Fund BETHA Student Research Grant",
+      "provider": "Telecommunications & Digital Government Regulatory Authority",
+      "domain": "tdra.gov.ae",
+      "description": "Full tuition grants and research project funding for distinguished undergraduate & Master\u2019s students pursuing AI, Computer Engineering, and Cybersecurity in the UAE.",
+      "category": "Grants & Funding",
+      "link": "https://tdra.gov.ae/en/Services/Betha"
+    },
+    {
+      "id": "95",
+      "title": "KAUST Destination & Seed Fund for Student Builders",
+      "provider": "KAUST Entrepreneurship Center",
+      "domain": "kaust.edu.sa",
+      "description": "Seed funding, lab prototyping grants up to $50,000 USD, and incubation space for university student founders building tech ventures in Saudi Arabia.",
+      "category": "Grants & Funding",
+      "link": "https://entrepreneurship.kaust.edu.sa"
+    },
+    {
+      "id": "96",
+      "title": "Dubai Future Foundation Student Free Zone Grant",
+      "provider": "Dubai Future Foundation",
+      "domain": "dubaifuture.ae",
+      "description": "Grants and free-zone incorporation support enabling university students in Dubai to register businesses, access prototype labs, and pitch to seed funds.",
+      "category": "Grants & Funding",
+      "link": "https://www.dubaifuture.ae"
+    },
+    {
+      "id": "97",
+      "title": "Sheraa Student Seed & Venture Grant",
+      "provider": "Sharjah Entrepreneurship Center",
+      "domain": "sheraa.ae",
+      "description": "Equity-free grant funding, mentorship, and co-working space for undergraduate and graduate student entrepreneurs building tech and social impact ventures.",
+      "category": "Grants & Funding",
+      "link": "https://sheraa.ae"
+    },
+    {
+      "id": "98",
+      "title": "QSTP Product Development & Proof of Concept Grant",
+      "provider": "Qatar Science & Technology Park",
+      "domain": "qstp.org.qa",
+      "description": "Cost-sharing grants up to QAR 1,400,000 for student innovators and tech builders developing working software or hardware prototypes.",
+      "category": "Grants & Funding",
+      "link": "https://qstp.org.qa/product-development-fund/"
+    },
+    {
+      "id": "99",
+      "title": "Hamdan Foundation Student Innovation Award Grant",
+      "provider": "Hamdan Bin Rashid Al Maktoum Foundation",
+      "domain": "ha.ae",
+      "description": "Financial innovation awards and project expansion grants for outstanding K-12 and undergraduate student inventors in the UAE and Gulf region.",
+      "category": "Grants & Funding",
+      "link": "https://ha.ae"
+    },
+    {
+      "id": "100",
+      "title": "Google Cloud Vertex AI Student Credits",
+      "provider": "Google Cloud",
+      "domain": "cloud.google.com",
+      "description": "$300 in free Google Cloud & Vertex AI credits + free access to Google Cloud Skills Boost labs for training LLMs and generative AI models.",
+      "category": "AI & ML",
+      "link": "https://cloud.google.com/edu/students"
+    },
+    {
+      "id": "101",
+      "title": "RunPod AI GPU Compute Grant",
+      "provider": "RunPod",
+      "domain": "runpod.io",
+      "description": "$50 free credit voucher for hosting PyTorch models and fine-tuning open-source LLMs on NVIDIA A100/H100 GPUs.",
+      "category": "AI & ML",
+      "link": "https://www.runpod.io/"
+    },
+    {
+      "id": "102",
+      "title": "Lambda Labs GPU Student Access",
+      "provider": "Lambda Labs",
+      "domain": "lambdalabs.com",
+      "description": "Discounted rate ($0.50/hr) on NVIDIA A10G and H100 GPU instances for university AI capstone projects and research papers.",
+      "category": "AI & ML",
+      "link": "https://lambdalabs.com/"
+    },
+    {
+      "id": "103",
+      "title": "AWS Educate Cloud Tier",
+      "provider": "Amazon Web Services",
+      "domain": "aws.amazon.com",
+      "description": "Free access to AWS Cloud learning labs, EC2/S3 cloud credits, and hands-on cloud architecture tools without requiring a credit card.",
+      "category": "Cloud & Hosting",
+      "link": "https://aws.amazon.com/education/awseducate/"
+    },
+    {
+      "id": "104",
+      "title": "Microsoft Learn Academic Exam Voucher",
+      "provider": "Microsoft",
+      "domain": "microsoft.com",
+      "description": "50% discount on official Microsoft certification exams (AZ-900, AI-900, DP-900) for verified university students.",
+      "category": "Learning & Education",
+      "link": "https://learn.microsoft.com/en-us/credentials/certifications/student-discounts"
+    },
+    {
+      "id": "105",
+      "title": "Google Cloud Career Launchpad Voucher",
+      "provider": "Google",
+      "domain": "cloud.google.com",
+      "description": "50% discount voucher for Associate Cloud Engineer (ACE) certification exams + free learning paths for university cohorts.",
+      "category": "Learning & Education",
+      "link": "https://cloud.google.com/innovators/students"
+    },
+    {
+      "id": "106",
+      "title": "Cisco Networking Academy (NetAcad) Voucher",
+      "provider": "Cisco Systems",
+      "domain": "netacad.com",
+      "description": "Free access to CCNA, CyberOps Associate, and IoT modules + discounted certification exam vouchers for partner school students.",
+      "category": "Learning & Education",
+      "link": "https://www.netacad.com/"
+    },
+    {
+      "id": "107",
+      "title": "Red Hat Academy Student Subscription",
+      "provider": "Red Hat",
+      "domain": "redhat.com",
+      "description": "Free access to Red Hat Enterprise Linux (RHEL) courseware + 50% discount on the RHCSA EX200 certification exam.",
+      "category": "Learning & Education",
+      "link": "https://www.redhat.com/en/services/training/red-hat-academy"
+    },
+    {
+      "id": "109",
+      "title": "SolidWorks Student Edition",
+      "provider": "Dassault Syst\u00e8mes",
+      "domain": "solidworks.com",
+      "description": "80% discount on 3D CAD design suites ($20/yr instead of $1,000+) for university engineering students.",
+      "category": "Design & Creative",
+      "link": "https://www.solidworks.com/product/students"
+    },
+    {
+      "id": "111",
+      "title": "Samsung Student & Campus Discount",
+      "provider": "Samsung Electronics",
+      "domain": "samsung.com",
+      "description": "Up to 30% discount on Galaxy Book laptops, tablets, high-res monitors, and smartphones for verified GCC students.",
+      "category": "Hardware",
+      "link": "https://www.samsung.com/ae/multistore/uae_student/"
+    },
+    {
+      "id": "112",
+      "title": "Qatar Airways Student Club Privilege",
+      "provider": "Qatar Airways",
+      "domain": "qatarairways.com",
+      "description": "10% to 20% fare discounts, +10kg extra baggage allowance, complimentary onboard Wi-Fi, and date change flexibility.",
+      "category": "Travel",
+      "link": "https://www.qatarairways.com/en/student-club.html"
+    },
+    {
+      "id": "114",
+      "title": "ISIC International Student Identity Pass",
+      "provider": "ISIC Association",
+      "domain": "isic.org",
+      "description": "Official digital student identity card unlocking 150,000+ regional and global discounts across transit, museums, hotels, and tech.",
+      "category": "Travel",
+      "link": "https://www.isic.org/"
+    }
+  ]
+};
