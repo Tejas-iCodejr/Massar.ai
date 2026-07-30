@@ -221,6 +221,8 @@ export function StudentPortrait({
         <img
           src={photo}
           alt={alt}
+          fetchPriority="high"
+          decoding="async"
           className="relative z-10 h-full w-auto max-w-none object-contain object-bottom drop-shadow-[0_12px_24px_rgba(44,46,42,0.18)] transition-transform duration-300 hover:scale-105"
         />
       ) : (

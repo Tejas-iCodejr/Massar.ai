@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import massarLogoClean from '@/assets/massar_logo_footer.png';
+import massarLogoClean from '@/assets/massar_logo_footer.webp';
 
 export function Footer() {
   const [email, setEmail] = useState('');
