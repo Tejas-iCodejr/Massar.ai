@@ -10,7 +10,7 @@ import { GoogleGenAI } from "@google/genai";
 import { createClient } from "@supabase/supabase-js";
 import "dotenv/config";
 
-const PORT = 3000;
+const PORT = parseInt(process.env.PORT || "3000", 10);
 const DATA_FILE = path.resolve(process.cwd(), "data.json");
 
 const supabaseUrl = process.env.SUPABASE_URL || "https://jyoedcgxfbcbloasucxj.supabase.co";
@@ -19,7 +19,7 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 let cachedData: any = null;
 
-async function loadData() {
+export async function loadData() {
   try {
     const raw = await fs.readFile(DATA_FILE, "utf-8");
     cachedData = JSON.parse(raw);
@@ -340,20 +340,20 @@ setInterval(() => {
   }
 }, 10 * 60 * 1000);
 
-async function startServer() {
-  const app = express();
-  app.set("trust proxy", true);
-  
-  // Security Headers Middleware
-  app.use(helmet({
-    contentSecurityPolicy: false, // Disabled for dev flexibility, enabled for headers
-    crossOriginEmbedderPolicy: false,
-  }));
-  app.use(compression());
-  app.use(cors());
-  app.use(express.json({ limit: "1mb" }));
-  app.use("/api", apiRateLimiter);
+export const app = express();
+app.set("trust proxy", true);
 
+// Security Headers Middleware
+app.use(helmet({
+  contentSecurityPolicy: false, // Disabled for dev flexibility, enabled for headers
+  crossOriginEmbedderPolicy: false,
+}));
+app.use(compression());
+app.use(cors());
+app.use(express.json({ limit: "1mb" }));
+app.use("/api", apiRateLimiter);
+
+async function startServer() {
   await loadData();
   setupScraperCron();
   setupExpiryCron();
@@ -770,9 +770,26 @@ Do NOT list transit options, nearby food districts, parks, co-working spaces, or
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
+  const listenOnPort = (portToTry: number) => {
+    const server = app.listen(portToTry, "0.0.0.0", () => {
+      const address = server.address();
+      const actualPort = typeof address === "object" && address ? address.port : portToTry;
+      console.log(`Server running on http://localhost:${actualPort}`);
+    });
+
+    server.on("error", (err: any) => {
+      if (err.code === "EADDRINUSE") {
+        console.log(`Port ${portToTry} is in use, finding an available free port...`);
+        listenOnPort(0);
+      } else {
+        console.error("Server error:", err);
+      }
+    });
+  };
+
+  listenOnPort(PORT);
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}

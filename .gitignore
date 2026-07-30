@@ -7,3 +7,6 @@ coverage/
 .env*
 !.env.example
 .claude/settings.local.json
+.agents/
+.gemini/
+
