@@ -356,13 +356,8 @@ app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 app.use("/api", apiRateLimiter);
 
-async function startServer() {
-  await loadData();
-  setupScraperCron();
-  setupExpiryCron();
-
-  // Admin trigger to purge expired opportunities on demand
-  app.post("/api/admin/purge-expired", async (req, res) => {
+// API route definitions registered at module top-level
+app.post("/api/admin/purge-expired", async (req, res) => {
     try {
       const result = await purgeExpiredOpportunities();
       res.json({ success: true, message: `Purged ${result.removedCount} expired opportunities.`, ...result });
@@ -757,6 +752,11 @@ Do NOT list transit options, nearby food districts, parks, co-working spaces, or
       res.json(generateFallbackMaps(name, location, type));
     }
   });
+
+async function startServer() {
+  await loadData();
+  setupScraperCron();
+  setupExpiryCron();
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {
