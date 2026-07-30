@@ -26,7 +26,7 @@ function apiRateLimiter(req: express.Request, res: express.Response, next: expre
   const ip = (req.headers["x-forwarded-for"] as string) || req.socket.remoteAddress || "unknown";
   const now = Date.now();
   const windowMs = 60 * 1000;
-  const maxRequests = 100;
+  const maxRequests = 200;
 
   const current = requestCounts.get(ip);
   if (!current || now > current.resetTime) {
@@ -42,7 +42,7 @@ function apiRateLimiter(req: express.Request, res: express.Response, next: expre
   next();
 }
 
-app.use("/api", apiRateLimiter);
+app.use(apiRateLimiter);
 
 const supabaseUrl = process.env.SUPABASE_URL || "https://jyoedcgxfbcbloasucxj.supabase.co";
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || "sb_publishable_dAGCAFElRkycXFIEOXF-qw_Png6pQxb";
@@ -72,13 +72,14 @@ function setApiCacheHeaders(res: express.Response) {
   res.setHeader("Cache-Control", "public, max-age=300, s-maxage=600, stale-while-revalidate=3600");
 }
 
-// In-Memory API Routes
-app.get("/api/data", (req, res) => {
+const apiRouter = express.Router();
+
+apiRouter.get("/data", (req, res) => {
   setApiCacheHeaders(res);
   res.json(loadData());
 });
 
-app.get("/api/universities", async (req, res) => {
+apiRouter.get("/universities", async (req, res) => {
   try {
     const { data, error } = await supabase.from("universities").select("*");
     if (!error && data && data.length > 0) {
@@ -106,7 +107,7 @@ app.get("/api/universities", async (req, res) => {
   res.json(data?.universities || []);
 });
 
-app.get("/api/schools", async (req, res) => {
+apiRouter.get("/schools", async (req, res) => {
   try {
     const { data, error } = await supabase.from("schools").select("*");
     if (!error && data && data.length > 0) {
@@ -151,7 +152,7 @@ app.get("/api/schools", async (req, res) => {
   res.json(data?.schools || []);
 });
 
-app.get("/api/programs", async (req, res) => {
+apiRouter.get("/programs", async (req, res) => {
   try {
     const { data, error } = await supabase.from("programs").select("*");
     if (!error && data && data.length > 0) {
@@ -182,7 +183,7 @@ app.get("/api/programs", async (req, res) => {
   res.json(data?.programs || []);
 });
 
-app.get("/api/perks", async (req, res) => {
+apiRouter.get("/perks", async (req, res) => {
   try {
     const { data, error } = await supabase.from("perks").select("*");
     if (!error && data && data.length > 0) {
@@ -212,10 +213,9 @@ app.get("/api/perks", async (req, res) => {
   res.json(data?.perks || []);
 });
 
-// Grounding APIs
-app.post("/api/search-grounding", async (req, res) => {
+apiRouter.post("/search-grounding", async (req, res) => {
   const apiKey = process.env.GEMINI_API_KEY;
-  const { query } = req.body;
+  const { query } = req.body || {};
 
   if (!query || typeof query !== "string") {
     return res.status(400).json({ error: "Search query is required." });
@@ -248,4 +248,13 @@ app.post("/api/search-grounding", async (req, res) => {
       groundingChunks: [],
     });
   }
+});
+
+// Mount router on all path variations
+app.use("/api", apiRouter);
+app.use("/", apiRouter);
+
+// Fallback 404 handler to prevent Vercel execution hanging
+app.use((req, res) => {
+  res.status(404).json({ error: "API endpoint not found", url: req.url });
 });
